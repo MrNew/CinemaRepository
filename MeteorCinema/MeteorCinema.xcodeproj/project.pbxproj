@@ -1,0 +1,874 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F4C45221CD8D7F20006EB06 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C45161CD8D7F20006EB06 /* FMDatabase.m */; settings = {ASSET_TAGS = (); }; };
+		3F4C45231CD8D7F20006EB06 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C45181CD8D7F20006EB06 /* FMDatabaseAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		3F4C45241CD8D7F20006EB06 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C451A1CD8D7F20006EB06 /* FMDatabasePool.m */; settings = {ASSET_TAGS = (); }; };
+		3F4C45251CD8D7F20006EB06 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C451C1CD8D7F20006EB06 /* FMDatabaseQueue.m */; settings = {ASSET_TAGS = (); }; };
+		3F4C45261CD8D7F20006EB06 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C451F1CD8D7F20006EB06 /* FMResultSet.m */; settings = {ASSET_TAGS = (); }; };
+		3F4C45291CD8D7FE0006EB06 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F4C45281CD8D7FE0006EB06 /* libsqlite3.tbd */; };
+		3F4C45481CD8DF760006EB06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C45471CD8DF760006EB06 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
+		3F4C454D1CD8DF950006EB06 /* DataBaseUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C454A1CD8DF950006EB06 /* DataBaseUtil.m */; settings = {ASSET_TAGS = (); }; };
+		3F4C454E1CD8DF950006EB06 /* CityMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C454C1CD8DF950006EB06 /* CityMessage.m */; settings = {ASSET_TAGS = (); }; };
+		3F4C45511CD8DFA50006EB06 /* NetWorkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C45501CD8DFA50006EB06 /* NetWorkRequestManager.m */; settings = {ASSET_TAGS = (); }; };
+		3F4C45531CD8DFC70006EB06 /* CityList.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3F4C45521CD8DFC70006EB06 /* CityList.sqlite */; settings = {ASSET_TAGS = (); }; };
+		3F4C455A1CD8E0F60006EB06 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C45591CD8E0F60006EB06 /* LocationViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3FB941911CD37A6C009BD81F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941901CD37A6C009BD81F /* main.m */; };
+		3FB941971CD37A6C009BD81F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941961CD37A6C009BD81F /* ViewController.m */; };
+		3FB9419A1CD37A6C009BD81F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941981CD37A6C009BD81F /* Main.storyboard */; };
+		3FB9419C1CD37A6C009BD81F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FB9419B1CD37A6C009BD81F /* Assets.xcassets */; };
+		3FB9419F1CD37A6C009BD81F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FB9419D1CD37A6C009BD81F /* LaunchScreen.storyboard */; };
+		3FB941AA1CD37A6C009BD81F /* MeteorCinemaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941A91CD37A6C009BD81F /* MeteorCinemaTests.m */; };
+		3FB941B51CD37A6C009BD81F /* MeteorCinemaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941B41CD37A6C009BD81F /* MeteorCinemaUITests.m */; };
+		3FB941C91CD37C08009BD81F /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941C81CD37C08009BD81F /* TabBarViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3FB941CC1CD37C41009BD81F /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941CB1CD37C41009BD81F /* NavigationViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3FB941CF1CD37C7A009BD81F /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941CE1CD37C7A009BD81F /* MovieViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3FB941D21CD37C8A009BD81F /* CinemaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941D11CD37C8A009BD81F /* CinemaViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3FB941D51CD37C9A009BD81F /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941D41CD37C9A009BD81F /* FindViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3FB941D81CD37CA8009BD81F /* MySelfViewControllrt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941D71CD37CA8009BD81F /* MySelfViewControllrt.m */; settings = {ASSET_TAGS = (); }; };
+		3FB941EA1CD39384009BD81F /* wodeA.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941E91CD39384009BD81F /* wodeA.png */; settings = {ASSET_TAGS = (); }; };
+		3FB941F01CD393B8009BD81F /* wodeB.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941EB1CD393B8009BD81F /* wodeB.png */; settings = {ASSET_TAGS = (); }; };
+		3FB941F11CD393B8009BD81F /* faixanA.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941EC1CD393B8009BD81F /* faixanA.png */; settings = {ASSET_TAGS = (); }; };
+		3FB941F21CD393B8009BD81F /* faxianB.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941ED1CD393B8009BD81F /* faxianB.png */; settings = {ASSET_TAGS = (); }; };
+		3FB941F31CD393B8009BD81F /* yingyuanA.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941EE1CD393B8009BD81F /* yingyuanA.png */; settings = {ASSET_TAGS = (); }; };
+		3FB941F41CD393B8009BD81F /* yingyuanB.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941EF1CD393B8009BD81F /* yingyuanB.png */; settings = {ASSET_TAGS = (); }; };
+		3FB941F71CD393DD009BD81F /* dianyingA.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941F51CD393DD009BD81F /* dianyingA.png */; settings = {ASSET_TAGS = (); }; };
+		3FB941F81CD393DD009BD81F /* dianyingB.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941F61CD393DD009BD81F /* dianyingB.png */; settings = {ASSET_TAGS = (); }; };
+		3FB941FB1CD39597009BD81F /* faA.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941F91CD39597009BD81F /* faA.png */; settings = {ASSET_TAGS = (); }; };
+		3FB941FC1CD39597009BD81F /* faB.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941FA1CD39597009BD81F /* faB.png */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3FB941A61CD37A6C009BD81F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3FB941841CD37A6C009BD81F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FB9418B1CD37A6C009BD81F;
+			remoteInfo = MeteorCinema;
+		};
+		3FB941B11CD37A6C009BD81F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3FB941841CD37A6C009BD81F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FB9418B1CD37A6C009BD81F;
+			remoteInfo = MeteorCinema;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3F4C45151CD8D7F20006EB06 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		3F4C45161CD8D7F20006EB06 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		3F4C45171CD8D7F20006EB06 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		3F4C45181CD8D7F20006EB06 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		3F4C45191CD8D7F20006EB06 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		3F4C451A1CD8D7F20006EB06 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		3F4C451B1CD8D7F20006EB06 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		3F4C451C1CD8D7F20006EB06 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		3F4C451D1CD8D7F20006EB06 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		3F4C451E1CD8D7F20006EB06 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		3F4C451F1CD8D7F20006EB06 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		3F4C45281CD8D7FE0006EB06 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		3F4C45471CD8DF760006EB06 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3F4C45491CD8DF950006EB06 /* DataBaseUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseUtil.h; sourceTree = "<group>"; };
+		3F4C454A1CD8DF950006EB06 /* DataBaseUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseUtil.m; sourceTree = "<group>"; };
+		3F4C454B1CD8DF950006EB06 /* CityMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityMessage.h; sourceTree = "<group>"; };
+		3F4C454C1CD8DF950006EB06 /* CityMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityMessage.m; sourceTree = "<group>"; };
+		3F4C454F1CD8DFA50006EB06 /* NetWorkRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkRequestManager.h; sourceTree = "<group>"; };
+		3F4C45501CD8DFA50006EB06 /* NetWorkRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkRequestManager.m; sourceTree = "<group>"; };
+		3F4C45521CD8DFC70006EB06 /* CityList.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = CityList.sqlite; sourceTree = "<group>"; };
+		3F4C45581CD8E0F60006EB06 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		3F4C45591CD8E0F60006EB06 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		3FB9418C1CD37A6C009BD81F /* MeteorCinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeteorCinema.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FB941901CD37A6C009BD81F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3FB941921CD37A6C009BD81F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3FB941951CD37A6C009BD81F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3FB941961CD37A6C009BD81F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3FB941991CD37A6C009BD81F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3FB9419B1CD37A6C009BD81F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3FB9419E1CD37A6C009BD81F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3FB941A01CD37A6C009BD81F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FB941A51CD37A6C009BD81F /* MeteorCinemaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeteorCinemaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FB941A91CD37A6C009BD81F /* MeteorCinemaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeteorCinemaTests.m; sourceTree = "<group>"; };
+		3FB941AB1CD37A6C009BD81F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FB941B01CD37A6C009BD81F /* MeteorCinemaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeteorCinemaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FB941B41CD37A6C009BD81F /* MeteorCinemaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeteorCinemaUITests.m; sourceTree = "<group>"; };
+		3FB941B61CD37A6C009BD81F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FB941C71CD37C08009BD81F /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		3FB941C81CD37C08009BD81F /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		3FB941CA1CD37C41009BD81F /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
+		3FB941CB1CD37C41009BD81F /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		3FB941CD1CD37C7A009BD81F /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
+		3FB941CE1CD37C7A009BD81F /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
+		3FB941D01CD37C8A009BD81F /* CinemaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemaViewController.h; sourceTree = "<group>"; };
+		3FB941D11CD37C8A009BD81F /* CinemaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CinemaViewController.m; sourceTree = "<group>"; };
+		3FB941D31CD37C9A009BD81F /* FindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
+		3FB941D41CD37C9A009BD81F /* FindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindViewController.m; sourceTree = "<group>"; };
+		3FB941D61CD37CA8009BD81F /* MySelfViewControllrt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySelfViewControllrt.h; sourceTree = "<group>"; };
+		3FB941D71CD37CA8009BD81F /* MySelfViewControllrt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySelfViewControllrt.m; sourceTree = "<group>"; };
+		3FB941E91CD39384009BD81F /* wodeA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wodeA.png; sourceTree = "<group>"; };
+		3FB941EB1CD393B8009BD81F /* wodeB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wodeB.png; sourceTree = "<group>"; };
+		3FB941EC1CD393B8009BD81F /* faixanA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faixanA.png; sourceTree = "<group>"; };
+		3FB941ED1CD393B8009BD81F /* faxianB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faxianB.png; sourceTree = "<group>"; };
+		3FB941EE1CD393B8009BD81F /* yingyuanA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yingyuanA.png; sourceTree = "<group>"; };
+		3FB941EF1CD393B8009BD81F /* yingyuanB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yingyuanB.png; sourceTree = "<group>"; };
+		3FB941F51CD393DD009BD81F /* dianyingA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dianyingA.png; sourceTree = "<group>"; };
+		3FB941F61CD393DD009BD81F /* dianyingB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dianyingB.png; sourceTree = "<group>"; };
+		3FB941F91CD39597009BD81F /* faA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faA.png; sourceTree = "<group>"; };
+		3FB941FA1CD39597009BD81F /* faB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faB.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3FB941891CD37A6C009BD81F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F4C45291CD8D7FE0006EB06 /* libsqlite3.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB941A21CD37A6C009BD81F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB941AD1CD37A6C009BD81F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F4C450A1CD8D7770006EB06 /* CityList */ = {
+			isa = PBXGroup;
+			children = (
+				3F4C45521CD8DFC70006EB06 /* CityList.sqlite */,
+				3F4C45491CD8DF950006EB06 /* DataBaseUtil.h */,
+				3F4C454A1CD8DF950006EB06 /* DataBaseUtil.m */,
+				3F4C454B1CD8DF950006EB06 /* CityMessage.h */,
+				3F4C454C1CD8DF950006EB06 /* CityMessage.m */,
+			);
+			name = CityList;
+			sourceTree = "<group>";
+		};
+		3F4C45141CD8D7F20006EB06 /* fmdb  */ = {
+			isa = PBXGroup;
+			children = (
+				3F4C45151CD8D7F20006EB06 /* FMDatabase.h */,
+				3F4C45161CD8D7F20006EB06 /* FMDatabase.m */,
+				3F4C45171CD8D7F20006EB06 /* FMDatabaseAdditions.h */,
+				3F4C45181CD8D7F20006EB06 /* FMDatabaseAdditions.m */,
+				3F4C45191CD8D7F20006EB06 /* FMDatabasePool.h */,
+				3F4C451A1CD8D7F20006EB06 /* FMDatabasePool.m */,
+				3F4C451B1CD8D7F20006EB06 /* FMDatabaseQueue.h */,
+				3F4C451C1CD8D7F20006EB06 /* FMDatabaseQueue.m */,
+				3F4C451D1CD8D7F20006EB06 /* FMDB.h */,
+				3F4C451E1CD8D7F20006EB06 /* FMResultSet.h */,
+				3F4C451F1CD8D7F20006EB06 /* FMResultSet.m */,
+			);
+			path = "fmdb ";
+			sourceTree = "<group>";
+		};
+		3F4C453B1CD8DB2E0006EB06 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				3F4C454F1CD8DFA50006EB06 /* NetWorkRequestManager.h */,
+				3F4C45501CD8DFA50006EB06 /* NetWorkRequestManager.m */,
+			);
+			name = Tool;
+			sourceTree = "<group>";
+		};
+		3F4C45541CD8E0B90006EB06 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				3F4C45571CD8E0D60006EB06 /* Model */,
+				3F4C45561CD8E0CB0006EB06 /* Controller */,
+				3F4C45551CD8E0C40006EB06 /* View */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		3F4C45551CD8E0C40006EB06 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		3F4C45561CD8E0CB0006EB06 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3F4C45581CD8E0F60006EB06 /* LocationViewController.h */,
+				3F4C45591CD8E0F60006EB06 /* LocationViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		3F4C45571CD8E0D60006EB06 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3FB941831CD37A6C009BD81F = {
+			isa = PBXGroup;
+			children = (
+				3F4C45281CD8D7FE0006EB06 /* libsqlite3.tbd */,
+				3FB9418E1CD37A6C009BD81F /* MeteorCinema */,
+				3FB941A81CD37A6C009BD81F /* MeteorCinemaTests */,
+				3FB941B31CD37A6C009BD81F /* MeteorCinemaUITests */,
+				3FB9418D1CD37A6C009BD81F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3FB9418D1CD37A6C009BD81F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3FB9418C1CD37A6C009BD81F /* MeteorCinema.app */,
+				3FB941A51CD37A6C009BD81F /* MeteorCinemaTests.xctest */,
+				3FB941B01CD37A6C009BD81F /* MeteorCinemaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3FB9418E1CD37A6C009BD81F /* MeteorCinema */ = {
+			isa = PBXGroup;
+			children = (
+				3F4C45541CD8E0B90006EB06 /* Location */,
+				3F4C453B1CD8DB2E0006EB06 /* Tool */,
+				3FB941E51CD37D68009BD81F /* Resource */,
+				3FB941C21CD37AAF009BD81F /* RootviewController */,
+				3FB941C31CD37AE8009BD81F /* MovieViewController */,
+				3FB941C41CD37B2A009BD81F /* CinemaViewController */,
+				3FB941C51CD37B5A009BD81F /* FindViewController */,
+				3FB941C61CD37B83009BD81F /* MySelfViewControllrt */,
+				3FB9418F1CD37A6C009BD81F /* Supporting Files */,
+			);
+			path = MeteorCinema;
+			sourceTree = "<group>";
+		};
+		3FB9418F1CD37A6C009BD81F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941901CD37A6C009BD81F /* main.m */,
+				3FB941921CD37A6C009BD81F /* AppDelegate.h */,
+				3F4C45471CD8DF760006EB06 /* AppDelegate.m */,
+				3FB941951CD37A6C009BD81F /* ViewController.h */,
+				3FB941961CD37A6C009BD81F /* ViewController.m */,
+				3FB941981CD37A6C009BD81F /* Main.storyboard */,
+				3FB9419B1CD37A6C009BD81F /* Assets.xcassets */,
+				3FB9419D1CD37A6C009BD81F /* LaunchScreen.storyboard */,
+				3FB941A01CD37A6C009BD81F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3FB941A81CD37A6C009BD81F /* MeteorCinemaTests */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941A91CD37A6C009BD81F /* MeteorCinemaTests.m */,
+				3FB941AB1CD37A6C009BD81F /* Info.plist */,
+			);
+			path = MeteorCinemaTests;
+			sourceTree = "<group>";
+		};
+		3FB941B31CD37A6C009BD81F /* MeteorCinemaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941B41CD37A6C009BD81F /* MeteorCinemaUITests.m */,
+				3FB941B61CD37A6C009BD81F /* Info.plist */,
+			);
+			path = MeteorCinemaUITests;
+			sourceTree = "<group>";
+		};
+		3FB941C21CD37AAF009BD81F /* RootviewController */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941C71CD37C08009BD81F /* TabBarViewController.h */,
+				3FB941C81CD37C08009BD81F /* TabBarViewController.m */,
+				3FB941CA1CD37C41009BD81F /* NavigationViewController.h */,
+				3FB941CB1CD37C41009BD81F /* NavigationViewController.m */,
+			);
+			name = RootviewController;
+			sourceTree = "<group>";
+		};
+		3FB941C31CD37AE8009BD81F /* MovieViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941DB1CD37CC2009BD81F /* Controller */,
+				3FB941DA1CD37CBB009BD81F /* view */,
+				3FB941D91CD37CB3009BD81F /* model */,
+			);
+			name = MovieViewController;
+			sourceTree = "<group>";
+		};
+		3FB941C41CD37B2A009BD81F /* CinemaViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941DE1CD37CEB009BD81F /* Controller */,
+				3FB941DD1CD37CE5009BD81F /* view */,
+				3FB941DC1CD37CDC009BD81F /* model */,
+			);
+			name = CinemaViewController;
+			sourceTree = "<group>";
+		};
+		3FB941C51CD37B5A009BD81F /* FindViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941E11CD37D07009BD81F /* Controller */,
+				3FB941E01CD37D00009BD81F /* view */,
+				3FB941DF1CD37CFB009BD81F /* model */,
+			);
+			name = FindViewController;
+			sourceTree = "<group>";
+		};
+		3FB941C61CD37B83009BD81F /* MySelfViewControllrt */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941E41CD37D29009BD81F /* Controller */,
+				3FB941E31CD37D20009BD81F /* vier */,
+				3FB941E21CD37D18009BD81F /* model */,
+			);
+			name = MySelfViewControllrt;
+			sourceTree = "<group>";
+		};
+		3FB941D91CD37CB3009BD81F /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		3FB941DA1CD37CBB009BD81F /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		3FB941DB1CD37CC2009BD81F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941CD1CD37C7A009BD81F /* MovieViewController.h */,
+				3FB941CE1CD37C7A009BD81F /* MovieViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		3FB941DC1CD37CDC009BD81F /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		3FB941DD1CD37CE5009BD81F /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		3FB941DE1CD37CEB009BD81F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941D01CD37C8A009BD81F /* CinemaViewController.h */,
+				3FB941D11CD37C8A009BD81F /* CinemaViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		3FB941DF1CD37CFB009BD81F /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		3FB941E01CD37D00009BD81F /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		3FB941E11CD37D07009BD81F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941D31CD37C9A009BD81F /* FindViewController.h */,
+				3FB941D41CD37C9A009BD81F /* FindViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		3FB941E21CD37D18009BD81F /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		3FB941E31CD37D20009BD81F /* vier */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = vier;
+			sourceTree = "<group>";
+		};
+		3FB941E41CD37D29009BD81F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941D61CD37CA8009BD81F /* MySelfViewControllrt.h */,
+				3FB941D71CD37CA8009BD81F /* MySelfViewControllrt.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		3FB941E51CD37D68009BD81F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				3F4C45141CD8D7F20006EB06 /* fmdb  */,
+				3F4C450A1CD8D7770006EB06 /* CityList */,
+				3FB941E61CD37D78009BD81F /* image */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		3FB941E61CD37D78009BD81F /* image */ = {
+			isa = PBXGroup;
+			children = (
+				3FB941E91CD39384009BD81F /* wodeA.png */,
+				3FB941EB1CD393B8009BD81F /* wodeB.png */,
+				3FB941EC1CD393B8009BD81F /* faixanA.png */,
+				3FB941ED1CD393B8009BD81F /* faxianB.png */,
+				3FB941EE1CD393B8009BD81F /* yingyuanA.png */,
+				3FB941EF1CD393B8009BD81F /* yingyuanB.png */,
+				3FB941F51CD393DD009BD81F /* dianyingA.png */,
+				3FB941F61CD393DD009BD81F /* dianyingB.png */,
+				3FB941F91CD39597009BD81F /* faA.png */,
+				3FB941FA1CD39597009BD81F /* faB.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3FB9418B1CD37A6C009BD81F /* MeteorCinema */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FB941B91CD37A6C009BD81F /* Build configuration list for PBXNativeTarget "MeteorCinema" */;
+			buildPhases = (
+				3FB941881CD37A6C009BD81F /* Sources */,
+				3FB941891CD37A6C009BD81F /* Frameworks */,
+				3FB9418A1CD37A6C009BD81F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeteorCinema;
+			productName = MeteorCinema;
+			productReference = 3FB9418C1CD37A6C009BD81F /* MeteorCinema.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3FB941A41CD37A6C009BD81F /* MeteorCinemaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FB941BC1CD37A6C009BD81F /* Build configuration list for PBXNativeTarget "MeteorCinemaTests" */;
+			buildPhases = (
+				3FB941A11CD37A6C009BD81F /* Sources */,
+				3FB941A21CD37A6C009BD81F /* Frameworks */,
+				3FB941A31CD37A6C009BD81F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3FB941A71CD37A6C009BD81F /* PBXTargetDependency */,
+			);
+			name = MeteorCinemaTests;
+			productName = MeteorCinemaTests;
+			productReference = 3FB941A51CD37A6C009BD81F /* MeteorCinemaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3FB941AF1CD37A6C009BD81F /* MeteorCinemaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FB941BF1CD37A6C009BD81F /* Build configuration list for PBXNativeTarget "MeteorCinemaUITests" */;
+			buildPhases = (
+				3FB941AC1CD37A6C009BD81F /* Sources */,
+				3FB941AD1CD37A6C009BD81F /* Frameworks */,
+				3FB941AE1CD37A6C009BD81F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3FB941B21CD37A6C009BD81F /* PBXTargetDependency */,
+			);
+			name = MeteorCinemaUITests;
+			productName = MeteorCinemaUITests;
+			productReference = 3FB941B01CD37A6C009BD81F /* MeteorCinemaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3FB941841CD37A6C009BD81F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = LiuXing;
+				TargetAttributes = {
+					3FB9418B1CD37A6C009BD81F = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					3FB941A41CD37A6C009BD81F = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 3FB9418B1CD37A6C009BD81F;
+					};
+					3FB941AF1CD37A6C009BD81F = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 3FB9418B1CD37A6C009BD81F;
+					};
+				};
+			};
+			buildConfigurationList = 3FB941871CD37A6C009BD81F /* Build configuration list for PBXProject "MeteorCinema" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3FB941831CD37A6C009BD81F;
+			productRefGroup = 3FB9418D1CD37A6C009BD81F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3FB9418B1CD37A6C009BD81F /* MeteorCinema */,
+				3FB941A41CD37A6C009BD81F /* MeteorCinemaTests */,
+				3FB941AF1CD37A6C009BD81F /* MeteorCinemaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3FB9418A1CD37A6C009BD81F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FB941F71CD393DD009BD81F /* dianyingA.png in Resources */,
+				3FB941F41CD393B8009BD81F /* yingyuanB.png in Resources */,
+				3FB941F11CD393B8009BD81F /* faixanA.png in Resources */,
+				3FB941EA1CD39384009BD81F /* wodeA.png in Resources */,
+				3FB941FC1CD39597009BD81F /* faB.png in Resources */,
+				3FB9419F1CD37A6C009BD81F /* LaunchScreen.storyboard in Resources */,
+				3FB9419C1CD37A6C009BD81F /* Assets.xcassets in Resources */,
+				3FB941FB1CD39597009BD81F /* faA.png in Resources */,
+				3F4C45531CD8DFC70006EB06 /* CityList.sqlite in Resources */,
+				3FB941F81CD393DD009BD81F /* dianyingB.png in Resources */,
+				3FB9419A1CD37A6C009BD81F /* Main.storyboard in Resources */,
+				3FB941F31CD393B8009BD81F /* yingyuanA.png in Resources */,
+				3FB941F21CD393B8009BD81F /* faxianB.png in Resources */,
+				3FB941F01CD393B8009BD81F /* wodeB.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB941A31CD37A6C009BD81F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB941AE1CD37A6C009BD81F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3FB941881CD37A6C009BD81F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F4C454D1CD8DF950006EB06 /* DataBaseUtil.m in Sources */,
+				3F4C455A1CD8E0F60006EB06 /* LocationViewController.m in Sources */,
+				3FB941C91CD37C08009BD81F /* TabBarViewController.m in Sources */,
+				3F4C45511CD8DFA50006EB06 /* NetWorkRequestManager.m in Sources */,
+				3F4C45221CD8D7F20006EB06 /* FMDatabase.m in Sources */,
+				3FB941CF1CD37C7A009BD81F /* MovieViewController.m in Sources */,
+				3FB941D81CD37CA8009BD81F /* MySelfViewControllrt.m in Sources */,
+				3F4C45231CD8D7F20006EB06 /* FMDatabaseAdditions.m in Sources */,
+				3F4C454E1CD8DF950006EB06 /* CityMessage.m in Sources */,
+				3FB941D21CD37C8A009BD81F /* CinemaViewController.m in Sources */,
+				3F4C45481CD8DF760006EB06 /* AppDelegate.m in Sources */,
+				3F4C45241CD8D7F20006EB06 /* FMDatabasePool.m in Sources */,
+				3FB941971CD37A6C009BD81F /* ViewController.m in Sources */,
+				3F4C45251CD8D7F20006EB06 /* FMDatabaseQueue.m in Sources */,
+				3FB941CC1CD37C41009BD81F /* NavigationViewController.m in Sources */,
+				3F4C45261CD8D7F20006EB06 /* FMResultSet.m in Sources */,
+				3FB941911CD37A6C009BD81F /* main.m in Sources */,
+				3FB941D51CD37C9A009BD81F /* FindViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB941A11CD37A6C009BD81F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FB941AA1CD37A6C009BD81F /* MeteorCinemaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FB941AC1CD37A6C009BD81F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FB941B51CD37A6C009BD81F /* MeteorCinemaUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3FB941A71CD37A6C009BD81F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FB9418B1CD37A6C009BD81F /* MeteorCinema */;
+			targetProxy = 3FB941A61CD37A6C009BD81F /* PBXContainerItemProxy */;
+		};
+		3FB941B21CD37A6C009BD81F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FB9418B1CD37A6C009BD81F /* MeteorCinema */;
+			targetProxy = 3FB941B11CD37A6C009BD81F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3FB941981CD37A6C009BD81F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3FB941991CD37A6C009BD81F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3FB9419D1CD37A6C009BD81F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3FB9419E1CD37A6C009BD81F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3FB941B71CD37A6C009BD81F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3FB941B81CD37A6C009BD81F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3FB941BA1CD37A6C009BD81F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MeteorCinema/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Meteor.MeteorCinema;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		3FB941BB1CD37A6C009BD81F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MeteorCinema/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Meteor.MeteorCinema;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		3FB941BD1CD37A6C009BD81F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MeteorCinemaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Meteor.MeteorCinemaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeteorCinema.app/MeteorCinema";
+			};
+			name = Debug;
+		};
+		3FB941BE1CD37A6C009BD81F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MeteorCinemaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Meteor.MeteorCinemaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeteorCinema.app/MeteorCinema";
+			};
+			name = Release;
+		};
+		3FB941C01CD37A6C009BD81F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MeteorCinemaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Meteor.MeteorCinemaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MeteorCinema;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		3FB941C11CD37A6C009BD81F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MeteorCinemaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Meteor.MeteorCinemaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MeteorCinema;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3FB941871CD37A6C009BD81F /* Build configuration list for PBXProject "MeteorCinema" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FB941B71CD37A6C009BD81F /* Debug */,
+				3FB941B81CD37A6C009BD81F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FB941B91CD37A6C009BD81F /* Build configuration list for PBXNativeTarget "MeteorCinema" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FB941BA1CD37A6C009BD81F /* Debug */,
+				3FB941BB1CD37A6C009BD81F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FB941BC1CD37A6C009BD81F /* Build configuration list for PBXNativeTarget "MeteorCinemaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FB941BD1CD37A6C009BD81F /* Debug */,
+				3FB941BE1CD37A6C009BD81F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FB941BF1CD37A6C009BD81F /* Build configuration list for PBXNativeTarget "MeteorCinemaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FB941C01CD37A6C009BD81F /* Debug */,
+				3FB941C11CD37A6C009BD81F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3FB941841CD37A6C009BD81F /* Project object */;
+}
