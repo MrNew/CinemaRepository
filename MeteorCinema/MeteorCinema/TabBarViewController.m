@@ -64,6 +64,7 @@
     //存放item上图片的数组
     NSArray *array = [NSArray arrayWithObjects:@"dianyingB",@"yingyuanB",@"faA",@"wodeB", nil];
     
+    NSArray *arrayName = [NSArray arrayWithObjects:@"电影",@"影院",@"发现",@"我的", nil];
 //    NSArray * nameArray = [NSArray arrayWithObjects:@"",@"",@"",@"", nil];
     
     for (int i = 0; i<4; i++) {
@@ -77,6 +78,15 @@
         //   button.backgroundColor = [UIColor greenColor];
         [_button addTarget:self action:@selector(selectedItem:) forControlEvents:UIControlEventTouchDown];
         [_button setImage:[UIImage imageNamed:array[i]] forState:UIControlStateNormal];
+        
+        [_button setTitle:arrayName[i] forState:UIControlStateNormal];
+        //文字大小
+        _button.titleLabel.font = [UIFont systemFontOfSize:10.0];
+        //图标位置
+        [_button setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 5, 0)];
+        //调整文字在按钮中的位置
+        [_button setTitleEdgeInsets:UIEdgeInsetsMake(0, -50, -35, 0)];
+        // _button.backgroundColor = [UIColor greenColor];
         [_tabBarView addSubview:_button];
     }
 

@@ -10,6 +10,8 @@
 
 #import "LocationViewController.h"
 
+#import "FirsView.h"
+
 @interface MovieViewController ()
 
 @end
@@ -23,6 +25,23 @@
     
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"广州" style:UIBarButtonItemStylePlain target:self action:@selector(selectorLocation:)];
+    
+    //***********************前景图*********************//
+    
+    
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *string = [user stringForKey:@"标记"];
+    
+    FirsView *fir = [[FirsView alloc] initWithFrame:CGRectMake(0, 0, 375, 667)];
+    
+    UIWindow *window = [[UIApplication sharedApplication]keyWindow];
+    
+    [window addSubview:fir];
+    
+    if (![string isEqualToString:@"you"]) {
+        
+        
+    }
     
     
     

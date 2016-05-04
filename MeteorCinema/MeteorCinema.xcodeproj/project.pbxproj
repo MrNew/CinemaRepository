@@ -19,6 +19,15 @@
 		3F4C45511CD8DFA50006EB06 /* NetWorkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C45501CD8DFA50006EB06 /* NetWorkRequestManager.m */; settings = {ASSET_TAGS = (); }; };
 		3F4C45531CD8DFC70006EB06 /* CityList.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3F4C45521CD8DFC70006EB06 /* CityList.sqlite */; settings = {ASSET_TAGS = (); }; };
 		3F4C455A1CD8E0F60006EB06 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C45591CD8E0F60006EB06 /* LocationViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3FA0A5951CD99CCD004B52CB /* CinemaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0A5941CD99CCD004B52CB /* CinemaViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3FA0A5981CD99D0B004B52CB /* CinemaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0A5971CD99D0B004B52CB /* CinemaTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		3FA0A59B1CD99D23004B52CB /* Cinema.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0A59A1CD99D23004B52CB /* Cinema.m */; settings = {ASSET_TAGS = (); }; };
+		3FA0A59E1CD99D90004B52CB /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0A59D1CD99D90004B52CB /* SecondViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3FA0A5A21CD9A019004B52CB /* FirsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0A5A11CD9A019004B52CB /* FirsView.m */; settings = {ASSET_TAGS = (); }; };
+		3FA0A5A71CD9A029004B52CB /* q1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FA0A5A31CD9A029004B52CB /* q1.jpg */; settings = {ASSET_TAGS = (); }; };
+		3FA0A5A81CD9A029004B52CB /* q2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FA0A5A41CD9A029004B52CB /* q2.jpg */; settings = {ASSET_TAGS = (); }; };
+		3FA0A5A91CD9A029004B52CB /* q3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FA0A5A51CD9A029004B52CB /* q3.jpg */; settings = {ASSET_TAGS = (); }; };
+		3FA0A5AA1CD9A029004B52CB /* q4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FA0A5A61CD9A029004B52CB /* q4.jpg */; settings = {ASSET_TAGS = (); }; };
 		3FB941911CD37A6C009BD81F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941901CD37A6C009BD81F /* main.m */; };
 		3FB941971CD37A6C009BD81F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941961CD37A6C009BD81F /* ViewController.m */; };
 		3FB9419A1CD37A6C009BD81F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941981CD37A6C009BD81F /* Main.storyboard */; };
@@ -29,7 +38,6 @@
 		3FB941C91CD37C08009BD81F /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941C81CD37C08009BD81F /* TabBarViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3FB941CC1CD37C41009BD81F /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941CB1CD37C41009BD81F /* NavigationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3FB941CF1CD37C7A009BD81F /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941CE1CD37C7A009BD81F /* MovieViewController.m */; settings = {ASSET_TAGS = (); }; };
-		3FB941D21CD37C8A009BD81F /* CinemaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941D11CD37C8A009BD81F /* CinemaViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3FB941D51CD37C9A009BD81F /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941D41CD37C9A009BD81F /* FindViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3FB941D81CD37CA8009BD81F /* MySelfViewControllrt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB941D71CD37CA8009BD81F /* MySelfViewControllrt.m */; settings = {ASSET_TAGS = (); }; };
 		3FB941EA1CD39384009BD81F /* wodeA.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941E91CD39384009BD81F /* wodeA.png */; settings = {ASSET_TAGS = (); }; };
@@ -84,6 +92,20 @@
 		3F4C45521CD8DFC70006EB06 /* CityList.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = CityList.sqlite; sourceTree = "<group>"; };
 		3F4C45581CD8E0F60006EB06 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		3F4C45591CD8E0F60006EB06 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		3FA0A5931CD99CCD004B52CB /* CinemaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemaViewController.h; sourceTree = "<group>"; };
+		3FA0A5941CD99CCD004B52CB /* CinemaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CinemaViewController.m; sourceTree = "<group>"; };
+		3FA0A5961CD99D0B004B52CB /* CinemaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemaTableViewCell.h; sourceTree = "<group>"; };
+		3FA0A5971CD99D0B004B52CB /* CinemaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CinemaTableViewCell.m; sourceTree = "<group>"; };
+		3FA0A5991CD99D23004B52CB /* Cinema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cinema.h; sourceTree = "<group>"; };
+		3FA0A59A1CD99D23004B52CB /* Cinema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cinema.m; sourceTree = "<group>"; };
+		3FA0A59C1CD99D90004B52CB /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		3FA0A59D1CD99D90004B52CB /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		3FA0A5A01CD9A019004B52CB /* FirsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirsView.h; sourceTree = "<group>"; };
+		3FA0A5A11CD9A019004B52CB /* FirsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirsView.m; sourceTree = "<group>"; };
+		3FA0A5A31CD9A029004B52CB /* q1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = q1.jpg; sourceTree = "<group>"; };
+		3FA0A5A41CD9A029004B52CB /* q2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = q2.jpg; sourceTree = "<group>"; };
+		3FA0A5A51CD9A029004B52CB /* q3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = q3.jpg; sourceTree = "<group>"; };
+		3FA0A5A61CD9A029004B52CB /* q4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = q4.jpg; sourceTree = "<group>"; };
 		3FB9418C1CD37A6C009BD81F /* MeteorCinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeteorCinema.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FB941901CD37A6C009BD81F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3FB941921CD37A6C009BD81F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,8 +127,6 @@
 		3FB941CB1CD37C41009BD81F /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		3FB941CD1CD37C7A009BD81F /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
 		3FB941CE1CD37C7A009BD81F /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
-		3FB941D01CD37C8A009BD81F /* CinemaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemaViewController.h; sourceTree = "<group>"; };
-		3FB941D11CD37C8A009BD81F /* CinemaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CinemaViewController.m; sourceTree = "<group>"; };
 		3FB941D31CD37C9A009BD81F /* FindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
 		3FB941D41CD37C9A009BD81F /* FindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindViewController.m; sourceTree = "<group>"; };
 		3FB941D61CD37CA8009BD81F /* MySelfViewControllrt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySelfViewControllrt.h; sourceTree = "<group>"; };
@@ -221,6 +241,19 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		3FA0A59F1CD99FB3004B52CB /* 前景图 */ = {
+			isa = PBXGroup;
+			children = (
+				3FA0A5A31CD9A029004B52CB /* q1.jpg */,
+				3FA0A5A41CD9A029004B52CB /* q2.jpg */,
+				3FA0A5A51CD9A029004B52CB /* q3.jpg */,
+				3FA0A5A61CD9A029004B52CB /* q4.jpg */,
+				3FA0A5A01CD9A019004B52CB /* FirsView.h */,
+				3FA0A5A11CD9A019004B52CB /* FirsView.m */,
+			);
+			name = "前景图";
+			sourceTree = "<group>";
+		};
 		3FB941831CD37A6C009BD81F = {
 			isa = PBXGroup;
 			children = (
@@ -245,14 +278,15 @@
 		3FB9418E1CD37A6C009BD81F /* MeteorCinema */ = {
 			isa = PBXGroup;
 			children = (
+				3FA0A59F1CD99FB3004B52CB /* 前景图 */,
 				3F4C45541CD8E0B90006EB06 /* Location */,
 				3F4C453B1CD8DB2E0006EB06 /* Tool */,
 				3FB941E51CD37D68009BD81F /* Resource */,
 				3FB941C21CD37AAF009BD81F /* RootviewController */,
-				3FB941C31CD37AE8009BD81F /* MovieViewController */,
-				3FB941C41CD37B2A009BD81F /* CinemaViewController */,
-				3FB941C51CD37B5A009BD81F /* FindViewController */,
-				3FB941C61CD37B83009BD81F /* MySelfViewControllrt */,
+				3FB941C31CD37AE8009BD81F /* 电影 */,
+				3FB941C41CD37B2A009BD81F /* 影院 */,
+				3FB941C51CD37B5A009BD81F /* 发现 */,
+				3FB941C61CD37B83009BD81F /* 我的 */,
 				3FB9418F1CD37A6C009BD81F /* Supporting Files */,
 			);
 			path = MeteorCinema;
@@ -303,44 +337,44 @@
 			name = RootviewController;
 			sourceTree = "<group>";
 		};
-		3FB941C31CD37AE8009BD81F /* MovieViewController */ = {
+		3FB941C31CD37AE8009BD81F /* 电影 */ = {
 			isa = PBXGroup;
 			children = (
 				3FB941DB1CD37CC2009BD81F /* Controller */,
 				3FB941DA1CD37CBB009BD81F /* view */,
 				3FB941D91CD37CB3009BD81F /* model */,
 			);
-			name = MovieViewController;
+			name = "电影";
 			sourceTree = "<group>";
 		};
-		3FB941C41CD37B2A009BD81F /* CinemaViewController */ = {
+		3FB941C41CD37B2A009BD81F /* 影院 */ = {
 			isa = PBXGroup;
 			children = (
 				3FB941DE1CD37CEB009BD81F /* Controller */,
 				3FB941DD1CD37CE5009BD81F /* view */,
 				3FB941DC1CD37CDC009BD81F /* model */,
 			);
-			name = CinemaViewController;
+			name = "影院";
 			sourceTree = "<group>";
 		};
-		3FB941C51CD37B5A009BD81F /* FindViewController */ = {
+		3FB941C51CD37B5A009BD81F /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
 				3FB941E11CD37D07009BD81F /* Controller */,
 				3FB941E01CD37D00009BD81F /* view */,
 				3FB941DF1CD37CFB009BD81F /* model */,
 			);
-			name = FindViewController;
+			name = "发现";
 			sourceTree = "<group>";
 		};
-		3FB941C61CD37B83009BD81F /* MySelfViewControllrt */ = {
+		3FB941C61CD37B83009BD81F /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
 				3FB941E41CD37D29009BD81F /* Controller */,
 				3FB941E31CD37D20009BD81F /* vier */,
 				3FB941E21CD37D18009BD81F /* model */,
 			);
-			name = MySelfViewControllrt;
+			name = "我的";
 			sourceTree = "<group>";
 		};
 		3FB941D91CD37CB3009BD81F /* model */ = {
@@ -369,6 +403,8 @@
 		3FB941DC1CD37CDC009BD81F /* model */ = {
 			isa = PBXGroup;
 			children = (
+				3FA0A5991CD99D23004B52CB /* Cinema.h */,
+				3FA0A59A1CD99D23004B52CB /* Cinema.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -376,6 +412,8 @@
 		3FB941DD1CD37CE5009BD81F /* view */ = {
 			isa = PBXGroup;
 			children = (
+				3FA0A5961CD99D0B004B52CB /* CinemaTableViewCell.h */,
+				3FA0A5971CD99D0B004B52CB /* CinemaTableViewCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -383,8 +421,10 @@
 		3FB941DE1CD37CEB009BD81F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3FB941D01CD37C8A009BD81F /* CinemaViewController.h */,
-				3FB941D11CD37C8A009BD81F /* CinemaViewController.m */,
+				3FA0A5931CD99CCD004B52CB /* CinemaViewController.h */,
+				3FA0A5941CD99CCD004B52CB /* CinemaViewController.m */,
+				3FA0A59C1CD99D90004B52CB /* SecondViewController.h */,
+				3FA0A59D1CD99D90004B52CB /* SecondViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -569,15 +609,19 @@
 				3FB941F41CD393B8009BD81F /* yingyuanB.png in Resources */,
 				3FB941F11CD393B8009BD81F /* faixanA.png in Resources */,
 				3FB941EA1CD39384009BD81F /* wodeA.png in Resources */,
+				3FA0A5AA1CD9A029004B52CB /* q4.jpg in Resources */,
 				3FB941FC1CD39597009BD81F /* faB.png in Resources */,
 				3FB9419F1CD37A6C009BD81F /* LaunchScreen.storyboard in Resources */,
 				3FB9419C1CD37A6C009BD81F /* Assets.xcassets in Resources */,
 				3FB941FB1CD39597009BD81F /* faA.png in Resources */,
+				3FA0A5A81CD9A029004B52CB /* q2.jpg in Resources */,
 				3F4C45531CD8DFC70006EB06 /* CityList.sqlite in Resources */,
 				3FB941F81CD393DD009BD81F /* dianyingB.png in Resources */,
+				3FA0A5A71CD9A029004B52CB /* q1.jpg in Resources */,
 				3FB9419A1CD37A6C009BD81F /* Main.storyboard in Resources */,
 				3FB941F31CD393B8009BD81F /* yingyuanA.png in Resources */,
 				3FB941F21CD393B8009BD81F /* faxianB.png in Resources */,
+				3FA0A5A91CD9A029004B52CB /* q3.jpg in Resources */,
 				3FB941F01CD393B8009BD81F /* wodeB.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,18 +650,22 @@
 				3F4C454D1CD8DF950006EB06 /* DataBaseUtil.m in Sources */,
 				3F4C455A1CD8E0F60006EB06 /* LocationViewController.m in Sources */,
 				3FB941C91CD37C08009BD81F /* TabBarViewController.m in Sources */,
+				3FA0A59E1CD99D90004B52CB /* SecondViewController.m in Sources */,
+				3FA0A5A21CD9A019004B52CB /* FirsView.m in Sources */,
 				3F4C45511CD8DFA50006EB06 /* NetWorkRequestManager.m in Sources */,
 				3F4C45221CD8D7F20006EB06 /* FMDatabase.m in Sources */,
 				3FB941CF1CD37C7A009BD81F /* MovieViewController.m in Sources */,
 				3FB941D81CD37CA8009BD81F /* MySelfViewControllrt.m in Sources */,
+				3FA0A5951CD99CCD004B52CB /* CinemaViewController.m in Sources */,
 				3F4C45231CD8D7F20006EB06 /* FMDatabaseAdditions.m in Sources */,
 				3F4C454E1CD8DF950006EB06 /* CityMessage.m in Sources */,
-				3FB941D21CD37C8A009BD81F /* CinemaViewController.m in Sources */,
 				3F4C45481CD8DF760006EB06 /* AppDelegate.m in Sources */,
+				3FA0A5981CD99D0B004B52CB /* CinemaTableViewCell.m in Sources */,
 				3F4C45241CD8D7F20006EB06 /* FMDatabasePool.m in Sources */,
 				3FB941971CD37A6C009BD81F /* ViewController.m in Sources */,
 				3F4C45251CD8D7F20006EB06 /* FMDatabaseQueue.m in Sources */,
 				3FB941CC1CD37C41009BD81F /* NavigationViewController.m in Sources */,
+				3FA0A59B1CD99D23004B52CB /* Cinema.m in Sources */,
 				3F4C45261CD8D7F20006EB06 /* FMResultSet.m in Sources */,
 				3FB941911CD37A6C009BD81F /* main.m in Sources */,
 				3FB941D51CD37C9A009BD81F /* FindViewController.m in Sources */,
