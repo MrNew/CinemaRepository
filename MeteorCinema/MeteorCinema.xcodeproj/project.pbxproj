@@ -19,6 +19,14 @@
 		3F4C45511CD8DFA50006EB06 /* NetWorkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C45501CD8DFA50006EB06 /* NetWorkRequestManager.m */; };
 		3F4C45531CD8DFC70006EB06 /* CityList.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3F4C45521CD8DFC70006EB06 /* CityList.sqlite */; };
 		3F4C455A1CD8E0F60006EB06 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C45591CD8E0F60006EB06 /* LocationViewController.m */; };
+		3F927CB91CDAE4B10058F9A0 /* HotMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F927CB81CDAE4B10058F9A0 /* HotMovieModel.m */; settings = {ASSET_TAGS = (); }; };
+		3F927CBF1CDAEFA70058F9A0 /* HotMovieTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F927CBE1CDAEFA70058F9A0 /* HotMovieTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		3F927CC51CDB2BE40058F9A0 /* TopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F927CC41CDB2BE40058F9A0 /* TopView.m */; settings = {ASSET_TAGS = (); }; };
+		3F927CC81CDB39C40058F9A0 /* AttentionMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F927CC71CDB39C40058F9A0 /* AttentionMovieModel.m */; settings = {ASSET_TAGS = (); }; };
+		3F927CCB1CDB4D890058F9A0 /* FutureMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F927CCA1CDB4D890058F9A0 /* FutureMovieModel.m */; settings = {ASSET_TAGS = (); }; };
+		3F927CCE1CDB64470058F9A0 /* AttentionMovieTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F927CCD1CDB64470058F9A0 /* AttentionMovieTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		3F927CD11CDB64590058F9A0 /* FutureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F927CD01CDB64590058F9A0 /* FutureTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		3F927CD41CDB66C40058F9A0 /* AttentionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F927CD31CDB66C40058F9A0 /* AttentionView.m */; settings = {ASSET_TAGS = (); }; };
 		3FA0A5951CD99CCD004B52CB /* CinemaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0A5941CD99CCD004B52CB /* CinemaViewController.m */; };
 		3FA0A5981CD99D0B004B52CB /* CinemaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0A5971CD99D0B004B52CB /* CinemaTableViewCell.m */; };
 		3FA0A59B1CD99D23004B52CB /* Cinema.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0A59A1CD99D23004B52CB /* Cinema.m */; };
@@ -109,6 +117,22 @@
 		3F4C45521CD8DFC70006EB06 /* CityList.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = CityList.sqlite; sourceTree = "<group>"; };
 		3F4C45581CD8E0F60006EB06 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		3F4C45591CD8E0F60006EB06 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		3F927CB71CDAE4B10058F9A0 /* HotMovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotMovieModel.h; sourceTree = "<group>"; };
+		3F927CB81CDAE4B10058F9A0 /* HotMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotMovieModel.m; sourceTree = "<group>"; };
+		3F927CBD1CDAEFA70058F9A0 /* HotMovieTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotMovieTableViewCell.h; sourceTree = "<group>"; };
+		3F927CBE1CDAEFA70058F9A0 /* HotMovieTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotMovieTableViewCell.m; sourceTree = "<group>"; };
+		3F927CC31CDB2BE40058F9A0 /* TopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopView.h; sourceTree = "<group>"; };
+		3F927CC41CDB2BE40058F9A0 /* TopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopView.m; sourceTree = "<group>"; };
+		3F927CC61CDB39C40058F9A0 /* AttentionMovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionMovieModel.h; sourceTree = "<group>"; };
+		3F927CC71CDB39C40058F9A0 /* AttentionMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionMovieModel.m; sourceTree = "<group>"; };
+		3F927CC91CDB4D890058F9A0 /* FutureMovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FutureMovieModel.h; sourceTree = "<group>"; };
+		3F927CCA1CDB4D890058F9A0 /* FutureMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FutureMovieModel.m; sourceTree = "<group>"; };
+		3F927CCC1CDB64470058F9A0 /* AttentionMovieTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionMovieTableViewCell.h; sourceTree = "<group>"; };
+		3F927CCD1CDB64470058F9A0 /* AttentionMovieTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionMovieTableViewCell.m; sourceTree = "<group>"; };
+		3F927CCF1CDB64590058F9A0 /* FutureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FutureTableViewCell.h; sourceTree = "<group>"; };
+		3F927CD01CDB64590058F9A0 /* FutureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FutureTableViewCell.m; sourceTree = "<group>"; };
+		3F927CD21CDB66C40058F9A0 /* AttentionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttentionView.h; sourceTree = "<group>"; };
+		3F927CD31CDB66C40058F9A0 /* AttentionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttentionView.m; sourceTree = "<group>"; };
 		3FA0A5931CD99CCD004B52CB /* CinemaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemaViewController.h; sourceTree = "<group>"; };
 		3FA0A5941CD99CCD004B52CB /* CinemaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CinemaViewController.m; sourceTree = "<group>"; };
 		3FA0A5961CD99D0B004B52CB /* CinemaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemaTableViewCell.h; sourceTree = "<group>"; };
@@ -435,6 +459,12 @@
 		3FB941D91CD37CB3009BD81F /* model */ = {
 			isa = PBXGroup;
 			children = (
+				3F927CB71CDAE4B10058F9A0 /* HotMovieModel.h */,
+				3F927CB81CDAE4B10058F9A0 /* HotMovieModel.m */,
+				3F927CC61CDB39C40058F9A0 /* AttentionMovieModel.h */,
+				3F927CC71CDB39C40058F9A0 /* AttentionMovieModel.m */,
+				3F927CC91CDB4D890058F9A0 /* FutureMovieModel.h */,
+				3F927CCA1CDB4D890058F9A0 /* FutureMovieModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -442,6 +472,16 @@
 		3FB941DA1CD37CBB009BD81F /* view */ = {
 			isa = PBXGroup;
 			children = (
+				3F927CBD1CDAEFA70058F9A0 /* HotMovieTableViewCell.h */,
+				3F927CBE1CDAEFA70058F9A0 /* HotMovieTableViewCell.m */,
+				3F927CCC1CDB64470058F9A0 /* AttentionMovieTableViewCell.h */,
+				3F927CCD1CDB64470058F9A0 /* AttentionMovieTableViewCell.m */,
+				3F927CCF1CDB64590058F9A0 /* FutureTableViewCell.h */,
+				3F927CD01CDB64590058F9A0 /* FutureTableViewCell.m */,
+				3F927CC31CDB2BE40058F9A0 /* TopView.h */,
+				3F927CC41CDB2BE40058F9A0 /* TopView.m */,
+				3F927CD21CDB66C40058F9A0 /* AttentionView.h */,
+				3F927CD31CDB66C40058F9A0 /* AttentionView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -743,6 +783,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				609C27A91CD9ABE70024A610 /* UIImage+GIF.m in Sources */,
+				3F927CC51CDB2BE40058F9A0 /* TopView.m in Sources */,
 				3F4C454D1CD8DF950006EB06 /* DataBaseUtil.m in Sources */,
 				3F4C455A1CD8E0F60006EB06 /* LocationViewController.m in Sources */,
 				3FB941C91CD37C08009BD81F /* TabBarViewController.m in Sources */,
@@ -756,7 +797,12 @@
 				3FB941CF1CD37C7A009BD81F /* MovieViewController.m in Sources */,
 				609C27AD1CD9ABE70024A610 /* UIImageView+WebCache.m in Sources */,
 				3FB941D81CD37CA8009BD81F /* MySelfViewControllrt.m in Sources */,
+				3F927CC81CDB39C40058F9A0 /* AttentionMovieModel.m in Sources */,
+				3F927CB91CDAE4B10058F9A0 /* HotMovieModel.m in Sources */,
+				3F927CCB1CDB4D890058F9A0 /* FutureMovieModel.m in Sources */,
+				3F927CD11CDB64590058F9A0 /* FutureTableViewCell.m in Sources */,
 				3FA0A5951CD99CCD004B52CB /* CinemaViewController.m in Sources */,
+				3F927CBF1CDAEFA70058F9A0 /* HotMovieTableViewCell.m in Sources */,
 				609C27A01CD9ABE70024A610 /* NSData+ImageContentType.m in Sources */,
 				609C27A41CD9ABE70024A610 /* SDWebImageDownloader.m in Sources */,
 				3F4C45231CD8D7F20006EB06 /* FMDatabaseAdditions.m in Sources */,
@@ -770,11 +816,13 @@
 				609C27A21CD9ABE70024A610 /* SDWebImageCompat.m in Sources */,
 				3F4C45251CD8D7F20006EB06 /* FMDatabaseQueue.m in Sources */,
 				609C279F1CD9ABE70024A610 /* MKAnnotationView+WebCache.m in Sources */,
+				3F927CCE1CDB64470058F9A0 /* AttentionMovieTableViewCell.m in Sources */,
 				3FB941CC1CD37C41009BD81F /* NavigationViewController.m in Sources */,
 				3FA0A59B1CD99D23004B52CB /* Cinema.m in Sources */,
 				609C27A71CD9ABE70024A610 /* SDWebImagePrefetcher.m in Sources */,
 				3F4C45261CD8D7F20006EB06 /* FMResultSet.m in Sources */,
 				609C27A51CD9ABE70024A610 /* SDWebImageDownloaderOperation.m in Sources */,
+				3F927CD41CDB66C40058F9A0 /* AttentionView.m in Sources */,
 				3FB941911CD37A6C009BD81F /* main.m in Sources */,
 				609C27A61CD9ABE70024A610 /* SDWebImageManager.m in Sources */,
 				609C27AB1CD9ABE70024A610 /* UIImage+WebP.m in Sources */,

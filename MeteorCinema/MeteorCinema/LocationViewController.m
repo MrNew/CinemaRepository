@@ -154,15 +154,15 @@
     // 查询是否获得权限
     self.locationManager = [[CLLocationManager alloc] init];
     
-    if (![CLLocationManager locationServicesEnabled]) {
-        NSLog(@"定位服务当前可能尚未打开，请设置打开！");
-        return;
-    }
+//    if (![CLLocationManager locationServicesEnabled]) {
+//        NSLog(@"定位服务当前可能尚未打开，请设置打开！");
+//        return;
+//    }
     //如果没有授权则请求(申请)用户授权
     // 添加 plist文件  NSLocationWhenInUseUsageDescription ( 注意事项 )
-    if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
-        [_locationManager requestWhenInUseAuthorization];
-    }
+//    if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
+//        [_locationManager requestWhenInUseAuthorization];
+//    }
     
     //设置代理
     _locationManager.delegate = self;
@@ -290,6 +290,7 @@
     NSArray * array = [[DataBaseUtil share] vagueSelectTableWith:self.locationView.cityNaemLabel.text];
     if (array.count > 0) {
         CityMessage * city = [array objectAtIndex:0];
+        // 代理传值
         [self.delegate passLocationCity:city];
         
         
@@ -297,12 +298,23 @@
         
         
     }else{
-        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"搜索不到目标" message:nil preferredStyle:UIAlertControllerStyleAlert];
-        [self presentViewController:alert animated:YES completion:^{
-            [alert dismissViewControllerAnimated:YES completion:^{
+        
+        if (![self.locationView.cityNaemLabel.text isEqualToString:@"抱歉,当前网络不给力"]){
+            
+            if (![self.locationView.cityNaemLabel.text isEqualToString:@"定位中..."]) {
                 
-            }];
-        }];
+                UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"搜索不到目标" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                [self presentViewController:alert animated:YES completion:^{
+                    [alert dismissViewControllerAnimated:YES completion:^{
+                        
+                    }];
+                }];
+            }
+//         [self.locationView.cityNaemLabel.text isEqualToString:@"定位中..."]
+            
+
+        }
+        
     }
     
     
@@ -460,7 +472,9 @@
         
         [self.delegate passLocationCity:city];
         
-        [self saveUserdefault:city.name];
+        [self saveUserdefault:city];
+        
+        
         
     }else{
         
@@ -471,15 +485,18 @@
             
         [self.delegate passLocationCity:city];
         
-        [self saveUserdefault:city.name];
+        [self saveUserdefault:city];
             
     }
     [self.navigationController popViewControllerAnimated:YES];
    
 }
 
--(void)saveUserdefault:(NSString *)string{
-    [[NSUserDefaults standardUserDefaults] setValue:string forKey:@"defaultLocation"];
+-(void)saveUserdefault:(CityMessage *)cityMessage{
+    [[NSUserDefaults standardUserDefaults] setValue:cityMessage.name forKey:@"defaultLocation"];
+    
+    [[NSUserDefaults standardUserDefaults] setInteger:cityMessage.identifier forKey:@"defaultLocationID"];
+    
 }
 
 #pragma mark- searchBar 的设置
