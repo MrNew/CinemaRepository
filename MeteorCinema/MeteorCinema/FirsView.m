@@ -57,7 +57,7 @@
     
     UIButton *buttom = [[UIButton alloc] initWithFrame:CGRectMake(130+WIDTH*2, 300, 120, 40)];
     buttom.backgroundColor = [UIColor blackColor];
-    [buttom setTitle:@"进入影视..." forState:UIControlStateNormal];
+    [buttom setTitle:@"进入影视" forState:UIControlStateNormal];
     [buttom addTarget:self action:@selector(touchInterface) forControlEvents:UIControlEventTouchUpInside];
     [_scroll addSubview:buttom];
     _scroll.pagingEnabled = YES;

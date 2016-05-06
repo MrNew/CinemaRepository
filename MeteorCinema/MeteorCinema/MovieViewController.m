@@ -32,14 +32,15 @@
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSString *string = [user stringForKey:@"标记"];
     
-    FirsView *fir = [[FirsView alloc] initWithFrame:CGRectMake(0, 0, 375, 667)];
+ 
     
-    UIWindow *window = [[UIApplication sharedApplication]keyWindow];
-    
-    [window addSubview:fir];
-    
-    if (![string isEqualToString:@"you"]) {
+        if (![string isEqualToString:@"you"]) {
         
+        FirsView *fir = [[FirsView alloc] initWithFrame:CGRectMake(0, 0, 375, 667)];
+            
+        UIWindow *window = [[UIApplication sharedApplication]keyWindow];
+            
+        [window addSubview:fir];
         
     }
     

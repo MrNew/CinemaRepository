@@ -72,7 +72,7 @@
         
         
          _button = [UIButton buttonWithType:UIButtonTypeCustom];
-                _button.frame = CGRectMake((UIScreenWidth/4-30)/2+(i*UIScreenWidth/4), (49-30)/2, 30, 30);
+        
         _button.frame = CGRectMake((UIScreenWidth/4-93)+(i*UIScreenWidth/4), 0,92,49);
         _button.tag = i+1;//self.view.tag默认是0,所以一般不从0开始
         //   button.backgroundColor = [UIColor greenColor];
