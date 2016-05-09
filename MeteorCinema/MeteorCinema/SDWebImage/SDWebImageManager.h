@@ -41,7 +41,11 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) {
      * This option helps deal with images changing behind the same request URL, e.g. Facebook graph api profile pics.
      * If a cached image is refreshed, the completion block is called once with the cached image and again with the final image.
      *
+<<<<<<< HEAD
      * Use this flag only if you can't make your URLs static with embedded cache busting parameter.
+=======
+     * Use this flag only if you can't make your URLs static with embeded cache busting parameter.
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
      */
     SDWebImageRefreshCached = 1 << 4,
 
@@ -58,7 +62,11 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) {
     SDWebImageHandleCookies = 1 << 6,
 
     /**
+<<<<<<< HEAD
      * Enable to allow untrusted SSL certificates.
+=======
+     * Enable to allow untrusted SSL ceriticates.
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
      * Useful for testing purposes. Use with caution in production.
      */
     SDWebImageAllowInvalidSSLCertificates = 1 << 7,
@@ -82,13 +90,7 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) {
      * Use this flag to transform them anyway.
      */
     SDWebImageTransformAnimatedImage = 1 << 10,
-    
-    /**
-     * By default, image is added to the imageView after download. But in some cases, we want to
-     * have the hand before setting the image (apply a filter or add it with cross-fade animation for instance)
-     * Use this flag if you want to manually set the image in the completion when success
-     */
-    SDWebImageAvoidAutoSetImage = 1 << 11
+
 };
 
 typedef void(^SDWebImageCompletionBlock)(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL);
@@ -139,6 +141,7 @@ typedef NSString *(^SDWebImageCacheKeyFilterBlock)(NSURL *url);
  * @code
 
 SDWebImageManager *manager = [SDWebImageManager sharedManager];
+<<<<<<< HEAD
 [manager downloadImageWithURL:imageURL
                       options:0
                      progress:nil
@@ -147,6 +150,16 @@ SDWebImageManager *manager = [SDWebImageManager sharedManager];
                             // do something with image
                         }
                     }];
+=======
+[manager downloadWithURL:imageURL
+                 options:0
+                progress:nil
+               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                   if (image) {
+                       // do something with image
+                   }
+               }];
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
 
  * @endcode
  */
@@ -195,11 +208,19 @@ SDWebImageManager *manager = [SDWebImageManager sharedManager];
  *   This block has no return value and takes the requested UIImage as first parameter.
  *   In case of error the image parameter is nil and the second parameter may contain an NSError.
  *
+<<<<<<< HEAD
  *   The third parameter is an `SDImageCacheType` enum indicating if the image was retrieved from the local cache
  *   or from the memory cache or from the network.
  *
  *   The last parameter is set to NO when the SDWebImageProgressiveDownload option is used and the image is 
  *   downloading. This block is thus called repeatedly with a partial image. When image is fully downloaded, the
+=======
+ *   The third parameter is an `SDImageCacheType` enum indicating if the image was retrived from the local cache
+ *   or from the memory cache or from the network.
+ *
+ *   The last parameter is set to NO when the SDWebImageProgressiveDownload option is used and the image is 
+ *   downloading. This block is thus called repetidly with a partial image. When image is fully downloaded, the
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  *   block is called a last time with the full image and the last parameter set to YES.
  *
  * @return Returns an NSObject conforming to SDWebImageOperation. Should be an instance of SDWebImageDownloaderOperation
@@ -220,7 +241,11 @@ SDWebImageManager *manager = [SDWebImageManager sharedManager];
 - (void)saveImageToCache:(UIImage *)image forURL:(NSURL *)url;
 
 /**
+<<<<<<< HEAD
  * Cancel all current operations
+=======
+ * Cancel all current opreations
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  */
 - (void)cancelAll;
 
@@ -277,23 +302,3 @@ SDWebImageManager *manager = [SDWebImageManager sharedManager];
 
 @end
 
-
-#pragma mark - Deprecated
-
-typedef void(^SDWebImageCompletedBlock)(UIImage *image, NSError *error, SDImageCacheType cacheType) __deprecated_msg("Block type deprecated. Use `SDWebImageCompletionBlock`");
-typedef void(^SDWebImageCompletedWithFinishedBlock)(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) __deprecated_msg("Block type deprecated. Use `SDWebImageCompletionWithFinishedBlock`");
-
-
-@interface SDWebImageManager (Deprecated)
-
-/**
- *  Downloads the image at the given URL if not present in cache or return the cached version otherwise.
- *
- *  @deprecated This method has been deprecated. Use `downloadImageWithURL:options:progress:completed:`
- */
-- (id <SDWebImageOperation>)downloadWithURL:(NSURL *)url
-                                    options:(SDWebImageOptions)options
-                                   progress:(SDWebImageDownloaderProgressBlock)progressBlock
-                                  completed:(SDWebImageCompletedWithFinishedBlock)completedBlock __deprecated_msg("Method deprecated. Use `downloadImageWithURL:options:progress:completed:`");
-
-@end

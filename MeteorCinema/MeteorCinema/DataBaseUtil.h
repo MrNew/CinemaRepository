@@ -24,4 +24,7 @@
 // 判断是否已添加
 -(BOOL)isExist:(CityMessage *)city;
 
+// 模糊搜索里面的内容
+-(NSArray *)vagueSelectTableWith:(NSString *)cityName;
+
 @end

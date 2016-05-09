@@ -156,7 +156,27 @@
 }
 
 
-
+-(NSArray *)vagueSelectTableWith:(NSString *)cityName{
+    NSMutableArray * array = [NSMutableArray array];
+    if ([self.db open]) {
+        NSString * sql = [NSString stringWithFormat:@"select * from cityList where name like \"%%%@%%\" ",cityName];
+        FMResultSet * set = [self.db executeQuery:sql];
+        while ([set next]) {
+            CityMessage * city = [[CityMessage alloc] init];
+            city.identifier = [[set objectForColumnName:@"identifier"] integerValue];
+            city.name = [set objectForColumnName:@"name"];
+            city.count = [[set objectForColumnName:@"count"] integerValue];
+            city.pinyinShort = [set objectForColumnName:@"pinyinShort"];
+            city.pinyinFull = [set objectForColumnName:@"pinyinFull"];
+            city.initialLetter = [set objectForColumnName:@"initialLetter"];
+            
+            [array addObject:city];
+        }
+    }
+    [self.db close];
+//    NSLog(@"%@",array);
+    return array;
+}
 
 
 

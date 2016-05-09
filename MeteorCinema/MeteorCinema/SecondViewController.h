@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Cinema.h"
 #import "MovIs.h"
+#import "studio.h"
 @protocol SecondViewControllerDelegate <NSObject>
 
 @end

@@ -34,6 +34,7 @@
     // 判断请求类型
     if (type == POST) {
         [request setHTTPMethod:@"POST"];
+    
         // 添加body
             //
         // 首先判断是否有装 body 的字典 parDic 是否为空

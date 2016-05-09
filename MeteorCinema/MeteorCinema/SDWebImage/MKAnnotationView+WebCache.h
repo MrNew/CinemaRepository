@@ -63,7 +63,11 @@
  * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
+<<<<<<< HEAD
  *                       indicating if the image was retrieved from the local cache or from the network.
+=======
+ *                       indicating if the image was retrived from the local cache or from the network.
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  *                       The fourth parameter is the original image url.
  */
 - (void)sd_setImageWithURL:(NSURL *)url completed:(SDWebImageCompletionBlock)completedBlock;
@@ -78,7 +82,11 @@
  * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
+<<<<<<< HEAD
  *                       indicating if the image was retrieved from the local cache or from the network.
+=======
+ *                       indicating if the image was retrived from the local cache or from the network.
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  *                       The fourth parameter is the original image url.
  */
 - (void)sd_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder completed:(SDWebImageCompletionBlock)completedBlock;
@@ -94,7 +102,11 @@
  * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
+<<<<<<< HEAD
  *                       indicating if the image was retrieved from the local cache or from the network.
+=======
+ *                       indicating if the image was retrived from the local cache or from the network.
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  *                       The fourth parameter is the original image url.
  */
 - (void)sd_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options completed:(SDWebImageCompletionBlock)completedBlock;
@@ -106,19 +118,3 @@
 
 @end
 
-
-@interface MKAnnotationView (WebCacheDeprecated)
-
-- (NSURL *)imageURL __deprecated_msg("Use `sd_imageURL`");
-
-- (void)setImageWithURL:(NSURL *)url __deprecated_msg("Method deprecated. Use `sd_setImageWithURL:`");
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder __deprecated_msg("Method deprecated. Use `sd_setImageWithURL:placeholderImage:`");
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options __deprecated_msg("Method deprecated. Use `sd_setImageWithURL:placeholderImage:options:`");
-
-- (void)setImageWithURL:(NSURL *)url completed:(SDWebImageCompletedBlock)completedBlock __deprecated_msg("Method deprecated. Use `sd_setImageWithURL:completed:`");
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder completed:(SDWebImageCompletedBlock)completedBlock __deprecated_msg("Method deprecated. Use `sd_setImageWithURL:placeholderImage:completed:`");
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options completed:(SDWebImageCompletedBlock)completedBlock __deprecated_msg("Method deprecated. Use `sd_setImageWithURL:placeholderImage:options:completed:`");
-
-- (void)cancelCurrentImageLoad __deprecated_msg("Use `sd_cancelCurrentImageLoad`");
-
-@end

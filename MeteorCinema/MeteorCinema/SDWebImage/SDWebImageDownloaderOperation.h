@@ -10,10 +10,6 @@
 #import "SDWebImageDownloader.h"
 #import "SDWebImageOperation.h"
 
-extern NSString *const SDWebImageDownloadStartNotification;
-extern NSString *const SDWebImageDownloadReceiveResponseNotification;
-extern NSString *const SDWebImageDownloadStopNotification;
-extern NSString *const SDWebImageDownloadFinishNotification;
 
 @interface SDWebImageDownloaderOperation : NSOperation <SDWebImageOperation>
 
@@ -22,8 +18,6 @@ extern NSString *const SDWebImageDownloadFinishNotification;
  */
 @property (strong, nonatomic, readonly) NSURLRequest *request;
 
-
-@property (assign, nonatomic) BOOL shouldDecompressImages;
 
 /**
  * Whether the URL connection should consult the credential storage for authenticating the connection. `YES` by default.
@@ -45,6 +39,7 @@ extern NSString *const SDWebImageDownloadFinishNotification;
 @property (assign, nonatomic, readonly) SDWebImageDownloaderOptions options;
 
 /**
+<<<<<<< HEAD
  * The expected size of data.
  */
 @property (assign, nonatomic) NSInteger expectedSize;
@@ -55,6 +50,8 @@ extern NSString *const SDWebImageDownloadFinishNotification;
 @property (strong, nonatomic) NSURLResponse *response;
 
 /**
+=======
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  *  Initializes a `SDWebImageDownloaderOperation` object
  *
  *  @see SDWebImageDownloaderOperation

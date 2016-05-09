@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol DetailedViewControllerDelegate <NSObject>
 
+@end
 @interface DetailedViewController : UIViewController
+@property(nonatomic,assign)NSInteger cinemaIdNUM;
 
+
+@property(nonatomic,assign)id<DetailedViewControllerDelegate>delegate;
 @end

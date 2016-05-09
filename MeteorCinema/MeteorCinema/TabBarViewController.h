@@ -10,4 +10,11 @@
 
 @interface TabBarViewController : UITabBarController
 
+
+
+
+-(void)hidenBottomView;
+
+-(void)showBottonView;
+
 @end
