@@ -56,8 +56,6 @@
             [self.view addSubview:self.webView];
             [self.webView loadHTMLString:htmls baseURL:nil];
             self.webView.scrollView.contentInset = UIEdgeInsetsMake(UIScreenHeight/3-20, 0, 0, 0);
-            self.webView.delegate = self;
-            self.webView.scrollView.delegate = self;
             self.webView.scrollView.bounces = NO;
             UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(10, -UIScreenHeight/3+20, UIScreenWidth - 20, UIScreenHeight/3-20)];
             UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight/9)];
