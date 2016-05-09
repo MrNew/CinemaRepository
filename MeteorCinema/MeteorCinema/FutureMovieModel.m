@@ -23,22 +23,25 @@
     
     self.image = [dic objectForKey:@"image"];
     
-    NSString * string = [dic objectForKey:@"releaseDate"];
-    string = [string substringToIndex:4];
-    
-    self.releaseDate = string;
     
     NSString * st = [dic objectForKey:@"rMonth"];
     self.month = [NSString stringWithFormat:@"%@月",st];
     
     NSString * str = [dic objectForKey:@"rDay"];
-    self.month = [NSString stringWithFormat:@"%@日",str];
+    self.day = [NSString stringWithFormat:@"%@日",str];
     
+//    NSString * string = [dic objectForKey:@"releaseDate"];
+//    string = [string substringToIndex:4];
+    
+    self.releaseDate = [NSString stringWithFormat:@"%@%@",self.month,self.day];
     
     
     NSString * string1 = [dic objectForKey:@"wantedCount"];
     
     NSString * string2 = [dic objectForKey:@"type"];
+    
+    
+    
     
     self.wantedSee = [NSString stringWithFormat:@"%@人想看-%@",string1,string2];
     
@@ -58,7 +61,7 @@
     
     
     
-    
+    self.typeString = [dic objectForKey:@"type"];
     
     
     

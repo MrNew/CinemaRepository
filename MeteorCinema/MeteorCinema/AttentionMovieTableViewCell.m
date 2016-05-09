@@ -12,6 +12,18 @@
 
 #import "AttentionView.h"
 
+#import "TapGestureRecognizer.h"
+
+@interface AttentionMovieTableViewCell ()
+
+// 用于存储里面的 attentionView 的数组
+@property (nonatomic, strong) NSMutableArray * buttonArray;
+
+
+
+
+@end
+
 @implementation AttentionMovieTableViewCell
 
 -(NSMutableArray *)buttonArray{
@@ -28,6 +40,7 @@
         
         self.scrollView = [[UIScrollView alloc] init];
         [self.contentView addSubview:self.scrollView];
+        self.scrollView.showsHorizontalScrollIndicator = NO;
         
     }
     return self;
@@ -62,8 +75,13 @@
 #pragma mark- 注意设置其frame
         AttentionView * attenionView = [[AttentionView alloc] initWithFrame:CGRectMake(i * [UIScreen mainScreen].bounds.size.width / 1.3, 0, [UIScreen mainScreen].bounds.size.width / 1.3, [UIScreen mainScreen].bounds.size.height / 5)];
         
-        NSLog(@"%@",attenionView);
-//        attenionView.frame = CGRectMake(i *self.scrollView.bounds.size.width / 1.1, 0, self.contentView.bounds.size.width / 1.1, [UIScreen mainScreen].bounds.size.height / 5);
+
+
+        TapGestureRecognizer * tap = [[TapGestureRecognizer alloc] initWithTarget:self action:@selector(tapIndex:)];
+        tap.identifier = future.identifier;
+        tap.future = future;
+        
+        [attenionView addGestureRecognizer:tap];
         
        
         
@@ -77,9 +95,22 @@
         
     }
     
-    self.scrollView.contentSize = CGSizeMake(self.contentView.bounds.size.width / 1.3 * array.count, self.contentView.bounds.size.height);
+    self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width / 1.3 * array.count, self.contentView.bounds.size.height);
     
 }
+
+#pragma mark- scrollView 上每个视图的手势
+-(void)tapIndex:(TapGestureRecognizer *)tap{
+    
+
+//    [self.delegate passCityIdentifier:tap.identifier];
+    [self.delegate passCityIdentifier:tap.future];
+    
+    
+    
+}
+
+
 
 
 

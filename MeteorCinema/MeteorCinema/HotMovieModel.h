@@ -29,6 +29,13 @@
 
 @property (nonatomic, strong) NSArray * versions;
 
+
+
+// 第二个界面 (需要
+@property (nonatomic, strong) NSString * sumtime;
+
+@property (nonatomic, strong) NSString * typeString;
+
 // 重新赋值
 -(void)setValueWithDataDic:(NSDictionary *)dic;
 

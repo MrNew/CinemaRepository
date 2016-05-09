@@ -10,6 +10,13 @@
 
 #import "FutureMovieModel.h"
 
+@protocol AttenionViewDelegate <NSObject>
+
+-(void)passCityIdebtifier:(FutureMovieModel *)future;
+
+@end
+
+
 @interface AttentionView : UIView
 
 @property (nonatomic, strong) UILabel * timeLabel;
@@ -27,6 +34,10 @@
 @property (nonatomic, strong) UILabel * actorLabel;
 
 @property (nonatomic, strong) UIButton * forcastButton;
+
+
+
+@property (nonatomic, weak) id < AttenionViewDelegate > delegate;
 
 
 -(void)setValueWithFutureMoviewModel:(FutureMovieModel *)future;

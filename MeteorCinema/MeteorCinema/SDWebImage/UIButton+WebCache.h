@@ -70,7 +70,11 @@
  * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
+<<<<<<< HEAD
+ *                       indicating if the image was retrieved from the local cache or from the network.
+=======
  *                       indicating if the image was retrived from the local cache or from the network.
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  *                       The fourth parameter is the original image url.
  */
 - (void)sd_setImageWithURL:(NSURL *)url forState:(UIControlState)state completed:(SDWebImageCompletionBlock)completedBlock;
@@ -86,7 +90,11 @@
  * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
+<<<<<<< HEAD
+ *                       indicating if the image was retrieved from the local cache or from the network.
+=======
  *                       indicating if the image was retrived from the local cache or from the network.
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  *                       The fourth parameter is the original image url.
  */
 - (void)sd_setImageWithURL:(NSURL *)url forState:(UIControlState)state placeholderImage:(UIImage *)placeholder completed:(SDWebImageCompletionBlock)completedBlock;
@@ -103,7 +111,11 @@
  * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
+<<<<<<< HEAD
+ *                       indicating if the image was retrieved from the local cache or from the network.
+=======
  *                       indicating if the image was retrived from the local cache or from the network.
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  *                       The fourth parameter is the original image url.
  */
 - (void)sd_setImageWithURL:(NSURL *)url forState:(UIControlState)state placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options completed:(SDWebImageCompletionBlock)completedBlock;
@@ -152,7 +164,11 @@
  * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
+<<<<<<< HEAD
+ *                       indicating if the image was retrieved from the local cache or from the network.
+=======
  *                       indicating if the image was retrived from the local cache or from the network.
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  *                       The fourth parameter is the original image url.
  */
 - (void)sd_setBackgroundImageWithURL:(NSURL *)url forState:(UIControlState)state completed:(SDWebImageCompletionBlock)completedBlock;
@@ -168,7 +184,11 @@
  * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
+<<<<<<< HEAD
+ *                       indicating if the image was retrieved from the local cache or from the network.
+=======
  *                       indicating if the image was retrived from the local cache or from the network.
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  *                       The fourth parameter is the original image url.
  */
 - (void)sd_setBackgroundImageWithURL:(NSURL *)url forState:(UIControlState)state placeholderImage:(UIImage *)placeholder completed:(SDWebImageCompletionBlock)completedBlock;
@@ -184,7 +204,11 @@
  * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
+<<<<<<< HEAD
+ *                       indicating if the image was retrieved from the local cache or from the network.
+=======
  *                       indicating if the image was retrived from the local cache or from the network.
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  *                       The fourth parameter is the original image url.
  */
 - (void)sd_setBackgroundImageWithURL:(NSURL *)url forState:(UIControlState)state placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options completed:(SDWebImageCompletionBlock)completedBlock;
@@ -200,3 +224,4 @@
 - (void)sd_cancelBackgroundImageLoadForState:(UIControlState)state;
 
 @end
+

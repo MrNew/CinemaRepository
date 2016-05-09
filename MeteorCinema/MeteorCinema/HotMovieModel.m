@@ -59,6 +59,11 @@
     
     
     
+    
+    self.sumtime = [dic objectForKey:@"d"];
+    
+    self.typeString = [dic objectForKey:@"movieType"];
+    
 }
 
 

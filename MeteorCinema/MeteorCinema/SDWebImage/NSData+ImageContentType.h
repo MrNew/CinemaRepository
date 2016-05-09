@@ -17,3 +17,4 @@
 + (NSString *)sd_contentTypeForImageData:(NSData *)data;
 
 @end
+

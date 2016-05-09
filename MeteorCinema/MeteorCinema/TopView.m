@@ -10,7 +10,7 @@
 
 @interface TopView ()
 
-@property (nonatomic, strong) UIView * bottomView;
+
 
 @property (nonatomic, assign) CGFloat eachWidth;
 
@@ -41,7 +41,7 @@
         [button setTitle:array[i] forState:UIControlStateNormal];
         
         if (i == 0) {
-            [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+            [button setTitleColor:(self.selectButtonTitleColor == nil ? [UIColor blueColor] :self.selectButtonTitleColor) forState:UIControlStateNormal];
         }
         
         
@@ -57,7 +57,7 @@
     
     self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - 2, self.eachWidth, 2)];
     [self addSubview:self.bottomView];
-    self.bottomView.backgroundColor = [UIColor blueColor];
+    self.bottomView.backgroundColor = self.selectButtonTitleColor == nil ? [UIColor blueColor] :self.selectButtonTitleColor;
     
 }
 
@@ -74,13 +74,19 @@
         }
     }
 
-    [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [button setTitleColor:(self.selectButtonTitleColor == nil ? [UIColor blueColor] :self.selectButtonTitleColor) forState:UIControlStateNormal];
     self.bottomView.frame = CGRectMake(self.eachWidth * (button.tag - 10), self.bounds.size.height - 2, self.eachWidth, 2);
     
     
 }
 
 
+-(void)setTitleButtonColor:(UIColor *)color{
+    for (UIButton * button in self.buttonArray) {
+        [button setBackgroundColor:color];
+    }
+    
+}
 
 
 

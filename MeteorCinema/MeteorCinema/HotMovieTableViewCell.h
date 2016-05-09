@@ -28,7 +28,7 @@
 
 //@property (nonatomic, strong) TagView * bottomView;
 
-@property (nonatomic, strong) UILabel * tagLabel;
+
 
 @property (nonatomic, strong) UILabel * detailLabel;
 

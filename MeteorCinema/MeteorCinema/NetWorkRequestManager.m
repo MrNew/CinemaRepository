@@ -36,9 +36,11 @@
         [request setHTTPMethod:@"POST"];
     
         // 添加body
-        //
+            //
         // 首先判断是否有装 body 的字典 parDic 是否为空
-        if (parDic.count > 0) {
+        if (parDic.count > 0)
+        
+        {
             // 将 parDic 内容转化为 NSData 方法
             // 由于 不能一步达成,故写到一个私有方法中
             NSData * data = [self DicToData:parDic];

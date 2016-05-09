@@ -20,6 +20,10 @@
 // 实现位置的 反编码
 @property (nonatomic, strong) CLGeocoder * geocoder;
 
+
+
+@property (nonatomic, strong) NSMutableArray * userDefaultLanguages;
+
 @end
 
 @implementation AppDelegate
@@ -31,6 +35,20 @@
     [self.window makeKeyAndVisible];
     
     self.window.rootViewController = [[TabBarViewController alloc] init];
+    
+    
+    
+    // 保存 Device 的现语言 (英语 法语 ，，，)
+    self.userDefaultLanguages = [NSMutableArray array];
+    self.userDefaultLanguages = [[NSUserDefaults standardUserDefaults]
+                             objectForKey:@"AppleLanguages"];
+    
+    
+    // 强制 成 简体中文
+    [[NSUserDefaults
+      standardUserDefaults] setObject:[NSArray arrayWithObjects:@"zh-hans",
+                                       nil] forKey:@"AppleLanguages"];
+    
     
     
 //    NavigationViewController * nav = [[NavigationViewController alloc] initWithRootViewController:[[LocationViewController alloc] init]];
@@ -109,8 +127,13 @@
         // 发送通知
         NSNotificationCenter * nc = [NSNotificationCenter defaultCenter];
         
+<<<<<<< HEAD
         if (placemark.location != nil) {
        //     [nc postNotificationName:@"kNotificationLocation" object:nil userInfo:@{@"TureLocation":placemark.locality}];
+=======
+        if (placemark.locality.length > 0) {
+            [nc postNotificationName:@"kNotificationLocation" object:nil userInfo:@{@"TureLocation":placemark.locality}];
+>>>>>>> dedbfd923a6a59f2393d301bbfaa042dd5c883b1
             
         }else{
             [nc postNotificationName:@"kNotificationLocation" object:nil userInfo:@{@"TureLocation":@"广州"}];
@@ -135,6 +158,15 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    
+    [[NSUserDefaults
+      standardUserDefaults] setObject:self.userDefaultLanguages
+     forKey:@"AppleLanguages"];
+    
+    
+    
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

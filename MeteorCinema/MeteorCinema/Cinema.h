@@ -11,5 +11,6 @@
 @interface Cinema : NSObject
 @property(nonatomic,strong)NSString *cinameName;//标题
 @property(nonatomic,strong)NSString *address;//特殊标语
-//@property(nonatomic,copy)NSString *minPrice;//价格
+@property(nonatomic,strong)NSString *minPrice;//价格
+@property(nonatomic,strong)NSString *cinemaId;//影院ID
 @end

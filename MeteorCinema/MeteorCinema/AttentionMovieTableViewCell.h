@@ -10,6 +10,12 @@
 
 #import "FutureMovieModel.h"
 
+@protocol AttentionMovieTableViewCellDelegate <NSObject>
+
+-(void)passCityIdentifier:(FutureMovieModel *)future;
+
+@end
+
 @interface AttentionMovieTableViewCell : UITableViewCell
 
 // 处理数据 (属性传值)
@@ -20,9 +26,8 @@
 @property (nonatomic,strong) UIScrollView * scrollView;
 
 
+@property (nonatomic, weak) id < AttentionMovieTableViewCellDelegate > delegate;
 
-// 用于存储里面的 attentionView 的数组
-@property (nonatomic, strong) NSMutableArray * buttonArray;
 
 
 -(void)setDetailView:(NSArray *)array;

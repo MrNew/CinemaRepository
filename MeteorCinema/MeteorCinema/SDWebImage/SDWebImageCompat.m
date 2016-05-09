@@ -28,6 +28,7 @@ inline UIImage *SDScaledImageForKey(NSString *key, UIImage *image) {
     }
     else {
         if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
+
             CGFloat scale = 1.0;
             if (key.length >= 8) {
                 // Search @2x. at the end of the string, before a 3 to 4 extension length (only if key len is 8 or more @2x. + 4 len ext)
@@ -35,6 +36,7 @@ inline UIImage *SDScaledImageForKey(NSString *key, UIImage *image) {
                 if (range.location != NSNotFound) {
                     scale = 2.0;
                 }
+
             }
 
             UIImage *scaledImage = [[UIImage alloc] initWithCGImage:image.CGImage scale:scale orientation:image.imageOrientation];
@@ -43,3 +45,4 @@ inline UIImage *SDScaledImageForKey(NSString *key, UIImage *image) {
         return image;
     }
 }
+
