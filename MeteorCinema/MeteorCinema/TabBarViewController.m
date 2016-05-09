@@ -13,10 +13,6 @@
 #import "MySelfViewControllrt.h"
 #import "NavigationViewController.h"
 
-
-#define UIScreenWidth [UIScreen mainScreen].bounds.size.width
-#define UIScreenHeight [UIScreen mainScreen].bounds.size.height
-
 @interface TabBarViewController ()
 
 @property(nonatomic,strong)UIView *tabBarView;
@@ -48,7 +44,7 @@
     [[UINavigationBar appearance] setTranslucent:NO];
     
     //统一设置导航栏颜色
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:237/255.0 green:17/255.0 blue:74/255.0 alpha:1]];
+    [[UINavigationBar appearance] setBarTintColor: [UIColor colorWithRed:237/255.0 green:17/255.0 blue:74/255.0 alpha:1]];
 
     
 }
@@ -106,6 +102,7 @@
         self.selectedViewController = self.viewControllers[3];
     }
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
