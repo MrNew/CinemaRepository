@@ -227,7 +227,16 @@
         //        NSLog(@"详细信息:%@",placemark.addressDictionary);
 
         if (placemark.locality.length > 0) {
-            self.locationView.cityNaemLabel.text = [NSString stringWithFormat:@"%@",placemark.locality];
+            
+            NSString * string1= [placemark.locality substringFromIndex:(placemark.locality.length - 1)];
+            
+            if ([string1 isEqualToString:@"市"]) {
+                NSString * string = [placemark.locality substringToIndex:(placemark.locality.length - 1)];
+                self.locationView.cityNaemLabel.text = [NSString stringWithFormat:@"%@",string];
+            }else{
+                self.locationView.cityNaemLabel.text = placemark.locality;
+            }
+            
         }else{
             self.locationView.cityNaemLabel.text = @"抱歉,当前网络不给力";
         }

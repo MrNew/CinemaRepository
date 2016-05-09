@@ -24,6 +24,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+//-(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+//    viewController.hidesBottomBarWhenPushed = YES;
+//    [super pushViewController:viewController animated:animated];
+//}
+
 /*
 #pragma mark - Navigation
 

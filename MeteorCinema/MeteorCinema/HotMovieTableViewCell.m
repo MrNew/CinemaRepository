@@ -15,6 +15,18 @@
 
 #define HotHeight self.contentView.bounds.size.height
 
+@interface HotMovieTableViewCell ()
+
+@property (nonatomic, strong) UILabel * tagLabel1;
+
+@property (nonatomic, strong) UILabel * tagLabel2;
+
+@property (nonatomic, strong) UILabel * tagLabel3;
+
+
+
+@end
+
 @implementation HotMovieTableViewCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -40,8 +52,15 @@
         
 //        self.bottomView = [[TagView alloc] init];
 //        [self.contentView addSubview:self.bottomView];
-        self.tagLabel = [[UILabel alloc] init];
-        [self.contentView addSubview:self.tagLabel];
+        self.tagLabel1 = [[UILabel alloc] init];
+        [self.contentView addSubview:self.tagLabel1];
+        
+        self.tagLabel2 = [[UILabel alloc] init];
+        [self.contentView addSubview:self.tagLabel2];
+        
+        self.tagLabel3 = [[UILabel alloc] init];
+        [self.contentView addSubview:self.tagLabel3];
+        
         
         
         self.detailLabel = [[UILabel alloc] init];
@@ -77,20 +96,23 @@
     self.scroeLabel.textColor = [UIColor colorWithRed:64/255.0 green:176/255.0 blue:57/255.0 alpha:1];
     [self.scroeLabel sizeToFit];
     
-    self.commonLabel.frame = CGRectMake(HotWidth / 30 + HotWidth / 4, HotHeight / 15 + HotHeight / 6, HotWidth / 4 * 2, HotHeight / 6);
+    self.commonLabel.frame = CGRectMake(HotWidth / 30 + HotWidth / 4 + 5, HotHeight / 15 + HotHeight / 6 + 10, HotWidth / 4 * 2, HotHeight / 6);
 //    self.commonLabel.backgroundColor = [UIColor greenColor];
     self.commonLabel.text = self.hot.commonSpecial;
     self.commonLabel.textColor = [UIColor colorWithRed:251/255.0 green:158/255.0 blue:16/255.0 alpha:1];
+    self.commonLabel.font = [UIFont systemFontOfSize:15];
     [self.commonLabel sizeToFit];
     
-    self.timeLabel.frame = CGRectMake(HotWidth / 30 + HotWidth / 4, HotHeight / 15 + HotHeight / 6 * 2 , HotWidth / 4 * 2, HotHeight / 6);
+    self.timeLabel.frame = CGRectMake(HotWidth / 30 + HotWidth / 4, HotHeight / 15 + HotHeight / 6 * 2 + 5 , HotWidth / 4 * 2, HotHeight / 6);
 //    self.timeLabel.backgroundColor = [UIColor orangeColor];
     self.timeLabel.text = self.hot.time;
+    self.timeLabel.font = [UIFont systemFontOfSize:12];
     self.timeLabel.textColor = [UIColor colorWithRed:180/255.0 green:180/255.0 blue:180/255.0 alpha:1];
     
     self.playLabel.frame = CGRectMake(HotWidth / 30 + HotWidth / 4, HotHeight / 15 + HotHeight / 6 * 3, HotWidth / 4 * 2, HotHeight / 6);
 //    self.playLabel.backgroundColor = [UIColor cyanColor];
     self.playLabel.text = self.hot.player;
+    self.playLabel.font = [UIFont systemFontOfSize:12];
     self.playLabel.textColor = [UIColor colorWithRed:180/255.0 green:180/255.0 blue:180/255.0 alpha:1];
     
 //    self.bottomView.frame = CGRectMake(HotWidth / 30 + HotWidth / 4, HotHeight / 15 + HotHeight / 6 * 4, HotWidth / 4 * 2, HotHeight / 6);
@@ -98,24 +120,72 @@
 //    if (self.hot.versions.count > 0) {
 //        [self.bottomView insertTagArray:self.hot.versions];
 //    }
-    if (self.hot.versions.count > 0) {
-        NSString * string = @"";
-        for (NSDictionary * dic in self.hot.versions) {
-            string = [NSString stringWithFormat:@"%@  %@",string,[dic objectForKey:@"version"]];
-            
-        }
-        string = [string substringFromIndex:2];
-        string = [NSString stringWithFormat:@"%@%@",string,@"   "];
-        self.tagLabel.frame = CGRectMake(HotWidth / 30 + HotWidth / 4, HotHeight / 15 + HotHeight / 6 * 4, HotWidth / 4 * 2, HotHeight / 6);
-        self.tagLabel.text = string;
-        self.tagLabel.textAlignment = NSTextAlignmentCenter;
-        self.tagLabel.textColor = [UIColor colorWithRed:180/255.0 green:180/255.0 blue:180/255.0 alpha:1];
-        [self.tagLabel sizeToFit];
-        self.tagLabel.layer.borderColor = [UIColor grayColor].CGColor;
-        self.tagLabel.layer.borderWidth = 1;
-        self.tagLabel.layer.cornerRadius = 5;
-        self.tagLabel.layer.masksToBounds = YES;
+    
+    
+//        string = [string substringFromIndex:2];
+//        string = [NSString stringWithFormat:@"%@%@",string,@"   "];
+    self.tagLabel1.frame = CGRectMake(HotWidth / 30 + HotWidth / 4, HotHeight / 15 + HotHeight / 6 * 4, 0, 0);
+
+    
+    self.tagLabel1.font = [UIFont systemFontOfSize:12];
+    self.tagLabel1.textColor = [UIColor colorWithRed:180/255.0 green:180/255.0 blue:180/255.0 alpha:1];
+    self.tagLabel1.layer.borderColor = [UIColor grayColor].CGColor;
+    self.tagLabel1.layer.borderWidth = 1;
+    self.tagLabel1.layer.cornerRadius = 5;
+    self.tagLabel1.layer.masksToBounds = YES;
+
+    
+    if (self.hot.versions.count >= 1) {
+        NSDictionary * dic = self.hot.versions[0];
+//        NSLog(@"%@",dic);
+        
+        self.tagLabel1.text = [NSString stringWithFormat:@"  %@  ",[dic objectForKey:@"version"]];
+//        self.tagLabel1.textAlignment = NSTextAlignmentCenter;
+        [self.tagLabel1 sizeToFit];
+//        [self.contentView addSubview:self.tagLabel1];
     }
+    
+    
+    
+    
+    self.tagLabel2.font = [UIFont systemFontOfSize:12];
+//    self.tagLabel2.textAlignment = NSTextAlignmentCenter;
+    self.tagLabel2.textColor = [UIColor colorWithRed:180/255.0 green:180/255.0 blue:180/255.0 alpha:1];
+    self.tagLabel2.layer.borderColor = [UIColor grayColor].CGColor;
+    self.tagLabel2.layer.borderWidth = 1;
+    self.tagLabel2.layer.cornerRadius = 5;
+    self.tagLabel2.layer.masksToBounds = YES;
+    self.tagLabel2.frame = CGRectMake(0,0,0,0);
+    if (self.hot.versions.count >= 2) {
+        NSDictionary * dic = self.hot.versions[1];
+        self.tagLabel2.text = [NSString stringWithFormat:@"  %@  ",[dic objectForKey:@"version"]];
+//        [self.contentView addSubview:self.tagLabel2];
+        
+        self.tagLabel2.frame = CGRectMake(self.tagLabel1.frame.origin.x + self.tagLabel1.frame.size.width + 5, self.tagLabel1.frame.origin.y, HotWidth / 4 * 2, HotHeight / 6);
+        [self.tagLabel2 sizeToFit];
+    }
+//
+    
+    
+    self.tagLabel3.font = [UIFont systemFontOfSize:12];
+//    self.tagLabel3.textAlignment = NSTextAlignmentCenter;
+    self.tagLabel3.textColor = [UIColor colorWithRed:180/255.0 green:180/255.0 blue:180/255.0 alpha:1];
+    self.tagLabel3.layer.borderColor = [UIColor grayColor].CGColor;
+    self.tagLabel3.layer.borderWidth = 1;
+    self.tagLabel3.layer.cornerRadius = 5;
+    self.tagLabel3.layer.masksToBounds = YES;
+    self.tagLabel3.frame = CGRectMake(0,0,0,0);
+    if (self.hot.versions.count >= 3) {
+        NSDictionary * dic = self.hot.versions[2];
+        self.tagLabel3.text = [NSString stringWithFormat:@"   %@   ",[dic objectForKey:@"version"]];
+        self.tagLabel3.frame = CGRectMake(self.tagLabel2.frame.origin.x + self.tagLabel2.frame.size.width + 5, self.tagLabel1.frame.origin.y , HotWidth / 4 * 2 , HotHeight / 6);
+        [self.tagLabel3 sizeToFit];
+        
+    }
+    
+    
+    
+    
     
     
     self.detailLabel.frame = CGRectMake(HotWidth - HotWidth / 6 - HotWidth / 60, HotHeight / 15 + HotHeight / 6 * 3, HotWidth / 6, HotHeight / 5);

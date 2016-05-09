@@ -9,6 +9,14 @@
 #import "MovieViewController.h"
 
 #import "LocationViewController.h"
+
+#import "MovieDetailViewController.h"
+
+#import "TabBarViewController.h"
+
+#import "VideoListViewController.h"
+
+
 // 前景图片
 #import "FirsView.h"
 // 城市数据库
@@ -25,6 +33,9 @@
 #import "AttentionMovieTableViewCell.h"
 
 
+#import "FutureTableViewCell.h"
+
+
 // 即将上映数据模型
 #import "FutureMovieModel.h"
 
@@ -35,7 +46,7 @@
 
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
-@interface MovieViewController () < LocationViewControllerDelegate,UITableViewDataSource,UITableViewDelegate >
+@interface MovieViewController () < LocationViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,AttentionMovieTableViewCellDelegate,FutureTableViewDelegate >
 
 @property (nonatomic, strong) UITableView * tableView;
 
@@ -67,6 +78,7 @@
         self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, ScreenHeight / 15, ScreenWidth, ScreenHeight - 64 - ScreenHeight / 15) style:UITableViewStylePlain];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        
     }
     return _tableView;
 }
@@ -98,8 +110,7 @@
 -(UIView *)topView{
     if (!_topView) {
         self.topView = [[TopView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight / 15)];
-        self.topView.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1];
-        
+        self.topView.backgroundColor = [UIColor whiteColor];
     }
     return _topView;
 }
@@ -135,6 +146,8 @@
     // 等通知 通知( 比较通知信息 与 原来存的 地点是否吻合来决定是否 更新信息 )
     [self listener];
     
+    [self listenerForcast];
+    
     //***********************前景图*********************//
     
     
@@ -165,34 +178,22 @@
     
     // 添加tableView
     [self.view addSubview:self.tableView];
-    
+
     
     [self.view addSubview:self.topView];
+    self.topView.selectButtonTitleColor = [UIColor colorWithRed:90/255.0 green:144/255.0 blue:206/255.0 alpha:1];
     [self.topView setTitleButton:@[@"正在热映",@"即将上映"]];
     for (UIButton * button in self.topView.buttonArray) {
         [button addTarget:self action:@selector(reflashData:) forControlEvents:UIControlEventTouchUpInside];
     }
+    [self.topView setTitleButtonColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
     
-//    UISegmentedControl * segment = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight / 15)];
-//    [self.topView addSubview:segment];
-//    [segment insertSegmentWithTitle:@"即将上映" atIndex:0 animated:NO];
-//    [segment insertSegmentWithTitle:@"正在热映" atIndex:0 animated:NO];
-//    segment.layer.borderColor = [UIColor clearColor].CGColor;
-//    [segment setTintColor:[UIColor clearColor]];
+
     
 }
 
 -(void)reflashData:(UIButton *)button{
-//    if ([button.titleLabel.text isEqualToString:@"正在热映"]) {
-//        
-//        self.status = @"正在热映";
-//        
-//        
-//    }else if ([button.titleLabel.text isEqualToString:@"即将上映"]){
-//        
-//        
-//        
-//    }
+
     
     self.status = button.titleLabel.text;
     
@@ -234,7 +235,8 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * identifier = @"hot";
-    static NSString * identifier1 = @"cell";
+    static NSString * identifier1 = @"attention";
+    static NSString * identifier2 = @"future";
     if ([self.status isEqualToString:@"正在热映"]) {
         HotMovieTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
@@ -243,6 +245,7 @@
         
         HotMovieModel * hot = [self.hotArray objectAtIndex:indexPath.row];
         cell.hot = hot;
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
         
@@ -250,16 +253,30 @@
         if (indexPath.section == 0) {
         
         AttentionMovieTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier1];
+            
         if (cell == nil) {
             cell = [[AttentionMovieTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier1];
         }
         
             [cell setDetailView:self.attentionArray];
+            
+            cell.delegate = self;
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }else{
             
+            FutureTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier2];
+            if (cell == nil) {
+                cell = [[FutureTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier2];
+            }
+            FutureMovieModel * future = [self.futureArray objectAtIndex:indexPath.row];
             
-            return nil;
+            cell.future = future;
+            
+            cell.delegate = self;
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+            
         }
         
     }
@@ -294,6 +311,48 @@
         }
     }
 }
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    MovieDetailViewController * movie = [[MovieDetailViewController alloc] init];
+//    self.tabBarController.hidesBottomBarWhenPushed = YES;
+//    [(TabBarViewController *)self.tabBarController hidenBottomView];
+    
+    // 传入 当前城市 ID
+    NSInteger cityID = [[NSUserDefaults standardUserDefaults] integerForKey:@"defaultLocationID"];
+    
+    movie.cityID = cityID;
+    NSLog(@"%ld",cityID);
+    
+    if ([self.status isEqualToString:@"正在热映"]) {
+        
+//        movie.cityID
+        
+        HotMovieModel * hot = [self.hotArray objectAtIndex:indexPath.row];
+       
+        movie.movieID = hot.identifier;
+        movie.hotMovie = hot;
+        
+        
+    }else{
+        if (indexPath.section == 0) {
+            
+            
+            
+        }else{
+            
+//            [self.navigationController pushViewController:movie animated:YES];
+        
+            FutureMovieModel * future = [self.futureArray objectAtIndex:indexPath.row];
+            movie.movieID = future.identifier;
+            movie.future = future;
+        }
+    }
+    [self.navigationController pushViewController:movie animated:YES];
+    
+}
+
 
 
 #pragma mark- 申请数据
@@ -336,6 +395,8 @@
 
 // 申请即将上映数据
 -(void)requestFutureData:(NSInteger)identifier{
+    
+//    NSLog(@"%@",[NSString stringWithFormat: @"http://api.m.mtime.cn/Movie/MovieComingNew.api?locationId=%ld",identifier]);
     [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat: @"http://api.m.mtime.cn/Movie/MovieComingNew.api?locationId=%ld",identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
        
         
@@ -417,6 +478,7 @@
     
     [self.hotArray removeAllObjects];
     [self requestHotData:city.identifier];
+    [self requestFutureData:city.identifier];
 
     
     
@@ -432,7 +494,7 @@
 }
 
 
-- (void) recvBcast:(NSNotification *)notify
+- (void)recvBcast:(NSNotification *)notify
 {
 
     // 取得广播内容
@@ -443,6 +505,14 @@
     
     // 要注意返回的 词
     // 根据通知回来的值搜索是否有值
+    
+    NSString * string = [cityName substringFromIndex:(cityName.length - 1)];
+    
+    if ([string isEqualToString:@"市"]) {
+        cityName = [cityName substringToIndex:(cityName.length - 1)];
+    }
+    
+    
     NSArray * array = [[DataBaseUtil share] vagueSelectTableWith:cityName];
     
     // 先判断是否 与选中地点 相一致
@@ -476,6 +546,7 @@
                     
                     [self.hotArray removeAllObjects];
                     [self requestHotData:city.identifier];
+                    [self requestFutureData:city.identifier];
                     
                 }];
                 [alert addAction:action2];
@@ -495,6 +566,74 @@
    
     
 }
+
+#pragma mark-  点击了 预告片的按钮
+-(void)listenerForcast{
+    // 注册成为广播站ChangeTheme频道的听众
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    // 成为听众一旦有广播就来调用self recvBcast:函数
+    [nc addObserver:self selector:@selector(recvBcastForcast:) name:@"kNotificationForcast" object:nil];
+}
+
+-(void)recvBcastForcast:(NSNotification *)notify{
+    
+    NSDictionary * dic = notify.userInfo;
+    
+    NSArray * array = [dic objectForKey:@"vedio"];
+    
+//    NSLog(@"%@",array);
+    
+    VideoListViewController * video = [[VideoListViewController alloc] init];
+    
+    video.videoArray = array;
+    
+    [self.navigationController pushViewController:video animated:YES];
+    
+    
+    
+}
+
+
+#pragma mark- 点击了那个最搜关注的电影
+-(void)passCityIdentifier:(FutureMovieModel *)future{
+    
+    
+    
+    MovieDetailViewController * movie = [[MovieDetailViewController alloc] init];
+    //    self.tabBarController.hidesBottomBarWhenPushed = YES;
+    //    [(TabBarViewController *)self.tabBarController hidenBottomView];
+    
+    // 传入 当前城市 ID
+    NSInteger cityID = [[NSUserDefaults standardUserDefaults] integerForKey:@"defaultLocationID"];
+    
+    movie.cityID = cityID;
+//    NSLog(@"%ld",cityID);
+
+
+    movie.movieID = future.identifier;
+    movie.future = future;
+ 
+    [self.navigationController pushViewController:movie animated:YES];
+    
+    
+    
+
+    
+}
+
+#pragma mark- 点击了那个 预告片按钮
+-(void)passFuturevedio:(NSArray *)array{
+    
+    VideoListViewController * video = [[VideoListViewController alloc] init];
+    
+    video.videoArray = array;
+    
+    [self.navigationController pushViewController:video animated:YES];
+    
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

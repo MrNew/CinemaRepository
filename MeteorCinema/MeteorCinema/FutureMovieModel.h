@@ -37,6 +37,11 @@
 
 
 
+// 第二个界面需要
+@property (nonatomic, strong) NSString * typeString;
+
+
+
 -(void)setValueWithDataDic:(NSDictionary *)dic;
 
 @end

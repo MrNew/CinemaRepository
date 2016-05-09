@@ -12,7 +12,12 @@
 
 @property (nonatomic, strong) NSMutableArray * buttonArray;
 
+@property (nonatomic, strong) UIView * bottomView;
+
+@property (nonatomic, strong) UIColor * selectButtonTitleColor;
+
 -(void)setTitleButton:(NSArray *)array;
 
+-(void)setTitleButtonColor:(UIColor *)color;
 
 @end

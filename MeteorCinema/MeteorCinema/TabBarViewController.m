@@ -106,6 +106,16 @@
         self.selectedViewController = self.viewControllers[3];
     }
 }
+
+-(void)hidenBottomView{
+    [self.view sendSubviewToBack:self.tabBarView];
+}
+
+-(void)showBottonView{
+    [self.view bringSubviewToFront:self.tabBarView];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
