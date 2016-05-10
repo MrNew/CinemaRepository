@@ -12,7 +12,6 @@
 
 #import "TabBarViewController.h"
 
-#import "LocationViewController.h"
 #import "NavigationViewController.h"
 
 @interface AppDelegate () < CLLocationManagerDelegate >
@@ -128,8 +127,10 @@
         // 发送通知
         NSNotificationCenter * nc = [NSNotificationCenter defaultCenter];
         
+
         if (placemark.locality.length > 0) {
             [nc postNotificationName:@"kNotificationLocation" object:nil userInfo:@{@"TureLocation":placemark.locality}];
+
             
         }else{
             [nc postNotificationName:@"kNotificationLocation" object:nil userInfo:@{@"TureLocation":@"广州"}];

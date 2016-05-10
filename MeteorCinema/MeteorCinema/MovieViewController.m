@@ -8,6 +8,7 @@
 
 #import "MovieViewController.h"
 
+
 #import "LocationViewController.h"
 
 #import "MovieDetailViewController.h"
@@ -15,6 +16,8 @@
 #import "TabBarViewController.h"
 
 #import "VideoListViewController.h"
+
+#import "HotMovieTableViewCell.h"
 
 
 // 前景图片
@@ -24,10 +27,7 @@
 // 申请数据
 #import "NetWorkRequestManager.h"
 
-// 热映电影
-#import "HotMovieTableViewCell.h"
-// 热映数据模型
-#import "HotMovieModel.h"
+
 
 // 最受关注 cell
 #import "AttentionMovieTableViewCell.h"
@@ -42,9 +42,11 @@
 
 #import "TopView.h"
 
+
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
+
 
 @interface MovieViewController () < LocationViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,AttentionMovieTableViewCellDelegate,FutureTableViewDelegate >
 
@@ -63,14 +65,12 @@
 
 
 
-//  标记当前显示什么内容
-@property (nonatomic, strong) NSString * status;
-
 
 
 @end
 
 @implementation MovieViewController
+
 
 #pragma mark- 懒加载
 -(UITableView *)tableView{
@@ -116,11 +116,13 @@
 }
 
 
+
 #pragma mark- 加载视图
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
+
     self.navigationItem.title = @"电影";
     self.status = @"正在热映";
     
@@ -645,3 +647,4 @@
 
 
 @end
+
