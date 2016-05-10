@@ -73,6 +73,10 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.navigationController.navigationBar.translucent = NO;
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     NSString *str = self.cinamea.cinemaId;
     
     self.cinemaIdtwo = [str intValue];
@@ -81,8 +85,11 @@
     
     
     
+    
+    
+    
     _ScrollViewController = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-    _ScrollViewController.contentSize =CGSizeMake(ScreenWidth, ScreenHeight*2);
+    _ScrollViewController.contentSize =CGSizeMake(ScreenWidth, ScreenHeight*3);
     // _ScrollViewController.pagingEnabled = YES;
     
     [self.view addSubview:_ScrollViewController];
@@ -101,21 +108,21 @@
 -(void)titleandaddress
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 120)];
-    view.backgroundColor = [UIColor yellowColor];
+   // view.backgroundColor = [UIColor yellowColor];
     [_ScrollViewController addSubview:view];
     
     UILabel *titLabel =[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 30)];
-    titLabel.backgroundColor = [UIColor greenColor];
+  //  titLabel.backgroundColor = [UIColor greenColor];
     titLabel.text = self.cinamea.cinameName;
     [view addSubview:titLabel];
     
     UILabel *addressLabel =[[UILabel alloc] initWithFrame:CGRectMake(10, 50, 300, 30)];
-    addressLabel.backgroundColor = [UIColor cyanColor];
+  //  addressLabel.backgroundColor = [UIColor cyanColor];
     addressLabel.text = self.cinamea.address;
     [view addSubview:addressLabel];
     
     UILabel *arrow =[[UILabel alloc] initWithFrame:CGRectMake(320, 50, 50, 30)];
-    arrow.backgroundColor = [UIColor orangeColor];
+  //  arrow.backgroundColor = [UIColor orangeColor];
     arrow.text = @">>";
     [view addSubview:arrow];
     
@@ -257,7 +264,7 @@
     
     _ScrollView.backgroundColor = [UIColor purpleColor];
     
-    _ScrollView.contentSize =CGSizeMake(ScreenWidth*3, 160);
+    _ScrollView.contentSize =CGSizeMake(90*self.SendcondDataArray.count+90, 160);
     
     [_ScrollViewController addSubview:_ScrollView];
     
@@ -290,7 +297,7 @@
         
         [_button setTitleEdgeInsets:UIEdgeInsetsMake(0, -50, -35, 0)];
         
-        _button.backgroundColor = [UIColor greenColor];
+       // _button.backgroundColor = [UIColor greenColor];
         
         [_ScrollView addSubview:_button];
         
@@ -413,6 +420,48 @@
         NSLog(@"电影ID=%ld",self.movieIdNumber);
         [self studiorequestData];
         //[_SendcondTabelView reloadData];
+    }else if (button.tag == 8){
+        
+        NSLog(@"你点了第七个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        [self studiorequestData];
+        //[_SendcondTabelView reloadData];
+    }else if (button.tag == 9){
+        
+        NSLog(@"你点了第七个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        [self studiorequestData];
+        //[_SendcondTabelView reloadData];
+    }else if (button.tag == 10){
+        
+        NSLog(@"你点了第七个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        [self studiorequestData];
+        //[_SendcondTabelView reloadData];
     }
 }
 
@@ -422,25 +471,39 @@
     
     
     UIView *movieView = [[UIView alloc] initWithFrame:CGRectMake(0, 280, ScreenWidth, 100)];
-    movieView.backgroundColor = [UIColor cyanColor];
+  //  movieView.backgroundColor = [UIColor cyanColor];
     [_ScrollViewController addSubview:movieView];
     
-    
+    //电影标题
     _titiLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, 300, 30)];
     _titiLabel.textAlignment = NSTextAlignmentCenter;//居中
-    _titiLabel.backgroundColor = [UIColor greenColor];
+//    _titiLabel.backgroundColor = [UIColor greenColor];
     //    _titiLabel.text =self.titlee;
     [movieView addSubview:_titiLabel];
     
     _TimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 50, 70, 30)];
     //   _TimeLabel.text = self.length;
-    _TimeLabel.backgroundColor = [UIColor orangeColor];
+ //   _TimeLabel.backgroundColor = [UIColor orangeColor];
     [movieView addSubview:_TimeLabel];
+    
+    //一个小杠
+//    UILabel *labelG = [[UILabel alloc] initWithFrame:CGRectMake(110, 50, 20, 20)];
+//    labelG.text = @"-";
+//    
+//    [movieView addSubview:labelG];
     
     _classifyLabel = [[UILabel alloc] initWithFrame:CGRectMake(190, 50, 150, 30)];
     // _classifyLabel.text = self.type;
-    _classifyLabel.backgroundColor = [UIColor yellowColor];
+  //  _classifyLabel.backgroundColor = [UIColor yellowColor];
     [movieView addSubview:_classifyLabel];
+    
+    //横线
+    UIView *eView = [[UIView alloc] initWithFrame:CGRectMake(0, 380, ScreenWidth, 10)];
+     eView.backgroundColor = [UIColor grayColor];
+    eView.alpha = 0.4;
+    [_ScrollViewController addSubview:eView];
+    
+    
     
     
 }
@@ -449,14 +512,16 @@
 //
 -(void)LastSendcondTabelView
 {
-    _SendcondTabelView = [[UITableView alloc] initWithFrame:CGRectMake(0, ScreenHeight-350, ScreenWidth, _ScrollViewController.frame.size.height)];
+    
+    
+    
+    _SendcondTabelView = [[UITableView alloc] initWithFrame:CGRectMake(0, 400, ScreenWidth, _ScrollViewController.frame.size.height+1000)];
     
     _SendcondTabelView.delegate = self;
     _SendcondTabelView.dataSource = self;
     
-    _SendcondTabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    
+  //  _SendcondTabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
+   _SendcondTabelView.backgroundColor = [UIColor grayColor];
     _SendcondTabelView.scrollEnabled = NO;
     [_ScrollViewController addSubview:_SendcondTabelView];
     
@@ -510,8 +575,11 @@
     cell.languageLabel.text = studi.language;
     cell.hallLabel.text = studi.hall;
     
-    NSString *restric4 = [NSString stringWithFormat:@"%@",studi.price];
+    NSString *restric4 = [NSString stringWithFormat:@"￥%@",studi.price];
     cell.priceLabel.text = restric4;
+    
+
+    
     
     
     
@@ -530,7 +598,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 110;
+    return 80;
     
 }
 

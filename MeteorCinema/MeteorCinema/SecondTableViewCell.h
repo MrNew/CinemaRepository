@@ -16,4 +16,5 @@
 @property(nonatomic,strong)UILabel *hallLabel;//几号厅
 @property(nonatomic,strong)UILabel *priceLabel;//价格
 @property(nonatomic,strong)UILabel *buyLabel;//购票
+@property(nonatomic,strong)UILabel *Label1;
 @end

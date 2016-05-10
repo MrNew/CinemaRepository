@@ -12,16 +12,20 @@
 #import "Cinema.h"
 #import "SecondViewController.h"
 #import "MovIs.h"
+#import "UIImageView+WebCache.h"
 
 #define ScreenWidth   [[UIScreen mainScreen] bounds].size.width
 #define ScreenHeight  [UIScreen mainScreen].bounds.size.height
-#define READLIST_URL @"http://api.m.mtime.cn/OnlineLocationCinema/OnlineCinemasByCity.api"
+#define READLIST_URL @"http://api.m.mtime.cn/OnlineLocationCinema/OnlineCinemasByCity.api?locationId=365"
+
+//@"http://api.m.mtime.cn/Cinema/Detail.api?cinemaId=%ld
 
 
 @interface CinemaViewController ()<UITableViewDataSource,UITableViewDelegate,SecondViewControllerDelegate>
 @property(nonatomic,strong)NSMutableArray *dataArray;
+@property(nonatomic,strong)NSMutableArray *oneImageArray;
 @property(nonatomic,strong)UITableView *CinemaTabelView;
-
+@property(nonatomic,strong)NSMutableArray *characteristicArray;
 @property(nonatomic,assign)NSInteger cinemaId;
 @end
 
@@ -38,7 +42,6 @@
 }
 
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor  whiteColor];
@@ -46,15 +49,13 @@
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
-    
+    _characteristicArray = [NSMutableArray array];
 
 
 //-----------------------UItablelView-------------------//
     
     
-    
-    
-    _CinemaTabelView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 375, 667-64) style:UITableViewStylePlain];
+    _CinemaTabelView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64) style:UITableViewStylePlain];
     //_tab.contentSize = CGSizeMake(200, 0);
     
     _CinemaTabelView.delegate = self;
@@ -64,7 +65,8 @@
     [self.view addSubview:_CinemaTabelView];
     
     [self requestData];
-   // [self movierequestData];
+    
+
     
 
 
@@ -74,6 +76,9 @@
 //数据接口
 -(void)requestData
 {
+    
+    
+    
     [NetWorkRequestManager requestWithType:Get URLString:READLIST_URL parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         
         //对专递过来的数据进行解析
@@ -83,10 +88,30 @@
         for (NSDictionary *dic in array) {
             Cinema *send = [[Cinema alloc] init];
             [send setValuesForKeysWithDictionary:dic];
+            
 
             [_dataArray addObject:send];
             
+            NSDictionary *dic2 = [dic objectForKey:@"feature"];
+           // NSLog(@"里面的字典=%@",dic2);
+            
+            // 1.便利所有的key
+            for (NSString *strr in dic2.allKeys) {
+                // 2.根据key 取dic2相应值
+            NSString * value = [dic2 objectForKey:strr];
+                
+                // [strr boolValue];//转换成布尔类型
+                // 3.当布尔值等于1时放进数组里
+                if ([value boolValue]) {
+                
+                [self.characteristicArray addObject:strr];
+                  //  NSLog(@"所有的值=%@",self.characteristicArray);
+  
+                }
+            }
         }
+        
+        
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -104,6 +129,7 @@
 
     
 }
+
 
 
 
@@ -136,19 +162,40 @@
 
     cell.TitleLabel.text = send.cinameName;
     cell.addressLabel.text = send.address;
-    NSString *restric = [NSString stringWithFormat:@"%@",send.minPrice];
-    cell.minPriceLabel.text = restric;
+    
+    NSString *restric = [NSString stringWithFormat:@"￥%@",send.minPrice];
+    if (restric.length>3) {
+        restric = [restric substringToIndex:3];//截取掉下标2之后的字符串
+        cell.minPriceLabel.text = restric;
+        }
     
     NSString * str = send.cinemaId;
-    
     self.cinemaId = [str intValue];
     
+    //小图标
+//    NSString *la1   = [_characteristicArray objectAtIndex:2];
+//    NSString *la2 =  [la1 substringFromIndex:3];
+//    cell.Label1.text = la2;
+//
+//    
+//    NSString *la3 = [_characteristicArray objectAtIndex:3];
+//    NSString *la4 =  [la3 substringFromIndex:3];
+//    cell.Label2.text = la4;
+//    
+//    
+//    NSString *la5 = [_characteristicArray objectAtIndex:4];
+//    NSString *la6 =  [la5 substringFromIndex:3];
+//    cell.Label3.text = la6;
+//    
+//    
+//    NSString *la7 = [_characteristicArray objectAtIndex:1];
+//    if (la7.length>10) {
+//    NSString *la8 =  [la7 substringFromIndex:10];
+//    cell.Label4.text = la8;
+//    }
+  
     
     
-
-    
-//    cell.backgroundColor = [UIColor blackColor];
-//    cell.alpha = 0.5;
     
     return cell;
     
@@ -166,7 +213,6 @@
     sen.delegate = self;
     sen.cinamea = [_dataArray objectAtIndex:indexPath.row];
     sen.cinemaIdtwo = self.cinemaId;
-    
     [self.navigationController pushViewController:sen animated:YES];
 
     

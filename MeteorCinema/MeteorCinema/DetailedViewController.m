@@ -23,6 +23,8 @@
 #import "feature.h"
 #import "Comment.h"
 #import "UIImageView+WebCache.h"
+#import "featureTableViewCell.h"
+#import "CommentTableViewCell.h"
 
 #define ScreenWidth   [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight  [UIScreen mainScreen].bounds.size.height
@@ -91,7 +93,7 @@
 {
     _DetailedViewController = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     _DetailedViewController.contentSize =CGSizeMake(ScreenWidth, ScreenHeight*3);
-    _DetailedViewController.backgroundColor = [UIColor grayColor];
+   // _DetailedViewController.backgroundColor = [UIColor grayColor];
     
     [self.view addSubview:_DetailedViewController];
 }
@@ -107,6 +109,8 @@
         Detailed *send = [[Detailed alloc] init];
         [send setValuesForKeysWithDictionary:diction];
         [self.DetailedDataArray addObject:send];
+        
+        
         //特色设施的解析
         NSDictionary *featureDic = [diction objectForKey:@"feature"];
         feature *feat = [[feature alloc] init];
@@ -201,23 +205,24 @@
         _titiLabel.text = detailed.name;
         //[_titiLabel sizeToFit];
         _titiLabel.font = [UIFont boldSystemFontOfSize:25];//系统25号字加粗效果
-        _titiLabel.textColor = [UIColor whiteColor];
+       // _titiLabel.textColor = [UIColor whiteColor];
         
-        _titiLabel.backgroundColor = [UIColor orangeColor];
+       // _titiLabel.backgroundColor = [UIColor orangeColor];
         [_DetailedViewController addSubview:_titiLabel];
         
         //影厅数量
         _hallCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 130, 50, 35)];
         NSString *hallstr = [NSString stringWithFormat:@"%@",detailed.hallCount];
         _hallCountLabel.text = hallstr;
-        _hallCountLabel.backgroundColor = [UIColor redColor];
+        _hallCountLabel.textAlignment = NSTextAlignmentCenter;
+        //_hallCountLabel.backgroundColor = [UIColor redColor];
         [_DetailedViewController addSubview:_hallCountLabel];
         
         //几个影厅
-        UILabel *hallLabel =[[UILabel alloc] initWithFrame:CGRectMake(220, 130, 80, 35)];
+        UILabel *hallLabel =[[UILabel alloc] initWithFrame:CGRectMake(195, 130, 80, 35)];
         hallLabel.text = @"个影厅";
         
-        hallLabel.backgroundColor = [UIColor greenColor];
+      //  hallLabel.backgroundColor = [UIColor greenColor];
         [_DetailedViewController addSubview:hallLabel];
         
         
@@ -249,24 +254,57 @@
         //Generaltwo.backgroundColor = [UIColor purpleColor];
         [_DetailedViewController addSubview:Generaltwo];
         
+        
+        
+      
+        
+        
         //详细地址
         UIView *addressView = [[UIView alloc] initWithFrame:CGRectMake(0, 220, ScreenWidth, 80)];
-        addressView.backgroundColor = [UIColor purpleColor];
+     //   addressView.backgroundColor = [UIColor purpleColor];
         [_DetailedViewController addSubview:addressView];
         
-        _addressLabel = [[UILabel alloc] initWithFrame:addressView.bounds];
+        
+        UIImageView *addImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 25, 35, 35)];
+        addImage.image = [UIImage imageNamed:@"dizhizhi"];
+      //  addImage.backgroundColor = [UIColor grayColor];
+        [addressView addSubview:addImage];
+        
+        _addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 20, 300, 50)];
         _addressLabel.numberOfLines = 4;
+     //   _addressLabel.backgroundColor = [UIColor blueColor];
         _addressLabel.text = detailed.address;
         [addressView addSubview:_addressLabel];
+        
+//**************************分割线**************************//
+    
+             UIView *Partition = [[UIView alloc] initWithFrame:CGRectMake(70, 310, ScreenWidth, 1)];
+            Partition.alpha = 0.4;
+            Partition.backgroundColor = [UIColor grayColor];
+            [_DetailedViewController addSubview:Partition];
+        
+        UIView *Partition2 = [[UIView alloc] initWithFrame:CGRectMake(0, 380, ScreenWidth, 10)];
+        Partition2.alpha = 0.4;
+        Partition2.backgroundColor = [UIColor grayColor];
+        [_DetailedViewController addSubview:Partition2];
+        
+        
         
         
         //电话号码
         UIView *telLabelView = [[UIView alloc] initWithFrame:CGRectMake(0, 300, ScreenWidth, 80)];
-        telLabelView.backgroundColor = [UIColor cyanColor];
+     //   telLabelView.backgroundColor = [UIColor cyanColor];
         [_DetailedViewController addSubview:telLabelView];
         
-        _telLabel = [[UILabel alloc] initWithFrame:telLabelView.bounds];
+        
+        UIImageView *addImage2 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 30, 35, 35)];
+        addImage2.image = [UIImage imageNamed:@"dianhuahua"];
+      //  addImage2.backgroundColor = [UIColor greenColor];
+        [telLabelView addSubview:addImage2];
+        
+        _telLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 25, 300, 40)];
         _telLabel.font = [UIFont boldSystemFontOfSize:25];//系统25号字加粗效果
+       // _telLabel.backgroundColor = [UIColor redColor];
         _telLabel.text = detailed.tel;
         [telLabelView addSubview:_telLabel];
         
@@ -278,14 +316,14 @@
 //特色模块
 -(void)featureAndTableView
 {
-    _featureTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 380, ScreenWidth, _DetailedViewController.frame.size.height+1500) style:UITableViewStylePlain];
+    _featureTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 400, ScreenWidth, _DetailedViewController.frame.size.height+1500) style:UITableViewStylePlain];
     
     _featureTableView.delegate = self;
     _featureTableView.dataSource = self;
     
     _featureTableView.scrollEnabled = NO;
     
-    _featureTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  //  _featureTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [_DetailedViewController addSubview:_featureTableView];
     
@@ -306,83 +344,136 @@
     
     
 }
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+
 {
+    
     //创建静态标示符
+    
     static NSString *identifier  =@"cell";
-    //根据标示符  从重用池取出一个cell
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    //如果没有获取到标示符  就创建一个新的cell
-    if (cell==nil) {
+    static NSString *identifier2  =@"cell";
+    
+    
+    
+    if (indexPath.section == 0) {
         
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-    }
-    for (feature *feat in self.featureDataArray) {
         
-        if (indexPath.row == 0 && indexPath.section == 0) {
-            cell.textLabel.text = feat.serviceTicketContent;
-            cell.textLabel.numberOfLines = 3;
-        }else if (indexPath.row == 1 && indexPath.section ==0){
-            cell.textLabel.text = feat.featureFoodContent;
-            cell.textLabel.numberOfLines = 3;
-        }else if (indexPath.row == 2 && indexPath.section == 0){
-            cell.textLabel.text = feat.feature3DContent;
-            cell.textLabel.numberOfLines = 3;
-        }else if (indexPath.row == 3 && indexPath.section == 0){
-            cell.textLabel.text = feat.featureLeisureContent;
-            cell.textLabel.numberOfLines = 3;
-        }else if (indexPath.row == 4 && indexPath.section == 0){
-            cell.textLabel.text = feat.featureParkContent;
-            cell.textLabel.numberOfLines = 3;
-        }else if (indexPath.row == 5 && indexPath.section == 0){
-            cell.textLabel.text = feat.featureVIPContent;
-            cell.textLabel.numberOfLines = 3;
-        }else{
-            //        cell.textLabel.text = feat.featureGameContent;
-            //        cell.textLabel.numberOfLines = 3;
+        
+        
+        
+        
+        
+        featureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        
+        //如果没有获取到标示符  就创建一个新的cell
+        
+        if (cell==nil) {
+            
+            
+            
+            cell = [[featureTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+            
         }
+        
+        for (feature *feat in self.featureDataArray) {
+            
+            
+            
+            if (indexPath.row == 0 && indexPath.section == 0) {
+                
+                cell.allfeatureLabel.text = feat.serviceTicketContent;
+                cell.allfeatureImageView.image = [UIImage imageNamed:@"quguan (2)"];
+                cell.allfeatureLabel.numberOfLines = 3;
+                
+            }else if (indexPath.row == 1 && indexPath.section ==0){
+                
+                cell.allfeatureLabel.text = feat.featureFoodContent;
+                cell.allfeatureImageView.image = [UIImage imageNamed:@"canting"];
+                cell.allfeatureLabel.numberOfLines = 3;
+                
+            }else if (indexPath.row == 2 && indexPath.section == 0){
+                
+                cell.allfeatureLabel.text = feat.feature3DContent;
+                cell.allfeatureImageView.image = [UIImage imageNamed:@"3D-1"];
+                cell.allfeatureLabel.numberOfLines = 3;
+                
+            }else if (indexPath.row == 3 && indexPath.section == 0){
+                
+                cell.allfeatureLabel.text = feat.featureLeisureContent;
+                 cell.allfeatureImageView.image = [UIImage imageNamed:@"yingyuanyuan"];
+                cell.allfeatureLabel.numberOfLines = 3;
+                
+            }else if (indexPath.row == 4 && indexPath.section == 0){
+                
+                cell.allfeatureLabel.text = feat.featureParkContent;
+                cell.allfeatureImageView.image = [UIImage imageNamed:@"tingche"];
+                cell.allfeatureLabel.numberOfLines = 3;
+                
+            }else if (indexPath.row == 5 && indexPath.section == 0){
+                
+                cell.allfeatureLabel.text = feat.featureVIPContent;
+                
+                cell.allfeatureLabel.numberOfLines = 3;
+                
+            }else{
+                
+                cell.textLabel.text = @"无";
+    
+                
+            }
+        }
+        
+        return cell;
+        
+        
+    }else  {
+        
+        CommentTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:identifier2];
+        
+        if (cell == nil) {
+            
+            cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier2];
+            
+            }
+        
+        if (indexPath.section == 1) {
+            
+            Comment *comm = [self.CommentDataArray objectAtIndex:indexPath.row];
+            
+            cell.imageView.layer.cornerRadius = 30;
+            
+            cell.imageView.layer.masksToBounds = YES;
+            
+            NSURL *url = [NSURL URLWithString:comm.userImage];
+            
+            [cell.userImageView sd_setImageWithURL:url];
+            
+            
+            
+            cell.nicknameLabel.text = comm.nickname;
+            
+            cell.ccontentLabel.text = comm.content;
+            
+        }
+        
+        
+        
+        return cell;
+        
     }
-    
-    
-    
-    
-    if (indexPath.section == 1) {
-        Comment *comm = [self.CommentDataArray objectAtIndex:indexPath.row];
-        cell.imageView.layer.cornerRadius = 30;
-        cell.imageView.layer.masksToBounds = YES;
-        NSURL *url = [NSURL URLWithString:comm.userImage];
-        [cell.imageView sd_setImageWithURL:url];
-        
-        cell.textLabel.text = comm.nickname;
-        cell.detailTextLabel.text = comm.content;
-        
-        
-    }
-    
-    
-    
-    
-    
-    
-    cell.backgroundColor = [UIColor grayColor];
-    
-    // 右边小箭头
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.accessoryType =UITableViewCellAccessoryDetailButton;
-    
-    
-    return cell;
-    
-    
 }
+
 
 //控制行高
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section==0) {
+        return 60;
+    }else{
+        return 110;
+    }
     
-    return 60;
 }
 
 //点击cell执行的方法
@@ -421,16 +512,18 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 40)];
-    view.backgroundColor = [UIColor greenColor];
+  //  view.backgroundColor = [UIColor greenColor];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 150, 30)];
-    label.backgroundColor = [UIColor yellowColor];
+    //label.backgroundColor = [UIColor yellowColor];
     [view addSubview:label];
     
     if (section == 0) {
         label.text =@"特色设施";
+        label.font = [UIFont boldSystemFontOfSize:20];
     }else if (section == 1){
         label.text = @"评论区";
+        label.font = [UIFont boldSystemFontOfSize:20];
     }else{
         label.text = @"滴滴哒";
         
