@@ -8,8 +8,7 @@
 
 #import "MovieViewController.h"
 
-<<<<<<< HEAD
-=======
+
 #import "LocationViewController.h"
 
 #import "MovieDetailViewController.h"
@@ -18,6 +17,8 @@
 
 #import "VideoListViewController.h"
 
+#import "HotMovieTableViewCell.h"
+
 
 // 前景图片
 #import "FirsView.h"
@@ -25,11 +26,9 @@
 #import "DataBaseUtil.h"
 // 申请数据
 #import "NetWorkRequestManager.h"
->>>>>>> dedbfd923a6a59f2393d301bbfaa042dd5c883b1
 
 
-<<<<<<< HEAD
-=======
+
 // 最受关注 cell
 #import "AttentionMovieTableViewCell.h"
 
@@ -42,15 +41,13 @@
 
 
 #import "TopView.h"
->>>>>>> dedbfd923a6a59f2393d301bbfaa042dd5c883b1
+
 
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
-<<<<<<< HEAD
-@interface MovieViewController ()
-=======
+
 @interface MovieViewController () < LocationViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,AttentionMovieTableViewCellDelegate,FutureTableViewDelegate >
 
 @property (nonatomic, strong) UITableView * tableView;
@@ -65,7 +62,7 @@
 
 // 正在热映和即将上映的转换
 @property (nonatomic, strong) TopView * topView;
->>>>>>> dedbfd923a6a59f2393d301bbfaa042dd5c883b1
+
 
 
 
@@ -74,8 +71,7 @@
 
 @implementation MovieViewController
 
-<<<<<<< HEAD
-=======
+
 #pragma mark- 懒加载
 -(UITableView *)tableView{
     if (!_tableView) {
@@ -118,7 +114,7 @@
     }
     return _topView;
 }
->>>>>>> dedbfd923a6a59f2393d301bbfaa042dd5c883b1
+
 
 
 #pragma mark- 加载视图
@@ -126,9 +122,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-<<<<<<< HEAD
-}
-=======
+
     self.navigationItem.title = @"电影";
     self.status = @"正在热映";
     
@@ -645,7 +639,6 @@
 
 
 
->>>>>>> dedbfd923a6a59f2393d301bbfaa042dd5c883b1
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

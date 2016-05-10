@@ -22,7 +22,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = self.title;
+    self.navigationItem.title = self.itemTitle;
     [self network];
     self.view.backgroundColor = [UIColor whiteColor];
 

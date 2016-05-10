@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ReviewTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *summary;
-@property (weak, nonatomic) IBOutlet UILabel *moviename;
-@property (weak, nonatomic) IBOutlet UIImageView *movieImage;
-@property (weak, nonatomic) IBOutlet UIImageView *userImage;
-@property (weak, nonatomic) IBOutlet UILabel *userRating;
-@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (strong, nonatomic)UILabel *title;
+@property (strong, nonatomic)UILabel *summary;
+@property (strong, nonatomic)UILabel *moviename;
+@property (strong, nonatomic)UIImageView *movieImage;
+@property (strong, nonatomic)UIImageView *userImage;
+@property (strong, nonatomic)UILabel *userRating;
+@property (strong, nonatomic)UILabel *username;
 
 @end

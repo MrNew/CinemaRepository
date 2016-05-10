@@ -10,6 +10,6 @@
 
 @interface DetailViewController : UIViewController
 @property(nonatomic,strong)NSString *detailAPI;
-@property(nonatomic,strong)NSString *title;
+@property(nonatomic,strong)NSString *itemTitle;
 @property(nonatomic,assign)NSInteger identifier;
 @end

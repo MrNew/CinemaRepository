@@ -103,8 +103,7 @@
     }
 }
 
-<<<<<<< HEAD
-=======
+
 -(void)hidenBottomView{
     [self.view sendSubviewToBack:self.tabBarView];
 }
@@ -114,7 +113,6 @@
 }
 
 
->>>>>>> dedbfd923a6a59f2393d301bbfaa042dd5c883b1
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

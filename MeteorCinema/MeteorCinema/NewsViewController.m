@@ -189,7 +189,7 @@
     if (model.image1 == nil) {
     DetailViewController *detailVC = [[DetailViewController alloc]init];
     detailVC.detailAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",model.identifier];
-    detailVC.title = model.title;
+    detailVC.itemTitle = model.title;
         detailVC.identifier = model.identifier;
     [self.navigationController pushViewController:detailVC animated:YES];
 }

@@ -127,13 +127,10 @@
         // 发送通知
         NSNotificationCenter * nc = [NSNotificationCenter defaultCenter];
         
-<<<<<<< HEAD
-        if (placemark.location != nil) {
-       //     [nc postNotificationName:@"kNotificationLocation" object:nil userInfo:@{@"TureLocation":placemark.locality}];
-=======
+
         if (placemark.locality.length > 0) {
             [nc postNotificationName:@"kNotificationLocation" object:nil userInfo:@{@"TureLocation":placemark.locality}];
->>>>>>> dedbfd923a6a59f2393d301bbfaa042dd5c883b1
+
             
         }else{
             [nc postNotificationName:@"kNotificationLocation" object:nil userInfo:@{@"TureLocation":@"广州"}];

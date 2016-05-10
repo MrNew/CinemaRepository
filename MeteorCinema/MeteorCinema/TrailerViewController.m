@@ -112,7 +112,7 @@
     return cell;
     }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    TrailerModel *model = self.dataArray[indexPath.row];
+ //   TrailerModel *model = self.dataArray[indexPath.row];
 
 }
 

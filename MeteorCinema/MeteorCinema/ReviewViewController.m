@@ -125,13 +125,13 @@
     static NSString *identifier = @"cell";
     ReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"ReviewTableViewCell" owner:self options:nil]lastObject];
+        cell = [[ReviewTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     ReviewModel *model = self.dataArray[indexPath.row];
     cell.title.text = model.title;
     cell.summary.text = model.summary;
     [cell.movieImage sd_setImageWithURL:[NSURL URLWithString:model.image]];
-    cell.userImage.layer.cornerRadius = 15.0;
+    cell.userImage.layer.cornerRadius = 12.0;
     cell.userImage.layer.masksToBounds = YES;
     [cell.userImage sd_setImageWithURL:[NSURL URLWithString:model.userImage]];
     cell.username.text = [model.nickname stringByAppendingString:@" - 评"];
