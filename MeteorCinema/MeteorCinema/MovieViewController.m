@@ -446,15 +446,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 #pragma mark- 重设地点
 -(void)selectorLocation:(UIButton *)button{
     
