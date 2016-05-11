@@ -99,7 +99,7 @@
         [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 
     }
-    [button setImage:[UIImage imageNamed:_selectedArray[0]] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:_selectedArray[button.tag - 1]] forState:UIControlStateNormal];
     [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 
     if (button.tag == 1) {
