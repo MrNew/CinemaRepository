@@ -13,13 +13,14 @@
 #import "UIImageView+WebCache.h"
 #import "TrailerTableViewCell.h"
 #import "DetailViewController.h"
+#import "PlayerViewController.h"
 @interface TrailerViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSString *pageIndex;
 }
 @property(nonatomic,strong)UITableView *tab;
 @property(nonatomic,strong)NSMutableArray *dataArray;
-
+@property(nonatomic,strong)NSString *mp4UrlString;
 @end
 
 @implementation TrailerViewController
@@ -65,6 +66,7 @@
     [NetWorkRequestManager requestWithType:Get URLString:BigImage_URL parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSDictionary *dic0 = dic[@"trailer"];
+        self.mp4UrlString = dic0[@"mp4Url"];
         HeadModel *headModel = [[HeadModel alloc]init];
         [headModel setValuesForKeysWithDictionary:dic0];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -80,6 +82,7 @@
             }else{
                 [button setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:headModel.imageUrl]]] forState:UIControlStateNormal];
             }
+            [button addTarget:self action:@selector(doButton:) forControlEvents:UIControlEventTouchUpInside];
             label.text = headModel.title;
             label.textAlignment = NSTextAlignmentCenter;
             label.textColor = [UIColor whiteColor];
@@ -89,6 +92,11 @@
     } error:^(NSError *error) {
         
     }];
+}
+-(void)doButton:(UIButton *)btn{
+    PlayerViewController * player=[[PlayerViewController alloc] init];
+    player.URLString = self.mp4UrlString;
+    [self.navigationController pushViewController:player animated:YES];
 }
 #pragma mark - tableView 代理方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -112,8 +120,10 @@
     return cell;
     }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
- //   TrailerModel *model = self.dataArray[indexPath.row];
-
+ TrailerModel *model = self.dataArray[indexPath.row];
+    PlayerViewController * player=[[PlayerViewController alloc] init];
+    player.URLString = model.url;
+    [self.navigationController pushViewController:player animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

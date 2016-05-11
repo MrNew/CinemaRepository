@@ -17,28 +17,48 @@
 #import "WorldViewController.h"
 #import "ChinaBoxOfficeViewController.h"
 #import "PicScrollViewController.h"
+#import "MJRefresh.h"
 @interface NewsViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    NSString *pageIndex;
+    NSInteger pageIndex;
 }
 @property(nonatomic,strong)UITableView *tab;
 @property(nonatomic,strong)NSMutableArray *dataArray;
-
 @end
 
 @implementation NewsViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadData1];
-    [self loadImage1];
-    self.tab = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight - 64) style:UITableViewStylePlain];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.tab = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight - 64 - 49) style:UITableViewStylePlain];
     [self.view addSubview:self.tab];
     self.tab.delegate = self;
     self.tab.dataSource = self;
-    self.tab.contentInset = UIEdgeInsetsMake(270, 0, 0, 0);
-    [self.tab reloadData];
+    self.tab.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //下拉刷新页面
+    [self.tab addHeaderWithTarget:self action:@selector(headerRefreshing) ];
+    [self.tab headerBeginRefreshing];
+    //上拉加载更多数据
+    [self.tab addFooterWithTarget:self action:@selector(footerRefreshingText)];
 }
+#pragma mark - 下拉刷新
+-(void)headerRefreshing{
+    [self.dataArray removeAllObjects];
+    self.tab.separatorStyle = UITableViewCellSeparatorStyleNone;
 
+    pageIndex = 1;
+    [self loadData1];
+    [self loadImage1];
+    [self.tab reloadData];
+    [self.tab headerEndRefreshing];
+}
+#pragma mark - 上拉加载
+-(void)footerRefreshingText{
+    pageIndex++;
+    [self loadData1];
+    [self loadImage1];
+    [self.tab footerEndRefreshing];
+}
 -(NSMutableArray *)dataArray{
     if (!_dataArray) {
         self.dataArray = [NSMutableArray array];
@@ -47,7 +67,7 @@
 }
 #pragma mark - 第一个 tableview 数据
 -(void)loadData1{
-    [NetWorkRequestManager requestWithType:Get URLString:NewsList_URL parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/News/NewsList.api?pageIndex=%ld",pageIndex] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSArray *array = dic[@"newsList"];
         for (NSDictionary *dic0 in array) {
@@ -65,7 +85,10 @@
             [self.dataArray addObject:newsModel];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
+            self.tab.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+
             [self.tab reloadData];
+            
         });
     } error:^(NSError *error) {
         
@@ -79,7 +102,9 @@
         HeadModel *headModel = [[HeadModel alloc]init];
         [headModel setValuesForKeysWithDictionary:dic0];
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIView *views = [[UIView alloc]initWithFrame:CGRectMake(0, -270, UIScreenWidth, 270)];
+          
+            UIView *views = [[UIView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, 270)];
+            views.backgroundColor = [UIColor whiteColor];
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.frame = CGRectMake(0, 0, UIScreenWidth, 210);
             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 180, UIScreenWidth, 30)];
@@ -111,18 +136,21 @@
             [views addSubview:button];
             [views addSubview:leftButton];
             [views addSubview:rightButton];
-            [self.tab insertSubview:views atIndex:0];
             [button setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:headModel.imageUrl]]] forState:UIControlStateNormal];
             label.text = headModel.title;
             label.textAlignment = NSTextAlignmentCenter;
             label.textColor = [UIColor whiteColor];
             label.font = [UIFont boldSystemFontOfSize:16];
+            self.tab.tableHeaderView = views;
+            [self.tab reloadData];
+
         });
         
     } error:^(NSError *error) {
         
     }];
 }
+
 #pragma mark - doBtn 执行方法
 -(void)doBtn:(UIButton *)btn{
     DetailViewController *detailVC = [[DetailViewController alloc]init];

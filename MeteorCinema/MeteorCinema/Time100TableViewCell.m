@@ -38,6 +38,7 @@
     self.rank.frame = CGRectMake(5, 15, 20, 20);
     self.rank.layer.cornerRadius = 10;
     self.rank.layer.masksToBounds = YES;
+    self.rank.font = [UIFont systemFontOfSize:12];
     self.rank.textColor = [UIColor whiteColor];
     self.rank.backgroundColor = [UIColor colorWithRed:(arc4random()%256)/255.0 green:(arc4random()%256)/255.0 blue:(arc4random()%256)/255.0 alpha:1];
     self.rank.textAlignment = NSTextAlignmentCenter;

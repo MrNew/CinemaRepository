@@ -16,9 +16,10 @@
 #import "DetailViewController.h"
 #import "TimeTop100ViewController.h"
 #import "WorldViewController.h"
+#import "MJRefresh.h"
 @interface TopListViewController()<UITableViewDataSource,UITableViewDelegate>
 {
-    NSString *pageIndex;
+    NSInteger pageIndex;
 }
 @property(nonatomic,strong)UITableView *tab;
 @property(nonatomic,strong)NSMutableArray *dataArray;
@@ -28,15 +29,38 @@
 @implementation TopListViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadData];
-    [self loadImage];
-    self.tab = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight - 64) style:UITableViewStylePlain];
+    self.tab = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight - 64 - 49) style:UITableViewStylePlain];
     [self.view addSubview:self.tab];
     self.tab.delegate = self;
     self.tab.dataSource = self;
-    self.tab.contentInset = UIEdgeInsetsMake(300, 0, 0, 0);
     [self.tab reloadData];
+    
+    self.tab.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //下拉刷新页面
+    [self.tab addHeaderWithTarget:self action:@selector(headerRefreshing) ];
+    [self.tab headerBeginRefreshing];
+    //上拉加载更多数据
+    [self.tab addFooterWithTarget:self action:@selector(footerRefreshingText)];
 }
+#pragma mark - 下拉刷新
+-(void)headerRefreshing{
+    [self.dataArray removeAllObjects];
+    self.tab.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    pageIndex = 1;
+    [self loadData];
+    [self loadImage];
+    [self.tab reloadData];
+    [self.tab headerEndRefreshing];
+}
+#pragma mark - 上拉加载
+-(void)footerRefreshingText{
+    pageIndex++;
+    [self loadData];
+    [self loadImage];
+    [self.tab footerEndRefreshing];
+}
+
 
 -(NSMutableArray *)dataArray{
     if (!_dataArray) {
@@ -47,7 +71,7 @@
 
 #pragma mark - 第一个 tableview 数据
 -(void)loadData{
-    [NetWorkRequestManager requestWithType:Get URLString:TopList_URL parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/TopList/TopListOfAll.api?pageIndex=%ld",pageIndex] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSArray *array = dic[@"topLists"];
         for (NSDictionary *dic0 in array) {
@@ -71,7 +95,7 @@
         HeadModel *headModel = [[HeadModel alloc]init];
         [headModel setValuesForKeysWithDictionary:dic0];
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIView *views = [[UIView alloc]initWithFrame:CGRectMake(0, -300, UIScreenWidth, 300)];
+            UIView *views = [[UIView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, 300)];
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.frame = CGRectMake(0, 0, UIScreenWidth, 210);
             [button addTarget:self action:@selector(doBigBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -107,7 +131,7 @@
             [views addSubview:leftButton];
             [views addSubview:middleButton];
             [views addSubview:rightButton];
-            [self.tab insertSubview:views atIndex:0];
+            self.tab.tableHeaderView = views;
             [button setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:headModel.imageUrl]]] forState:UIControlStateNormal];
             label.text = headModel.title;
             label.textAlignment = NSTextAlignmentCenter;
