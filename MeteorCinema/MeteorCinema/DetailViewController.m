@@ -8,7 +8,10 @@
 
 #import "DetailViewController.h"
 #import "NetWorkRequestManager.h"
-@interface DetailViewController ()<UIWebViewDelegate>
+@interface DetailViewController ()<UIWebViewDelegate,UIScrollViewDelegate>
+{
+   NSInteger isShowStatus;
+}
 @property(nonatomic,strong)UIWebView *webView;
 @property(nonatomic,strong)NSString *url;
 @end
@@ -32,7 +35,7 @@
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 dispatch_async(dispatch_get_main_queue(), ^{
     self.url = dic[@"url"];
-    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight - 64)];
+    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight )];
 //    self.webView.delegate = self;
     [self.view addSubview:self.webView];
 //    //3.1
@@ -81,13 +84,39 @@ dispatch_async(dispatch_get_main_queue(), ^{
     [backView addSubview:timeLabel];
     [backView addSubview:titleLabel];
     [self.webView.scrollView insertSubview:backView atIndex:0];
-    
+    self.webView.scrollView.delegate = self;
     
 });
     } error:^(NSError *error) {
         
     }];
 }
+#pragma mark - 向上滚动隐藏导航的方法
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat offset = scrollView.contentOffset.y;
+    if (offset > 0) {
+            [self.navigationController setNavigationBarHidden:YES animated:YES];
+        isShowStatus = YES;
+        [self setNeedsStatusBarAppearanceUpdate];
+
+    }
+    else if (offset < 0){
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+        isShowStatus = NO;
+        [self setNeedsStatusBarAppearanceUpdate];
+
+    }
+}
+//隐藏状态栏的方法
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+- (BOOL)prefersStatusBarHidden
+{
+    return isShowStatus;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
