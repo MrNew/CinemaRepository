@@ -12,6 +12,8 @@
 
 #import "UIImage+ImageEffects.h"
 
+#import "HotMovieCollectionViewController.h"
+
 @interface MySelfViewControllrt () < UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate >
 
 @property (nonatomic, strong) UITableView * tableView;
@@ -22,6 +24,11 @@
 @property (nonatomic, strong) UILabel * headLabel;
 
 //@property (nonatomic, strong) NSMutableArray * array;
+
+
+
+// 意见反馈视图
+@property (nonatomic, strong) UIView * opinion;
 
 
 @end
@@ -257,18 +264,27 @@
     if (indexPath.section == 0) {
         
         switch (indexPath.row) {
-            case 0:
+            case 0:{
+                
+                // 我的电影
+                HotMovieCollectionViewController * hotVC = [[HotMovieCollectionViewController alloc] init];
+                
+                UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:hotVC];
+                
+                [self presentViewController:nav animated:YES completion:^{
+                    
+                }];
                 
                 
                 
                 
                 
                 
-                
+            }
                 break;
             case 1:
                 
-                
+                // 我的影院
                 
                 
                 
@@ -276,7 +292,7 @@
                 break;
             case 2:
                 
-                
+                // 我的收藏
                 
                 
                 break;
@@ -290,12 +306,52 @@
     }else{
         
         switch (indexPath.row) {
-            case 0:
+            case 0:{
+                
+                self.tableView.userInteractionEnabled = NO;
+                
+                
+                
+                self.opinion = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width / 2, self.view.bounds.size.height / 2)];
+                self.opinion.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2.5);
+                self.opinion.backgroundColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1];
+                 [self.view addSubview:self.opinion];
+                self.opinion.layer.cornerRadius = 5;
+                self.opinion.layer.masksToBounds = YES;
+                
+                UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.opinion.frame.size.width, self.opinion.frame.size.height / 8)];
+                label.text = @"意见反馈";
+                label.textAlignment = NSTextAlignmentCenter;
+                [self.opinion addSubview:label];
+                
+                
+                UITextView * textView = [[UITextView alloc] initWithFrame:CGRectMake(0, self.opinion.frame.size.height / 8, self.opinion.frame.size.width, self.opinion.frame.size.height / 8 * 6)];
+                [self.opinion addSubview:textView];
+                textView.backgroundColor = [UIColor grayColor];
+                textView.text = @"为了更好的服务各位用户，有以下想法的，可以在愉快的使用本软件。\n\n  一、对软件存在的漏洞,不符合用户使用的设置、请及时提出批评指正。\n  二、对本软件的各项发展提出宝贵的建议。\n  三、对本软件的质量、使用感受进行评价。\n\n  此外，在您发表您的各种观点的同时，请遵守国家、政府的各项法律法规，文明用语。\n\n  本软件将定期整理集中用户的意见，及时改动软件，以让用户拥有个好的使用感受.\n\n\n  联系方式:13288602793@163.com(小陈)";
+        
+                textView.editable = NO;
+                
+                UIButton * leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                leftButton.frame = CGRectMake(0, self.opinion.frame.size.height / 8 * 7, self.opinion.frame.size.width / 2, self.opinion.frame.size.height / 8);
+                [self.opinion addSubview:leftButton];
+                [leftButton setTitle:@"取消" forState:UIControlStateNormal];
+                [leftButton addTarget:self action:@selector(dismissButton:) forControlEvents:UIControlEventTouchUpInside];
+                
+                UIButton * rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                rightButton.frame = CGRectMake(self.opinion.frame.size.width / 2, self.opinion.frame.size.height / 8 * 7, self.opinion.frame.size.width / 2, self.opinion.frame.size.height / 8);
+                [self.opinion addSubview:rightButton];
+                [rightButton setTitle:@"确定" forState:UIControlStateNormal];
+                [rightButton addTarget:self action:@selector(dismissButton:) forControlEvents:UIControlEventTouchUpInside];
                 
                 
                 
                 
                 
+                
+               
+                
+            }
                 break;
             case 1:
                 
@@ -319,13 +375,15 @@
     
     
     
-    
-    
-    
 }
 
 
-
+-(void)dismissButton:(UIButton *)button{
+    
+    [self.opinion removeFromSuperview];
+    self.tableView.userInteractionEnabled = YES;
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

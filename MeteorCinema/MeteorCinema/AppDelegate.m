@@ -14,6 +14,8 @@
 
 #import "NavigationViewController.h"
 
+#import "MovieCollectionDataBaseUtil.h"
+
 @interface AppDelegate () < CLLocationManagerDelegate >
 // 实现 GPS 搜索位置
 @property (nonatomic, strong) CLLocationManager * locationManager;
@@ -36,6 +38,10 @@
     [self.window makeKeyAndVisible];
     
     self.window.rootViewController = [[TabBarViewController alloc] init];
+    
+    
+    // 建数据库
+    [[MovieCollectionDataBaseUtil share] createTableWithName:@"movie"];
     
     
     

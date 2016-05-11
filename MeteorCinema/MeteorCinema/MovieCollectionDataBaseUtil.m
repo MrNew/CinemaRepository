@@ -84,7 +84,7 @@
 
 -(BOOL)deleteTableWithName:(NSString *)name WithIdentifier:(NSInteger)identifier{
     if ([self.db open]) {
-        NSString * sql = [NSString stringWithFormat:@"delete from %@ where title = '%ld'",name,identifier];
+        NSString * sql = [NSString stringWithFormat:@"delete from %@ where identifier = '%ld'",name,identifier];
         BOOL result = [self.db executeUpdate:sql];
         if (result) {
             [self.db close];
@@ -135,7 +135,7 @@
             hot.title = [set stringForColumn:@"title"];
             hot.score = [set stringForColumn:@"score"];
             hot.img = [set stringForColumn:@"img"];
-            hot.title = [set stringForColumn:@"time"];
+            hot.time = [set stringForColumn:@"time"];
             hot.player = [set stringForColumn:@"player"];
             hot.commonSpecial = [set stringForColumn:@"commonSpecial"];
             hot.sumtime = [set stringForColumn:@"sumtime"];

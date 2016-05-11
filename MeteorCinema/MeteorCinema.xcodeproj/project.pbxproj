@@ -123,6 +123,13 @@
 		3FFAB5F91CE2D75500D37BD3 /* searchMovie.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFAB5F61CE2D75500D37BD3 /* searchMovie.png */; settings = {ASSET_TAGS = (); }; };
 		3FFAB5FA1CE2D75500D37BD3 /* searchPersent.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFAB5F71CE2D75500D37BD3 /* searchPersent.png */; settings = {ASSET_TAGS = (); }; };
 		3FFAB5FF1CE2DA2D00D37BD3 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFAB5FE1CE2D9E900D37BD3 /* UIImage+ImageEffects.m */; };
+		3FFAB6011CE305EE00D37BD3 /* yishoucang.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFAB6001CE305EE00D37BD3 /* yishoucang.png */; settings = {ASSET_TAGS = (); }; };
+		3FFAB6041CE3109A00D37BD3 /* HotMovieCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFAB6031CE3109A00D37BD3 /* HotMovieCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3FFAB6111CE31BAB00D37BD3 /* HotMovieCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFAB6101CE31BAB00D37BD3 /* HotMovieCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		3FFAB6131CE32D7100D37BD3 /* returnBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFAB6121CE32D7100D37BD3 /* returnBack.png */; settings = {ASSET_TAGS = (); }; };
+		3FFAB6161CE3551E00D37BD3 /* HeadMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFAB6151CE3551E00D37BD3 /* HeadMovieModel.m */; settings = {ASSET_TAGS = (); }; };
+		3FFAB61B1CE3568000D37BD3 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFAB6181CE3568000D37BD3 /* placeholder.png */; settings = {ASSET_TAGS = (); }; };
+		3FFAB61C1CE3568000D37BD3 /* XRCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFAB61A1CE3568000D37BD3 /* XRCarouselView.m */; settings = {ASSET_TAGS = (); }; };
 		609C279F1CD9ABE70024A610 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 609C277F1CD9ABE70024A610 /* MKAnnotationView+WebCache.m */; };
 		609C27A01CD9ABE70024A610 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 609C27811CD9ABE70024A610 /* NSData+ImageContentType.m */; };
 		609C27A11CD9ABE70024A610 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 609C27831CD9ABE70024A610 /* SDImageCache.m */; };
@@ -216,7 +223,6 @@
 		3F2B58F51CE1FB880038750D /* myHead.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = myHead.jpg; sourceTree = "<group>"; };
 		3F2B58FC1CE1FF890038750D /* myHeadIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myHeadIcon.png; sourceTree = "<group>"; };
 		3F2B58FE1CE2077D0038750D /* changeHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = changeHead.png; sourceTree = "<group>"; };
-		3F2B59001CE20E9E0038750D /* yishoucang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yishoucang.png; sourceTree = "<group>"; };
 		3F477A031CDF2B6D00E9C767 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
 		3F477A041CDF2B6D00E9C767 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
 		3F4C45151CD8D7F20006EB06 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -388,6 +394,17 @@
 		3FFAB5F71CE2D75500D37BD3 /* searchPersent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchPersent.png; sourceTree = "<group>"; };
 		3FFAB5FB1CE2D99100D37BD3 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		3FFAB5FE1CE2D9E900D37BD3 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		3FFAB6001CE305EE00D37BD3 /* yishoucang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yishoucang.png; sourceTree = "<group>"; };
+		3FFAB6021CE3109A00D37BD3 /* HotMovieCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotMovieCollectionViewController.h; sourceTree = "<group>"; };
+		3FFAB6031CE3109A00D37BD3 /* HotMovieCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotMovieCollectionViewController.m; sourceTree = "<group>"; };
+		3FFAB60F1CE31BAB00D37BD3 /* HotMovieCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotMovieCollectionViewCell.h; sourceTree = "<group>"; };
+		3FFAB6101CE31BAB00D37BD3 /* HotMovieCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotMovieCollectionViewCell.m; sourceTree = "<group>"; };
+		3FFAB6121CE32D7100D37BD3 /* returnBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = returnBack.png; sourceTree = "<group>"; };
+		3FFAB6141CE3551E00D37BD3 /* HeadMovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadMovieModel.h; sourceTree = "<group>"; };
+		3FFAB6151CE3551E00D37BD3 /* HeadMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadMovieModel.m; sourceTree = "<group>"; };
+		3FFAB6181CE3568000D37BD3 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		3FFAB6191CE3568000D37BD3 /* XRCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XRCarouselView.h; sourceTree = "<group>"; };
+		3FFAB61A1CE3568000D37BD3 /* XRCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XRCarouselView.m; sourceTree = "<group>"; };
 		609C277E1CD9ABE70024A610 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		609C277F1CD9ABE70024A610 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		609C27801CD9ABE70024A610 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -578,6 +595,7 @@
 		3F4C453B1CD8DB2E0006EB06 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				3FFAB6171CE3568000D37BD3 /* XRCarouselView */,
 				3FFAB5FE1CE2D9E900D37BD3 /* UIImage+ImageEffects.m */,
 				3FFAB5FB1CE2D99100D37BD3 /* UIImage+ImageEffects.h */,
 				60D41DB71CE17B80003513AB /* MJRefresh */,
@@ -754,7 +772,7 @@
 				3FABF11C1CDF3EC5008AAEF3 /* headHolder.png */,
 				3F239A971CDDE37100E8C1D1 /* play1.png */,
 				3F239A951CDDE32A00E8C1D1 /* play.png */,
-				3F2B59001CE20E9E0038750D /* yishoucang.png */,
+				3FFAB6001CE305EE00D37BD3 /* yishoucang.png */,
 				3FD5B0481CE21702000EA3F5 /* MovieCollectionDataBaseUtil.h */,
 				3FD5B0491CE21702000EA3F5 /* MovieCollectionDataBaseUtil.m */,
 				3FB941DB1CD37CC2009BD81F /* Controller */,
@@ -799,6 +817,7 @@
 				3F2B58FC1CE1FF890038750D /* myHeadIcon.png */,
 				3F2B58F51CE1FB880038750D /* myHead.jpg */,
 				3F2B58FE1CE2077D0038750D /* changeHead.png */,
+				3FFAB6121CE32D7100D37BD3 /* returnBack.png */,
 				3FB941E41CD37D29009BD81F /* Controller */,
 				3FB941E31CD37D20009BD81F /* vier */,
 				3FB941E21CD37D18009BD81F /* model */,
@@ -817,6 +836,8 @@
 				3FB926651CDD8024001D5573 /* ConnectedModel.m */,
 				3F477A031CDF2B6D00E9C767 /* Company.h */,
 				3F477A041CDF2B6D00E9C767 /* Company.m */,
+				3FFAB6141CE3551E00D37BD3 /* HeadMovieModel.h */,
+				3FFAB6151CE3551E00D37BD3 /* HeadMovieModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -982,6 +1003,8 @@
 			children = (
 				3F2B58EC1CE1E6D60038750D /* BottomView.h */,
 				3F2B58ED1CE1E6D60038750D /* BottomView.m */,
+				3FFAB60F1CE31BAB00D37BD3 /* HotMovieCollectionViewCell.h */,
+				3FFAB6101CE31BAB00D37BD3 /* HotMovieCollectionViewCell.m */,
 			);
 			name = vier;
 			sourceTree = "<group>";
@@ -991,6 +1014,8 @@
 			children = (
 				3FB941D61CD37CA8009BD81F /* MySelfViewControllrt.h */,
 				3FB941D71CD37CA8009BD81F /* MySelfViewControllrt.m */,
+				3FFAB6021CE3109A00D37BD3 /* HotMovieCollectionViewController.h */,
+				3FFAB6031CE3109A00D37BD3 /* HotMovieCollectionViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1031,6 +1056,16 @@
 				3FB941FA1CD39597009BD81F /* faB.png */,
 			);
 			name = image;
+			sourceTree = "<group>";
+		};
+		3FFAB6171CE3568000D37BD3 /* XRCarouselView */ = {
+			isa = PBXGroup;
+			children = (
+				3FFAB6181CE3568000D37BD3 /* placeholder.png */,
+				3FFAB6191CE3568000D37BD3 /* XRCarouselView.h */,
+				3FFAB61A1CE3568000D37BD3 /* XRCarouselView.m */,
+			);
+			path = XRCarouselView;
 			sourceTree = "<group>";
 		};
 		609C277D1CD9ABE70024A610 /* SDWebImage */ = {
@@ -1254,6 +1289,7 @@
 				3F239A961CDDE32A00E8C1D1 /* play.png in Resources */,
 				60AE13951CE1D4A30042FB2C /* 电影(2).png in Resources */,
 				60AE13971CE1D4A30042FB2C /* 发现_).png in Resources */,
+				3FFAB6131CE32D7100D37BD3 /* returnBack.png in Resources */,
 				3FB941F41CD393B8009BD81F /* yingyuanB.png in Resources */,
 				3F696E4F1CE220DA004A358B /* 电影 (1).png in Resources */,
 				3F7D38C31CDE234F00E4700D /* LMPlayer.bundle in Resources */,
@@ -1293,6 +1329,7 @@
 				60D41DB01CE0E7BA003513AB /* 11.jpg in Resources */,
 				3FFAB5FA1CE2D75500D37BD3 /* searchPersent.png in Resources */,
 				3F696E641CE220DA004A358B /* WIFI (1).png in Resources */,
+				3FFAB6011CE305EE00D37BD3 /* yishoucang.png in Resources */,
 				3F696E571CE220DA004A358B /* 我的 (3).png in Resources */,
 				3F696E5D1CE220DA004A358B /* huilv_影院.png in Resources */,
 				3FA0A5A71CD9A029004B52CB /* q1.jpg in Resources */,
@@ -1311,6 +1348,7 @@
 				3F696E591CE220DA004A358B /* dianhuahua.png in Resources */,
 				609C27BE1CD9CC3D0024A610 /* NewsTableViewCell.xib in Resources */,
 				3F2B58FF1CE2077D0038750D /* changeHead.png in Resources */,
+				3FFAB61B1CE3568000D37BD3 /* placeholder.png in Resources */,
 				3F2B58FD1CE1FF890038750D /* myHeadIcon.png in Resources */,
 				3FB941F01CD393B8009BD81F /* wodeB.png in Resources */,
 			);
@@ -1380,8 +1418,10 @@
 				609C27AD1CD9ABE70024A610 /* UIImageView+WebCache.m in Sources */,
 				60D41DA81CE0D872003513AB /* LocationView.m in Sources */,
 				60AE139E1CE20B790042FB2C /* Tool.m in Sources */,
+				3FFAB6041CE3109A00D37BD3 /* HotMovieCollectionViewController.m in Sources */,
 				3FB941D81CD37CA8009BD81F /* MySelfViewControllrt.m in Sources */,
 				3F927CB91CDAE4B10058F9A0 /* HotMovieModel.m in Sources */,
+				3FFAB61C1CE3568000D37BD3 /* XRCarouselView.m in Sources */,
 				3F7D38C51CDE234F00E4700D /* LMVideoPlayerOperationView.m in Sources */,
 				3FECDCC41CDF2FFE00E77616 /* MoreDetailViewController.m in Sources */,
 				60D41DA01CE0D771003513AB /* PicModel.m in Sources */,
@@ -1395,6 +1435,7 @@
 				609C27F51CDB49700024A610 /* TopListModel.m in Sources */,
 				609C27A41CD9ABE70024A610 /* SDWebImageDownloader.m in Sources */,
 				3F4C45231CD8D7F20006EB06 /* FMDatabaseAdditions.m in Sources */,
+				3FFAB6161CE3551E00D37BD3 /* HeadMovieModel.m in Sources */,
 				609C27D71CDAD9E70024A610 /* DetailViewController.m in Sources */,
 				609C28021CDB69880024A610 /* ReviewTableViewCell.m in Sources */,
 				60D41D9F1CE0D771003513AB /* LocationViewController.m in Sources */,
@@ -1423,6 +1464,7 @@
 				3F696E301CE22071004A358B /* CommentTableViewCell.m in Sources */,
 				3F927CCE1CDB64470058F9A0 /* AttentionMovieTableViewCell.m in Sources */,
 				3FB941CC1CD37C41009BD81F /* NavigationViewController.m in Sources */,
+				3FFAB6111CE31BAB00D37BD3 /* HotMovieCollectionViewCell.m in Sources */,
 				3FC5FF391CE07A5C00D340D2 /* Comment.m in Sources */,
 				3FA0A59B1CD99D23004B52CB /* Cinema.m in Sources */,
 				609C27A71CD9ABE70024A610 /* SDWebImagePrefetcher.m in Sources */,

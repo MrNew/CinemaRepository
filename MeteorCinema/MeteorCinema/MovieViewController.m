@@ -42,7 +42,11 @@
 #import "TopView.h"
 
 
-#import "MovieCollectionDataBaseUtil.h"
+
+//#表头 轮播图
+#import "HeadMovieModel.h"
+
+#import "XRCarouselView.h"
 
 
 #define Width [UIScreen mainScreen].bounds.size.width
@@ -50,7 +54,11 @@
 #define Height [UIScreen mainScreen].bounds.size.height
 
 
-@interface MovieViewController () < LocationViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,AttentionMovieTableViewCellDelegate,FutureTableViewDelegate >
+@interface MovieViewController () < LocationViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,AttentionMovieTableViewCellDelegate,FutureTableViewDelegate,UIScrollViewDelegate >
+
+
+
+@property (nonatomic, strong) UIButton * topButton;
 
 @property (nonatomic, strong) UITableView * tableView;
 
@@ -61,6 +69,9 @@
 @property (nonatomic, strong) NSMutableArray * attentionArray;
 // 即将上映电影数组 (即将上映)
 @property (nonatomic, strong) NSMutableArray * futureArray;
+
+@property (nonatomic, strong) NSMutableArray * headArray;
+
 
 // 正在热映和即将上映的转换
 @property (nonatomic, strong) TopView * topView;
@@ -77,7 +88,7 @@
 #pragma mark- 懒加载
 -(UITableView *)tableView{
     if (!_tableView) {
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, Height / 15, Width, Height - 64 - Height / 15) style:UITableViewStylePlain];
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Width, Height - 64 - Height / 15) style:UITableViewStylePlain];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         [self setExtraCellLineHidden:self.tableView];
@@ -110,9 +121,16 @@
     return _futureArray;
 }
 
+-(NSMutableArray *)headArray{
+    if (!_headArray) {
+        self.headArray = [NSMutableArray array];
+    }
+    return _headArray;
+}
+
 -(UIView *)topView{
     if (!_topView) {
-        self.topView = [[TopView alloc] initWithFrame:CGRectMake(0, 0, Width, Height / 15)];
+        self.topView = [[TopView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height / 3, Width, Height / 15)];
         self.topView.backgroundColor = [UIColor whiteColor];
     }
     return _topView;
@@ -127,10 +145,11 @@
     
     NSLog(@"%@",NSHomeDirectory());
     
-    [[MovieCollectionDataBaseUtil share] createTableWithName:@"movie"];
     
+    self.topButton = [UIButton buttonWithType:UIButtonTypeCustom];
 
-    self.navigationItem.title = @"电影";
+    [self.topButton setTitle:@"电影" forState:UIControlStateNormal];
+    self.navigationItem.titleView = self.topButton;
     self.status = @"正在热映";
     
     
@@ -144,6 +163,8 @@
     // 判断是否进入选地点的页面
     if (locationName.length > 0) {
         self.navigationItem.leftBarButtonItem.title = locationName;
+        
+   
     }else{
         LocationViewController * location = [[LocationViewController alloc] init];
         
@@ -176,27 +197,36 @@
     }
     
     
-    //************************ 加载数据 *********************//
+//    //************************ 加载数据 *********************//
     //  地点 name
     //  locationName
     NSInteger locationID = [[NSUserDefaults standardUserDefaults] integerForKey:@"defaultLocationID"];
     
+#pragma mark- 加载表头图片
+    [self requestHeadData];
+    
     // 申请
-    [self requestHotData:locationID];
-    [self requestFutureData:locationID];
+    if (locationName == nil) {
+        [self requestFutureData:356];
+        [self requestFutureData:356];
+    
+    }else{
+        [self requestHotData:locationID];
+        [self requestFutureData:locationID];
+    }
     
     
     // 添加tableView
     [self.view addSubview:self.tableView];
 
     
-    [self.view addSubview:self.topView];
-    self.topView.selectButtonTitleColor = [UIColor colorWithRed:90/255.0 green:144/255.0 blue:206/255.0 alpha:1];
-    [self.topView setTitleButton:@[@"正在热映",@"即将上映"]];
-    for (UIButton * button in self.topView.buttonArray) {
-        [button addTarget:self action:@selector(reflashData:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    [self.topView setTitleButtonColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
+//    [self.view addSubview:self.topView];
+//    self.topView.selectButtonTitleColor = [UIColor colorWithRed:90/255.0 green:144/255.0 blue:206/255.0 alpha:1];
+//    [self.topView setTitleButton:@[@"正在热映",@"即将上映"]];
+//    for (UIButton * button in self.topView.buttonArray) {
+//        [button addTarget:self action:@selector(reflashData:) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//    [self.topView setTitleButtonColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
     
 
     
@@ -270,7 +300,7 @@
         
         HotMovieModel * hot = [self.hotArray objectAtIndex:indexPath.row];
         cell.hot = hot;
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
         
@@ -286,7 +316,7 @@
             [cell setDetailView:self.attentionArray];
             
             cell.delegate = self;
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }else{
             
@@ -299,7 +329,7 @@
             cell.future = future;
             
             cell.delegate = self;
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
             
         }
@@ -316,7 +346,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if ([self.status isEqualToString:@"正在热映"]) {
        
-        return 0;
+        return 10;
         
     }else{
         return 50;
@@ -326,7 +356,7 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if ([self.status isEqualToString:@"正在热映"]) {
-        return nil;
+        return @"";
         
     }else{
         if (section == 0) {
@@ -378,9 +408,118 @@
     
 }
 
+#pragma mark- 观察tableView 移动的情况
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    
+
+//    NSLog(@"%f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y > 1000) {
+        self.topButton.userInteractionEnabled = YES;
+        [self.topButton setTitle:@"点击返回顶部" forState:UIControlStateNormal];
+        [self.topButton addTarget:self action:@selector(topButtonClik:) forControlEvents:UIControlEventTouchUpInside];
+        [self.topButton sizeToFit];
+        
+        
+    }else{
+        [self.topButton setTitle:@"电影" forState:UIControlStateNormal];
+        self.topButton.userInteractionEnabled = NO;
+    }
+    
+    
+    
+}
+
+-(void)topButtonClik:(UIButton *)button{
+    
+
+    
+    [self.tableView setContentOffset:CGPointMake(0,0) animated:YES];
+}
+
+
+
 
 
 #pragma mark- 申请数据
+
+//http://cms.phonemovie.cnlive.com/api/?functionId=pageData&params=%7B%22appid%22%3A%22movie%22%2C%22plat%22%3A%22a%22%2C%22pageType%22%3A%22index%22%2C%22pageUUID%22%3A%22fe5cd895-9e5e-11e5-9eb6-c7d8a7a18cc4%22%2C%22version%22%3A509%7D
+// 申请表头信息
+-(void)requestHeadData{
+    
+    [self.headArray removeAllObjects];
+    
+    [NetWorkRequestManager requestWithType:Get URLString:@"http://cms.phonemovie.cnlive.com/api/?functionId=pageData&params={\"appid\":\"movie\",\"plat\":\"a\",\"pageType\":\"index\",\"pageUUID\":\"fe5cd895-9e5e-11e5-9eb6-c7d8a7a18cc4\",\"version\":509}" parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+       
+        NSDictionary * dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//        NSLog(@"%@",dataDic);
+        NSArray * array = [dataDic objectForKey:@"banner"];
+//        NSLog(@"%@",array);
+        for (NSDictionary * dic in array) {
+            HeadMovieModel * head = [[HeadMovieModel alloc] init];
+            [head setValuesForKeysWithDictionary:dic];
+            [self.headArray addObject:head];
+            
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSMutableArray * arrayImage = [NSMutableArray array];
+            NSMutableArray * arrayDescribe = [NSMutableArray array];
+            for (HeadMovieModel * head in self.headArray) {
+                [arrayImage addObject:head.img];
+                [arrayDescribe addObject:head.title];
+            }
+            
+            UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height / 3 + self.view.bounds.size.height / 15)];
+            
+            
+            XRCarouselView * carousel = [XRCarouselView carouselViewWithImageArray:arrayImage describeArray:arrayDescribe];
+            carousel.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height / 3);
+            
+            [backView addSubview:carousel];
+            
+            
+            // 字体颜色
+            self.topView.selectButtonTitleColor = [UIColor colorWithRed:90/255.0 green:144/255.0 blue:206/255.0 alpha:1];
+            
+            
+            [self.topView setTitleButton:@[@"正在热映",@"即将上映"]];
+            for (UIButton * button in self.topView.buttonArray) {
+                [button addTarget:self action:@selector(reflashData:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            // 背景颜色
+            [self.topView setTitleButtonColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
+        
+            [backView addSubview:self.topView];
+            
+            
+            self.tableView.tableHeaderView = backView;
+            
+            
+            
+            
+            
+            
+            
+        });
+        
+        
+        
+    } error:^(NSError *error) {
+        
+    }];
+}
+
+
+
+
+
+
+
+
+
+
 
 // 申请 热映数据
 // 申请 数据 (附上 Locationid 参数)
@@ -648,6 +787,8 @@
     
     
 }
+
+
 
 
 

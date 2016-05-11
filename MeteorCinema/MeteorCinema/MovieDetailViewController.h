@@ -25,4 +25,7 @@
 @property (nonatomic, strong) FutureMovieModel * future;
 
 
+@property (nonatomic, strong) UIScrollView * scrollView;
+
+
 @end
