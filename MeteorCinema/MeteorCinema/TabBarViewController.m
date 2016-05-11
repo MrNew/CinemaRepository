@@ -13,10 +13,6 @@
 #import "MySelfViewControllrt.h"
 #import "NavigationViewController.h"
 
-
-#define UIScreenWidth [UIScreen mainScreen].bounds.size.width
-#define UIScreenHeight [UIScreen mainScreen].bounds.size.height
-
 @interface TabBarViewController ()
 
 @property(nonatomic,strong)UIView *tabBarView;
@@ -48,7 +44,7 @@
     [[UINavigationBar appearance] setTranslucent:NO];
     
     //统一设置导航栏颜色
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:237/255.0 green:17/255.0 blue:74/255.0 alpha:1]];
+    [[UINavigationBar appearance] setBarTintColor: [UIColor colorWithRed:237/255.0 green:17/255.0 blue:74/255.0 alpha:1]];
 
     
 }
@@ -72,7 +68,7 @@
         
         
          _button = [UIButton buttonWithType:UIButtonTypeCustom];
-                _button.frame = CGRectMake((UIScreenWidth/4-30)/2+(i*UIScreenWidth/4), (49-30)/2, 30, 30);
+        
         _button.frame = CGRectMake((UIScreenWidth/4-93)+(i*UIScreenWidth/4), 0,92,49);
         _button.tag = i+1;//self.view.tag默认是0,所以一般不从0开始
         //   button.backgroundColor = [UIColor greenColor];
@@ -106,6 +102,7 @@
         self.selectedViewController = self.viewControllers[3];
     }
 }
+
 
 -(void)hidenBottomView{
     [self.view sendSubviewToBack:self.tabBarView];

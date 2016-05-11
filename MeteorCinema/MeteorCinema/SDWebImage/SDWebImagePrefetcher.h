@@ -58,6 +58,7 @@ typedef void(^SDWebImagePrefetcherCompletionBlock)(NSUInteger noOfFinishedUrls, 
  */
 @property (nonatomic, assign) SDWebImageOptions options;
 
+
 @property (weak, nonatomic) id <SDWebImagePrefetcherDelegate> delegate;
 
 /**

@@ -10,6 +10,8 @@
 
 @interface MovieViewController : UIViewController
 
-@property (nonatomic, strong) NSString * location;
+
+@property (nonatomic, strong)NSString *status;
+
 
 @end

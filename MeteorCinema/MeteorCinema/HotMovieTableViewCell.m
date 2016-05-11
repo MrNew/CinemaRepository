@@ -63,8 +63,12 @@
         
         
         
-        self.detailLabel = [[UILabel alloc] init];
-        [self.contentView addSubview:self.detailLabel];
+//        self.detailLabel = [[UILabel alloc] init];
+//        [self.contentView addSubview:self.detailLabel];
+        
+        
+        self.collectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.contentView addSubview:self.collectionButton];
     }
 
     return self;
@@ -188,19 +192,38 @@
     
     
     
-    self.detailLabel.frame = CGRectMake(HotWidth - HotWidth / 6 - HotWidth / 60, HotHeight / 15 + HotHeight / 6 * 3, HotWidth / 6, HotHeight / 5);
-    self.detailLabel.backgroundColor = [UIColor orangeColor];
-    self.detailLabel.text = @"详情";
-    self.detailLabel.textAlignment = NSTextAlignmentCenter;
-    self.detailLabel.textColor = [UIColor whiteColor];
-    self.detailLabel.layer.cornerRadius = HotHeight / 5 / 2;
-    self.detailLabel.layer.masksToBounds = YES;
+//    self.detailLabel.frame = CGRectMake(HotWidth - HotWidth / 6 - HotWidth / 60, HotHeight / 15 + HotHeight / 6 * 3, HotWidth / 6, HotHeight / 5);
+//    self.detailLabel.backgroundColor = [UIColor orangeColor];
+//    self.detailLabel.text = @"详情";
+//    self.detailLabel.textAlignment = NSTextAlignmentCenter;
+//    self.detailLabel.textColor = [UIColor whiteColor];
+//    self.detailLabel.layer.cornerRadius = HotHeight / 5 / 2;
+//    self.detailLabel.layer.masksToBounds = YES;
     
+    self.collectionButton.frame = CGRectMake(HotWidth - HotWidth / 6 - HotWidth / 60, HotHeight / 15 + HotHeight / 6 * 3.5, HotWidth / 6, HotHeight / 5);
+//    self.collectionButton.backgroundColor = [UIColor orangeColor];
+//    self.collectionButton setTitle:@"" forState:<#(UIControlState)#>
     
+    [self.collectionButton setImage:[UIImage imageNamed:@"myShoucang"] forState:UIControlStateNormal];
+    
+    [self.collectionButton addTarget:self action:@selector(collectionButtonClik:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
-
+-(void)collectionButtonClik:(UIButton *)button{
+    
+    
+    if (button.selected) {
+        [button setImage:[UIImage imageNamed:@"myshoucang"] forState:UIControlStateNormal];
+    }else{
+        [button setImage:[UIImage imageNamed:@"yiShoucang"] forState:UIControlStateNormal];
+    }
+    button.selected = !button.selected;
+    
+//    self.hot
+    
+    
+}
 
 
 

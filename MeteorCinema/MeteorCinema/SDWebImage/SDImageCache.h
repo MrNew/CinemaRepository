@@ -37,11 +37,14 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
 @interface SDImageCache : NSObject
 
 /**
+
+
  * The maximum "total cost" of the in-memory image cache. The cost function is the number of pixels held in memory.
  */
 @property (assign, nonatomic) NSUInteger maxMemoryCost;
 
 /**
+
  * The maximum length of time to keep an image in the cache, in seconds
  */
 @property (assign, nonatomic) NSInteger maxCacheAge;
@@ -66,6 +69,7 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
 - (id)initWithNamespace:(NSString *)ns;
 
 /**
+
  * Add a read-only cache path to search for images pre-cached by SDImageCache
  * Useful if you want to bundle pre-loaded images with your app
  *
@@ -133,7 +137,9 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
 
 
 /**
+
  * Remove the image from memory and disk cache synchronously
+
  *
  * @param key             The unique image cache key
  * @param completion      An block that should be executed after the image has been removed (optional)
@@ -141,7 +147,9 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
 - (void)removeImageForKey:(NSString *)key withCompletion:(SDWebImageNoParamsBlock)completion;
 
 /**
+
  * Remove the image from memory and optionally disk cache synchronously
+
  *
  * @param key      The unique image cache key
  * @param fromDisk Also remove cache entry from disk if YES
@@ -149,7 +157,9 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
 - (void)removeImageForKey:(NSString *)key fromDisk:(BOOL)fromDisk;
 
 /**
+
  * Remove the image from memory and optionally disk cache synchronously
+
  *
  * @param key             The unique image cache key
  * @param fromDisk        Also remove cache entry from disk if YES
@@ -223,7 +233,9 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  *  Get the cache path for a certain key (needs the cache path root folder)
  *
  *  @param key  the key (can be obtained from url using cacheKeyForURL)
+
  *  @param path the cach path root folder
+
  *
  *  @return the cache path
  */

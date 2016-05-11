@@ -21,7 +21,9 @@
 
 @property (strong, nonatomic, readwrite) SDImageCache *imageCache;
 @property (strong, nonatomic, readwrite) SDWebImageDownloader *imageDownloader;
+
 @property (strong, nonatomic) NSMutableArray *failedURLs;
+
 @property (strong, nonatomic) NSMutableArray *runningOperations;
 
 @end
@@ -41,7 +43,9 @@
     if ((self = [super init])) {
         _imageCache = [self createCache];
         _imageDownloader = [SDWebImageDownloader sharedDownloader];
+
         _failedURLs = [NSMutableArray new];
+
         _runningOperations = [NSMutableArray new];
     }
     return self;
@@ -192,13 +196,17 @@
                         }
                     });
 
+
                     if (error.code != NSURLErrorNotConnectedToInternet && error.code != NSURLErrorCancelled && error.code != NSURLErrorTimedOut) {
+
                         @synchronized (self.failedURLs) {
                             [self.failedURLs addObject:url];
                         }
                     }
                 }
                 else {
+
+
                     BOOL cacheOnDisk = !(options & SDWebImageCacheMemoryOnly);
 
                     if (options & SDWebImageRefreshCached && image && !downloadedImage) {
@@ -210,7 +218,9 @@
 
                             if (transformedImage && finished) {
                                 BOOL imageWasTransformed = ![transformedImage isEqual:downloadedImage];
+
                                 [self.imageCache storeImage:transformedImage recalculateFromImage:imageWasTransformed imageData:data forKey:key toDisk:cacheOnDisk];
+
                             }
 
                             dispatch_main_sync_safe(^{
@@ -326,3 +336,4 @@
 }
 
 @end
+

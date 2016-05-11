@@ -11,15 +11,18 @@
 #import "CinemaTableViewCell.h"
 #import "Cinema.h"
 #import "SecondViewController.h"
+#import "MovIs.h"
 
 #define ScreenWidth   [[UIScreen mainScreen] bounds].size.width
 #define ScreenHeight  [UIScreen mainScreen].bounds.size.height
 #define READLIST_URL @"http://api.m.mtime.cn/OnlineLocationCinema/OnlineCinemasByCity.api"
 
 
-@interface CinemaViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface CinemaViewController ()<UITableViewDataSource,UITableViewDelegate,SecondViewControllerDelegate>
 @property(nonatomic,strong)NSMutableArray *dataArray;
 @property(nonatomic,strong)UITableView *CinemaTabelView;
+
+@property(nonatomic,assign)NSInteger cinemaId;
 @end
 
 @implementation CinemaViewController
@@ -35,14 +38,21 @@
 }
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor  whiteColor];
     self.navigationItem.title = @"影院";
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    
+
 
 //-----------------------UItablelView-------------------//
+    
+    
+    
     
     _CinemaTabelView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 375, 667-64) style:UITableViewStylePlain];
     //_tab.contentSize = CGSizeMake(200, 0);
@@ -54,6 +64,7 @@
     [self.view addSubview:_CinemaTabelView];
     
     [self requestData];
+   // [self movierequestData];
     
 
 
@@ -67,17 +78,12 @@
         
         //对专递过来的数据进行解析
         NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        
-        //解析的实质 就一层层的剥离数据
-        //   NSLog(@"%ld",array.count);
+
         
         for (NSDictionary *dic in array) {
             Cinema *send = [[Cinema alloc] init];
             [send setValuesForKeysWithDictionary:dic];
-            //            send.cinameName = [dic objectForKey:@"cinameName"];
-            //            send.address = [dic objectForKey:@"address"];
-            //            send.minPrice = [dic objectForKey:@"minPrice"];
-            
+
             [_dataArray addObject:send];
             
         }
@@ -98,6 +104,8 @@
 
     
 }
+
+
 
 //刷新
 //-(void)doMain
@@ -124,9 +132,20 @@
     
   //  NSLog(@"%ld",_dataArray.count);
     Cinema *send = [_dataArray objectAtIndex:indexPath.row];
+
+
     cell.TitleLabel.text = send.cinameName;
     cell.addressLabel.text = send.address;
-    cell.minPriceLabel.text = @"￥34";
+    NSString *restric = [NSString stringWithFormat:@"%@",send.minPrice];
+    cell.minPriceLabel.text = restric;
+    
+    NSString * str = send.cinemaId;
+    
+    self.cinemaId = [str intValue];
+    
+    
+    
+
     
 //    cell.backgroundColor = [UIColor blackColor];
 //    cell.alpha = 0.5;
@@ -144,7 +163,14 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SecondViewController *sen = [[SecondViewController alloc] init];
+    sen.delegate = self;
+    sen.cinamea = [_dataArray objectAtIndex:indexPath.row];
+    sen.cinemaIdtwo = self.cinemaId;
+    
     [self.navigationController pushViewController:sen animated:YES];
+
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

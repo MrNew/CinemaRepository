@@ -10,12 +10,14 @@
 #import "SDWebImageDownloader.h"
 #import "SDWebImageOperation.h"
 
+
 @interface SDWebImageDownloaderOperation : NSOperation <SDWebImageOperation>
 
 /**
  * The request used by the operation's connection.
  */
 @property (strong, nonatomic, readonly) NSURLRequest *request;
+
 
 /**
  * Whether the URL connection should consult the credential storage for authenticating the connection. `YES` by default.
@@ -37,6 +39,19 @@
 @property (assign, nonatomic, readonly) SDWebImageDownloaderOptions options;
 
 /**
+<<<<<<< HEAD
+ * The expected size of data.
+ */
+@property (assign, nonatomic) NSInteger expectedSize;
+
+/**
+ * The response returned by the operation's connection.
+ */
+@property (strong, nonatomic) NSURLResponse *response;
+
+/**
+=======
+>>>>>>> b172efc99f3e7a709c6bca4989f0245587f1626b
  *  Initializes a `SDWebImageDownloaderOperation` object
  *
  *  @see SDWebImageDownloaderOperation

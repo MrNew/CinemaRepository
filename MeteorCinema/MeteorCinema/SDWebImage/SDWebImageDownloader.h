@@ -40,7 +40,9 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageDownloaderOptions) {
     SDWebImageDownloaderHandleCookies = 1 << 5,
 
     /**
+
      * Enable to allow untrusted SSL ceriticates.
+
      * Useful for testing purposes. Use with caution in production.
      */
     SDWebImageDownloaderAllowInvalidSSLCertificates = 1 << 6,
@@ -49,7 +51,9 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageDownloaderOptions) {
      * Put the image in the high priority queue.
      */
     SDWebImageDownloaderHighPriority = 1 << 7,
+
     
+
 
 };
 
@@ -78,6 +82,8 @@ typedef NSDictionary *(^SDWebImageDownloaderHeadersFilterBlock)(NSURL *url, NSDi
  * Asynchronous downloader dedicated and optimized for image loading.
  */
 @interface SDWebImageDownloader : NSObject
+
+
 
 @property (assign, nonatomic) NSInteger maxConcurrentDownloads;
 

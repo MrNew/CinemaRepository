@@ -365,7 +365,7 @@
             
             self.moreView.frame = CGRectMake( 0, self.tableView.frame.size.height + self.tableView.frame.origin.y, Width, Height / 9);
             
-            self.scrollView.contentSize = CGSizeMake(Width, self.moreView.frame.size.height + self.moreView.frame.origin.y - 49);
+            self.scrollView.contentSize = CGSizeMake(Width, self.moreView.frame.size.height + self.moreView.frame.origin.y);
             
             [self.tableView reloadData];
             [UIView animateWithDuration:0.1 animations:^{
