@@ -21,6 +21,8 @@
 
 @property (nonatomic, strong) UILabel * headLabel;
 
+//@property (nonatomic, strong) NSMutableArray * array;
+
 
 @end
 
@@ -45,6 +47,12 @@
     self.view.backgroundColor = [UIColor greenColor];
     self.view.backgroundColor = [UIColor grayColor];
     
+//    self.array = [NSMutableArray array];
+//    [self.array addObjectsFromArray:@[[UIImage imageNamed:@"myMovie"],[UIImage imageNamed:@"myCiname"],[UIImage imageNamed:@"myShoucang"]]];
+//    UIImage * image = [UIImage imageNamed:@"myMovie.png"];
+//    [self.array addObject:image];
+//    [self.array addObject:[UIImage imageNamed:@"myCiname.png"]];
+//    [self.array addObject:[UIImage imageNamed:@"myShoucang.png"]];
     
     [self.view addSubview:self.tableView];
     
@@ -52,11 +60,11 @@
     
     UIImageView * backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, backView.bounds.size.height / 3 * 2)];
     
-    UIImage * image = [UIImage imageNamed:@"myHead.jpg"];
+    UIImage * image3 = [UIImage imageNamed:@"myHead.jpg"];
     
 //    image = [image applyExtraLightEffect];
     
-    backImageView.image = image;
+    backImageView.image = image3;
     
     //四种模糊效果
     /* [imageClear applyExtraLightEffect];
@@ -109,11 +117,11 @@
   
     [backView addSubview:secondView];
     
-    [secondView.backButton addTarget:secondView action:@selector(backButtonClik:) forControlEvents:UIControlEventTouchUpInside];
+    [secondView.backButton addTarget:self action:@selector(backButtonClik:) forControlEvents:UIControlEventTouchUpInside];
     
-    [secondView.reflashButton addTarget:secondView action:@selector(reflashButtonClik:) forControlEvents:UIControlEventTouchUpInside];
+    [secondView.reflashButton addTarget:self action:@selector(reflashButtonClik:) forControlEvents:UIControlEventTouchUpInside];
     
-    [secondView.goForwardButton addTarget:secondView action:@selector(goForwardButtonClik:) forControlEvents:UIControlEventTouchUpInside];
+    [secondView.goForwardButton addTarget:self action:@selector(goForwardButtonClik:) forControlEvents:UIControlEventTouchUpInside];
     
     
     
@@ -224,6 +232,7 @@
     if (indexPath.section == 0) {
         
         cell.textLabel.text = @[@"我的电影",@"我的影院",@"我的收藏"][indexPath.row];
+        
         
         cell.imageView.image = @[[UIImage imageNamed:@"myMovie"],[UIImage imageNamed:@"myCiname"],[UIImage imageNamed:@"myShoucang"]][indexPath.row];
         

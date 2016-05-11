@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Cinema.h"
 @interface CinemaTableViewCell : UITableViewCell
+@property(nonatomic,strong)UIImageView *ConimageView;
 @property(nonatomic,strong)UILabel *TitleLabel;
 @property(nonatomic,strong)UILabel *addressLabel;
 @property(nonatomic,strong)UILabel *minPriceLabel;
+
+@property(nonatomic,strong)UIImageView *Label1;
+@property(nonatomic,strong)UIImageView *Label2;
+@property(nonatomic,strong)UIImageView *Label3;
+@property(nonatomic,strong)UIImageView *Label4;
 @end
