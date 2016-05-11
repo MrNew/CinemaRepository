@@ -63,6 +63,7 @@
     self.view.backgroundColor = [UIColor blackColor];
     
 
+    NSLog(@"%@",self.URLString);
     
     
     _playView = [[LMVideoPlayerOperationView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height / 5, self.view.frame.size.width, self.view.bounds.size.height / 3) videoURLString:self.URLString];

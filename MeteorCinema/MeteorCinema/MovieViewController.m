@@ -39,13 +39,15 @@
 // 即将上映数据模型
 #import "FutureMovieModel.h"
 
-
 #import "TopView.h"
 
 
-#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+#import "MovieCollectionDataBaseUtil.h"
 
-#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define Width [UIScreen mainScreen].bounds.size.width
+
+#define Height [UIScreen mainScreen].bounds.size.height
 
 
 @interface MovieViewController () < LocationViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,AttentionMovieTableViewCellDelegate,FutureTableViewDelegate >
@@ -75,9 +77,10 @@
 #pragma mark- 懒加载
 -(UITableView *)tableView{
     if (!_tableView) {
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, ScreenHeight / 15, ScreenWidth, ScreenHeight - 64 - ScreenHeight / 15) style:UITableViewStylePlain];
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, Height / 15, Width, Height - 64 - Height / 15) style:UITableViewStylePlain];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        [self setExtraCellLineHidden:self.tableView];
         
     }
     return _tableView;
@@ -109,7 +112,7 @@
 
 -(UIView *)topView{
     if (!_topView) {
-        self.topView = [[TopView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight / 15)];
+        self.topView = [[TopView alloc] initWithFrame:CGRectMake(0, 0, Width, Height / 15)];
         self.topView.backgroundColor = [UIColor whiteColor];
     }
     return _topView;
@@ -121,6 +124,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    NSLog(@"%@",NSHomeDirectory());
+    
+    [[MovieCollectionDataBaseUtil share] createTableWithName:@"movie"];
     
 
     self.navigationItem.title = @"电影";
@@ -160,7 +167,7 @@
     if (![string isEqualToString:@"you"]) {
         
         
-        FirsView *fir = [[FirsView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+        FirsView *fir = [[FirsView alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
         
         UIWindow *window = [[UIApplication sharedApplication]keyWindow];
         
@@ -195,6 +202,8 @@
     
 }
 
+
+
 -(void)reflashData:(UIButton *)button{
 
     
@@ -203,6 +212,18 @@
     [self.tableView reloadData];
   
     
+    
+}
+
+
+#pragma mark- 隐藏没内容的cell 的线
+-(void)setExtraCellLineHidden: (UITableView *)tableView{
+    
+    UIView *view = [UIView new];
+    
+    view.backgroundColor = [UIColor clearColor];
+    
+    [tableView setTableFooterView:view];
     
 }
 
@@ -288,7 +309,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return ScreenHeight / 5;
+    return Height / 5;
     
 }
 
@@ -447,15 +468,6 @@
         
     }];
 }
-
-
-
-
-
-
-
-
-
 
 
 
