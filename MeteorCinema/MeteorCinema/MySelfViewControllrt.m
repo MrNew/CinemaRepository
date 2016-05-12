@@ -14,6 +14,8 @@
 
 #import "HotMovieCollectionViewController.h"
 
+#import "MoreViewController.h"
+
 @interface MySelfViewControllrt () < UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate >
 
 @property (nonatomic, strong) UITableView * tableView;
@@ -344,28 +346,49 @@
                 [rightButton setTitle:@"确定" forState:UIControlStateNormal];
                 [rightButton addTarget:self action:@selector(dismissButton:) forControlEvents:UIControlEventTouchUpInside];
                 
-                
-                
-                
-                
-                
-               
+   
                 
             }
                 break;
-            case 1:
+            case 1:{
+                
+                MoreViewController * more = [[MoreViewController alloc] init];
+                
+                
+                
+                UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:more];
+                
+                
+                
+                [self presentViewController:nav animated:YES completion:^{
+                    
+                }];
                 
                 
                 
                 
                 
+                
+            }
                 break;
-            case 2:
+            case 2:{
+                UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"爱怎么玩就怎么玩,不会玩坏的😄" message:@"O(∩_∩)O哈哈~" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                [alert addAction:action];
+                
+                [self presentViewController:alert animated:YES completion:^{
+                    
+                }];
                 
                 
                 
                 
                 
+            }
+
                 break;
             default:
                 break;

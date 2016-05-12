@@ -10,6 +10,10 @@
 
 @interface VideoListViewController : UIViewController
 
+@property (nonatomic, strong) NSString * imageStr;
+
+@property (nonatomic, strong) NSString * nameStr;
+
 // 属性传值
 @property (nonatomic, strong) NSArray * videoArray;
 

@@ -146,7 +146,7 @@
     
     
     // 发通知,知道是跳转到 预告片的通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"kNotificationForcast" object:nil userInfo:@{@"vedio":self.future.videoArray}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kNotificationForcast" object:nil userInfo:@{@"vedio":self.future.videoArray,@"name":self.future.title,@"img":self.future.image}];
     
     
     

@@ -14,6 +14,8 @@
 
 #import "PlayerViewController.h"
 
+#import "UIImage+ImageEffects.h"
+
 #define Width self.view.frame.size.width
 
 #define Height (self.view.frame.size.height - 49)
@@ -38,10 +40,10 @@
         
 //        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         layout.minimumInteritemSpacing = 5;
-        layout.minimumLineSpacing = 10;
-        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        layout.minimumLineSpacing = 5;
+        layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
         
-        layout.itemSize = CGSizeMake( Width / 4, Height / 5);
+        layout.itemSize = CGSizeMake( Width / 3 - 10, Height / 5);
         
         self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, Width, Height - 64) collectionViewLayout:layout];
         self.collectionView.backgroundColor = [UIColor whiteColor];
@@ -60,10 +62,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.collectionView.backgroundColor = [UIColor colorWithRed:217/255.0 green:200/255.0 blue:200/255.0 alpha:1];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.collectionView.backgroundColor = [UIColor clearColor];
+    self.navigationItem.title = self.nameStr;
+    
+    UIImageView * imageView = [[UIImageView alloc] initWithFrame:self.collectionView.bounds];
+    [self.view addSubview:imageView];
+//    [imageView sd_setImageWithURL:[NSURL URLWithString:self.imageStr]];
+//    NSLog(@"%@",[self.videoArray[0] objectForKey:@"title"]);
+    
+    // 进入支线程
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageStr]];
+        UIImage * image = [UIImage imageWithData:data];
+        image = [image applyLightEffect];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            imageView.image = image;
+        });
+        
+    });
     
     
-    NSLog(@"%@",self.videoArray);
+    
     
     [self.view addSubview:self.collectionView];
     
@@ -92,10 +113,14 @@
     
     cell.hasVedio = YES;
     
+    NSLog(@"%@",dic);
+    cell.titleLabel.text = [dic objectForKey:@"title"];
 
 //    [cell.iconImageView sd_setImageWithURL:[NSURL URLWithString:model.image]];
     
 //    cell.model = model;
+    cell.layer.cornerRadius = 5;
+    cell.layer.masksToBounds = YES;
     
     
     return cell;
