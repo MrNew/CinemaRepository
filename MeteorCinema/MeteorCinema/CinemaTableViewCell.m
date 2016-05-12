@@ -37,6 +37,9 @@
     
 //*****************************************************************//
     
+    self.ConimageView = [[UIImageView alloc] init];
+    [self.contentView addSubview:self.ConimageView];
+    
 
     return self;
 }
@@ -45,6 +48,11 @@
 {
     
     [super layoutSubviews];
+    
+    self.ConimageView.frame = self.contentView.frame;
+    self.ConimageView.image = [UIImage imageNamed:@"menghuan.jpg"];
+    self.ConimageView.alpha = 0.1;
+    
     
     //标题
     self.TitleLabel.frame = CGRectMake(10, 10, 200, 30);

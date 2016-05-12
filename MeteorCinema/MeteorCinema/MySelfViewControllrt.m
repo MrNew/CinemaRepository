@@ -16,6 +16,8 @@
 
 #import "MoreViewController.h"
 
+#import "NewsDataViewController.h"
+
 @interface MySelfViewControllrt () < UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate >
 
 @property (nonatomic, strong) UITableView * tableView;
@@ -26,8 +28,6 @@
 @property (nonatomic, strong) UILabel * headLabel;
 
 //@property (nonatomic, strong) NSMutableArray * array;
-
-
 
 // 意见反馈视图
 @property (nonatomic, strong) UIView * opinion;
@@ -43,7 +43,7 @@
         
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
-        
+        //设置隐藏额外的 cellline
         [self setExtraCellLineHidden:self.tableView];
         
     }
@@ -286,17 +286,17 @@
                 break;
             case 1:
                 
-                // 我的影院
+                
                 
                 
                 
                 
                 break;
-            case 2:
+            case 2:{
+                NewsDataViewController *newsCollectVC = [[NewsDataViewController alloc]init];
+                [self.navigationController pushViewController:newsCollectVC animated:YES];
                 
-                // 我的收藏
-                
-                
+            }
                 break;
             default:
                 break;
@@ -308,8 +308,8 @@
     }else{
         
         switch (indexPath.row) {
-            case 0:{
-                
+            case 0:
+            {
                 self.tableView.userInteractionEnabled = NO;
                 
                 
@@ -317,7 +317,7 @@
                 self.opinion = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width / 2, self.view.bounds.size.height / 2)];
                 self.opinion.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2.5);
                 self.opinion.backgroundColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1];
-                 [self.view addSubview:self.opinion];
+                [self.view addSubview:self.opinion];
                 self.opinion.layer.cornerRadius = 5;
                 self.opinion.layer.masksToBounds = YES;
                 
@@ -326,7 +326,7 @@
                 label.textAlignment = NSTextAlignmentCenter;
                 [self.opinion addSubview:label];
                 
-                
+
                 UITextView * textView = [[UITextView alloc] initWithFrame:CGRectMake(0, self.opinion.frame.size.height / 8, self.opinion.frame.size.width, self.opinion.frame.size.height / 8 * 6)];
                 [self.opinion addSubview:textView];
                 textView.backgroundColor = [UIColor grayColor];
@@ -363,11 +363,7 @@
                 [self presentViewController:nav animated:YES completion:^{
                     
                 }];
-                
-                
-                
-                
-                
+         
                 
             }
                 break;
@@ -396,7 +392,7 @@
         
     }
     
-    
+   
     
 }
 
@@ -407,6 +403,8 @@
     self.tableView.userInteractionEnabled = YES;
     
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

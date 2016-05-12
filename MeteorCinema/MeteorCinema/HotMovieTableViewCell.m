@@ -81,7 +81,9 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     
-
+//    CGFloat HotHeight = self.contentView.bounds.size.height;
+    
+//    NSLog(@"%@",self.hot);
     
     self.iconImageView.frame = CGRectMake(HotWidth / 60, HotHeight / 15, HotWidth / 4, HotHeight - HotHeight / 15 * 2);
 //    self.iconImageView.backgroundColor = [UIColor redColor];
@@ -202,39 +204,31 @@
 //    self.detailLabel.layer.masksToBounds = YES;
     
     self.collectionButton.frame = CGRectMake(HotWidth - HotWidth / 6 - HotWidth / 60, HotHeight / 15 + HotHeight / 6 * 3.5, HotWidth / 6, HotHeight / 5);
-//    self.collectionButton.backgroundColor = [UIColor orangeColor];
-//    self.collectionButton setTitle:@"" forState:<#(UIControlState)#>
-    
     
     if ([[MovieCollectionDataBaseUtil share] isContentNewsWith:@"movie" WithTitle:self.hot.title]) {
-    
-        [self.collectionButton setImage:[UIImage imageNamed:@"yiShoucang"] forState:UIControlStateNormal];
+        
+        [self.collectionButton setImage:[UIImage imageNamed:@"yishoucang"] forState:UIControlStateNormal];
     }else{
         [self.collectionButton setImage:[UIImage imageNamed:@"myShoucang"] forState:UIControlStateNormal];
     }
     
     [self.collectionButton addTarget:self action:@selector(collectionButtonClik:) forControlEvents:UIControlEventTouchUpInside];
-    
+
 }
 
 -(void)collectionButtonClik:(UIButton *)button{
     
+    
     if ([[MovieCollectionDataBaseUtil share] isContentNewsWith:@"movie" WithTitle:self.hot.title]) {
         [button setImage:[UIImage imageNamed:@"myShoucang"] forState:UIControlStateNormal];
-//        NSLog(@"%ld",self.hot.identifier);
+        //        NSLog(@"%ld",self.hot.identifier);
         [[MovieCollectionDataBaseUtil share] deleteTableWithName:@"movie" WithIdentifier:self.hot.identifier];
         
     }else{
         [[MovieCollectionDataBaseUtil share] insertTableWithName:@"movie" withNews:self.hot];
         
-        [button setImage:[UIImage imageNamed:@"yiShoucang"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"yishoucang"] forState:UIControlStateNormal];
     }
-    
-    
-    
-    
-  
-    
     
 }
 

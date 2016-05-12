@@ -33,9 +33,8 @@
     [self.view addSubview:self.tab];
     self.tab.delegate = self;
     self.tab.dataSource = self;
-    [self.tab reloadData];
-    
     self.tab.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tab reloadData];
     //下拉刷新页面
     [self.tab addHeaderWithTarget:self action:@selector(headerRefreshing) ];
     [self.tab headerBeginRefreshing];
@@ -44,14 +43,14 @@
 }
 #pragma mark - 下拉刷新
 -(void)headerRefreshing{
-    [self.dataArray removeAllObjects];
-    self.tab.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    [self.dataArray removeAllObjects];    
     pageIndex = 1;
     [self loadData];
     [self loadImage];
     [self.tab reloadData];
     [self.tab headerEndRefreshing];
+    self.tab.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+
 }
 #pragma mark - 上拉加载
 -(void)footerRefreshingText{
@@ -144,16 +143,44 @@
     }];
 }
 -(void)doBigBtn:(UIButton *)btn{
-    TimeTop100ViewController *top100 = [[TimeTop100ViewController alloc]init];
-    top100.identifier = btn.tag;
-    [self.navigationController pushViewController:top100 animated:YES];
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/TopList/TopListDetails.api?pageIndex=1&topListId=%ld",btn.tag] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            TimeTop100ViewController *top100 = [[TimeTop100ViewController alloc]init];
+            top100.identifier = btn.tag;
+            top100.itemTitle = dic[@"topList"][@"name"];
+            top100.oldSummary = dic[@"topList"][@"summary"];
+            top100.image = @"http://img31.mtime.cn/mg/2016/05/02/171346.87271987.jpg";
+            [self.navigationController pushViewController:top100 animated:YES];
+        });
+    } error:^(NSError *error) {
+        
+    }];
+
 }
 
 #pragma mark - leftbtton和 middleBtn执行方法
 -(void)doBtn:(UIButton *)btn{
-    TimeTop100ViewController *top100 = [[TimeTop100ViewController alloc]init];
-    top100.index = btn.tag;
-    [self.navigationController pushViewController:top100 animated:YES];
+    NSLog(@"%ld",btn.tag);
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/TopList/TopListDetailsByRecommend.api?pageIndex=1&pageSubAreaID=%ld&locationId=%7B2%7D"
+,btn.tag] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            TimeTop100ViewController *top100 = [[TimeTop100ViewController alloc]init];
+            top100.index = btn.tag;
+            top100.itemTitle = dic[@"topList"][@"name"];
+            top100.oldSummary = dic[@"topList"][@"summary"];
+            top100.image = @"http://img.taopic.com/uploads/allimg/140507/240388-14050H1515087.jpg";
+            [self.navigationController pushViewController:top100 animated:YES];
+        });
+    } error:^(NSError *error) {
+        
+    }];
+
+//    TimeTop100ViewController *top100 = [[TimeTop100ViewController alloc]init];
+//    top100.index = btn.tag;
+//    top100.button.hidden = YES;
+//    [self.navigationController pushViewController:top100 animated:YES];
 }
 #pragma mark - rightbutton执行方法
 -(void)doRightBtn{
@@ -166,7 +193,7 @@
 }
 //////////
 -(CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
+    return 70;
 }
 ////////
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -177,12 +204,17 @@
     }
     TopListModel *model = self.dataArray[indexPath.row];
     cell.textLabel.text = model.topListNameCn;
+    cell.detailTextLabel.text = model.summary;
+    cell.detailTextLabel.numberOfLines = 3;
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     TopListModel *model = self.dataArray[indexPath.row];
     TimeTop100ViewController *top100 = [[TimeTop100ViewController alloc]init];
     top100.identifier = model.identifier;
+    top100.itemTitle = model.topListNameCn;
+    top100.oldSummary = model.summary;
+    top100.image = @"http://img.taopic.com/uploads/allimg/140507/240388-14050H1515087.jpg";
     [self.navigationController pushViewController:top100 animated:YES];
 }
 

@@ -371,12 +371,7 @@
         
     }];
     
-    //检验正确性
-//    for (NSString * string in self.allCityInitalArray) {
-//        NSLog(@"%@",string);
-//    }
-  
-    
+
 }
 
 

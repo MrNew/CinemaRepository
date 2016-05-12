@@ -13,6 +13,7 @@
 #import "SecondViewController.h"
 #import "MovIs.h"
 #import "UIImageView+WebCache.h"
+#import "LocationViewController.h"
 
 #define ScreenWidth   [[UIScreen mainScreen] bounds].size.width
 #define ScreenHeight  [UIScreen mainScreen].bounds.size.height
@@ -21,12 +22,13 @@
 //@"http://api.m.mtime.cn/Cinema/Detail.api?cinemaId=%ld
 
 
-@interface CinemaViewController ()<UITableViewDataSource,UITableViewDelegate,SecondViewControllerDelegate>
+@interface CinemaViewController ()<UITableViewDataSource,UITableViewDelegate,SecondViewControllerDelegate,LocationViewControllerDelegate>
 @property(nonatomic,strong)NSMutableArray *dataArray;
 @property(nonatomic,strong)NSMutableArray *oneImageArray;
 @property(nonatomic,strong)UITableView *CinemaTabelView;
 @property(nonatomic,strong)NSMutableArray *characteristicArray;
 @property(nonatomic,assign)NSInteger cinemaId;
+@property(nonatomic,strong)UIButton *musicBtn;
 @end
 
 @implementation CinemaViewController
@@ -49,7 +51,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
-    _characteristicArray = [NSMutableArray array];
+        _characteristicArray = [NSMutableArray array];
 
 
 //-----------------------UItablelView-------------------//
@@ -65,11 +67,66 @@
     [self.view addSubview:_CinemaTabelView];
     
     [self requestData];
+    [self shareleftBarButton];
     
 
+  
+
+
+}
+
+#pragma -mark 右上角城市选择
+-(void)shareleftBarButton
+{
+    //导航栏上面的分享的item
+   _musicBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _musicBtn.frame = CGRectMake(0, 0, 80, 40);
+    //    [musicBtn setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
+    [_musicBtn setTitle:@"广州" forState:UIControlStateNormal];
+  
+//  musicBtn.font = [UIFont boldSystemFontOfSize:15];
+    [_musicBtn addTarget:self action:@selector(handlePresentCurrentMusicAction) forControlEvents:UIControlEventTouchDown];
+    
+    UIBarButtonItem *currentMusicBtn = [[UIBarButtonItem alloc] initWithCustomView:_musicBtn];
+    
+    self.navigationItem.leftBarButtonItem = currentMusicBtn;
+}
+
+//城市选择
+-(void)handlePresentCurrentMusicAction{
+
+    LocationViewController * location = [[LocationViewController alloc] init];
+    
+    location.delegate = self;
+    
+    [self.navigationController pushViewController:location animated:YES];
+
+}
+
+
+
+-(void)passLocationCity:(CityMessage *)city
+{
     
 
+    [self.dataArray removeAllObjects];
 
+    self.cinemaId = city.identifier;
+
+    if (city.name == nil) {
+        [self shareleftBarButton];
+    }else{
+        [_musicBtn setTitle:city.name forState:UIControlStateNormal];
+    }
+   
+    
+    
+    
+    // 先判断是否进入 算地点界面
+   
+    
+    
+    [self requestData];
 }
 
 
@@ -79,7 +136,7 @@
     
     
     
-    [NetWorkRequestManager requestWithType:Get URLString:READLIST_URL parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/OnlineLocationCinema/OnlineCinemasByCity.api?locationId=%ld",self.cinemaId] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         
         //对专递过来的数据进行解析
         NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];

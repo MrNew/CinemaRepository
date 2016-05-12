@@ -8,16 +8,21 @@
 
 #import "DetailViewController.h"
 #import "NetWorkRequestManager.h"
+#import "NewsDataBaseUtil.h"
+#import "showView.h"
 @interface DetailViewController ()<UIWebViewDelegate,UIScrollViewDelegate>
 {
    NSInteger isShowStatus;
 }
 @property(nonatomic,strong)UIWebView *webView;
 @property(nonatomic,strong)NSString *url;
+@property(nonatomic,strong)showView *showView;
+@property(nonatomic,strong)UIButton *button;
 @end
 
 @implementation DetailViewController
 -(void)viewWillAppear:(BOOL)animated{
+    [self judgeCollect];
     self.tabBarController.view.subviews.lastObject.hidden = YES;
 }
 -(void)viewWillDisappear:(BOOL)animated{
@@ -25,16 +30,51 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = self.itemTitle;
     [self network];
     self.view.backgroundColor = [UIColor whiteColor];
-
+    [[NewsDataBaseUtil shareDataBase]creatTable];
+    self.button = [[UIButton alloc]initWithFrame:CGRectMake(0,0,32,32)];
+    [_button setImage:[UIImage imageNamed:@"收藏"] forState: UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc]initWithCustomView:_button];
+    [_button addTarget:self action:@selector(collectItem:) forControlEvents:UIControlEventTouchUpInside];
+    _showView = [[[NSBundle mainBundle]loadNibNamed:@"showView" owner:nil options:nil]lastObject];
+    [self judgeCollect];
 }
+#pragma mark - 收藏执行方法
+-(void)collectItem:(UIButton *)button{
+        NSArray *array = [[NewsDataBaseUtil shareDataBase]selectTitle:self.itemTitle];
+        if ([array count] == 0) {
+            [[NewsDataBaseUtil shareDataBase]insertTitle:self.itemTitle title2:self.title2 image:self.image];
+            _showView.label.text = @"已收藏";
+        }else{
+            [[NewsDataBaseUtil shareDataBase]deletewithTitle:self.itemTitle fromTable:@"collects"];
+            _showView.label.text = @"已取消";
+        }
+        [self.view addSubview:_showView];
+        [self judgeCollect];
+        [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(disappear) userInfo:nil repeats:NO];
+    }
+/////////
+-(void)disappear
+{
+    [_showView removeFromSuperview];
+}
+/////////
+-(void)judgeCollect
+    {
+        NSArray *array = [[NewsDataBaseUtil shareDataBase]selectTitle:self.itemTitle];
+        if ([array count] == 0) {
+            [_button setImage:[UIImage imageNamed:@"收藏"] forState:UIControlStateNormal];
+        }else{
+            [_button setImage:[UIImage imageNamed:@"收藏(1)"] forState:UIControlStateNormal];
+        }
+    }
+#pragma mark - 网络请求
 -(void)network{
     [NetWorkRequestManager requestWithType:Get URLString:self.detailAPI parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 dispatch_async(dispatch_get_main_queue(), ^{
-    self.url = dic[@"url"];
+    
     self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight )];
 //    self.webView.delegate = self;
     [self.view addSubview:self.webView];

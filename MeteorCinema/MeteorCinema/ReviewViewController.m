@@ -16,7 +16,9 @@
 @interface ReviewViewController()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *tab;
 @property(nonatomic,strong)NSMutableArray *dataArray;
-
+@property(nonatomic,strong)NSString *itemTitle;
+@property(nonatomic,strong)NSString *title2;
+@property(nonatomic,strong)NSString *image;
 @end
 
 @implementation ReviewViewController
@@ -66,6 +68,9 @@
     [NetWorkRequestManager requestWithType:Get URLString:BigImage_URL parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSDictionary *dic0 = dic[@"review"];
+        self.itemTitle = dic0[@"title"];
+        self.title2 = dic0[@"movieName"];
+        self.image = dic0[@"imageUrl"];
         HeadModel *headModel = [[HeadModel alloc]init];
         [headModel setValuesForKeysWithDictionary:dic0];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -108,6 +113,9 @@
 #pragma mark - button
 -(void)doBtn:(UIButton *)btn{
     ReviewDetailViewController *detailVC = [[ReviewDetailViewController alloc]init];
+    detailVC.itemTitle = self.itemTitle;
+    detailVC.image = self.image;
+    detailVC.summary = self.title2;
     detailVC.identifier = btn.tag;
     [self.navigationController pushViewController:detailVC animated:YES];
 
@@ -143,6 +151,9 @@
     ReviewModel *model = self.dataArray[indexPath.row];
     ReviewDetailViewController *detailVC = [[ReviewDetailViewController alloc]init];
     detailVC.identifier = model.identifier;
+    detailVC.itemTitle = model.title;
+    detailVC.summary = model.summary;
+    detailVC.image = model.image;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
