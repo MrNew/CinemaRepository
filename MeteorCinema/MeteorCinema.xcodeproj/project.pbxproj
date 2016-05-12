@@ -123,6 +123,7 @@
 		3FFAB5F91CE2D75500D37BD3 /* searchMovie.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFAB5F61CE2D75500D37BD3 /* searchMovie.png */; };
 		3FFAB5FA1CE2D75500D37BD3 /* searchPersent.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFAB5F71CE2D75500D37BD3 /* searchPersent.png */; };
 		3FFAB5FF1CE2DA2D00D37BD3 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFAB5FE1CE2D9E900D37BD3 /* UIImage+ImageEffects.m */; };
+		609AF4DE1CE4BB4900D40BB4 /* queding.png in Resources */ = {isa = PBXBuildFile; fileRef = 609AF4DD1CE4BB4900D40BB4 /* queding.png */; };
 		609C279F1CD9ABE70024A610 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 609C277F1CD9ABE70024A610 /* MKAnnotationView+WebCache.m */; };
 		609C27A01CD9ABE70024A610 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 609C27811CD9ABE70024A610 /* NSData+ImageContentType.m */; };
 		609C27A11CD9ABE70024A610 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 609C27831CD9ABE70024A610 /* SDImageCache.m */; };
@@ -401,6 +402,7 @@
 		3FFAB5F71CE2D75500D37BD3 /* searchPersent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchPersent.png; sourceTree = "<group>"; };
 		3FFAB5FB1CE2D99100D37BD3 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		3FFAB5FE1CE2D9E900D37BD3 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		609AF4DD1CE4BB4900D40BB4 /* queding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queding.png; sourceTree = "<group>"; };
 		609C277E1CD9ABE70024A610 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		609C277F1CD9ABE70024A610 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		609C27801CD9ABE70024A610 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -658,6 +660,7 @@
 				3F7D38BE1CDE234F00E4700D /* LMVideoPlayerOperationView.h */,
 				3F7D38BF1CDE234F00E4700D /* LMVideoPlayerOperationView.m */,
 				3F7D38C01CDE234F00E4700D /* LMVideoPlayerView.h */,
+				609AF4DD1CE4BB4900D40BB4 /* queding.png */,
 				3F7D38C11CDE234F00E4700D /* LMVideoPlayerView.m */,
 			);
 			path = LMVideoPlay;
@@ -1316,6 +1319,7 @@
 				3F696E531CE220DA004A358B /* 票房统计-1.png in Resources */,
 				3F239A981CDDE37100E8C1D1 /* play1.png in Resources */,
 				3F696E4D1CE220DA004A358B /* 3D-1.png in Resources */,
+				609AF4DE1CE4BB4900D40BB4 /* queding.png in Resources */,
 				3FB941FC1CD39597009BD81F /* faB.png in Resources */,
 				3F696E5F1CE220DA004A358B /* p.png in Resources */,
 				3FB9419F1CD37A6C009BD81F /* LaunchScreen.storyboard in Resources */,
