@@ -10,5 +10,7 @@
 
 @interface ReviewDetailViewController : UIViewController
 @property(nonatomic,assign)NSInteger identifier;
-
+@property(nonatomic,strong)NSString *itemTitle;
+@property(nonatomic,strong)NSString *summary;
+@property(nonatomic,strong)NSString *image;
 @end

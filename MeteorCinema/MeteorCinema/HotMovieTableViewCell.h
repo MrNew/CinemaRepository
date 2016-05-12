@@ -12,6 +12,7 @@
 
 //#import "TagView.h"
 
+
 @interface HotMovieTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UIImageView * iconImageView;
@@ -30,7 +31,9 @@
 
 
 
-@property (nonatomic, strong) UILabel * detailLabel;
+//@property (nonatomic, strong) UILabel * detailLabel;
+
+@property (nonatomic, strong) UIButton * collectionButton;
 
 
 

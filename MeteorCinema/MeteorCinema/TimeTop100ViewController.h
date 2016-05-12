@@ -11,4 +11,8 @@
 @interface TimeTop100ViewController : UIViewController
 @property(nonatomic,assign)NSInteger index;
 @property(nonatomic,assign)NSInteger identifier;
+@property(nonatomic,strong)NSString *itemTitle;
+@property(nonatomic,strong)NSString *oldSummary;
+@property(nonatomic,strong)UIButton *button;
+@property(nonatomic,strong)NSString *image;
 @end

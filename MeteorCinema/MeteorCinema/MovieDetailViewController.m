@@ -365,7 +365,7 @@
             
             self.moreView.frame = CGRectMake( 0, self.tableView.frame.size.height + self.tableView.frame.origin.y, Width, Height / 9);
             
-            self.scrollView.contentSize = CGSizeMake(Width, self.moreView.frame.size.height + self.moreView.frame.origin.y - 49);
+            self.scrollView.contentSize = CGSizeMake(Width, self.moreView.frame.size.height + self.moreView.frame.origin.y);
             
             [self.tableView reloadData];
             [UIView animateWithDuration:0.1 animations:^{
@@ -528,14 +528,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
