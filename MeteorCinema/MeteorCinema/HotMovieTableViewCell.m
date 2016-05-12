@@ -10,6 +10,8 @@
 
 #import "UIImageView+WebCache.h"
 
+#import "MovieCollectionDataBaseUtil.h"
+
 
 #define HotWidth self.contentView.bounds.size.width
 
@@ -202,27 +204,31 @@
 //    self.detailLabel.layer.masksToBounds = YES;
     
     self.collectionButton.frame = CGRectMake(HotWidth - HotWidth / 6 - HotWidth / 60, HotHeight / 15 + HotHeight / 6 * 3.5, HotWidth / 6, HotHeight / 5);
-//    self.collectionButton.backgroundColor = [UIColor orangeColor];
-//    self.collectionButton setTitle:@"" forState:<#(UIControlState)#>
     
-    [self.collectionButton setImage:[UIImage imageNamed:@"myShoucang"] forState:UIControlStateNormal];
+    if ([[MovieCollectionDataBaseUtil share] isContentNewsWith:@"movie" WithTitle:self.hot.title]) {
+        
+        [self.collectionButton setImage:[UIImage imageNamed:@"yishoucang"] forState:UIControlStateNormal];
+    }else{
+        [self.collectionButton setImage:[UIImage imageNamed:@"myShoucang"] forState:UIControlStateNormal];
+    }
     
     [self.collectionButton addTarget:self action:@selector(collectionButtonClik:) forControlEvents:UIControlEventTouchUpInside];
-    
+
 }
 
 -(void)collectionButtonClik:(UIButton *)button{
     
     
-    if (button.selected) {
-        [button setImage:[UIImage imageNamed:@"myshoucang"] forState:UIControlStateNormal];
+    if ([[MovieCollectionDataBaseUtil share] isContentNewsWith:@"movie" WithTitle:self.hot.title]) {
+        [button setImage:[UIImage imageNamed:@"myShoucang"] forState:UIControlStateNormal];
+        //        NSLog(@"%ld",self.hot.identifier);
+        [[MovieCollectionDataBaseUtil share] deleteTableWithName:@"movie" WithIdentifier:self.hot.identifier];
+        
     }else{
-        [button setImage:[UIImage imageNamed:@"yiShoucang"] forState:UIControlStateNormal];
+        [[MovieCollectionDataBaseUtil share] insertTableWithName:@"movie" withNews:self.hot];
+        
+        [button setImage:[UIImage imageNamed:@"yishoucang"] forState:UIControlStateNormal];
     }
-    button.selected = !button.selected;
-    
-//    self.hot
-    
     
 }
 

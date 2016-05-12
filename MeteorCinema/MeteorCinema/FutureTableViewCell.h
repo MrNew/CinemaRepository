@@ -12,7 +12,7 @@
 
 @protocol FutureTableViewDelegate <NSObject>
 
--(void)passFuturevedio:(NSArray *)array;
+-(void)passFuturevedio:(FutureMovieModel *)future;
 
 @end
 

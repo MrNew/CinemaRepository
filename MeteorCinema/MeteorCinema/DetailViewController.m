@@ -109,6 +109,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
                        "</script>%@"
                        "</body>"
                        "</html>",dic[@"content"]];
+   
     self.webView.backgroundColor = [UIColor whiteColor];
     [self.webView loadHTMLString:htmls baseURL:nil];
     self.webView.scrollView.contentInset = UIEdgeInsetsMake(70, 0, 0, 0);

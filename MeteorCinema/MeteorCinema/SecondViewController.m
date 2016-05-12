@@ -12,6 +12,9 @@
 #import "UIImageView+WebCache.h"
 #import "SecondTableViewCell.h"
 #import "UIButton+WebCache.h"
+#import "CinemaDataBaseUtil.h"
+#import "Cinema.h"
+#import "CinemaCollectionViewController.h"
 
 #define ScreenWidth   [[UIScreen mainScreen] bounds].size.width
 #define ScreenHeight  [UIScreen mainScreen].bounds.size.height
@@ -27,6 +30,7 @@
 @property(nonatomic,strong)UIScrollView *ScrollView;
 //接收电影的图片的BUtton
 @property(nonatomic,strong)UIButton *button;
+@property(nonatomic,strong)UIButton *musicBtn;
 //电影数组
 @property(nonatomic,strong)NSMutableArray *SendcondDataArray;
 //演播厅数组
@@ -35,6 +39,10 @@
 @property(nonatomic,assign)NSInteger movieIdNumber; //电影ID
 
 @property(nonatomic,strong)UITableView *SendcondTabelView;
+
+@property(nonatomic,strong) UIAlertController *ale;//提示
+@property(nonatomic,assign)BOOL execute;
+
 
 
 @property(nonatomic,strong)UILabel *titiLabel;
@@ -75,31 +83,153 @@
     
     self.navigationController.navigationBar.translucent = NO;
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationItem.title = self.cinamea.cinameName;
+    
+    //self.automaticallyAdjustsScrollViewInsets = NO;
     
     NSString *str = self.cinamea.cinemaId;
     
     self.cinemaIdtwo = [str intValue];
     
-    // NSLog(@"我啦个操啦=%ld",self.cinemaIdtwo);
+
+//************************数据库*******************************//
+    if ([[CinemaDataBaseUtil shareDataBase]createTable]) {
+        NSLog(@"建表成功");
+    }else{
+        NSLog(@"失败");
+    }
     
+    NSLog(@"%@",NSHomeDirectory());
     
-    
-    
+
     
     
     _ScrollViewController = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-    _ScrollViewController.contentSize =CGSizeMake(ScreenWidth, ScreenHeight*3);
+  //  _ScrollViewController.contentSize =CGSizeMake(ScreenWidth,ScreenHeight*2);
     // _ScrollViewController.pagingEnabled = YES;
+    
+    
+
     
     [self.view addSubview:_ScrollViewController];
     
     [self LastSendcondTabelView];
+    //影院标题和地址
     [self titleandaddress];
+    //电影图片
     [self ScrollViewandImage];
+    //电影标题
     [self titiLabeltime];
+    //电影解析
     [self movierequestData];
+    //演播厅解析
     [self studiorequestData];
+    //收藏
+    [self sharerightBarButton];
+    
+    
+}
+
+//-(void)heheheheh
+//{
+//    CinemaCollectionViewController *cool = [[CinemaCollectionViewController alloc] init];
+//    [self.navigationController pushViewController:cool animated:YES];
+//    
+//
+//}
+
+#pragma -mark 右上角收藏
+-(void)sharerightBarButton
+{
+    
+    //导航栏上面的分享的item
+    _musicBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _musicBtn.frame = CGRectMake(0, 0, 28, 28);
+    
+    [_musicBtn setImage:[UIImage imageNamed:@"cinemashouchang"] forState:UIControlStateNormal];
+ 
+    
+    [_musicBtn addTarget:self action:@selector(handlePresentCurrentMusicAction:) forControlEvents:UIControlEventTouchDown];
+    
+    UIBarButtonItem *currentMusicBtn = [[UIBarButtonItem alloc] initWithCustomView:_musicBtn];
+    
+    self.navigationItem.rightBarButtonItem = currentMusicBtn;
+}
+
+#pragma -mark事件提醒UIAlertController
+-(void)UIAlertControllerAndButton
+{
+
+    _ale = [UIAlertController alertControllerWithTitle:nil message:@"收藏成功" preferredStyle:UIAlertControllerStyleAlert];
+
+    [self presentViewController:_ale animated:YES completion:^{
+        [_ale dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    
+
+}
+
+-(void)UIAlertControllerAndButtontwo
+{
+    
+    _ale = [UIAlertController alertControllerWithTitle:nil message:@"已取消" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:_ale animated:YES completion:^{
+        [_ale dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    
+     _execute = NO;
+        NSArray *array = [[CinemaDataBaseUtil shareDataBase] selectWithCinema];
+        for (Cinema *cina in array) {
+            if ([cina.cinameName isEqualToString:self.cinamea.cinameName]||[cina.address isEqualToString:self.cinamea.address]) {
+     
+                  [_musicBtn setImage:[UIImage imageNamed:@"cinemashouchang(1)"] forState:UIControlStateNormal];
+                
+                _execute = YES;
+                
+      
+                break;
+            }
+        }
+    
+    
+
+    
+  //  [[CinemaDataBaseUtil shareDataBase] insertCinameName:self.cinamea.cinameName address:self.cinamea.address];
+}
+//收藏的点击事件
+-(void)handlePresentCurrentMusicAction:(UIButton *)sender
+{
+    
+    _musicBtn = (UIButton *)sender;
+
+    if (_execute) {
+        
+        //取消收藏
+        [self UIAlertControllerAndButtontwo];
+        [[CinemaDataBaseUtil shareDataBase] deleteCarWithTitle:self.cinamea.cinameName];
+        [_musicBtn setImage:[UIImage imageNamed:@"cinemashouchang"] forState:UIControlStateNormal];
+        
+        _execute = NO;
+    }else{
+       
+        //收藏成功
+        [self UIAlertControllerAndButton];
+        [[CinemaDataBaseUtil shareDataBase] insertCinameName:self.cinamea.cinameName address:self.cinamea.address];
+        [_musicBtn setImage:[UIImage imageNamed:@"cinemashouchang(1)"] forState:UIControlStateNormal];
+        _execute = YES;
+
+    }
     
     
 }
@@ -198,9 +328,6 @@
         });
         
         
-        // [self performSelectorOnMainThread:@selector(doMain) withObject:nil waitUntilDone:YES];
-        
-        
     } error:^(NSError *error) {
         NSLog(@"error = %@",error);
     }];
@@ -239,6 +366,11 @@
             
             
             [self.SendcondTabelView reloadData];
+            
+            [self LastSendcondTabelView];
+            
+            self.ScrollViewController.contentSize = CGSizeMake(ScreenWidth,self.SendcondTabelView.frame.origin.y +self.SendcondTabelView.bounds.size.height+110);
+            
             
             
         });
@@ -323,7 +455,7 @@
         self.movieIdNumber = [str intValue];
         NSLog(@"电影ID=%ld",self.movieIdNumber);
         [self studiorequestData];
-        //[_SendcondTabelView reloadData];
+
         
     }else if (button.tag == 2){
         
@@ -389,7 +521,7 @@
         self.movieIdNumber = [str intValue];
         NSLog(@"电影ID=%ld",self.movieIdNumber);
         [self studiorequestData];
-        //[_SendcondTabelView reloadData];
+    
         
     }else if (button.tag == 6){
         
@@ -404,7 +536,7 @@
         self.movieIdNumber = [str intValue];
         NSLog(@"电影ID=%ld",self.movieIdNumber);
         [self studiorequestData];
-        //[_SendcondTabelView reloadData];
+  
         
     }else if (button.tag == 7){
         
@@ -419,10 +551,10 @@
         self.movieIdNumber = [str intValue];
         NSLog(@"电影ID=%ld",self.movieIdNumber);
         [self studiorequestData];
-        //[_SendcondTabelView reloadData];
+     
     }else if (button.tag == 8){
         
-        NSLog(@"你点了第七个");
+        NSLog(@"你点了第八个");
         MovIs *mo = self.SendcondDataArray[button.tag - 1];
         NSLog(@"%@",mo.title);
         _titiLabel.text = mo.title;
@@ -433,10 +565,10 @@
         self.movieIdNumber = [str intValue];
         NSLog(@"电影ID=%ld",self.movieIdNumber);
         [self studiorequestData];
-        //[_SendcondTabelView reloadData];
+     
     }else if (button.tag == 9){
         
-        NSLog(@"你点了第七个");
+        NSLog(@"你点了第九个");
         MovIs *mo = self.SendcondDataArray[button.tag - 1];
         NSLog(@"%@",mo.title);
         _titiLabel.text = mo.title;
@@ -447,10 +579,10 @@
         self.movieIdNumber = [str intValue];
         NSLog(@"电影ID=%ld",self.movieIdNumber);
         [self studiorequestData];
-        //[_SendcondTabelView reloadData];
+  
     }else if (button.tag == 10){
         
-        NSLog(@"你点了第七个");
+        NSLog(@"你点了第十个");
         MovIs *mo = self.SendcondDataArray[button.tag - 1];
         NSLog(@"%@",mo.title);
         _titiLabel.text = mo.title;
@@ -461,9 +593,10 @@
         self.movieIdNumber = [str intValue];
         NSLog(@"电影ID=%ld",self.movieIdNumber);
         [self studiorequestData];
-        //[_SendcondTabelView reloadData];
+ 
     }
 }
+
 
 -(void)titiLabeltime
 {
@@ -473,6 +606,20 @@
     UIView *movieView = [[UIView alloc] initWithFrame:CGRectMake(0, 280, ScreenWidth, 100)];
   //  movieView.backgroundColor = [UIColor cyanColor];
     [_ScrollViewController addSubview:movieView];
+    
+//------------------------------------------------------------
+//    UIButton *musicBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    musicBtn.frame = CGRectMake(300, 30, 50, 50);
+//    
+//    [musicBtn setImage:[UIImage imageNamed:@"cinemashouchang"] forState:UIControlStateNormal];
+//    
+//    [musicBtn addTarget:self action:@selector(heheheheh) forControlEvents:UIControlEventTouchDown];
+//    
+//    musicBtn.backgroundColor = [UIColor redColor];
+//    
+//    [movieView addSubview:musicBtn];
+    
+//------------------------------------------------------------
     
     //电影标题
     _titiLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, 300, 30)];
@@ -487,9 +634,11 @@
     [movieView addSubview:_TimeLabel];
     
     //一个小杠
-//    UILabel *labelG = [[UILabel alloc] initWithFrame:CGRectMake(110, 50, 20, 20)];
-//    labelG.text = @"-";
-//    
+    UILabel *labelG = [[UILabel alloc] initWithFrame:CGRectMake(173, 55, 20, 20)];
+  //  labelG.backgroundColor = [UIColor greenColor];
+    labelG.text = @"--";
+    [movieView addSubview:labelG];
+    
 //    [movieView addSubview:labelG];
     
     _classifyLabel = [[UILabel alloc] initWithFrame:CGRectMake(190, 50, 150, 30)];
@@ -515,14 +664,17 @@
     
     
     
-    _SendcondTabelView = [[UITableView alloc] initWithFrame:CGRectMake(0, 400, ScreenWidth, _ScrollViewController.frame.size.height+1000)];
+    _SendcondTabelView = [[UITableView alloc] initWithFrame:CGRectMake(0, 400, ScreenWidth, 80*self.studioDataArray.count)];
+    
     
     _SendcondTabelView.delegate = self;
     _SendcondTabelView.dataSource = self;
     
   //  _SendcondTabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
-   _SendcondTabelView.backgroundColor = [UIColor grayColor];
-    _SendcondTabelView.scrollEnabled = NO;
+  // _SendcondTabelView.backgroundColor = [UIColor grayColor];
+   _SendcondTabelView.scrollEnabled = NO;
+    
+    
     [_ScrollViewController addSubview:_SendcondTabelView];
     
     
@@ -578,19 +730,12 @@
     NSString *restric4 = [NSString stringWithFormat:@"￥%@",studi.price];
     cell.priceLabel.text = restric4;
     
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
     //    NSString * str = send.cinemaId;
     //
     //    self.cinemaId = [str intValue];
+    
+    //取消点击
+    cell.selectionStyle = UITableViewCellEditingStyleNone;
     
     return cell;
     
