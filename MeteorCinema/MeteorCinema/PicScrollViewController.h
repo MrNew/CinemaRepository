@@ -10,4 +10,8 @@
 
 @interface PicScrollViewController : UIViewController
 @property(nonatomic,strong)NSString *picAPI;
+@property(nonatomic,strong)NSString *image;
+@property(nonatomic,strong)NSString *itemTitle;
+@property(nonatomic,strong)NSString *title2;
+
 @end

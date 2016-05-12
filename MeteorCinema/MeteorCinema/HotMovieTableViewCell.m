@@ -10,8 +10,6 @@
 
 #import "UIImageView+WebCache.h"
 
-#import "MovieCollectionDataBaseUtil.h"
-
 
 #define HotWidth self.contentView.bounds.size.width
 
@@ -81,7 +79,9 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     
-
+//    CGFloat HotHeight = self.contentView.bounds.size.height;
+    
+//    NSLog(@"%@",self.hot);
     
     self.iconImageView.frame = CGRectMake(HotWidth / 60, HotHeight / 15, HotWidth / 4, HotHeight - HotHeight / 15 * 2);
 //    self.iconImageView.backgroundColor = [UIColor redColor];
@@ -205,13 +205,7 @@
 //    self.collectionButton.backgroundColor = [UIColor orangeColor];
 //    self.collectionButton setTitle:@"" forState:<#(UIControlState)#>
     
-    
-    if ([[MovieCollectionDataBaseUtil share] isContentNewsWith:@"movie" WithTitle:self.hot.title]) {
-    
-        [self.collectionButton setImage:[UIImage imageNamed:@"yiShoucang"] forState:UIControlStateNormal];
-    }else{
-        [self.collectionButton setImage:[UIImage imageNamed:@"myShoucang"] forState:UIControlStateNormal];
-    }
+    [self.collectionButton setImage:[UIImage imageNamed:@"myShoucang"] forState:UIControlStateNormal];
     
     [self.collectionButton addTarget:self action:@selector(collectionButtonClik:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -219,21 +213,15 @@
 
 -(void)collectionButtonClik:(UIButton *)button{
     
-    if ([[MovieCollectionDataBaseUtil share] isContentNewsWith:@"movie" WithTitle:self.hot.title]) {
-        [button setImage:[UIImage imageNamed:@"myShoucang"] forState:UIControlStateNormal];
-//        NSLog(@"%ld",self.hot.identifier);
-        [[MovieCollectionDataBaseUtil share] deleteTableWithName:@"movie" WithIdentifier:self.hot.identifier];
-        
+    
+    if (button.selected) {
+        [button setImage:[UIImage imageNamed:@"myshoucang"] forState:UIControlStateNormal];
     }else{
-        [[MovieCollectionDataBaseUtil share] insertTableWithName:@"movie" withNews:self.hot];
-        
         [button setImage:[UIImage imageNamed:@"yiShoucang"] forState:UIControlStateNormal];
     }
+    button.selected = !button.selected;
     
-    
-    
-    
-  
+//    self.hot
     
     
 }

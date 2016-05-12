@@ -24,6 +24,8 @@
 }
 @property(nonatomic,strong)UITableView *tab;
 @property(nonatomic,strong)NSMutableArray *dataArray;
+@property(nonatomic,strong)NSString *itemTitle;
+@property(nonatomic,strong)NSString *imageUrl;
 @end
 
 @implementation NewsViewController
@@ -79,9 +81,8 @@
             newsModel.commentCount = [dic0[@"commentCount"]integerValue];
             newsModel.identifier = [dic0[@"id"]integerValue];
             newsModel.imageArray = dic0[@"images"];
-            newsModel.image1 = newsModel.imageArray[0][@"url1"];
-            newsModel.image2 = newsModel.imageArray[1][@"url1"];
-            newsModel.image3 = [newsModel.imageArray lastObject][@"url1"];
+            newsModel.image1 = dic0[@"images"][0][@"url1"];
+            newsModel.image2 = dic0[@"images"][1][@"url1"];            newsModel.image3 = [dic0[@"images"] lastObject][@"url1"];
             [self.dataArray addObject:newsModel];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -153,9 +154,20 @@
 
 #pragma mark - doBtn 执行方法
 -(void)doBtn:(UIButton *)btn{
-    DetailViewController *detailVC = [[DetailViewController alloc]init];
-    detailVC.detailAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",btn.tag];
-    [self.navigationController pushViewController:detailVC animated:YES];
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",btn.tag] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            DetailViewController *detailVC = [[DetailViewController alloc]init];
+            detailVC.itemTitle = dic[@"title"];
+            detailVC.title2 = dic[@"title2"];
+            detailVC.image = @"http://tiandaoedu.com/uploads/100309/443_135959_1.jpg";
+            detailVC.detailAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",btn.tag];
+            [self.navigationController pushViewController:detailVC animated:YES];
+        });
+    } error:^(NSError *error) {
+        
+    }];
+
 }
 -(void)doLeftButton{
     ChinaBoxOfficeViewController *chinaVC = [[ChinaBoxOfficeViewController alloc]init];
@@ -218,11 +230,16 @@
     DetailViewController *detailVC = [[DetailViewController alloc]init];
     detailVC.detailAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",model.identifier];
     detailVC.itemTitle = model.title;
+        detailVC.image = model.image;
+        detailVC.title2 = model.title2;
         detailVC.identifier = model.identifier;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
     else{
         PicScrollViewController *picScroll = [[PicScrollViewController alloc]init];
+        picScroll.itemTitle = model.title;
+        picScroll.title2 = model.title2;
+        picScroll.image = model.image;
         picScroll.picAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",model.identifier];
         [self.navigationController pushViewController:picScroll animated:YES];
     }

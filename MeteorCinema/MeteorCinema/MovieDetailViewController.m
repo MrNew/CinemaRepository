@@ -52,7 +52,7 @@
 
 @interface MovieDetailViewController () < UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate >
 
-
+@property (nonatomic, strong) UIScrollView * scrollView;
 
 
 // 周边资讯
