@@ -92,7 +92,7 @@
 -(void)DetailedWithViewController
 {
     _DetailedViewController = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-    _DetailedViewController.contentSize =CGSizeMake(ScreenWidth, ScreenHeight*3);
+   // _DetailedViewController.contentSize =CGSizeMake(ScreenWidth, ScreenHeight*3);
    // _DetailedViewController.backgroundColor = [UIColor grayColor];
     
     [self.view addSubview:_DetailedViewController];
@@ -155,6 +155,13 @@
             
             [_featureTableView reloadData];
             
+            //  self.ScrollViewController.contentSize = CGSizeMake(ScreenWidth,self.SendcondTabelView.frame.origin.y + 80*self.studioDataArray.count+110);
+            
+            [self featureAndTableView];
+            
+            self.DetailedViewController.contentSize = CGSizeMake(ScreenWidth,self.featureTableView.frame.origin.y+self.featureTableView.bounds.size.height);
+            
+             
         });
         
         
@@ -316,7 +323,7 @@
 //特色模块
 -(void)featureAndTableView
 {
-    _featureTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 400, ScreenWidth, _DetailedViewController.frame.size.height+1500) style:UITableViewStylePlain];
+    _featureTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 400, ScreenWidth,self.featureTableView.frame.origin.y+40*self.featureDataArray.count+110*self.CommentDataArray.count+100) style:UITableViewStylePlain];
     
     _featureTableView.delegate = self;
     _featureTableView.dataSource = self;
@@ -522,7 +529,7 @@
         label.text =@"特色设施";
         label.font = [UIFont boldSystemFontOfSize:20];
     }else if (section == 1){
-        label.text = @"评论区";
+        label.text = @"网友评论";
         label.font = [UIFont boldSystemFontOfSize:20];
     }else{
         label.text = @"滴滴哒";
