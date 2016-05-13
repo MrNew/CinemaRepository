@@ -13,10 +13,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="104.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsq-HT-vcW">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsq-HT-vcW">
                         <rect key="frame" x="120" y="11" width="242" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="i80-eF-U0I"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGw-o6-B54">
@@ -26,21 +29,39 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaO-Vx-5gV">
-                        <rect key="frame" x="242" y="67" width="86" height="21"/>
+                        <rect key="frame" x="220" y="67" width="86" height="21"/>
                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qzE-gx-Msh">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qzE-gx-Msh">
                         <rect key="frame" x="13" y="11" width="82" height="82.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="82.5" id="4sK-gJ-GLq"/>
+                            <constraint firstAttribute="width" constant="82" id="B6Z-Hv-qcm"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQQ-FA-Hdw">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQQ-FA-Hdw">
                         <rect key="frame" x="120" y="40" width="242" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="eVH-OG-UV2"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="lsq-HT-vcW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="3KN-89-izX"/>
+                    <constraint firstItem="qzE-gx-Msh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="83j-V8-C7V"/>
+                    <constraint firstAttribute="trailing" secondItem="bQQ-FA-Hdw" secondAttribute="trailing" constant="13" id="C07-Wu-Tig"/>
+                    <constraint firstAttribute="trailing" secondItem="lsq-HT-vcW" secondAttribute="trailing" constant="13" id="EwG-6G-ds3"/>
+                    <constraint firstItem="bQQ-FA-Hdw" firstAttribute="leading" secondItem="qzE-gx-Msh" secondAttribute="trailing" constant="25" id="Svm-t5-iZh"/>
+                    <constraint firstItem="qzE-gx-Msh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="WMj-Uf-Vz3"/>
+                    <constraint firstAttribute="bottom" secondItem="qzE-gx-Msh" secondAttribute="bottom" constant="11" id="hnK-Fl-MIo"/>
+                    <constraint firstItem="bQQ-FA-Hdw" firstAttribute="top" secondItem="lsq-HT-vcW" secondAttribute="bottom" constant="8" id="kMA-wc-uvd"/>
+                    <constraint firstItem="lsq-HT-vcW" firstAttribute="leading" secondItem="qzE-gx-Msh" secondAttribute="trailing" constant="25" id="vOI-lq-ffS"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="commend" destination="RaO-Vx-5gV" id="DTJ-Uv-GX2"/>

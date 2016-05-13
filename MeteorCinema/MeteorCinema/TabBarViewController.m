@@ -68,16 +68,17 @@
     
     for (int i = 0; i<4; i++) {
          _button = [UIButton buttonWithType:UIButtonTypeCustom];
-        _button.frame = CGRectMake((UIScreenWidth/4-93)+(i*UIScreenWidth/4), 0,92,49);
+        _button.frame = CGRectMake(UIScreenWidth*i/4, 0,UIScreenWidth/4,49);
         _button.tag = i+1;//self.view.tag默认是0,所以一般不从0开始
         [_button addTarget:self action:@selector(selectedItem:) forControlEvents:UIControlEventTouchDown];
         [_button setTitle:arrayName[i] forState:UIControlStateNormal];
         //文字大小
         _button.titleLabel.font = [UIFont systemFontOfSize:10.0];
+        
         //图标位置
-        [_button setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 5, 0)];
+        [_button setImageEdgeInsets:UIEdgeInsetsMake(0, 18, 5, 0)];
         //调整文字在按钮中的位置
-        [_button setTitleEdgeInsets:UIEdgeInsetsMake(0, -50, -35, 0)];
+        [_button setTitleEdgeInsets:UIEdgeInsetsMake(0, -32, -35, 2)];
         [_tabBarView addSubview:_button];
         if (i == 0) {
              [_button setImage:[UIImage imageNamed:_selectedArray[0]] forState:UIControlStateNormal];

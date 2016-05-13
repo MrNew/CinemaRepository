@@ -13,24 +13,31 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vf3-EF-6sf">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vf3-EF-6sf">
                         <rect key="frame" x="32" y="10" width="75" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="75" id="796-sf-gDn"/>
+                            <constraint firstAttribute="height" constant="100" id="mV1-3K-wfF"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hih-v8-TWM">
                         <rect key="frame" x="115" y="10" width="102" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7.7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shb-jP-En9">
-                        <rect key="frame" x="220" y="8" width="39" height="23"/>
+                        <rect key="frame" x="220" y="8" width="31" height="23"/>
                         <color key="backgroundColor" red="0.19215688109397888" green="0.66274511814117432" blue="0.14901961386203766" alpha="1" colorSpace="deviceRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diq-9l-rpb">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diq-9l-rpb">
                         <rect key="frame" x="115" y="33" width="245" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="sSI-KF-v9o"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -41,16 +48,24 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zet-Vw-kye">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zet-Vw-kye">
                         <rect key="frame" x="6" y="10" width="20" height="20"/>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="FWJ-Gh-kDX"/>
+                            <constraint firstAttribute="height" constant="20" id="py2-wU-Ggs"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUb-8V-sLB">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUb-8V-sLB">
                         <rect key="frame" x="314" y="86.5" width="46" height="24.5"/>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="46" id="NVc-0J-8rO"/>
+                            <constraint firstAttribute="height" constant="24.5" id="bJq-zN-53M"/>
+                        </constraints>
                         <state key="normal" title="购票">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
@@ -62,6 +77,17 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="zet-Vw-kye" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="BOP-Fl-5RM"/>
+                    <constraint firstItem="Vf3-EF-6sf" firstAttribute="leading" secondItem="zet-Vw-kye" secondAttribute="trailing" constant="6" id="Dbk-OT-khA"/>
+                    <constraint firstAttribute="bottom" secondItem="Vf3-EF-6sf" secondAttribute="bottom" constant="9.5" id="OV1-4s-B9J"/>
+                    <constraint firstItem="diq-9l-rpb" firstAttribute="leading" secondItem="Vf3-EF-6sf" secondAttribute="trailing" constant="8" id="WgS-PD-uUd"/>
+                    <constraint firstAttribute="trailing" secondItem="SUb-8V-sLB" secondAttribute="trailing" constant="15" id="YHZ-rb-isF"/>
+                    <constraint firstItem="Vf3-EF-6sf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="d0x-Wm-RGG"/>
+                    <constraint firstAttribute="trailing" secondItem="diq-9l-rpb" secondAttribute="trailing" constant="15" id="dgl-RM-8CD"/>
+                    <constraint firstAttribute="bottom" secondItem="SUb-8V-sLB" secondAttribute="bottom" constant="8.5" id="mtw-cQ-wUC"/>
+                    <constraint firstItem="zet-Vw-kye" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="nNn-rI-wFd"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="buy" destination="SUb-8V-sLB" id="Nw9-3w-KO2"/>
