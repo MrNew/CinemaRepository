@@ -131,6 +131,9 @@
         }else if (btn.tag == 3 + 1){
             [btn setImage:[UIImage imageNamed:_array[3]] forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        }else if (btn.tag == 0 + 1){
+            [btn setImage:[UIImage imageNamed:_array[0]] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         }
     }
     
