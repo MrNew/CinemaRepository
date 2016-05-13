@@ -100,6 +100,7 @@
 		3F88ED781CDD876000E5C98D /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88ED771CDD876000E5C98D /* NewsDetailViewController.m */; };
 		3F88ED7D1CDD960F00E5C98D /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88ED7C1CDD960F00E5C98D /* CommentViewController.m */; };
 		3F8BBDCD1CDF263C00C39516 /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BBDCC1CDF263C00C39516 /* CompanyViewController.m */; };
+		3F8DF61B1CE6132600EDCB71 /* hengfu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F8DF61A1CE6132600EDCB71 /* hengfu.jpg */; settings = {ASSET_TAGS = (); }; };
 		3F927CB91CDAE4B10058F9A0 /* HotMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F927CB81CDAE4B10058F9A0 /* HotMovieModel.m */; };
 		3F927CBF1CDAEFA70058F9A0 /* HotMovieTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F927CBE1CDAEFA70058F9A0 /* HotMovieTableViewCell.m */; };
 		3F927CC51CDB2BE40058F9A0 /* TopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F927CC41CDB2BE40058F9A0 /* TopView.m */; };
@@ -156,6 +157,7 @@
 		3FFAB5F91CE2D75500D37BD3 /* searchMovie.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFAB5F61CE2D75500D37BD3 /* searchMovie.png */; };
 		3FFAB5FA1CE2D75500D37BD3 /* searchPersent.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFAB5F71CE2D75500D37BD3 /* searchPersent.png */; };
 		3FFAB5FF1CE2DA2D00D37BD3 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFAB5FE1CE2D9E900D37BD3 /* UIImage+ImageEffects.m */; };
+		3FFC6BBC1CE5B810005C2490 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC6BBB1CE5B810005C2490 /* WebViewController.m */; settings = {ASSET_TAGS = (); }; };
 		609AF4DE1CE4BB4900D40BB4 /* queding.png in Resources */ = {isa = PBXBuildFile; fileRef = 609AF4DD1CE4BB4900D40BB4 /* queding.png */; };
 		609C279F1CD9ABE70024A610 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 609C277F1CD9ABE70024A610 /* MKAnnotationView+WebCache.m */; };
 		609C27A01CD9ABE70024A610 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 609C27811CD9ABE70024A610 /* NSData+ImageContentType.m */; };
@@ -373,6 +375,7 @@
 		3F88ED7C1CDD960F00E5C98D /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		3F8BBDCB1CDF263C00C39516 /* CompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyViewController.h; sourceTree = "<group>"; };
 		3F8BBDCC1CDF263C00C39516 /* CompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyViewController.m; sourceTree = "<group>"; };
+		3F8DF61A1CE6132600EDCB71 /* hengfu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hengfu.jpg; sourceTree = "<group>"; };
 		3F927CB71CDAE4B10058F9A0 /* HotMovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotMovieModel.h; sourceTree = "<group>"; };
 		3F927CB81CDAE4B10058F9A0 /* HotMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotMovieModel.m; sourceTree = "<group>"; };
 		3F927CBD1CDAEFA70058F9A0 /* HotMovieTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotMovieTableViewCell.h; sourceTree = "<group>"; };
@@ -464,6 +467,8 @@
 		3FFAB5F71CE2D75500D37BD3 /* searchPersent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchPersent.png; sourceTree = "<group>"; };
 		3FFAB5FB1CE2D99100D37BD3 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		3FFAB5FE1CE2D9E900D37BD3 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		3FFC6BBA1CE5B810005C2490 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		3FFC6BBB1CE5B810005C2490 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		609AF4DD1CE4BB4900D40BB4 /* queding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queding.png; sourceTree = "<group>"; };
 		609C277E1CD9ABE70024A610 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		609C277F1CD9ABE70024A610 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
@@ -805,6 +810,7 @@
 		3FA0A59F1CD99FB3004B52CB /* 前景图 */ = {
 			isa = PBXGroup;
 			children = (
+				3F8DF61A1CE6132600EDCB71 /* hengfu.jpg */,
 				3FA0A5A31CD9A029004B52CB /* q1.jpg */,
 				3FA0A5A41CD9A029004B52CB /* q2.jpg */,
 				3FA0A5A51CD9A029004B52CB /* q3.jpg */,
@@ -1058,6 +1064,8 @@
 				3FA0A59D1CD99D90004B52CB /* SecondViewController.m */,
 				3FC5FF281CE073C600D340D2 /* DetailedViewController.h */,
 				3FC5FF291CE073C600D340D2 /* DetailedViewController.m */,
+				3FFC6BBA1CE5B810005C2490 /* WebViewController.h */,
+				3FFC6BBB1CE5B810005C2490 /* WebViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1458,6 +1466,7 @@
 				3F696E4D1CE220DA004A358B /* 3D-1.png in Resources */,
 				609AF4DE1CE4BB4900D40BB4 /* queding.png in Resources */,
 				3F696E5F1CE220DA004A358B /* p.png in Resources */,
+				3F8DF61B1CE6132600EDCB71 /* hengfu.jpg in Resources */,
 				3F5B342F1CE4BBFF007D843B /* faB.png in Resources */,
 				3FB9419F1CD37A6C009BD81F /* LaunchScreen.storyboard in Resources */,
 				3FB9419C1CD37A6C009BD81F /* Assets.xcassets in Resources */,
@@ -1627,6 +1636,7 @@
 				3FC5FF391CE07A5C00D340D2 /* Comment.m in Sources */,
 				3FA0A59B1CD99D23004B52CB /* Cinema.m in Sources */,
 				609C27A71CD9ABE70024A610 /* SDWebImagePrefetcher.m in Sources */,
+				3FFC6BBC1CE5B810005C2490 /* WebViewController.m in Sources */,
 				609C27C41CD9CC720024A610 /* NewsModel.m in Sources */,
 				3F4C45261CD8D7F20006EB06 /* FMResultSet.m in Sources */,
 				60C63B691CE333D7002C5902 /* NewsDataViewController.m in Sources */,

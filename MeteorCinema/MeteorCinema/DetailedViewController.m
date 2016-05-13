@@ -202,15 +202,16 @@
         [_imageView addSubview:visualView];
         
         //影院图片
-        _imageVCinema = [[UIImageView alloc] initWithFrame:CGRectMake(30, 60, 120, 150)];
+        _imageVCinema = [[UIImageView alloc] initWithFrame:CGRectMake((ScreenWidth/5)/(ScreenWidth/5)+10, 60, 120, 150)];
         NSURL *urltwo = [NSURL URLWithString:detailed.image];
         [_imageVCinema sd_setImageWithURL:urltwo];
         [_DetailedViewController addSubview:_imageVCinema];
         
         //标题
-        _titiLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 80, 250, 35)];
+        _titiLabel = [[UILabel alloc] initWithFrame:CGRectMake(_imageVCinema.frame.origin.x+_imageVCinema.frame.size.width+10, 60,200, 80)];
         _titiLabel.text = detailed.name;
-        //[_titiLabel sizeToFit];
+        _titiLabel.numberOfLines = 4;
+       // [_titiLabel sizeToFit];
         _titiLabel.font = [UIFont boldSystemFontOfSize:25];//系统25号字加粗效果
        // _titiLabel.textColor = [UIColor whiteColor];
         
@@ -218,7 +219,7 @@
         [_DetailedViewController addSubview:_titiLabel];
         
         //影厅数量
-        _hallCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 130, 50, 35)];
+        _hallCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(_imageVCinema.frame.origin.x+_imageVCinema.frame.size.width+10, 130, 20, 35)];
         NSString *hallstr = [NSString stringWithFormat:@"%@",detailed.hallCount];
         _hallCountLabel.text = hallstr;
         _hallCountLabel.textAlignment = NSTextAlignmentCenter;
@@ -226,7 +227,7 @@
         [_DetailedViewController addSubview:_hallCountLabel];
         
         //几个影厅
-        UILabel *hallLabel =[[UILabel alloc] initWithFrame:CGRectMake(195, 130, 80, 35)];
+        UILabel *hallLabel =[[UILabel alloc] initWithFrame:CGRectMake(_hallCountLabel.frame.origin.x+_hallCountLabel.frame.size.width, 130, 80, 35)];
         hallLabel.text = @"个影厅";
         
       //  hallLabel.backgroundColor = [UIColor greenColor];
@@ -236,26 +237,26 @@
         
         
         
-        UILabel *Viewingeffect =[[UILabel alloc] initWithFrame:CGRectMake(160, 170, 80, 35)];
+        UILabel *Viewingeffect =[[UILabel alloc] initWithFrame:CGRectMake(_imageVCinema.frame.origin.x+_imageVCinema.frame.size.width+10, 170, 80, 35)];
         Viewingeffect.text = @"观影效果:";
         
         // Viewingeffect.backgroundColor = [UIColor greenColor];
         [_DetailedViewController addSubview:Viewingeffect];
         
-        UILabel *General =[[UILabel alloc] initWithFrame:CGRectMake(233, 170, 40, 35)];
+        UILabel *General =[[UILabel alloc] initWithFrame:CGRectMake(Viewingeffect.frame.origin.x+Viewingeffect.frame.size.width-5, 170, 40, 35)];
         General.text = @"一般";
         General.textColor = [UIColor orangeColor];
         //General.backgroundColor = [UIColor brownColor];
         [_DetailedViewController addSubview:General];
         
         
-        UILabel *ServiceQuality =[[UILabel alloc] initWithFrame:CGRectMake(280, 170, 80, 35)];
+        UILabel *ServiceQuality =[[UILabel alloc] initWithFrame:CGRectMake(General.frame.origin.x+General.frame.size.width, 170, 80, 35)];
         ServiceQuality.text = @"服务质量:";
         
         // ServiceQuality.backgroundColor = [UIColor greenColor];
         [_DetailedViewController addSubview:ServiceQuality];
         
-        UILabel *Generaltwo =[[UILabel alloc] initWithFrame:CGRectMake(353, 170, 40, 35)];
+        UILabel *Generaltwo =[[UILabel alloc] initWithFrame:CGRectMake(ServiceQuality.frame.origin.x+ServiceQuality.frame.size.width-5, 170, 40, 35)];
         Generaltwo.text = @"一般";
         Generaltwo.textColor = [UIColor orangeColor];
         //Generaltwo.backgroundColor = [UIColor purpleColor];
