@@ -19,6 +19,8 @@
 
 #import "HotMovieTableViewCell.h"
 
+#import "MovieWebViewController.h"
+
 
 // 前景图片
 #import "FirsView.h"
@@ -44,16 +46,25 @@
 
 #import "MovieCollectionDataBaseUtil.h"
 
+#import "XRCarouselView.h"
+
 
 #define Width [UIScreen mainScreen].bounds.size.width
 
 #define Height [UIScreen mainScreen].bounds.size.height
 
 
-@interface MovieViewController () < LocationViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,AttentionMovieTableViewCellDelegate,FutureTableViewDelegate >
+
+
+
+
+
+@interface MovieViewController () < LocationViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,AttentionMovieTableViewCellDelegate,FutureTableViewDelegate,UIScrollViewDelegate,XRCarouselViewDelegate >
+
 
 @property (nonatomic, strong) UITableView * tableView;
 
+@property (nonatomic, strong) UIButton * topButton;
 // 热映电影数组
 @property (nonatomic, strong) NSMutableArray * hotArray;
 
@@ -61,6 +72,9 @@
 @property (nonatomic, strong) NSMutableArray * attentionArray;
 // 即将上映电影数组 (即将上映)
 @property (nonatomic, strong) NSMutableArray * futureArray;
+
+@property (nonatomic, strong) NSMutableArray * headArray;
+
 
 // 正在热映和即将上映的转换
 @property (nonatomic, strong) TopView * topView;
@@ -77,7 +91,7 @@
 #pragma mark- 懒加载
 -(UITableView *)tableView{
     if (!_tableView) {
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, Height / 15, Width, Height - 64 - Height / 15) style:UITableViewStylePlain];
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, Height / 15 - 49, Width, Height - 64 - Height / 15) style:UITableViewStylePlain];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         [self setExtraCellLineHidden:self.tableView];
@@ -110,9 +124,19 @@
     return _futureArray;
 }
 
+-(NSMutableArray *)headArray{
+    if (!_headArray) {
+        self.headArray = [NSMutableArray array];
+    }
+    return _headArray;
+}
+
+
 -(UIView *)topView{
     if (!_topView) {
-        self.topView = [[TopView alloc] initWithFrame:CGRectMake(0, 0, Width, Height / 15)];
+
+        self.topView = [[TopView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height / 3, Width, Height / 20)];
+
         self.topView.backgroundColor = [UIColor whiteColor];
     }
     return _topView;
@@ -147,7 +171,7 @@
     }else{
         LocationViewController * location = [[LocationViewController alloc] init];
         
-        location.delegate = self;
+//        location.delegate = self;
         
         [self.navigationController pushViewController:location animated:YES];
         
@@ -156,6 +180,8 @@
     [self listener];
     
     [self listenerForcast];
+    
+    [self listenerPassCity];
     
     //***********************前景图*********************//
     
@@ -181,6 +207,8 @@
     //  locationName
     NSInteger locationID = [[NSUserDefaults standardUserDefaults] integerForKey:@"defaultLocationID"];
     
+    
+    [self requestHeadData];
     // 申请
     [self requestHotData:locationID];
     [self requestFutureData:locationID];
@@ -190,13 +218,13 @@
     [self.view addSubview:self.tableView];
 
     
-    [self.view addSubview:self.topView];
-    self.topView.selectButtonTitleColor = [UIColor colorWithRed:90/255.0 green:144/255.0 blue:206/255.0 alpha:1];
-    [self.topView setTitleButton:@[@"正在热映",@"即将上映"]];
-    for (UIButton * button in self.topView.buttonArray) {
-        [button addTarget:self action:@selector(reflashData:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    [self.topView setTitleButtonColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
+//    [self.view addSubview:self.topView];
+//    self.topView.selectButtonTitleColor = [UIColor colorWithRed:90/255.0 green:144/255.0 blue:206/255.0 alpha:1];
+//    [self.topView setTitleButton:@[@"正在热映",@"即将上映"]];
+//    for (UIButton * button in self.topView.buttonArray) {
+//        [button addTarget:self action:@selector(reflashData:) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//    [self.topView setTitleButtonColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
     
 
     
@@ -382,6 +410,80 @@
 
 #pragma mark- 申请数据
 
+
+//http://cms.phonemovie.cnlive.com/api/?functionId=pageData&params=%7B%22appid%22%3A%22movie%22%2C%22plat%22%3A%22a%22%2C%22pageType%22%3A%22index%22%2C%22pageUUID%22%3A%22fe5cd895-9e5e-11e5-9eb6-c7d8a7a18cc4%22%2C%22version%22%3A509%7D
+// 申请表头信息
+-(void)requestHeadData{
+    
+    [self.headArray removeAllObjects];
+    
+    [NetWorkRequestManager requestWithType:Get URLString:@"http://cms.phonemovie.cnlive.com/api/?functionId=pageData&params={\"appid\":\"movie\",\"plat\":\"a\",\"pageType\":\"index\",\"pageUUID\":\"fe5cd895-9e5e-11e5-9eb6-c7d8a7a18cc4\",\"version\":509}" parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+       
+        NSDictionary * dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//        NSLog(@"%@",dataDic);
+        NSArray * array = [dataDic objectForKey:@"banner"];
+//        NSLog(@"%@",array);
+        for (NSDictionary * dic in array) {
+            HeadMovieModel * head = [[HeadMovieModel alloc] init];
+            [head setValuesForKeysWithDictionary:dic];
+            [self.headArray addObject:head];
+            
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSMutableArray * arrayImage = [NSMutableArray array];
+            NSMutableArray * arrayDescribe = [NSMutableArray array];
+            for (HeadMovieModel * head in self.headArray) {
+                [arrayImage addObject:head.img];
+                [arrayDescribe addObject:head.title];
+            }
+            
+            UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height / 3 + self.view.bounds.size.height / 15)];
+            
+            
+            XRCarouselView * carousel = [XRCarouselView carouselViewWithImageArray:arrayImage describeArray:arrayDescribe];
+            carousel.pageControl.hidden = YES;
+            carousel.delegate = self;
+            carousel.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height / 3);
+            
+            [backView addSubview:carousel];
+            
+            
+            // 字体颜色
+//            self.topView.selectButtonTitleColor = [UIColor colorWithRed:90/255.0 green:144/255.0 blue:206/255.0 alpha:1];
+            self.topView.selectButtonTitleColor = [UIColor redColor];
+            
+            [self.topView setTitleButton:@[@"正在热映",@"即将上映"]];
+            for (UIButton * button in self.topView.buttonArray) {
+                [button addTarget:self action:@selector(reflashData:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            // 背景颜色
+//            [self.topView setTitleButtonColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
+            [self.topView setTitleButtonColor:[UIColor whiteColor]];
+        
+            [backView addSubview:self.topView];
+            
+            
+            self.tableView.tableHeaderView = backView;
+            
+            
+            
+            
+            
+            
+            
+        });
+        
+        
+        
+    } error:^(NSError *error) {
+        
+    }];
+}
+
+
+
 // 申请 热映数据
 // 申请 数据 (附上 Locationid 参数)
 -(void)requestHotData:(NSInteger)identifier{
@@ -476,14 +578,14 @@
     
     LocationViewController * location = [[LocationViewController alloc] init];
     
-    location.delegate = self;
+//    location.delegate = self;
     
     [self.navigationController pushViewController:location animated:YES];
     
     
 }
 
-#pragma mark- 代理传值
+#pragma mark- 代理传值 ( 实现传城市信息的 功能能)
 -(void)passLocationCity:(CityMessage *)city{
 //    NSLog(@"%@",city.name);
     
@@ -500,6 +602,45 @@
     
     
 }
+
+-(void)listenerPassCity{
+    // 注册成为广播站ChangeTheme频道的听众
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    // 成为听众一旦有广播就来调用self recvBcast:函数
+    [nc addObserver:self selector:@selector(passCity:) name:@"kNotificationCity" object:nil];
+}
+
+
+-(void)passCity:(NSNotification *)notify{
+    
+    // 取得广播内容
+    
+    NSDictionary *dic = [notify userInfo];
+    
+    NSString * cityName = [dic objectForKey:@"cityName"];
+    
+    NSString * cityID = [dic objectForKey:@"cityID"];
+    
+    // 做响应跟新数据的操作
+    
+    self.navigationItem.leftBarButtonItem.title = cityName;
+    
+    
+    [self.hotArray removeAllObjects];
+    [self requestHotData:[cityID integerValue]];
+    [self requestFutureData:[cityID integerValue]];
+}
+
+
+
+
+
+
+
+
+
+
+
 
 #pragma mark- 接受 刚获取的地点通知
 -(void)listener{
@@ -595,13 +736,21 @@
     
     NSDictionary * dic = notify.userInfo;
     
+    NSLog(@"%@",dic);
+    
     NSArray * array = [dic objectForKey:@"vedio"];
+    
+    NSString * imageString = [dic objectForKey:@"img"];
+    
+    NSString * nameString = [dic objectForKey:@"name"];
     
 //    NSLog(@"%@",array);
     
     VideoListViewController * video = [[VideoListViewController alloc] init];
     
     video.videoArray = array;
+    video.imageStr = imageString;
+    video.nameStr = nameString;
     
     [self.navigationController pushViewController:video animated:YES];
     
@@ -638,13 +787,35 @@
 }
 
 #pragma mark- 点击了那个 预告片按钮
--(void)passFuturevedio:(NSArray *)array{
+-(void)passFuturevedio:(FutureMovieModel *)future{
     
     VideoListViewController * video = [[VideoListViewController alloc] init];
     
-    video.videoArray = array;
+    video.videoArray = future.videoArray;
+    
+    video.imageStr = future.image;
+    
+    video.nameStr = future.title;
     
     [self.navigationController pushViewController:video animated:YES];
+    
+    
+}
+
+
+#pragma mark- 点击那个轮播图
+-(void)carouselView:(XRCarouselView *)carouselView didClickImage:(NSInteger)index{
+    
+    HeadMovieModel * head = [self.headArray objectAtIndex:index];
+    
+    NSLog(@"%@",head.title);
+    NSLog(@"%@",head.url);
+    
+    
+    MovieWebViewController * movie = [[MovieWebViewController alloc] init];
+    movie.head = head;
+    
+    [self.navigationController pushViewController:movie animated:YES];
     
     
 }

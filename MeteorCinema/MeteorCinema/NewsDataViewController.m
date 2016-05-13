@@ -38,10 +38,22 @@ self.navigationItem.title = @"我的收藏";
     self.tab.delegate = self;
     self.tab.dataSource = self;
     self.tab.rowHeight = 120;
+    [self setExtraCellLineHidden:self.tab];
+
     [self.tab reloadData];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(doBarButton)];
     self.dataArray = [[NewsDataBaseUtil shareDataBase]selectFromTable:@"collects"];
 
+}
+#pragma mark- 隐藏没内容的cell 的线
+-(void)setExtraCellLineHidden: (UITableView *)tableView{
+    
+    UIView *view = [UIView new];
+    
+    view.backgroundColor = [UIColor clearColor];
+    
+    [tableView setTableFooterView:view];
+    
 }
 -(void)doBarButton{
 [[NewsDataBaseUtil shareDataBase]deleteWithTable:@"collects"];

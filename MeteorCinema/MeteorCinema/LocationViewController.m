@@ -303,6 +303,10 @@
         [self.delegate passLocationCity:city];
         
         
+        // 改为通过 通知 来传达地点(方便在电影和影院页面做统一)
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"kNotificationCity" object:nil userInfo:@{@"cityID":[NSNumber numberWithInteger:city.identifier],@"cityName":city.name}];
+        
+        
         [self.navigationController popViewControllerAnimated:YES];
         
         
@@ -367,12 +371,7 @@
         
     }];
     
-    //检验正确性
-//    for (NSString * string in self.allCityInitalArray) {
-//        NSLog(@"%@",string);
-//    }
-  
-    
+
 }
 
 
@@ -481,6 +480,8 @@
         
         [self.delegate passLocationCity:city];
         
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"kNotificationCity" object:nil userInfo:@{@"cityID":[NSNumber numberWithInteger:city.identifier],@"cityName":city.name}];
+        
         [self saveUserdefault:city];
         
         
@@ -493,6 +494,9 @@
         CityMessage * city = [array objectAtIndex:indexPath.row];
             
         [self.delegate passLocationCity:city];
+        
+        
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"kNotificationCity" object:nil userInfo:@{@"cityID":[NSNumber numberWithInteger:city.identifier],@"cityName":city.name}];
         
         [self saveUserdefault:city];
             

@@ -119,7 +119,7 @@
 
 -(void)forcastButton:(UIButton *)button{
     
-    [self.delegate passFuturevedio:self.future.videoArray];
+    [self.delegate passFuturevedio:self.future];
     
     
     

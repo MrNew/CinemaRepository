@@ -42,6 +42,9 @@
         
         if (i == 0) {
             [button setTitleColor:(self.selectButtonTitleColor == nil ? [UIColor blueColor] :self.selectButtonTitleColor) forState:UIControlStateNormal];
+        }else{
+            [button setTitleColor:[[UIColor blackColor] colorWithAlphaComponent:0.8] forState:UIControlStateNormal];
+            
         }
         
         
@@ -70,7 +73,7 @@
     
     for (UIButton * button1 in self.buttonArray) {
         if (button1.tag != button.tag) {
-            [button1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [button1 setTitleColor:[[UIColor blackColor] colorWithAlphaComponent:0.8] forState:UIControlStateNormal];
         }
     }
 

@@ -10,11 +10,13 @@
 
 #import "ConnectedModel.h"
 
+#import "MarqueeLabel.h"
+
 @interface ConnectedCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, assign) NSInteger identifier;
 
-@property (nonatomic, strong) NSString * titleString;
+@property (nonatomic, strong) MarqueeLabel * titleLabel;
 
 @property (nonatomic, strong) UIImageView * iconImageView;
 

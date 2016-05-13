@@ -66,8 +66,24 @@
   
     [self.view addSubview:_CinemaTabelView];
     
-    [self requestData];
+    
     [self shareleftBarButton];
+    [self listenerPassCity];
+    
+    
+    //  地点 name
+    //  locationName
+  
+    NSInteger locationID = [[NSUserDefaults standardUserDefaults] integerForKey:@"defaultLocationID"];
+    if (locationID) {
+         self.cinemaId = locationID;
+        
+        [self requestData];
+    }else{
+        self.cinemaId = 365;
+         [self requestData];
+    }
+   
     
 
   
@@ -82,7 +98,10 @@
    _musicBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _musicBtn.frame = CGRectMake(0, 0, 80, 40);
     //    [musicBtn setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
-    [_musicBtn setTitle:@"广州" forState:UIControlStateNormal];
+    
+    // 先判断是否进入 算地点界面
+    NSString * locationName = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultLocation"];
+    [_musicBtn setTitle:locationName forState:UIControlStateNormal];
   
 //  musicBtn.font = [UIFont boldSystemFontOfSize:15];
     [_musicBtn addTarget:self action:@selector(handlePresentCurrentMusicAction) forControlEvents:UIControlEventTouchDown];
@@ -103,6 +122,36 @@
 
 }
 
+-(void)listenerPassCity{
+    // 注册成为广播站ChangeTheme频道的听众
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    // 成为听众一旦有广播就来调用self recvBcast:函数
+    [nc addObserver:self selector:@selector(passCity:) name:@"kNotificationCity" object:nil];
+}
+
+
+-(void)passCity:(NSNotification *)notify{
+    
+    
+    // 取得广播内容
+    [self.dataArray removeAllObjects];
+    
+    NSDictionary *dic = [notify userInfo];
+    
+    NSString * cityName = [dic objectForKey:@"cityName"];
+    
+    NSString * cityID = [dic objectForKey:@"cityID"];
+    NSLog(@"%@",cityID);
+//    NSString *strname = [NSString stringWithFormat:@"%@",cityID];
+//    NSString *str = strname;
+    self.cinemaId = [cityID integerValue];
+    NSLog(@"%ld",self.cinemaId);
+    
+     [_musicBtn setTitle:cityName forState:UIControlStateNormal];
+    
+     [self requestData];
+}
+
 
 
 -(void)passLocationCity:(CityMessage *)city
@@ -118,11 +167,7 @@
     }else{
         [_musicBtn setTitle:city.name forState:UIControlStateNormal];
     }
-   
-    
-    
-    
-    // 先判断是否进入 算地点界面
+
    
     
     
