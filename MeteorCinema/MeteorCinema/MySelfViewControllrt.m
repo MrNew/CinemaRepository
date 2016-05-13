@@ -7,6 +7,7 @@
 //
 
 #import "MySelfViewControllrt.h"
+#import "CinemaCollectionViewController.h"
 
 #import "BottomView.h"
 
@@ -267,14 +268,17 @@
                 
                 break;
             case 1:
+            
+            {
                 
+        CinemaCollectionViewController *cool = [[CinemaCollectionViewController alloc] init];
+       [self.navigationController pushViewController:cool animated:YES];
                 
-                
-                
-                
-                
+            }
                 break;
-            case 2:{
+            case 2:
+            
+            {
                 NewsDataViewController *newsCollectVC = [[NewsDataViewController alloc]init];
                 [self.navigationController pushViewController:newsCollectVC animated:YES];
                 

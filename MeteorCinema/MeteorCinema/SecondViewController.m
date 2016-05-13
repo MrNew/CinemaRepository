@@ -14,7 +14,7 @@
 #import "UIButton+WebCache.h"
 #import "CinemaDataBaseUtil.h"
 #import "Cinema.h"
-#import "CinemaCollectionViewController.h"
+
 
 #define ScreenWidth   [[UIScreen mainScreen] bounds].size.width
 #define ScreenHeight  [UIScreen mainScreen].bounds.size.height
@@ -99,7 +99,7 @@
         NSLog(@"失败");
     }
     
-    NSLog(@"%@",NSHomeDirectory());
+  //  NSLog(@"%@",NSHomeDirectory());
     
 
     
@@ -130,13 +130,6 @@
     
 }
 
-//-(void)heheheheh
-//{
-//    CinemaCollectionViewController *cool = [[CinemaCollectionViewController alloc] init];
-//    [self.navigationController pushViewController:cool animated:YES];
-//    
-//
-//}
 
 #pragma -mark 右上角收藏
 -(void)sharerightBarButton
@@ -312,6 +305,7 @@
             for (MovIs *mo in self.SendcondDataArray) {
                 _titiLabel.text = mo.title;
                 _TimeLabel.text = mo.length ;
+             
                 _classifyLabel.text = mo.type;
                 
                 NSString *str = mo.movieId;
@@ -341,7 +335,7 @@
 -(void)studiorequestData
 {
     [self.studioDataArray removeAllObjects];
-    NSLog(@"%ld",self.movieIdNumber);
+ //   NSLog(@"%ld",self.movieIdNumber);
     [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Showtime/ShowTimesByCinemaMovieDate.api?cinemaId=%ld&movieId=%ld",self.cinemaIdtwo,self.movieIdNumber] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         
         //对专递过来的数据进行解析
@@ -355,6 +349,8 @@
         for (NSDictionary *dic in array) {
             studio *stu = [[studio alloc] init];
             [stu setValuesForKeysWithDictionary:dic];
+               NSLog(@"开始时间==%ld",stu.startTime);
+                NSLog(@"结束时间==%ld",stu.endTime);
             
             
             [self.studioDataArray addObject:stu];
@@ -607,19 +603,6 @@
   //  movieView.backgroundColor = [UIColor cyanColor];
     [_ScrollViewController addSubview:movieView];
     
-//------------------------------------------------------------
-//    UIButton *musicBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    musicBtn.frame = CGRectMake(300, 30, 50, 50);
-//    
-//    [musicBtn setImage:[UIImage imageNamed:@"cinemashouchang"] forState:UIControlStateNormal];
-//    
-//    [musicBtn addTarget:self action:@selector(heheheheh) forControlEvents:UIControlEventTouchDown];
-//    
-//    musicBtn.backgroundColor = [UIColor redColor];
-//    
-//    [movieView addSubview:musicBtn];
-    
-//------------------------------------------------------------
     
     //电影标题
     _titiLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, 300, 30)];
@@ -715,8 +698,11 @@
     NSString *studitime1 = [[NSString stringWithFormat:@"%@",date1] substringWithRange:NSMakeRange(5, 11)];
     cell.startTimeLabel.text = studitime1;
     
+ 
+    
     
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:studi.endTime];
+   // NSLog(@"date ==%@",date);
     NSString *studitime = [[NSString stringWithFormat:@"%@",date] substringWithRange:NSMakeRange(5, 11)];
     cell.endTimeLabel.text = studitime;
     

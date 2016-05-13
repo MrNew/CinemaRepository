@@ -112,6 +112,11 @@
 		3FB941F81CD393DD009BD81F /* dianyingB.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941F61CD393DD009BD81F /* dianyingB.png */; };
 		3FB941FB1CD39597009BD81F /* faA.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941F91CD39597009BD81F /* faA.png */; };
 		3FB941FC1CD39597009BD81F /* faB.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB941FA1CD39597009BD81F /* faB.png */; };
+		3FC3A6C41CE4AAF70087AE13 /* CinemaCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F83B18F1CE362F900C6E348 /* CinemaCollectionViewController.m */; };
+		3FC3A6C51CE4AB490087AE13 /* menghuan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F83B17D1CE333A400C6E348 /* menghuan.jpg */; };
+		3FC3A6C61CE4ABA00087AE13 /* huiying.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F83B1831CE3354C00C6E348 /* huiying.jpg */; };
+		3FC3A6C71CE4ABA00087AE13 /* cinemashouchang.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F83B1871CE3388E00C6E348 /* cinemashouchang.png */; };
+		3FC3A6C81CE4ABA00087AE13 /* huilv_影院 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 3F696E411CE220DA004A358B /* huilv_影院 (1).png */; };
 		3FC5FF271CE073BA00D340D2 /* MovIs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC5FF261CE073BA00D340D2 /* MovIs.m */; };
 		3FC5FF2A1CE073C600D340D2 /* DetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC5FF291CE073C600D340D2 /* DetailedViewController.m */; };
 		3FC5FF2D1CE0797900D340D2 /* studio.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC5FF2C1CE0797900D340D2 /* studio.m */; };
@@ -757,7 +762,6 @@
 				60D41DA71CE0D871003513AB /* LocationView.m */,
 				60D41DA51CE0D7C3003513AB /* LocationViewController.h */,
 				60D41D931CE0D771003513AB /* LocationViewController.m */,
-				60D41D981CE0D771003513AB /* SecondViewController.h */,
 				3F7D38B71CDE234F00E4700D /* LMVideoPlay */,
 				3FA0A59F1CD99FB3004B52CB /* 前景图 */,
 				3F4C453B1CD8DB2E0006EB06 /* Tool */,
@@ -978,6 +982,7 @@
 			children = (
 				3FA0A5931CD99CCD004B52CB /* CinemaViewController.h */,
 				3FA0A5941CD99CCD004B52CB /* CinemaViewController.m */,
+				60D41D981CE0D771003513AB /* SecondViewController.h */,
 				3FA0A59D1CD99D90004B52CB /* SecondViewController.m */,
 				3FC5FF281CE073C600D340D2 /* DetailedViewController.h */,
 				3FC5FF291CE073C600D340D2 /* DetailedViewController.m */,
@@ -1326,6 +1331,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC3A6C61CE4ABA00087AE13 /* huiying.jpg in Resources */,
+				3FC3A6C71CE4ABA00087AE13 /* cinemashouchang.png in Resources */,
+				3FC3A6C81CE4ABA00087AE13 /* huilv_影院 (1).png in Resources */,
+				3FC3A6C51CE4AB490087AE13 /* menghuan.jpg in Resources */,
 				60D41DB61CE0EAD0003513AB /* 票务.png in Resources */,
 				60D41DAE1CE0E655003513AB /* TrailerTableViewCell.xib in Resources */,
 				3F83B1821CE3343500C6E348 /* qianxing.jpg in Resources */,
@@ -1433,6 +1442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC3A6C41CE4AAF70087AE13 /* CinemaCollectionViewController.m in Sources */,
 				3F696E311CE22071004A358B /* featureTableViewCell.m in Sources */,
 				60D41DAD1CE0E387003513AB /* TrailerTableViewCell.m in Sources */,
 				60D41DAB1CE0E336003513AB /* NewsTableViewCell.m in Sources */,

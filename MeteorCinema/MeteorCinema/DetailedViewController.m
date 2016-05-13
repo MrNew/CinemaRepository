@@ -323,7 +323,7 @@
 //特色模块
 -(void)featureAndTableView
 {
-    _featureTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 400, ScreenWidth,self.featureTableView.frame.origin.y+40*self.featureDataArray.count+110*self.CommentDataArray.count+100) style:UITableViewStylePlain];
+    _featureTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 400, ScreenWidth,self.featureTableView.frame.origin.y+40*self.featureDataArray.count+110*self.CommentDataArray.count+80) style:UITableViewStylePlain];
     
     _featureTableView.delegate = self;
     _featureTableView.dataSource = self;
@@ -389,43 +389,67 @@
             
             if (indexPath.row == 0 && indexPath.section == 0) {
                 
-                cell.allfeatureLabel.text = feat.serviceTicketContent;
+                if (feat.serviceTicketContent.length>0) {
+                     cell.allfeatureLabel.text = feat.serviceTicketContent;
                 cell.allfeatureImageView.image = [UIImage imageNamed:@"quguan (2)"];
                 cell.allfeatureLabel.numberOfLines = 3;
+                }else{
+                    cell.allfeatureImageView.image = [UIImage imageNamed:@"quguan (2)"];
+                    cell.allfeatureLabel.text = @"无";
+                }
+               
                 
             }else if (indexPath.row == 1 && indexPath.section ==0){
                 
-                cell.allfeatureLabel.text = feat.featureFoodContent;
-                cell.allfeatureImageView.image = [UIImage imageNamed:@"canting"];
-                cell.allfeatureLabel.numberOfLines = 3;
+               
+                if (feat.featureFoodContent.length>2) {
+                    cell.allfeatureLabel.text = feat.featureFoodContent;
+                    cell.allfeatureImageView.image = [UIImage imageNamed:@"canting"];
+                    cell.allfeatureLabel.numberOfLines = 3;
+                }else{
+                    cell.allfeatureImageView.image = [UIImage imageNamed:@"canting"];
+                    cell.allfeatureLabel.text = @"无";
+                }
                 
             }else if (indexPath.row == 2 && indexPath.section == 0){
                 
-                cell.allfeatureLabel.text = feat.feature3DContent;
+                if (feat.feature3DContent.length>0) {
+                     cell.allfeatureLabel.text = feat.feature3DContent;
                 cell.allfeatureImageView.image = [UIImage imageNamed:@"3D-1"];
                 cell.allfeatureLabel.numberOfLines = 3;
+                }else{
+                    
+                    cell.allfeatureImageView.image = [UIImage imageNamed:@"3D-1"];
+                    cell.allfeatureLabel.text = @"无";
+                }
+                
+               
                 
             }else if (indexPath.row == 3 && indexPath.section == 0){
                 
-                cell.allfeatureLabel.text = feat.featureLeisureContent;
-                 cell.allfeatureImageView.image = [UIImage imageNamed:@"yingyuanyuan"];
-                cell.allfeatureLabel.numberOfLines = 3;
+                if (feat.featureLeisureContent.length>0) {
+                    cell.allfeatureLabel.text = feat.featureLeisureContent;
+                    cell.allfeatureImageView.image = [UIImage imageNamed:@"yingyuanyuan"];
+                    cell.allfeatureLabel.numberOfLines = 3;
+                }else{
+                     cell.allfeatureImageView.image = [UIImage imageNamed:@"yingyuanyuan"];
+                    cell.allfeatureLabel.text = @"无";
+                }
+                
                 
             }else if (indexPath.row == 4 && indexPath.section == 0){
                 
-                cell.allfeatureLabel.text = feat.featureParkContent;
-                cell.allfeatureImageView.image = [UIImage imageNamed:@"tingche"];
-                cell.allfeatureLabel.numberOfLines = 3;
-                
-            }else if (indexPath.row == 5 && indexPath.section == 0){
-                
-                cell.allfeatureLabel.text = feat.featureVIPContent;
-                
-                cell.allfeatureLabel.numberOfLines = 3;
-                
+                if (feat.featureParkContent.length>0) {
+                    cell.allfeatureLabel.text = feat.featureParkContent;
+                    cell.allfeatureImageView.image = [UIImage imageNamed:@"tingche"];
+                    cell.allfeatureLabel.numberOfLines = 3;
+                }else{
+                    cell.allfeatureImageView.image = [UIImage imageNamed:@"tingche"];
+                    cell.allfeatureLabel.text = @"无";
+                }
             }else{
                 
-                cell.textLabel.text = @"无";
+              cell.allfeatureLabel.text = @"无";
     
                 
             }
