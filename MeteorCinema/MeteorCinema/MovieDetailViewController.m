@@ -28,6 +28,10 @@
 
 #import "MoreDetailViewController.h"
 
+//#import "CinemaViewController.h"
+
+#import "TabBarViewController.h"
+
 
 // 新闻标题
 #define ExtendConnectedURL @"http://api.m.mtime.cn/Movie/News.api?pageIndex=1&movieId="
@@ -230,6 +234,7 @@
     cinemaButton.layer.cornerRadius = cinemaButton.frame.size.height / 2;
     cinemaButton.layer.masksToBounds = YES;
     cinemaButton.backgroundColor = [UIColor orangeColor];
+    [cinemaButton addTarget:self action:@selector(cinemaButtonClik:) forControlEvents:UIControlEventTouchUpInside];
     
     
     
@@ -289,6 +294,16 @@
     }
     
     
+    
+    
+}
+
+
+#pragma mark- 影院按钮
+-(void)cinemaButtonClik:(UIButton *)button{
+    
+    
+    [(TabBarViewController *)self.tabBarController tabbarChangebuttonWith:1];
     
     
 }
