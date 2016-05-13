@@ -155,6 +155,15 @@
     
 
     self.navigationItem.title = @"电影";
+    
+    self.topButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [self.topButton setTitle:@"电影" forState:UIControlStateNormal];
+    [self.topButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.navigationItem.titleView = self.topButton;
+    
+    
+    
     self.status = @"正在热映";
     
     
@@ -410,6 +419,38 @@
     }
     [self.navigationController pushViewController:movie animated:YES];
     
+}
+
+
+
+
+#pragma mark- 观察tableView 移动的情况
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    
+    
+    //    NSLog(@"%f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y > 1000) {
+        self.topButton.userInteractionEnabled = YES;
+        [self.topButton setTitle:@"点击返回顶部" forState:UIControlStateNormal];
+        [self.topButton addTarget:self action:@selector(topButtonClik:) forControlEvents:UIControlEventTouchUpInside];
+        [self.topButton sizeToFit];
+        
+        
+    }else{
+        [self.topButton setTitle:@"电影" forState:UIControlStateNormal];
+        self.topButton.userInteractionEnabled = NO;
+    }
+    
+    
+    
+}
+
+-(void)topButtonClik:(UIButton *)button{
+    
+    
+    
+    [self.tableView setContentOffset:CGPointMake(0,0) animated:YES];
 }
 
 
