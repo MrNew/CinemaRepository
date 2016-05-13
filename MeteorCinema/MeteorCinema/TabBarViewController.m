@@ -99,7 +99,7 @@
         [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 
     }
-    [button setImage:[UIImage imageNamed:_selectedArray[0]] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:_selectedArray[button.tag - 1]] forState:UIControlStateNormal];
     [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 
     if (button.tag == 1) {
@@ -113,6 +113,35 @@
         self.selectedViewController = self.viewControllers[3];
     }
 }
+
+
+
+
+-(void)tabbarChangebuttonWith:(NSInteger)index{
+    
+    for (UIButton *btn in _tabBarView.subviews) {
+//        [btn setImage:[UIImage imageNamed:_array[index]] forState:UIControlStateNormal];
+//        [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        
+        if (btn.tag == index + 1) {
+            
+            [btn setImage:[UIImage imageNamed:_selectedArray[index]] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        }else if (btn.tag == 3 + 1){
+            [btn setImage:[UIImage imageNamed:_array[3]] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        }
+    }
+    
+     self.selectedViewController = self.viewControllers[index];
+    
+    
+}
+
+
+
+
+
 
 
 -(void)hidenBottomView{

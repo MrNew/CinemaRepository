@@ -11,7 +11,7 @@
 @interface TabBarViewController : UITabBarController
 
 
-
+-(void)tabbarChangebuttonWith:(NSInteger)index;
 
 -(void)hidenBottomView;
 

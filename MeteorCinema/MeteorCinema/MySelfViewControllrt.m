@@ -18,6 +18,8 @@
 
 #import "NewsDataViewController.h"
 
+#import "TabBarViewController.h"
+
 @interface MySelfViewControllrt () < UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate >
 
 @property (nonatomic, strong) UITableView * tableView;
@@ -142,24 +144,25 @@
 
 #pragma mark- bottomView 按钮的方法
 -(void)backButtonClik:(UIButton *)button{
+
+//    self.tabBarController.selectedViewController = self.tabBarController.viewControllers[0];
     
-    
-    
+    [(TabBarViewController *)self.tabBarController tabbarChangebuttonWith:0];
     
     
 }
 
 -(void)reflashButtonClik:(UIButton *)button{
     
-    
-    
+     [(TabBarViewController *)self.tabBarController tabbarChangebuttonWith:1];
+//     self.tabBarController.selectedViewController = self.tabBarController.viewControllers[1];
     
 }
 
 
 -(void)goForwardButtonClik:(UIButton *)button{
-    
-    
+     [(TabBarViewController *)self.tabBarController tabbarChangebuttonWith:2];
+//     self.tabBarController.selectedViewController = self.tabBarController.viewControllers[2];
     
 }
 

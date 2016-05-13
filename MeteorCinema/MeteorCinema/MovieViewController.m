@@ -296,9 +296,15 @@
             cell = [[HotMovieTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         }
         
+       
+            
         HotMovieModel * hot = [self.hotArray objectAtIndex:indexPath.row];
+            
+        
+            
         cell.hot = hot;
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+       
         return cell;
         
         
@@ -491,6 +497,7 @@
 //    http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=490
     [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=%ld",identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         // 申请数据完毕
+        [self.hotArray removeAllObjects];
         
         NSDictionary * dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
@@ -626,7 +633,7 @@
     self.navigationItem.leftBarButtonItem.title = cityName;
     
     
-    [self.hotArray removeAllObjects];
+   
     [self requestHotData:[cityID integerValue]];
     [self requestFutureData:[cityID integerValue]];
 }
