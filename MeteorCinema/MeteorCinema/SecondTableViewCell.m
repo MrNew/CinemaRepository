@@ -7,7 +7,8 @@
 //
 
 #import "SecondTableViewCell.h"
-
+#define ScreenWidth   [[UIScreen mainScreen] bounds].size.width
+#define ScreenHeight  [UIScreen mainScreen].bounds.size.height
 
 @implementation SecondTableViewCell
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -57,13 +58,13 @@
     [self.contentView addSubview:self.priceLabel];
     
     //购票
-    self.buyLabel = [[UILabel alloc] init];
-    self.buyLabel.textAlignment = NSTextAlignmentCenter;//居中
-    self.buyLabel.text = @"购买";
-    self.buyLabel.textColor = [UIColor whiteColor];
-    self.buyLabel.layer.cornerRadius = 10;
-    self.buyLabel.layer.masksToBounds = YES;
-    [self.contentView addSubview:self.buyLabel];
+//    self.buyLabel = [[UILabel alloc] init];
+//    self.buyLabel.textAlignment = NSTextAlignmentCenter;//居中
+//    self.buyLabel.text = @"购买";
+//    self.buyLabel.textColor = [UIColor whiteColor];
+//    self.buyLabel.layer.cornerRadius = 10;
+//    self.buyLabel.layer.masksToBounds = YES;
+//    [self.contentView addSubview:self.buyLabel];
     
     
     self.Label1 = [[UILabel alloc] init];
@@ -82,35 +83,35 @@
     [super layoutSubviews];
     
     //开始时间
-    self.startTimeLabel.frame = CGRectMake(10, 10, 100, 30);
+    self.startTimeLabel.frame = CGRectMake((ScreenWidth/5)/(ScreenWidth/5)+10, 10, 100, 30);
   //  self.startTimeLabel.backgroundColor = [UIColor redColor];
     
     //结束时间
-    self.endTimeLabel.frame = CGRectMake(10, 45, 100, 30);
+    self.endTimeLabel.frame = CGRectMake((ScreenWidth/5)/(ScreenWidth/5)+10, 45, 100, 30);
   //  self.endTimeLabel.backgroundColor = [UIColor cyanColor];
     
     //3D
-    self.versionDescLabel.frame = CGRectMake(150, 10, 50, 25);
+    self.versionDescLabel.frame = CGRectMake(ScreenWidth/3+20, 10, 50, 25);
   //  self.versionDescLabel.backgroundColor = [UIColor orangeColor];
     
     //gang /
-    self.Label1.frame = CGRectMake(180, 10, 20, 30);
+    self.Label1.frame = CGRectMake(self.versionDescLabel.frame.origin.x+35, 10, 20, 30);
     
     //语言
-    self.languageLabel.frame = CGRectMake(185, 10, 50, 25);
+    self.languageLabel.frame = CGRectMake(self.Label1.frame.origin.x+10, 10, 50, 25);
   //  self.languageLabel.backgroundColor = [UIColor greenColor];
     
     //几号厅
-    self.hallLabel.frame = CGRectMake(160, 40, 80, 25);
+    self.hallLabel.frame = CGRectMake(ScreenWidth/3, 40, 140, 25);
   //  self.hallLabel.backgroundColor = [UIColor brownColor];
     
     //价格
-    self.priceLabel.frame = CGRectMake(275, 30, 70, 25);
+    self.priceLabel.frame = CGRectMake(ScreenWidth/3*2.2, 30, 70, 25);
     // self.priceLabel.backgroundColor = [UIColor purpleColor];
     
     //购买
-    self.buyLabel.frame = CGRectMake(350, 30, 50, 25);
-    self.buyLabel.backgroundColor = [UIColor orangeColor];
+//    self.buyLabel.frame = CGRectMake(350, 30, 50, 25);
+//    self.buyLabel.backgroundColor = [UIColor orangeColor];
     
     
 
