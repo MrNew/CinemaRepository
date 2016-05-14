@@ -28,7 +28,7 @@
     [super viewDidLoad];
     [self loadData];
     [self loadImage];
-    self.tab = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight - 64) style:UITableViewStylePlain];
+    self.tab = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight - 64 - 49) style:UITableViewStylePlain];
     [self.view addSubview:self.tab];
     self.tab.delegate = self;
     self.tab.dataSource = self;

@@ -86,7 +86,10 @@
 @end
 
 @implementation MovieViewController
+-(void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = YES;
 
+}
 
 #pragma mark- 懒加载
 -(UITableView *)tableView{

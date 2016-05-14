@@ -34,7 +34,7 @@
     self.title.frame = CGRectMake(12, 16, 283, 21);
     self.title.textAlignment = NSTextAlignmentLeft;
     self.title.font = [UIFont fontWithName:@"Helvetica-Bold" size:17];
-    self.summary.frame = CGRectMake(12, 37, 296, 39);
+    self.summary.frame = CGRectMake(12, 37,UIScreenWidth - 60 - 40, 39);
     self.summary.textAlignment = NSTextAlignmentLeft;
 
     self.summary.textColor = [UIColor darkGrayColor];
@@ -46,9 +46,9 @@
     self.username.font = [UIFont fontWithName:@"Helvetica" size:14];
     self.username.textColor = [UIColor darkGrayColor];
     [self.username sizeToFit];
-    self.moviename.frame = CGRectMake(self.username.frame.origin.x + self.username.frame.size.width, 88, 88, 24);
+    self.moviename.frame = CGRectMake(self.username.frame.origin.x + self.username.frame.size.width, 84, 88, 24);
     self.moviename.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-    [self.moviename sizeToFit];
+    //[self.moviename sizeToFit];
     self.userRating.frame = CGRectMake(self.moviename.frame.origin.x + self.moviename.frame.size.width, 85, 27, 21);
     self.userRating.textColor = [UIColor whiteColor];
     self.userRating.backgroundColor = [[UIColor greenColor]colorWithAlphaComponent:0.5];

@@ -98,10 +98,7 @@
             for (int i = 0; i < self.dataArray.count; i++) {
                 PicModel *models = self.dataArray[i];
                 CGFloat imageHeight = [tool getImageHeight:models.url1];
-             //   self.picScroll.frame = CGRectMake(0, 0, UIScreenWidth, imageHeight);
-            //    self.picScroll.center = CGPointMake(UIScreenWidth/2, UIScreenHeight/2 - 64);
                 UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake(UIScreenWidth*i, UIScreenHeight/2 - imageHeight/2, UIScreenWidth, imageHeight)];
-            //    imageV.center = CGPointMake(UIScreenWidth*(1/2 + i), UIScreenHeight/2 -64);
                 [self.picScroll addSubview:imageV];
                 [imageV sd_setImageWithURL:[NSURL URLWithString:models.url1]];
             }
@@ -150,6 +147,8 @@
     vc.itemTitle = self.itemTitle;
     vc.title2 = self.title2;
     vc.image = self.image;
+    vc.identifier = self.identifier;
+    vc.commentCount = self.commentCount;
     [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark - scroll 代理方法

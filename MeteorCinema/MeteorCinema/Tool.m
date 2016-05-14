@@ -16,14 +16,32 @@
     CGFloat w = image.size.width;
     CGFloat h = image.size.height;
     
-    return (375*h)/w;
+    return (UIScreenWidth*h)/w;
 }
 //计算label高度的方法
 -(CGFloat)getLabelHeight:(NSString *)content font:(UIFont *)font
 {
-    CGSize size = CGSizeMake(375, 100000);
+    CGSize size = CGSizeMake(UIScreenWidth - 120, 100000);
     NSDictionary *dic = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
     CGRect rect = [content boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
     return rect.size.height;
 }
+//计算label高度的方法
+-(CGFloat)getContentLabelHeight:(NSString *)content font:(UIFont *)font
+{
+    CGSize size = CGSizeMake(UIScreenWidth - 70, 100000);
+    NSDictionary *dic = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    CGRect rect = [content boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+    return rect.size.height;
+}
+//计算label高度的方法
+-(CGFloat)getSContentLabelHeight:(NSString *)content font:(UIFont *)font
+{
+    CGSize size = CGSizeMake(UIScreenWidth - 90, 100000);
+    NSDictionary *dic = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    CGRect rect = [content boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+    return rect.size.height;
+}
+
+
 @end

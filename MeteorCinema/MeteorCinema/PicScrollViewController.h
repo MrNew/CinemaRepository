@@ -13,5 +13,6 @@
 @property(nonatomic,strong)NSString *image;
 @property(nonatomic,strong)NSString *itemTitle;
 @property(nonatomic,strong)NSString *title2;
-
+@property(nonatomic,assign)NSInteger identifier;
+@property(nonatomic,assign)NSInteger commentCount;
 @end
