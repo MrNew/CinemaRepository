@@ -10,6 +10,7 @@
 #import "NetWorkRequestManager.h"
 #import "NewsDataBaseUtil.h"
 #import "showView.h"
+#import "NewsCommentViewController.h"
 @interface DetailViewController ()<UIWebViewDelegate,UIScrollViewDelegate>
 {
    NSInteger isShowStatus;
@@ -18,6 +19,7 @@
 @property(nonatomic,strong)NSString *url;
 @property(nonatomic,strong)showView *showView;
 @property(nonatomic,strong)UIButton *button;
+@property(nonatomic,strong)UIView *commentView;
 @end
 
 @implementation DetailViewController
@@ -31,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self network];
+
     self.view.backgroundColor = [UIColor whiteColor];
     [[NewsDataBaseUtil shareDataBase]creatTable];
     self.button = [[UIButton alloc]initWithFrame:CGRectMake(0,0,32,32)];
@@ -75,8 +78,7 @@
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 dispatch_async(dispatch_get_main_queue(), ^{
     
-    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight )];
-//    self.webView.delegate = self;
+    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight -44 - 64 )];
     [self.view addSubview:self.webView];
 //    //3.1
 //    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -126,6 +128,8 @@ dispatch_async(dispatch_get_main_queue(), ^{
     [backView addSubview:titleLabel];
     [self.webView.scrollView insertSubview:backView atIndex:0];
     self.webView.scrollView.delegate = self;
+    [self initCommentView];
+
     
 });
     } error:^(NSError *error) {
@@ -133,10 +137,14 @@ dispatch_async(dispatch_get_main_queue(), ^{
     }];
 }
 #pragma mark - 向上滚动隐藏导航的方法
+/*
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offset = scrollView.contentOffset.y;
     if (offset > 0) {
-            [self.navigationController setNavigationBarHidden:YES animated:YES];
+           [self.navigationController setNavigationBarHidden:YES animated:YES];
+     //   self.navigationController.navigationBar.hidden = YES;
+      //  self.commentView.frame = CGRectMake(0, UIScreenHeight - 45, UIScreenWidth, 45);
+     //   self.commentView.hidden = YES;
         isShowStatus = YES;
         [self setNeedsStatusBarAppearanceUpdate];
 
@@ -145,7 +153,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         isShowStatus = NO;
         [self setNeedsStatusBarAppearanceUpdate];
-
+     //   self.commentView.hidden = NO;//
     }
 }
 //隐藏状态栏的方法
@@ -157,7 +165,34 @@ dispatch_async(dispatch_get_main_queue(), ^{
 {
     return isShowStatus;
 }
-
+ */
+-(void)initCommentView{
+    self.commentView = [[UIView alloc]initWithFrame:CGRectMake(0, UIScreenHeight - 44 - 64, UIScreenWidth, 44)];
+    _commentView.backgroundColor = [[UIColor lightGrayColor]colorWithAlphaComponent:0.1];
+    UIView *horizon = [[UIView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, 0.25)];
+    horizon.backgroundColor = [UIColor lightGrayColor];
+    [_commentView addSubview:horizon];
+    [self.view addSubview:_commentView];
+    UIButton *commentButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    commentButton.frame = CGRectMake(20, 10, 25, 25);
+    [commentButton setImage:[UIImage imageNamed:@"Unknown-2"] forState:UIControlStateNormal];
+    [_commentView addSubview:commentButton];
+    [commentButton addTarget:self action:@selector(jumpToComment:) forControlEvents:UIControlEventTouchUpInside];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(35, 7, 18, 18)];
+    label.backgroundColor = [UIColor redColor];
+    label.layer.cornerRadius = 9;
+    label.layer.masksToBounds = YES;
+    label.font = [UIFont systemFontOfSize:12];
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = [NSString stringWithFormat:@"%ld",self.commentCount];
+    [_commentView addSubview:label];
+}
+-(void)jumpToComment:(UIButton *)btn{
+    NewsCommentViewController *comment = [[NewsCommentViewController alloc]init];
+    comment.identifier = self.identifier;
+    [self.navigationController pushViewController:comment animated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

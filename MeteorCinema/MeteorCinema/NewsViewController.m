@@ -82,7 +82,8 @@
             newsModel.identifier = [dic0[@"id"]integerValue];
             newsModel.imageArray = dic0[@"images"];
             newsModel.image1 = dic0[@"images"][0][@"url1"];
-            newsModel.image2 = dic0[@"images"][1][@"url1"];            newsModel.image3 = [dic0[@"images"] lastObject][@"url1"];
+            newsModel.image2 = dic0[@"images"][1][@"url1"];
+            newsModel.image3 = [dic0[@"images"] lastObject][@"url1"];
             [self.dataArray addObject:newsModel];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -160,8 +161,10 @@
             DetailViewController *detailVC = [[DetailViewController alloc]init];
             detailVC.itemTitle = dic[@"title"];
             detailVC.title2 = dic[@"title2"];
+            detailVC.commentCount = [dic[@"commentCount"] integerValue];
             detailVC.image = @"http://tiandaoedu.com/uploads/100309/443_135959_1.jpg";
             detailVC.detailAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",btn.tag];
+            detailVC.identifier = btn.tag;
             [self.navigationController pushViewController:detailVC animated:YES];
         });
     } error:^(NSError *error) {
@@ -233,6 +236,7 @@
         detailVC.image = model.image;
         detailVC.title2 = model.title2;
         detailVC.identifier = model.identifier;
+        detailVC.commentCount = model.commentCount;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
     else{
@@ -241,6 +245,8 @@
         picScroll.title2 = model.title2;
         picScroll.image = model.image;
         picScroll.picAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",model.identifier];
+        picScroll.identifier = model.identifier;
+        picScroll.commentCount = model.commentCount;
         [self.navigationController pushViewController:picScroll animated:YES];
     }
 }
