@@ -16,7 +16,7 @@
 @property(nonatomic,strong)UIScrollView *picScroll;
 @property(nonatomic,strong)UILabel *bottomLabel;
 @property(nonatomic,strong)NSMutableArray *dataArray;
-@property(nonatomic,strong)UILabel *desc;
+@property(nonatomic,strong)UITextView *desc;
 @property(nonatomic,strong)NSString *newsTitle;
 @property(nonatomic,strong)NSString *descTitle;
 @property(nonatomic,assign)NSInteger isTap;
@@ -112,16 +112,12 @@
             self.bottomLabel.textColor = [UIColor whiteColor];
             self.bottomLabel.text = self.newsTitle;
             ////////////
-            self.desc = [[UILabel alloc]initWithFrame:CGRectMake(20, 30, UIScreenWidth - 120, 40)];
+            self.desc = [[UITextView alloc]initWithFrame:CGRectMake(20, 30, UIScreenWidth - 120, 70 )];
             self.desc.font = [UIFont systemFontOfSize:14];
             self.desc.textColor = [[UIColor whiteColor]colorWithAlphaComponent:0.8];
             self.desc.text = self.descTitle;
-            self.desc.numberOfLines = 0;
-            CGFloat labelHeight = [tool getLabelHeight:self.descTitle font:self.desc.font];
-            self.desc.frame = CGRectMake(20, 30, UIScreenWidth -120, labelHeight);
-            //self.desc.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.3];
+            self.desc.backgroundColor = [UIColor clearColor];
             [self.backView addSubview:self.desc];
-
 //            NSDictionary *attribute = @{NSFontAttributeName:self.desc.font};
 //            CGSize size = [self.desc.text boundingRectWithSize:CGSizeMake(UIScreenWidth, 1000000) options:NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil].size;
 //            self.desc.frame = CGRectMake(0, UIScreenHeight*2/3+25, size.width, size.height);

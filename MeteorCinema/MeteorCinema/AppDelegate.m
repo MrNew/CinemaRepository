@@ -42,8 +42,7 @@
     [self.window makeKeyAndVisible];
     
     self.window.rootViewController = [[TabBarViewController alloc] init];
-    
-    
+
     
     // 保存 Device 的现语言 (英语 法语 ，，，)
     self.userDefaultLanguages = [NSMutableArray array];
