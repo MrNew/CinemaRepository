@@ -490,8 +490,14 @@
         
       
         NSMutableArray * array = [self.allCityDic objectForKey:[self.allCityInitalArray objectAtIndex:indexPath.section]];
-            
+        
+        
+        
+        
+        
         CityMessage * city = [array objectAtIndex:indexPath.row];
+        
+        
             
         [self.delegate passLocationCity:city];
         

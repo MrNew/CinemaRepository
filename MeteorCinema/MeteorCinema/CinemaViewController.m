@@ -14,6 +14,7 @@
 #import "MovIs.h"
 #import "UIImageView+WebCache.h"
 #import "LocationViewController.h"
+#import "WebViewController.h"
 
 #define ScreenWidth   [[UIScreen mainScreen] bounds].size.width
 #define ScreenHeight  [UIScreen mainScreen].bounds.size.height
@@ -53,11 +54,12 @@
     
         _characteristicArray = [NSMutableArray array];
 
+    UIImageView *hearImageV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 60)];
 
 //-----------------------UItablelView-------------------//
     
     
-    _CinemaTabelView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64) style:UITableViewStylePlain];
+    _CinemaTabelView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,ScreenWidth, ScreenHeight-64) style:UITableViewStylePlain];
     //_tab.contentSize = CGSizeMake(200, 0);
     
     _CinemaTabelView.delegate = self;
@@ -66,8 +68,58 @@
   
     [self.view addSubview:_CinemaTabelView];
     
-    [self requestData];
+    
+    
+//-----------------------头图片----------------------------//
+
+    hearImageV.image = [UIImage imageNamed:@"hengfu.jpg"];
+    hearImageV.backgroundColor = [UIColor greenColor];
+
+    
+    _CinemaTabelView.tableHeaderView = hearImageV;
+    
+    
+    
+    
+    //创建点击手势
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchBeautiful)];
+    //控制手指个数
+    tap.numberOfTouchesRequired = 1;
+    
+    //控制点击次数(隐藏操作)
+    tap.numberOfTapsRequired = 1;
+    
+    
+    //把手势添加到图片中
+    [hearImageV addGestureRecognizer:tap];
+    //开启交互
+    hearImageV.userInteractionEnabled =YES;
+
+
+
+
+    
+    
     [self shareleftBarButton];
+    [self listenerPassCity];
+    
+    
+    //  地点 name
+    //  locationName
+  
+    NSInteger locationID = [[NSUserDefaults standardUserDefaults] integerForKey:@"defaultLocationID"];
+    
+     NSString * locationName = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultLocation"];
+    if (locationID) {
+         self.cinemaId = locationID;
+        [_musicBtn setTitle:locationName forState:UIControlStateNormal];
+        [self requestData];
+    }else{
+        self.cinemaId = 365;
+        
+         [self requestData];
+    }
+   
     
 
   
@@ -75,14 +127,29 @@
 
 }
 
+#pragma -mark头文件点击跳转
+-(void)touchBeautiful
+{
+    WebViewController *detai = [[WebViewController alloc] init];
+//    detai.delegate = self;
+//    detai.cinemaIdNUM = self.cinemaIdtwo;
+    [self.navigationController pushViewController:detai animated:YES];
+}
+
 #pragma -mark 右上角城市选择
 -(void)shareleftBarButton
 {
     //导航栏上面的分享的item
    _musicBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _musicBtn.frame = CGRectMake(0, 0, 80, 40);
+    _musicBtn.frame = CGRectMake(0, 0, 80, 30);
     //    [musicBtn setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
-    [_musicBtn setTitle:@"广州" forState:UIControlStateNormal];
+  //  _musicBtn.backgroundColor = [UIColor greenColor];
+    // 先判断是否进入 算地点界面
+    NSString * locationName = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultLocation"];
+    [_musicBtn setTitle:locationName forState:UIControlStateNormal];
+    
+    //调整文字在按钮中的位置
+    [_musicBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -50, 0, 0)];
   
 //  musicBtn.font = [UIFont boldSystemFontOfSize:15];
     [_musicBtn addTarget:self action:@selector(handlePresentCurrentMusicAction) forControlEvents:UIControlEventTouchDown];
@@ -103,6 +170,36 @@
 
 }
 
+-(void)listenerPassCity{
+    // 注册成为广播站ChangeTheme频道的听众
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    // 成为听众一旦有广播就来调用self recvBcast:函数
+    [nc addObserver:self selector:@selector(passCity:) name:@"kNotificationCity" object:nil];
+}
+
+
+-(void)passCity:(NSNotification *)notify{
+    
+    
+    // 取得广播内容
+    [self.dataArray removeAllObjects];
+    
+    NSDictionary *dic = [notify userInfo];
+    
+    NSString * cityName = [dic objectForKey:@"cityName"];
+    
+    NSString * cityID = [dic objectForKey:@"cityID"];
+    NSLog(@"%@",cityID);
+//    NSString *strname = [NSString stringWithFormat:@"%@",cityID];
+//    NSString *str = strname;
+    self.cinemaId = [cityID integerValue];
+    NSLog(@"%ld",self.cinemaId);
+    
+     [_musicBtn setTitle:cityName forState:UIControlStateNormal];
+    
+     [self requestData];
+}
+
 
 
 -(void)passLocationCity:(CityMessage *)city
@@ -118,11 +215,7 @@
     }else{
         [_musicBtn setTitle:city.name forState:UIControlStateNormal];
     }
-   
-    
-    
-    
-    // 先判断是否进入 算地点界面
+
    
     
     
@@ -228,31 +321,6 @@
     
     NSString * str = send.cinemaId;
     self.cinemaId = [str intValue];
-    
-    //小图标
-//    NSString *la1   = [_characteristicArray objectAtIndex:2];
-//    NSString *la2 =  [la1 substringFromIndex:3];
-//    cell.Label1.text = la2;
-//
-//    
-//    NSString *la3 = [_characteristicArray objectAtIndex:3];
-//    NSString *la4 =  [la3 substringFromIndex:3];
-//    cell.Label2.text = la4;
-//    
-//    
-//    NSString *la5 = [_characteristicArray objectAtIndex:4];
-//    NSString *la6 =  [la5 substringFromIndex:3];
-//    cell.Label3.text = la6;
-//    
-//    
-//    NSString *la7 = [_characteristicArray objectAtIndex:1];
-//    if (la7.length>10) {
-//    NSString *la8 =  [la7 substringFromIndex:10];
-//    cell.Label4.text = la8;
-//    }
-  
-    
-    
     
     return cell;
     

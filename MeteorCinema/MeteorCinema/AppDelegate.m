@@ -30,8 +30,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [NSThread sleepForTimeInterval:2.0];
+    
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
     

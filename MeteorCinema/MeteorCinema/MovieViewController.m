@@ -158,6 +158,15 @@
     
 
     self.navigationItem.title = @"电影";
+    
+    self.topButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [self.topButton setTitle:@"电影" forState:UIControlStateNormal];
+    [self.topButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.navigationItem.titleView = self.topButton;
+    
+    
+    
     self.status = @"正在热映";
     
     
@@ -219,17 +228,6 @@
     
     // 添加tableView
     [self.view addSubview:self.tableView];
-
-    
-//    [self.view addSubview:self.topView];
-//    self.topView.selectButtonTitleColor = [UIColor colorWithRed:90/255.0 green:144/255.0 blue:206/255.0 alpha:1];
-//    [self.topView setTitleButton:@[@"正在热映",@"即将上映"]];
-//    for (UIButton * button in self.topView.buttonArray) {
-//        [button addTarget:self action:@selector(reflashData:) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    [self.topView setTitleButtonColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
-    
-
     
 }
 
@@ -299,9 +297,15 @@
             cell = [[HotMovieTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         }
         
+       
+            
         HotMovieModel * hot = [self.hotArray objectAtIndex:indexPath.row];
+            
+        
+            
         cell.hot = hot;
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+       
         return cell;
         
         
@@ -411,6 +415,38 @@
 
 
 
+
+#pragma mark- 观察tableView 移动的情况
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    
+    
+    //    NSLog(@"%f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y > 1000) {
+        self.topButton.userInteractionEnabled = YES;
+        [self.topButton setTitle:@"点击返回顶部" forState:UIControlStateNormal];
+        [self.topButton addTarget:self action:@selector(topButtonClik:) forControlEvents:UIControlEventTouchUpInside];
+        [self.topButton sizeToFit];
+        
+        
+    }else{
+        [self.topButton setTitle:@"电影" forState:UIControlStateNormal];
+        self.topButton.userInteractionEnabled = NO;
+    }
+    
+    
+    
+}
+
+-(void)topButtonClik:(UIButton *)button{
+    
+    
+    
+    [self.tableView setContentOffset:CGPointMake(0,0) animated:YES];
+}
+
+
+
 #pragma mark- 申请数据
 
 
@@ -494,6 +530,7 @@
 //    http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=490
     [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=%ld",identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         // 申请数据完毕
+        [self.hotArray removeAllObjects];
         
         NSDictionary * dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
@@ -629,7 +666,7 @@
     self.navigationItem.leftBarButtonItem.title = cityName;
     
     
-    [self.hotArray removeAllObjects];
+   
     [self requestHotData:[cityID integerValue]];
     [self requestFutureData:[cityID integerValue]];
 }

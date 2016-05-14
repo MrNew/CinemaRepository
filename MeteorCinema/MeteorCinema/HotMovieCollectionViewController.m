@@ -93,6 +93,9 @@
     }
     
     
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"myShoucang"] style:UIBarButtonItemStylePlain target:self action:@selector(deleteButtonClik:)];
+    
 }
 
 -(void)backClik:(UIButton *)button{
@@ -101,6 +104,32 @@
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
+}
+
+-(void)deleteButtonClik:(UIButton *)button{
+    
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"是否清空电影收藏" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * sure = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self.dataArray removeAllObjects];
+        
+        [[MovieCollectionDataBaseUtil share] deleteTableWithName:@"movie"];
+        [self.collectionView reloadData];
+    }];
+    [alert addAction:sure];
+    
+    UIAlertAction * cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alert addAction:cancle];
+    
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
+
+    
+    
+    
 }
 
 

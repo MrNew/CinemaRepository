@@ -41,10 +41,10 @@
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"q%d.jpg",i]];
         imageV.image = image;
     }
-    _imageV1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 375, 667)];
+    _imageV1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGTH)];
     _imageV1.image = [UIImage imageNamed:@"q1.jpg"];
     _imageV2.image = [UIImage imageNamed:@"q2.jpg"];
-    _imageV2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 375, 664)];
+    _imageV2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGTH)];
      UIImageView *imageV3 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 375, 667)];
     imageV3.image = [UIImage imageNamed:@"q3.jpg"];
     
@@ -63,7 +63,7 @@
     _scroll.pagingEnabled = YES;
    // _scroll.backgroundColor = [UIColor grayColor];
     
-    _imageV3 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 375, 664)];
+    _imageV3 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGTH)];
     UIImage *image = [UIImage imageNamed:@"q4.jpg"];
     _imageV3.image = image;
     

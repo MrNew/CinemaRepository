@@ -7,6 +7,7 @@
 //
 
 #import "MySelfViewControllrt.h"
+#import "CinemaCollectionViewController.h"
 
 #import "BottomView.h"
 
@@ -17,6 +18,8 @@
 #import "MoreViewController.h"
 
 #import "NewsDataViewController.h"
+
+#import "TabBarViewController.h"
 
 @interface MySelfViewControllrt () < UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate >
 
@@ -142,24 +145,25 @@
 
 #pragma mark- bottomView 按钮的方法
 -(void)backButtonClik:(UIButton *)button{
+
+//    self.tabBarController.selectedViewController = self.tabBarController.viewControllers[0];
     
-    
-    
+    [(TabBarViewController *)self.tabBarController tabbarChangebuttonWith:0];
     
     
 }
 
 -(void)reflashButtonClik:(UIButton *)button{
     
-    
-    
+     [(TabBarViewController *)self.tabBarController tabbarChangebuttonWith:1];
+//     self.tabBarController.selectedViewController = self.tabBarController.viewControllers[1];
     
 }
 
 
 -(void)goForwardButtonClik:(UIButton *)button{
-    
-    
+     [(TabBarViewController *)self.tabBarController tabbarChangebuttonWith:2];
+//     self.tabBarController.selectedViewController = self.tabBarController.viewControllers[2];
     
 }
 
@@ -285,14 +289,17 @@
             }
                 break;
             case 1:
+            
+            {
                 
+        CinemaCollectionViewController *cool = [[CinemaCollectionViewController alloc] init];
+       [self.navigationController pushViewController:cool animated:YES];
                 
-                
-                
-                
-                
+            }
                 break;
-            case 2:{
+            case 2:
+            
+            {
                 NewsDataViewController *newsCollectVC = [[NewsDataViewController alloc]init];
                 [self.navigationController pushViewController:newsCollectVC animated:YES];
                 
