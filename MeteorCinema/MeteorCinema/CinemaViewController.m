@@ -116,7 +116,8 @@
         [self requestData];
     }else{
         self.cinemaId = 365;
-        
+        [_musicBtn setTitle:@"广州" forState:UIControlStateNormal];
+
          [self requestData];
     }
    

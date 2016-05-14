@@ -69,7 +69,7 @@
     //self.addressLabel.backgroundColor = [UIColor purpleColor];
     
     //价钱
-    self.minPriceLabel.frame = CGRectMake(280, 10, 120, 30);
+    self.minPriceLabel.frame = CGRectMake(ScreenWidth/3*2.2, 10, 120, 30);
     self.minPriceLabel.textAlignment = NSTextAlignmentCenter;//居中
     self.minPriceLabel.font = [UIFont boldSystemFontOfSize:22];
  //   self.minPriceLabel.layer.cornerRadius = 15;

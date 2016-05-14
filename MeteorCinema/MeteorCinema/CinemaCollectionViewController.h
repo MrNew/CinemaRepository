@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Cinema.h"
 
 @interface CinemaCollectionViewController : UIViewController
+@property(nonatomic,assign)NSInteger integ;
 
 @end

@@ -10,8 +10,11 @@
 #import "Cinema.h"
 #import "CiCollTableViewCell.h"
 #import "CinemaDataBaseUtil.h"
+#import "SecondViewController.h"
 #define ScreenWidth   [[UIScreen mainScreen] bounds].size.width
 #define ScreenHeight  [UIScreen mainScreen].bounds.size.height
+
+
 
 @interface CinemaCollectionViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *cicollTableView;
@@ -76,6 +79,12 @@
 //点击cell执行的方法
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    SecondViewController *sen = [[SecondViewController alloc] init];
+//    sen.cinamea= [self.cicollarray objectAtIndex:indexPath.row];
+//    
+//   // [self.navigationController popToViewController:doc animated:YES];
+//    [self.navigationController pushViewController:sen animated:YES];
+    
     
 }
 

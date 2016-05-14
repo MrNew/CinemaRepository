@@ -116,7 +116,7 @@
 
 
 
-
+//我的页面调用属性
 -(void)tabbarChangebuttonWith:(NSInteger)index{
     
     for (UIButton *btn in _tabBarView.subviews) {
