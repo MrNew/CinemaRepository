@@ -225,17 +225,6 @@
     
     // 添加tableView
     [self.view addSubview:self.tableView];
-
-    
-//    [self.view addSubview:self.topView];
-//    self.topView.selectButtonTitleColor = [UIColor colorWithRed:90/255.0 green:144/255.0 blue:206/255.0 alpha:1];
-//    [self.topView setTitleButton:@[@"正在热映",@"即将上映"]];
-//    for (UIButton * button in self.topView.buttonArray) {
-//        [button addTarget:self action:@selector(reflashData:) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    [self.topView setTitleButtonColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
-    
-
     
 }
 
