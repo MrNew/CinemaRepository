@@ -122,11 +122,6 @@
     [self.delegate passFuturevedio:self.future];
     
     
-    
-    
-    
-    
-    
 }
 
 

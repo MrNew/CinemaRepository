@@ -349,11 +349,12 @@
         for (NSDictionary *dic in array) {
             studio *stu = [[studio alloc] init];
             [stu setValuesForKeysWithDictionary:dic];
-               NSLog(@"开始时间==%ld",stu.startTime);
-                NSLog(@"结束时间==%ld",stu.endTime);
-            
-            
+        
+            if (stu.startTime>0) {
             [self.studioDataArray addObject:stu];
+            }
+            
+            
             
             
         }
@@ -693,18 +694,15 @@
     
     studio *studi = [_studioDataArray objectAtIndex:indexPath.row];
     
+        NSDate *date1 = [NSDate dateWithTimeIntervalSince1970:studi.startTime];
+        NSString *studitime1 = [[NSString stringWithFormat:@"%@",date1] substringWithRange:NSMakeRange(5, 11)];
+        cell.startTimeLabel.text = studitime1;
+
     
-    NSDate *date1 = [NSDate dateWithTimeIntervalSince1970:studi.startTime];
-    NSString *studitime1 = [[NSString stringWithFormat:@"%@",date1] substringWithRange:NSMakeRange(5, 11)];
-    cell.startTimeLabel.text = studitime1;
-    
- 
-    
-    
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:studi.endTime];
-   // NSLog(@"date ==%@",date);
-    NSString *studitime = [[NSString stringWithFormat:@"%@",date] substringWithRange:NSMakeRange(5, 11)];
-    cell.endTimeLabel.text = studitime;
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:studi.endTime];
+        NSString *studitime = [[NSString stringWithFormat:@"%@",date] substringWithRange:NSMakeRange(5, 11)];
+         cell.endTimeLabel.text = studitime;
+
     
     
     

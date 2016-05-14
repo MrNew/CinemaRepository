@@ -18,4 +18,6 @@
 @property(nonatomic,strong)UIImageView *Label2;
 @property(nonatomic,strong)UIImageView *Label3;
 @property(nonatomic,strong)UIImageView *Label4;
+@property(nonatomic,strong)UILabel *Label5;
+@property(nonatomic,strong)UILabel *Label6;
 @end
