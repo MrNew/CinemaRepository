@@ -22,7 +22,7 @@
     [self.contentView addSubview:self.allfeatureImageView];
     
  
-    self.allfeatureLabel = [[UILabel alloc] init];
+    self.allfeatureLabel = [[UITextView alloc] init];
     [self.contentView addSubview:self.allfeatureLabel];
     
     return self;
@@ -38,7 +38,10 @@
  //   self.allfeatureImageView.backgroundColor = [UIColor blueColor];
     
    
-    self.allfeatureLabel.frame = CGRectMake(80, 10, 300, 30);
+    self.allfeatureLabel.frame = CGRectMake(self.allfeatureImageView.frame.origin.x+self.allfeatureImageView.frame.size.width+10, 10, ScreenWidth-self.allfeatureImageView.frame.size.width-10, 80);
+    self.allfeatureLabel.font = [UIFont boldSystemFontOfSize:15];
+    [self.allfeatureLabel setEditable:NO];
+    [self.allfeatureLabel setUserInteractionEnabled:NO];
    // self.allfeatureLabel.backgroundColor = [UIColor cyanColor];
     
 }

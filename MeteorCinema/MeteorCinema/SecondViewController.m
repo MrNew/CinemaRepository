@@ -14,6 +14,7 @@
 #import "UIButton+WebCache.h"
 #import "CinemaDataBaseUtil.h"
 #import "Cinema.h"
+#import "CinemaCollectionViewController.h"
 
 
 #define ScreenWidth   [[UIScreen mainScreen] bounds].size.width
@@ -49,6 +50,10 @@
 @property(nonatomic,strong)UILabel *TimeLabel;
 @property(nonatomic,strong)UILabel *classifyLabel;
 @property(nonatomic,strong)UIImageView *imageV;
+@property(nonatomic,strong)UILabel *marLaber;
+
+@property(nonatomic,strong)UILabel *titLabel;
+@property(nonatomic,strong)UILabel *addressLabel;
 
 
 
@@ -126,6 +131,11 @@
     [self studiorequestData];
     //收藏
     [self sharerightBarButton];
+    
+    
+    
+    //定时器控制1秒+1
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(upUp) userInfo:nil repeats:YES];
     
     
 }
@@ -234,20 +244,58 @@
    // view.backgroundColor = [UIColor yellowColor];
     [_ScrollViewController addSubview:view];
     
-    UILabel *titLabel =[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 30)];
+   _titLabel =[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 30)];
   //  titLabel.backgroundColor = [UIColor greenColor];
-    titLabel.text = self.cinamea.cinameName;
-    [view addSubview:titLabel];
+    _titLabel.text = self.cinamea.cinameName;
+    [view addSubview:_titLabel];
     
-    UILabel *addressLabel =[[UILabel alloc] initWithFrame:CGRectMake(10, 50, 300, 30)];
+    _addressLabel =[[UILabel alloc] initWithFrame:CGRectMake(10, 50, 300, 30)];
   //  addressLabel.backgroundColor = [UIColor cyanColor];
-    addressLabel.text = self.cinamea.address;
-    [view addSubview:addressLabel];
+    _addressLabel.text = self.cinamea.address;
+    [view addSubview:_addressLabel];
     
     UILabel *arrow =[[UILabel alloc] initWithFrame:CGRectMake(320, 50, 50, 30)];
   //  arrow.backgroundColor = [UIColor orangeColor];
     arrow.text = @">>";
     [view addSubview:arrow];
+    
+    
+    
+//************************************跑马灯*********************************//
+    _marLaber = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth, _addressLabel.frame.origin.y+_addressLabel.frame.size.height, ScreenWidth, 30)];
+    _marLaber.layer.cornerRadius = 5;
+    _marLaber.layer.masksToBounds = YES;
+   // _marLaber.layer.borderWidth = 1;
+    _marLaber.font = [UIFont boldSystemFontOfSize:20];
+   // _marLaber.text = self.cinamea.address;
+    _marLaber.text = @"点击查看影院详情";
+   // marLaber.backgroundColor = [UIColor orangeColor];
+   // _marLaber.layer.borderColor = [UIColor orangeColor].CGColor;
+    [view addSubview:_marLaber];
+    
+    
+    //子视图超出父视图部分不显示
+    view.clipsToBounds = YES;
+    [UIView beginAnimations:@"Marquee" context:NULL];
+    //设置动画持续时间
+    [UIView setAnimationDuration:15];
+    //设置动画变化曲线
+    [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+    //设置动画是否反转
+    [UIView setAnimationRepeatAutoreverses:NO];
+    //设置动画重复次数
+    [UIView setAnimationRepeatCount:10000];
+    //设置需要动画的label的frame
+    CGRect franme = _marLaber.frame;
+    franme.origin.x = -franme.size.width;
+    _marLaber.frame = franme;
+    [UIView commitAnimations];
+    
+    
+
+    
+//************************************跑马灯*********************************//
+    
     
     
     //创建点击手势
@@ -264,13 +312,28 @@
     //开启交互
     view.userInteractionEnabled =YES;
 }
+
+
+
+-(void)upUp{
+    //随机一个0-255地数字
+    int red = arc4random()%256;
+    int green = arc4random()%256;
+    int bule = arc4random()%256;
+    //根据R G B赋颜色
+    _marLaber.textColor = [UIColor colorWithRed:red/255.0 green:green/255.0 blue:bule/255.0 alpha:1];
+}
 //点击跳转
 -(void)touchBeautiful
 {
     DetailedViewController *detai = [[DetailedViewController alloc] init];
     detai.delegate = self;
     detai.cinemaIdNUM = self.cinemaIdtwo;
+    
     [self.navigationController pushViewController:detai animated:YES];
+   
+    [self movierequestData];
+   
 }
 
 
@@ -606,26 +669,28 @@
     
     
     //电影标题
-    _titiLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, 300, 30)];
+    _titiLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, ScreenWidth, 30)];
     _titiLabel.textAlignment = NSTextAlignmentCenter;//居中
 //    _titiLabel.backgroundColor = [UIColor greenColor];
     //    _titiLabel.text =self.titlee;
     [movieView addSubview:_titiLabel];
     
-    _TimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 50, 70, 30)];
+    
+    //时间
+    _TimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth/5, 50, 70, 30)];
     //   _TimeLabel.text = self.length;
  //   _TimeLabel.backgroundColor = [UIColor orangeColor];
     [movieView addSubview:_TimeLabel];
     
     //一个小杠
-    UILabel *labelG = [[UILabel alloc] initWithFrame:CGRectMake(173, 55, 20, 20)];
+    UILabel *labelG = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth/5+_TimeLabel.frame.size.width, 55, 20, 20)];
   //  labelG.backgroundColor = [UIColor greenColor];
     labelG.text = @"--";
     [movieView addSubview:labelG];
     
 //    [movieView addSubview:labelG];
     
-    _classifyLabel = [[UILabel alloc] initWithFrame:CGRectMake(190, 50, 150, 30)];
+    _classifyLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelG.frame.origin.x+labelG.frame.size.width, 50, 150, 30)];
     // _classifyLabel.text = self.type;
   //  _classifyLabel.backgroundColor = [UIColor yellowColor];
     [movieView addSubview:_classifyLabel];

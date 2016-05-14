@@ -10,6 +10,6 @@
 
 @interface featureTableViewCell : UITableViewCell
 @property(nonatomic,strong)UIImageView *allfeatureImageView;//开始时间
-@property(nonatomic,strong)UILabel *allfeatureLabel;//开始时间
+@property(nonatomic,strong)UITextView *allfeatureLabel;//开始时间
 
 @end

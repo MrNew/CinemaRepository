@@ -25,11 +25,12 @@
 #import "UIImageView+WebCache.h"
 #import "featureTableViewCell.h"
 #import "CommentTableViewCell.h"
+#import "introductionViewController.h"
 
 #define ScreenWidth   [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight  [UIScreen mainScreen].bounds.size.height
 
-@interface DetailedViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface DetailedViewController ()<UITableViewDataSource,UITableViewDelegate,introductionViewControllerDelegate>
 @property(nonatomic,strong)UIScrollView *DetailedViewController;
 @property(nonatomic,strong)UIImageView *imageView;
 
@@ -202,13 +203,13 @@
         [_imageView addSubview:visualView];
         
         //影院图片
-        _imageVCinema = [[UIImageView alloc] initWithFrame:CGRectMake((ScreenWidth/5)/(ScreenWidth/5)+10, 60, 120, 150)];
+        _imageVCinema = [[UIImageView alloc] initWithFrame:CGRectMake((ScreenWidth/5)/(ScreenWidth/5)+10, 60, 120, 170)];
         NSURL *urltwo = [NSURL URLWithString:detailed.image];
         [_imageVCinema sd_setImageWithURL:urltwo];
         [_DetailedViewController addSubview:_imageVCinema];
         
         //标题
-        _titiLabel = [[UILabel alloc] initWithFrame:CGRectMake(_imageVCinema.frame.origin.x+_imageVCinema.frame.size.width+10, 60,200, 80)];
+        _titiLabel = [[UILabel alloc] initWithFrame:CGRectMake(_imageVCinema.frame.origin.x+_imageVCinema.frame.size.width, 60,200, 80)];
         _titiLabel.text = detailed.name;
         _titiLabel.numberOfLines = 4;
        // [_titiLabel sizeToFit];
@@ -250,13 +251,13 @@
         [_DetailedViewController addSubview:General];
         
         
-        UILabel *ServiceQuality =[[UILabel alloc] initWithFrame:CGRectMake(General.frame.origin.x+General.frame.size.width, 170, 80, 35)];
+        UILabel *ServiceQuality =[[UILabel alloc] initWithFrame:CGRectMake(_imageVCinema.frame.origin.x+_imageVCinema.frame.size.width+10, Viewingeffect.frame.origin.y+Viewingeffect.frame.size.height, 80, 35)];
         ServiceQuality.text = @"服务质量:";
         
         // ServiceQuality.backgroundColor = [UIColor greenColor];
         [_DetailedViewController addSubview:ServiceQuality];
         
-        UILabel *Generaltwo =[[UILabel alloc] initWithFrame:CGRectMake(ServiceQuality.frame.origin.x+ServiceQuality.frame.size.width-5, 170, 40, 35)];
+        UILabel *Generaltwo =[[UILabel alloc] initWithFrame:CGRectMake(Viewingeffect.frame.origin.x+Viewingeffect.frame.size.width-5, Viewingeffect.frame.origin.y+Viewingeffect.frame.size.height, 40, 35)];
         Generaltwo.text = @"一般";
         Generaltwo.textColor = [UIColor orangeColor];
         //Generaltwo.backgroundColor = [UIColor purpleColor];
@@ -278,7 +279,7 @@
       //  addImage.backgroundColor = [UIColor grayColor];
         [addressView addSubview:addImage];
         
-        _addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 20, 300, 50)];
+        _addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(addImage.frame.origin.x+addImage.frame.size.width+20, 20, ScreenWidth-(addImage.frame.origin.x+addImage.frame.size.width+20), 50)];
         _addressLabel.numberOfLines = 4;
      //   _addressLabel.backgroundColor = [UIColor blueColor];
         _addressLabel.text = detailed.address;
@@ -324,7 +325,7 @@
 //特色模块
 -(void)featureAndTableView
 {
-    _featureTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 400, ScreenWidth,self.featureTableView.frame.origin.y+40*self.featureDataArray.count+110*self.CommentDataArray.count+80) style:UITableViewStylePlain];
+    _featureTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 400, ScreenWidth,self.featureTableView.frame.origin.y+100*self.featureDataArray.count+110*self.CommentDataArray.count+200) style:UITableViewStylePlain];
     
     _featureTableView.delegate = self;
     _featureTableView.dataSource = self;
@@ -393,7 +394,7 @@
                 if (feat.serviceTicketContent.length>0) {
                      cell.allfeatureLabel.text = feat.serviceTicketContent;
                 cell.allfeatureImageView.image = [UIImage imageNamed:@"quguan (2)"];
-                cell.allfeatureLabel.numberOfLines = 3;
+               // cell.allfeatureLabel.numberOfLines = 3;
                 }else{
                     cell.allfeatureImageView.image = [UIImage imageNamed:@"quguan (2)"];
                     cell.allfeatureLabel.text = @"无";
@@ -406,7 +407,7 @@
                 if (feat.featureFoodContent.length>2) {
                     cell.allfeatureLabel.text = feat.featureFoodContent;
                     cell.allfeatureImageView.image = [UIImage imageNamed:@"canting"];
-                    cell.allfeatureLabel.numberOfLines = 3;
+                //    cell.allfeatureLabel.numberOfLines = 3;
                 }else{
                     cell.allfeatureImageView.image = [UIImage imageNamed:@"canting"];
                     cell.allfeatureLabel.text = @"无";
@@ -417,7 +418,7 @@
                 if (feat.feature3DContent.length>0) {
                      cell.allfeatureLabel.text = feat.feature3DContent;
                 cell.allfeatureImageView.image = [UIImage imageNamed:@"3D-1"];
-                cell.allfeatureLabel.numberOfLines = 3;
+               // cell.allfeatureLabel.numberOfLines = 3;
                 }else{
                     
                     cell.allfeatureImageView.image = [UIImage imageNamed:@"3D-1"];
@@ -431,7 +432,7 @@
                 if (feat.featureLeisureContent.length>0) {
                     cell.allfeatureLabel.text = feat.featureLeisureContent;
                     cell.allfeatureImageView.image = [UIImage imageNamed:@"yingyuanyuan"];
-                    cell.allfeatureLabel.numberOfLines = 3;
+                  //  cell.allfeatureLabel.numberOfLines = 3;
                 }else{
                      cell.allfeatureImageView.image = [UIImage imageNamed:@"yingyuanyuan"];
                     cell.allfeatureLabel.text = @"无";
@@ -443,7 +444,7 @@
                 if (feat.featureParkContent.length>0) {
                     cell.allfeatureLabel.text = feat.featureParkContent;
                     cell.allfeatureImageView.image = [UIImage imageNamed:@"tingche"];
-                    cell.allfeatureLabel.numberOfLines = 3;
+                 //   cell.allfeatureLabel.numberOfLines = 3;
                 }else{
                     cell.allfeatureImageView.image = [UIImage imageNamed:@"tingche"];
                     cell.allfeatureLabel.text = @"无";
@@ -456,6 +457,8 @@
             }
         }
         
+    
+        cell.userInteractionEnabled = NO;
         return cell;
         
         
@@ -489,6 +492,9 @@
             
         }
         
+    
+        
+  
         
         
         return cell;
@@ -501,7 +507,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        return 60;
+        return 100;
     }else{
         return 110;
     }
@@ -512,6 +518,15 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"你点了第%ld分区的第%ld行",indexPath.section+1,indexPath.row+1);
+    
+    introductionViewController *introduc = [[introductionViewController alloc] init];
+    introduc.delegate = self;
+    
+    introduc.comment = [self.CommentDataArray objectAtIndex:indexPath.row];
+  
+    
+    
+    [self.navigationController pushViewController:introduc animated:YES];
     
 }
 
