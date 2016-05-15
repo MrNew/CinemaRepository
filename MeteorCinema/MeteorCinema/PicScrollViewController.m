@@ -46,8 +46,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0,0,32,32)];
-    UIImage *image = [UIImage imageNamed:@"返回(2)"] ;
-    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [button setImage:[UIImage imageNamed:@"返回(2)"] forState: UIControlStateNormal];
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc]initWithCustomView:button];
     [button addTarget:self action:@selector(doBarBtn) forControlEvents:UIControlEventTouchUpInside];

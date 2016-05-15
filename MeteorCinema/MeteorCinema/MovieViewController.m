@@ -150,6 +150,20 @@
 #pragma mark- 加载视图
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //***********************前景图*********************//
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *string = [user stringForKey:@"标记"];
+    if (![string isEqualToString:@"you"]) {
+        FirsView *fir = [[FirsView alloc] initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight)];
+        UIWindow *window = [[UIApplication sharedApplication]keyWindow];
+        [window addSubview:fir];
+        [UIApplication sharedApplication].statusBarHidden = YES;
+    }
+    else{
+        [UIApplication sharedApplication].statusBarHidden = NO;
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        
+    }
     self.view.backgroundColor = [UIColor whiteColor];
     
     NSLog(@"%@",NSHomeDirectory());
@@ -195,23 +209,6 @@
     
     [self listenerPassCity];
     
-    //***********************前景图*********************//
-    
-    
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *string = [user stringForKey:@"标记"];
-    
-
-    if (![string isEqualToString:@"you"]) {
-        
-        
-        FirsView *fir = [[FirsView alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
-        
-        UIWindow *window = [[UIApplication sharedApplication]keyWindow];
-        
-        [window addSubview:fir];
-        
-    }
     
     
     //************************ 加载数据 *********************//

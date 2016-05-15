@@ -17,7 +17,7 @@
         _imageV1 = [[UIImageView alloc] init];
         _imageV2 = [[UIImageView alloc] init];
         _imageV3 = [[UIImageView alloc] init];
-        [UIApplication sharedApplication].statusBarHidden = YES;
+      //  [UIApplication sharedApplication].statusBarHidden = YES;
 
         [self addSubview:_scroll];
         [self addSubview:_imageV1];
@@ -81,10 +81,12 @@
         _imageV1.transform = CGAffineTransformMakeTranslation(-WIDTH/2, 0);
         _imageV2.transform = CGAffineTransformMakeTranslation(WIDTH/2, 0);
     } completion:^(BOOL finished) {
-        
         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
         [user setValue:@"you" forKey:@"标记"];
         [self removeFromSuperview];
+        [UIApplication sharedApplication].statusBarHidden = NO;
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
     }];
 }
 

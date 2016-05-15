@@ -26,7 +26,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.cityNaemLabel = [[UILabel alloc] init];
-        [UIApplication sharedApplication].statusBarHidden = NO;
 
         
         self.cityNaemLabel.text = @"定位中...";

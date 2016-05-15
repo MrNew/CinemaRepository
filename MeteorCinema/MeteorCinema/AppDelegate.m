@@ -13,7 +13,6 @@
 #import "TabBarViewController.h"
 
 #import "NavigationViewController.h"
-
 @interface AppDelegate () < CLLocationManagerDelegate >
 // 实现 GPS 搜索位置
 @property (nonatomic, strong) CLLocationManager * locationManager;
@@ -32,17 +31,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [NSThread sleepForTimeInterval:2.0];
-    
-    [UIApplication sharedApplication].statusBarHidden = NO;
-    
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-
-    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
-    
-    self.window.rootViewController = [[TabBarViewController alloc] init];
 
+    self.window.rootViewController = [[TabBarViewController alloc] init];
+    
     
     // 保存 Device 的现语言 (英语 法语 ，，，)
     self.userDefaultLanguages = [NSMutableArray array];
@@ -151,7 +144,20 @@
     
 }
 
-
+#pragma mark - 不允许定位 执行的方法
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    if ([error code] == kCLErrorDenied)
+    {
+        [[NSUserDefaults standardUserDefaults] setValue:@"广州" forKey:@"defaultLocation"];
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:365 forKey:@"defaultLocationID"];
+        
+    }
+    if ([error code] == kCLErrorLocationUnknown) {
+        //无法获取位置信息
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

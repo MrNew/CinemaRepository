@@ -654,6 +654,76 @@
         NSLog(@"电影ID=%ld",self.movieIdNumber);
         [self studiorequestData];
  
+    }else if (button.tag == 11){
+        
+        NSLog(@"你点了第十个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        [self studiorequestData];
+        
+    }else if (button.tag == 12){
+        
+        NSLog(@"你点了第十个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        [self studiorequestData];
+        
+    }else if (button.tag == 13){
+        
+        NSLog(@"你点了第十个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        [self studiorequestData];
+        
+    }else if (button.tag == 14){
+        
+        NSLog(@"你点了第十个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        [self studiorequestData];
+        
+    }else if (button.tag == 15){
+        
+        NSLog(@"你点了第十个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        [self studiorequestData];
+        
     }
 }
 

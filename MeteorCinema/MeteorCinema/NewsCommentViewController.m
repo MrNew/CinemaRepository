@@ -13,7 +13,11 @@
 #import "NewsCommentTableViewCell.h"
 #import "Tool.h"
 #import "NewsReplyTableViewCell.h"
+#import "MJRefresh.h"
 @interface NewsCommentViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    NSInteger pageIndex;
+}
 
 @property(nonatomic,strong)UITableView *tab;
 @property(nonatomic,strong)NSMutableArray *dataArray;
@@ -38,10 +42,32 @@
     self.tab.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tab reloadData];
     [self loadCommentData];
+    
+    //下拉刷新页面
+    [self.tab addHeaderWithTarget:self action:@selector(headerRefreshing) ];
+    [self.tab headerBeginRefreshing];
+    //上拉加载更多数据
+    [self.tab addFooterWithTarget:self action:@selector(footerRefreshingText)];
+}
+#pragma mark - 下拉刷新
+-(void)headerRefreshing{
+    [self.dataArray removeAllObjects];
+    self.tab.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    pageIndex = 1;
+    [self loadCommentData];
+    [self.tab reloadData];
+    [self.tab headerEndRefreshing];
+}
+#pragma mark - 上拉加载
+-(void)footerRefreshingText{
+    pageIndex++;
+    [self loadCommentData];
+    [self.tab footerEndRefreshing];
 }
 #pragma mark 网络请求数据
 -(void)loadCommentData{
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/News/Comment.api?newsId=%ld&pageIndex=1",self.identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/News/Comment.api?newsId=%ld&pageIndex=%ld",self.identifier,pageIndex] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         for (NSDictionary *dic in array) {
             if (dic[@"replyCount"] == 0) {

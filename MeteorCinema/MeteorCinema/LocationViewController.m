@@ -189,11 +189,13 @@
     [self.view addSubview:self.allCityTableView];
     
 //    self.allCityTableView.backgroundColor = [UIColor grayColor];
-    
+  //  [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(popBack) userInfo:nil repeats:NO];
 
     
 }
-
+//-(void)popBack{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 #pragma mark - CoreLocation 代理
 #pragma mark 跟踪定位代理方法，每次位置发生变化即会执行（只要定位到相应位置）
 #pragma mark 根据坐标取得地名

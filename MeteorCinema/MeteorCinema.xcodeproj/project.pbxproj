@@ -169,6 +169,7 @@
 		3FFAB5FA1CE2D75500D37BD3 /* searchPersent.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFAB5F71CE2D75500D37BD3 /* searchPersent.png */; };
 		3FFAB5FF1CE2DA2D00D37BD3 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFAB5FE1CE2D9E900D37BD3 /* UIImage+ImageEffects.m */; };
 		3FFC6BBC1CE5B810005C2490 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC6BBB1CE5B810005C2490 /* WebViewController.m */; };
+		608C72611CE761BB00CED774 /* 播放.png in Resources */ = {isa = PBXBuildFile; fileRef = 608C72601CE761BB00CED774 /* 播放.png */; };
 		6096A6D01CE73B1D00909564 /* qidongtu3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6096A6CD1CE73B1D00909564 /* qidongtu3.jpg */; };
 		6096A6D11CE73B1D00909564 /* qidongtu2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6096A6CE1CE73B1D00909564 /* qidongtu2.jpg */; };
 		6096A6D21CE73B1D00909564 /* qidongtu1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6096A6CF1CE73B1D00909564 /* qidongtu1.jpg */; };
@@ -507,6 +508,7 @@
 		3FFAB5FE1CE2D9E900D37BD3 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		3FFC6BBA1CE5B810005C2490 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		3FFC6BBB1CE5B810005C2490 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		608C72601CE761BB00CED774 /* 播放.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "播放.png"; sourceTree = "<group>"; };
 		6096A6CD1CE73B1D00909564 /* qidongtu3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qidongtu3.jpg; sourceTree = "<group>"; };
 		6096A6CE1CE73B1D00909564 /* qidongtu2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qidongtu2.jpg; sourceTree = "<group>"; };
 		6096A6CF1CE73B1D00909564 /* qidongtu1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qidongtu1.jpg; sourceTree = "<group>"; };
@@ -1016,6 +1018,7 @@
 		3FB941C51CD37B5A009BD81F /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
+				608C72601CE761BB00CED774 /* 播放.png */,
 				60C607661CE24082002C5902 /* 返回(1).png */,
 				609AF4DF1CE4CF9300D40BB4 /* 收藏.png */,
 				609AF4E01CE4CF9300D40BB4 /* 收藏(1).png */,
@@ -1480,6 +1483,7 @@
 				TargetAttributes = {
 					3FB9418B1CD37A6C009BD81F = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = NLX59YHSSA;
 					};
 					3FB941A41CD37A6C009BD81F = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -1568,6 +1572,7 @@
 				3F696E531CE220DA004A358B /* 票房统计-1.png in Resources */,
 				3F5B34231CE4BBFF007D843B /* 影院.png in Resources */,
 				6096E2FB1CE57A460090225C /* Unknown.png in Resources */,
+				608C72611CE761BB00CED774 /* 播放.png in Resources */,
 				3F239A981CDDE37100E8C1D1 /* play1.png in Resources */,
 				3F846E671CE4C1A40011F2B2 /* yishoucang.png in Resources */,
 				3F696E4D1CE220DA004A358B /* 3D-1.png in Resources */,
@@ -1919,12 +1924,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "/Users/apple/Desktop/三人行电影项目/CinemaRepository/MeteorCinema/PrefixHeader.pch";
 				INFOPLIST_FILE = MeteorCinema/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Meteor.MeteorCinema;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1933,12 +1941,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "/Users/apple/Desktop/三人行电影项目/CinemaRepository/MeteorCinema/PrefixHeader.pch";
 				INFOPLIST_FILE = MeteorCinema/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Meteor.MeteorCinema;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
