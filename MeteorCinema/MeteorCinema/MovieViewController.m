@@ -380,7 +380,7 @@
     NSInteger cityID = [[NSUserDefaults standardUserDefaults] integerForKey:@"defaultLocationID"];
     
     movie.cityID = cityID;
-    NSLog(@"%ld",cityID);
+    NSLog(@"%ld",(long)cityID);
     
     if ([self.status isEqualToString:@"正在热映"]) {
         
@@ -525,7 +525,7 @@
 -(void)requestHotData:(NSInteger)identifier{
     
 //    http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=490
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=%ld",identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=%ld",(long)identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         // 申请数据完毕
         [self.hotArray removeAllObjects];
         
@@ -561,7 +561,7 @@
 -(void)requestFutureData:(NSInteger)identifier{
     
 //    NSLog(@"%@",[NSString stringWithFormat: @"http://api.m.mtime.cn/Movie/MovieComingNew.api?locationId=%ld",identifier]);
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat: @"http://api.m.mtime.cn/Movie/MovieComingNew.api?locationId=%ld",identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat: @"http://api.m.mtime.cn/Movie/MovieComingNew.api?locationId=%ld",(long)identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
        
         
         NSDictionary * dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];

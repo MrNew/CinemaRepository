@@ -61,6 +61,7 @@
     
     
     UIButton *buttom = [[UIButton alloc] initWithFrame:CGRectMake(130+WIDTH*2, 260, 120, 40)];
+    buttom.center = CGPointMake(WIDTH / 2 + WIDTH * 2, HEIGTH / 5 * 3);
     buttom.backgroundColor = [UIColor redColor];
     [buttom setTitle:@"进入影视" forState:UIControlStateNormal];
     [buttom addTarget:self action:@selector(touchInterface) forControlEvents:UIControlEventTouchUpInside];

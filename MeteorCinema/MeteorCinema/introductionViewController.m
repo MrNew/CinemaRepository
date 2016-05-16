@@ -57,7 +57,7 @@
     [self.view addSubview:_content];
     
     //--------------------------雪花定时器-------------------------//
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(xuehuapiaoling) userInfo:nil repeats:1000];
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(xuehuapiaoling) userInfo:nil repeats:YES];
 }
 
 

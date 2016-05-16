@@ -61,21 +61,21 @@
     if (![CLLocationManager locationServicesEnabled]) {
         NSLog(@"定位服务当前可能尚未打开，请设置打开！");
     }
-    //如果没有授权则请求(申请)用户授权
-    // 添加 plist文件  NSLocationWhenInUseUsageDescription ( 注意事项 )
-    if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
-        [_locationManager requestWhenInUseAuthorization];
-    }
-    
-    //设置代理
-    _locationManager.delegate = self;
-    //设置定位精度
-    _locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    //定位频率,每隔多少米定位一次
-    CLLocationDistance distance=1000.0;//十米定位一次
-    _locationManager.distanceFilter = distance;
-    //启动跟踪定位
-    [_locationManager startUpdatingLocation];
+//    //如果没有授权则请求(申请)用户授权
+//    // 添加 plist文件  NSLocationWhenInUseUsageDescription ( 注意事项 )
+//    if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
+//        [_locationManager requestWhenInUseAuthorization];
+//    }
+//    
+//    //设置代理
+//    _locationManager.delegate = self;
+//    //设置定位精度
+//    _locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+//    //定位频率,每隔多少米定位一次
+//    CLLocationDistance distance=1000.0;//十米定位一次
+//    _locationManager.distanceFilter = distance;
+//    //启动跟踪定位
+//    [_locationManager startUpdatingLocation];
     
 
     

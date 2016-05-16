@@ -185,7 +185,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
-    label.text = [NSString stringWithFormat:@"%ld",self.commentCount];
+    label.text = [NSString stringWithFormat:@"%ld",(long)self.commentCount];
     [_commentView addSubview:label];
 }
 -(void)jumpToComment:(UIButton *)btn{

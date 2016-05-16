@@ -194,7 +194,7 @@
 //    NSString *strname = [NSString stringWithFormat:@"%@",cityID];
 //    NSString *str = strname;
     self.cinemaId = [cityID integerValue];
-    NSLog(@"%ld",self.cinemaId);
+    NSLog(@"%ld",(long)self.cinemaId);
     
      [_musicBtn setTitle:cityName forState:UIControlStateNormal];
     
@@ -230,7 +230,7 @@
     
     
     
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/OnlineLocationCinema/OnlineCinemasByCity.api?locationId=%ld",self.cinemaId] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/OnlineLocationCinema/OnlineCinemasByCity.api?locationId=%ld",(long)self.cinemaId] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         
         //对专递过来的数据进行解析
         NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];

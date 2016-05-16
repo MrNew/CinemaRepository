@@ -95,7 +95,7 @@
 -(BOOL)insertTableWithCityMessage:(CityMessage *)city{
     
     if ([self.db open]) {
-        NSString * sql = [NSString stringWithFormat:@"insert into cityList (identifier,name,count,pinyinShort,pinyinFull,initialLetter) values('%ld','%@','%ld','%@','%@','%@')",city.identifier,city.name,city.count,city.pinyinShort,city.pinyinFull,city.initialLetter];
+        NSString * sql = [NSString stringWithFormat:@"insert into cityList (identifier,name,count,pinyinShort,pinyinFull,initialLetter) values('%ld','%@','%ld','%@','%@','%@')",(long)city.identifier,city.name,(long)city.count,city.pinyinShort,city.pinyinFull,city.initialLetter];
         if ([self.db executeUpdate:sql]) {
             [self.db close];
             return YES;

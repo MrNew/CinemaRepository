@@ -72,9 +72,9 @@
 
 
 
-    NSLog(@"%@",[NSString stringWithFormat:@"%@%ld",MoreURL,identifier]);
+    NSLog(@"%@",[NSString stringWithFormat:@"%@%ld",MoreURL,(long)identifier]);
 
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"%@%ld",MoreURL,identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"%@%ld",MoreURL,(long)identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
 
 
 

@@ -67,7 +67,7 @@
 }
 #pragma mark 网络请求数据
 -(void)loadCommentData{
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/News/Comment.api?newsId=%ld&pageIndex=%ld",self.identifier,pageIndex] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/News/Comment.api?newsId=%ld&pageIndex=%ld",(long)self.identifier,(long)pageIndex] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         for (NSDictionary *dic in array) {
             if (dic[@"replyCount"] == 0) {
@@ -90,9 +90,9 @@
                 }
             }
         }
-        NSLog(@"总数是%ld",self.dataArray.count);
+        NSLog(@"总数是%ld",(unsigned long)self.dataArray.count);
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.navigationItem.title = [[NSString stringWithFormat:@"%ld",self.dataArray.count]stringByAppendingString:@"条评论"];
+            self.navigationItem.title = [[NSString stringWithFormat:@"%ld",(unsigned long)self.dataArray.count]stringByAppendingString:@"条评论"];
             [self.tab reloadData];
             
         });
@@ -139,7 +139,7 @@
                 cell.tfReply.text = @"回复";
             }
             else{
-                cell.tfReply.text = [NSString stringWithFormat:@"%ld",model.replyCount];
+                cell.tfReply.text = [NSString stringWithFormat:@"%ld",(long)model.replyCount];
             }
         NSRange range = NSMakeRange(10, 5);
         cell.timeLabel.text = [model.date substringWithRange:range];

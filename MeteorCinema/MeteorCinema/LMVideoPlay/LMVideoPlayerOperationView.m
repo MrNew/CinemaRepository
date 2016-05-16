@@ -118,7 +118,8 @@ static void *PlayViewStatusObservationContext = &PlayViewStatusObservationContex
             self.dimissCompleteBlock();
         }
     }];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+//    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    [UIApplication sharedApplication].statusBarHidden = NO;
 }
 
 #pragma mark - Private Method
@@ -323,7 +324,7 @@ static void *PlayViewStatusObservationContext = &PlayViewStatusObservationContex
 #pragma mark AVPlayerItem
 - (AVPlayerItem *)getPlayItemWithURLString:(NSString *)urlString{
     if ([urlString rangeOfString:@"http"].location!=NSNotFound) {
-        AVPlayerItem *playerItem=[AVPlayerItem playerItemWithURL:[NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+        AVPlayerItem *playerItem=[AVPlayerItem playerItemWithURL:[NSURL URLWithString:[urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]];
         return playerItem;
     }else{
         AVAsset *movieAsset  = [[AVURLAsset alloc]initWithURL:[NSURL fileURLWithPath:urlString] options:nil];
