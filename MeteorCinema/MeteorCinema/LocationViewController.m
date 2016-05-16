@@ -153,8 +153,9 @@
 //    }
     
     
-    // 查询是否获得权限
+    
     self.locationManager = [[CLLocationManager alloc] init];
+
     
 //    if (![CLLocationManager locationServicesEnabled]) {
 //        NSLog(@"定位服务当前可能尚未打开，请设置打开！");
@@ -162,9 +163,17 @@
 //    }
     //如果没有授权则请求(申请)用户授权
     // 添加 plist文件  NSLocationWhenInUseUsageDescription ( 注意事项 )
-//    if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
-//        [_locationManager requestWhenInUseAuthorization];
-//    }
+    
+//    dispatch_after(2, dispatch_get_main_queue(), ^{
+//        if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
+//            [_locationManager requestWhenInUseAuthorization];
+//        }
+//        
+//    });
+    
+    [self performSelector:@selector(delNotification) withObject:nil afterDelay:2.0f];
+   
+    
     
     //设置代理
     _locationManager.delegate = self;
@@ -195,6 +204,36 @@
 
     
 }
+
+-(void)delNotification
+{
+    if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
+        [_locationManager requestWhenInUseAuthorization];
+    }
+    
+}
+
+
+
+#pragma mark - 不允许定位 执行的方法
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    if ([error code] == kCLErrorDenied)
+    {
+        [[NSUserDefaults standardUserDefaults] setValue:@"广州" forKey:@"defaultLocation"];
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:365 forKey:@"defaultLocationID"];
+        
+        self.locationView.cityNaemLabel.text = @"亲，请授权(づ￣3￣)づ╭❤～";
+        
+        
+    }
+    if ([error code] == kCLErrorLocationUnknown) {
+        //无法获取位置信息
+    }
+}
+
+
 //-(void)popBack{
 //    [self.navigationController popViewControllerAnimated:YES];
 //}
@@ -214,8 +253,7 @@
     
     [self getAddressByLatitude:coordinate.latitude longitude:coordinate.longitude];
     
-//    如果不需要实时定位，使用完即使关闭定位服务
-    [_locationManager stopUpdatingLocation];
+
     
 }
 
@@ -240,6 +278,10 @@
             }else{
                 self.locationView.cityNaemLabel.text = placemark.locality;
             }
+            
+            
+            //    如果不需要实时定位，使用完即使关闭定位服务
+            [_locationManager stopUpdatingLocation];
             
         }else{
             self.locationView.cityNaemLabel.text = @"抱歉,当前网络不给力";
@@ -319,13 +361,17 @@
         if (![self.locationView.cityNaemLabel.text isEqualToString:@"抱歉,当前网络不给力"]){
             
             if (![self.locationView.cityNaemLabel.text isEqualToString:@"定位中..."]) {
+                if (![self.locationView.cityNaemLabel.text isEqualToString:@"亲，请授权(づ￣3￣)づ╭❤～"]) {
+                    
                 
                 UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"搜索不到目标" message:nil preferredStyle:UIAlertControllerStyleAlert];
                 [self presentViewController:alert animated:YES completion:^{
                     [alert dismissViewControllerAnimated:YES completion:^{
-                        
+                     
                     }];
                 }];
+                    
+                }
             }
 //         [self.locationView.cityNaemLabel.text isEqualToString:@"定位中..."]
             

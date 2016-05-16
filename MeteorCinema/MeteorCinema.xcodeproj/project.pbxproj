@@ -1512,7 +1512,6 @@
 				TargetAttributes = {
 					3FB9418B1CD37A6C009BD81F = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = NLX59YHSSA;
 					};
 					3FB941A41CD37A6C009BD81F = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -1962,9 +1961,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: hou lei (Y89L95Z25H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: hou lei (Y89L95Z25H)";
-				GCC_PREFIX_HEADER = "/Users/lan/Desktop/CinemaAPP完善版/CinemaRepository/MeteorCinema/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = /Users/lan/Desktop/CinemaAPP/CinemaRepository/MeteorCinema/PrefixHeader.pch;
 				INFOPLIST_FILE = MeteorCinema/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1984,9 +1983,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: hou lei (Y89L95Z25H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: hou lei (Y89L95Z25H)";
-				GCC_PREFIX_HEADER = "/Users/lan/Desktop/CinemaAPP完善版/CinemaRepository/MeteorCinema/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = /Users/lan/Desktop/CinemaAPP/CinemaRepository/MeteorCinema/PrefixHeader.pch;
 				INFOPLIST_FILE = MeteorCinema/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

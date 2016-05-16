@@ -60,11 +60,12 @@
     
     
     
-    UIButton *buttom = [[UIButton alloc] initWithFrame:CGRectMake(130+WIDTH*2, 260, 120, 40)];
-    buttom.backgroundColor = [UIColor redColor];
-    [buttom setTitle:@"进入影视" forState:UIControlStateNormal];
-    [buttom addTarget:self action:@selector(touchInterface) forControlEvents:UIControlEventTouchUpInside];
-    [_scroll addSubview:buttom];
+    self.buttom = [[UIButton alloc] initWithFrame:CGRectMake(130+WIDTH*2, 260, 120, 40)];
+    self.buttom.center = CGPointMake(WIDTH / 2 + WIDTH * 2, HEIGTH / 5 * 3);
+    self.buttom.backgroundColor = [UIColor redColor];
+    [self.buttom setTitle:@"进入影视" forState:UIControlStateNormal];
+    [self.buttom addTarget:self action:@selector(touchInterface) forControlEvents:UIControlEventTouchDown];
+    [_scroll addSubview:self.buttom];
     _scroll.pagingEnabled = YES;
     _scroll.delegate = self;
     _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, UIScreenHeight - 75, WIDTH, 30)];
@@ -74,20 +75,32 @@
     [self addSubview:_pageControl];
     [_pageControl addTarget:self action:@selector(touchPage:) forControlEvents:UIControlEventValueChanged];
 
+    
+    
+    
+    
 }
 -(void)touchInterface
 {
-    [UIView animateWithDuration:0.5 animations:^{
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    [user setValue:@"you" forKey:@"标记"];
+    
+    //告诉别人已经点击button了
+    [self.delegate buttonClikeFinish];
+    
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    [UIView animateWithDuration:1.5 animations:^{
         _imageV1.transform = CGAffineTransformMakeTranslation(-WIDTH/2, 0);
         _imageV2.transform = CGAffineTransformMakeTranslation(WIDTH/2, 0);
     } completion:^(BOOL finished) {
-        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-        [user setValue:@"you" forKey:@"标记"];
         [self removeFromSuperview];
-        [UIApplication sharedApplication].statusBarHidden = NO;
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        
+        
 
     }];
+    
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
