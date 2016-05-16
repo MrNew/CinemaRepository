@@ -48,6 +48,9 @@
 
 #import "XRCarouselView.h"
 
+// 定位
+#import <CoreLocation/CoreLocation.h>
+
 
 #define Width [UIScreen mainScreen].bounds.size.width
 
@@ -59,7 +62,7 @@
 
 
 
-@interface MovieViewController () < LocationViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,AttentionMovieTableViewCellDelegate,FutureTableViewDelegate,UIScrollViewDelegate,XRCarouselViewDelegate >
+@interface MovieViewController () < LocationViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,AttentionMovieTableViewCellDelegate,FutureTableViewDelegate,UIScrollViewDelegate,XRCarouselViewDelegate,CLLocationManagerDelegate,FirsViewDelegate >
 
 
 @property (nonatomic, strong) UITableView * tableView;
@@ -80,6 +83,11 @@
 @property (nonatomic, strong) TopView * topView;
 
 
+
+// 实现 GPS 搜索位置
+@property (nonatomic, strong) CLLocationManager * locationManager;
+// 实现位置的 反编码
+@property (nonatomic, strong) CLGeocoder * geocoder;
 
 
 
@@ -156,12 +164,22 @@
     if (![string isEqualToString:@"you"]) {
         FirsView *fir = [[FirsView alloc] initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight)];
         UIWindow *window = [[UIApplication sharedApplication]keyWindow];
+        
+//        [fir.buttom addTarget:self action:@selector(doButtonClik:) forControlEvents:UIControlEventTouchUpInside];
+        
+        fir.delegate = self;
+        
         [window addSubview:fir];
         [UIApplication sharedApplication].statusBarHidden = YES;
+        
+        
+        
     }
     else{
         [UIApplication sharedApplication].statusBarHidden = NO;
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        
+   
         
     }
     self.view.backgroundColor = [UIColor whiteColor];
@@ -193,14 +211,12 @@
     NSString * locationName = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultLocation"];
     // 判断是否进入选地点的页面
     if (locationName.length > 0) {
+      
+        
         self.navigationItem.leftBarButtonItem.title = locationName;
+        
     }else{
-        LocationViewController * location = [[LocationViewController alloc] init];
-        
-//        location.delegate = self;
-        
-        [self.navigationController pushViewController:location animated:YES];
-        
+        self.navigationItem.leftBarButtonItem.title = @"广州";
     }
     // 等通知 通知( 比较通知信息 与 原来存的 地点是否吻合来决定是否 更新信息 )
     [self listener];
@@ -226,8 +242,143 @@
     // 添加tableView
     [self.view addSubview:self.tableView];
     
+    
+    
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+        //设置代理
+        _locationManager.delegate = self;
+        //设置定位精度
+        _locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+        //定位频率,每隔多少米定位一次
+        CLLocationDistance distance=1000.0;//十米定位一次
+        _locationManager.distanceFilter = distance;
+        //启动跟踪定位
+        [_locationManager startUpdatingLocation];
+    
 }
 
+
+
+#pragma mark - CoreLocation 代理
+#pragma mark 跟踪定位代理方法，每次位置发生变化即会执行（只要定位到相应位置）
+#pragma mark 根据坐标取得地名
+//可以通过模拟器设置一个虚拟位置，否则在模拟器中无法调用此方法
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    
+    CLLocation *location=[locations firstObject];//取出第一个位置
+    CLLocationCoordinate2D coordinate=location.coordinate;//位置坐标
+    NSLog(@"经度：%f,纬度：%f,海拔：%f,航向：%f,行走速度：%f",coordinate.longitude,coordinate.latitude,location.altitude,location.course,location.speed);
+    
+    
+    // 初始化
+    _geocoder=[[CLGeocoder alloc]init];
+    
+    [self getAddressByLatitude:coordinate.latitude longitude:coordinate.longitude];
+    
+ 
+}
+
+// 反编码获取位置
+-(void)getAddressByLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude{
+    //反地理编码
+    CLLocation *location=[[CLLocation alloc]initWithLatitude:latitude longitude:longitude];
+    
+    NSLog(@"stghjtyuhjk%@",location);
+    [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark *placemark=[placemarks firstObject];
+        
+        //        NSLog(@"详细信息:%@",placemark.addressDictionary);
+        
+        //        self.locationView.cityNaemLabel.text = [NSString stringWithFormat:@"%@",placemark.locality];
+        NSUserDefaults * user = [NSUserDefaults standardUserDefaults];
+        [user setObject:placemark.locality forKey:@"TureLocation"];
+        
+        //        NSLog(@"%@",placemark.locality);
+        
+        if (placemark.locality.length > 0) {
+            [_locationManager stopUpdatingLocation];
+        }
+        
+
+        
+        NSString * string = [placemark.locality substringFromIndex:(placemark.locality.length - 1)];
+        
+        if ([string isEqualToString:@"市"]) {
+            string = [placemark.locality substringToIndex:(placemark.locality.length - 1)];
+        }
+        
+        
+        NSArray * array = [[DataBaseUtil share] vagueSelectTableWith:string];
+        
+        // 先判断是否 与选中地点 相一致
+        NSString * locationName = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultLocation"];
+        
+        if (array.count > 0) {
+            
+            // 找到数据库中响应的 city
+            CityMessage * city = [array objectAtIndex:0];
+            
+            if (locationName.length > 0) {
+                
+                if (![city.name isEqualToString:locationName]) {
+                    
+                    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"检测到不是定位城市" message:@"是否切换" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    // 执行相应操作
+                    UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                    }];
+                    [alert addAction:action1];
+                    
+                    UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        // 重新设置值
+                        [[NSUserDefaults standardUserDefaults] setValue:city.name forKey:@"defaultLocation"];
+                        
+                        [[NSUserDefaults standardUserDefaults] setInteger:city.identifier forKey:@"defaultLocationID"];
+                        
+                        self.navigationItem.leftBarButtonItem.title = string;
+                        
+                        [self.hotArray removeAllObjects];
+                        [self requestHotData:city.identifier];
+                        [self requestFutureData:city.identifier];
+                        
+                    }];
+                    [alert addAction:action2];
+                    
+                    [self presentViewController:alert animated:YES completion:^{
+                        
+                    }];
+                    
+                }else{
+                    
+                    
+                }
+                
+            }
+            
+        }
+
+        
+    }];
+    
+    
+}
+
+
+
+-(void)buttonClikeFinish{
+    
+    
+    LocationViewController * location = [[LocationViewController alloc] init];
+    
+    [self.navigationController pushViewController:location animated:YES];
+    
+    
+    
+    
+}
 
 
 -(void)reflashData:(UIButton *)button{
