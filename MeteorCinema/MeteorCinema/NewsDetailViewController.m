@@ -59,7 +59,7 @@
 
 -(void)requestData:(NSInteger)identifier{
     
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"%@%ld",ConnectedURL,identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"%@%ld",ConnectedURL,(long)identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
        
         NSDictionary * dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         

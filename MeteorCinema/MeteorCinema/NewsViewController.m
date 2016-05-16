@@ -69,7 +69,7 @@
 }
 #pragma mark - 第一个 tableview 数据
 -(void)loadData1{
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/News/NewsList.api?pageIndex=%ld",pageIndex] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/News/NewsList.api?pageIndex=%ld",(long)pageIndex] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSArray *array = dic[@"newsList"];
         for (NSDictionary *dic0 in array) {
@@ -155,7 +155,7 @@
 
 #pragma mark - doBtn 执行方法
 -(void)doBtn:(UIButton *)btn{
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",btn.tag] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",(long)btn.tag] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         dispatch_async(dispatch_get_main_queue(), ^{
             DetailViewController *detailVC = [[DetailViewController alloc]init];
@@ -163,7 +163,7 @@
             detailVC.title2 = dic[@"title2"];
             detailVC.commentCount = [dic[@"commentCount"] integerValue];
             detailVC.image = @"http://tiandaoedu.com/uploads/100309/443_135959_1.jpg";
-            detailVC.detailAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",btn.tag];
+            detailVC.detailAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",(long)btn.tag];
             detailVC.identifier = btn.tag;
             [self.navigationController pushViewController:detailVC animated:YES];
         });
@@ -208,7 +208,7 @@
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:newsModel.publishTime];
         NSString *time = [[NSString stringWithFormat:@"%@",date] substringWithRange:NSMakeRange(5, 11)];
         cell.time.text = time;
-        cell.commend.text = [@"评论 " stringByAppendingString:[NSString stringWithFormat:@"%ld",newsModel.commentCount]];
+        cell.commend.text = [@"评论 " stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)newsModel.commentCount]];
         [cell.imageV sd_setImageWithURL:[NSURL URLWithString:newsModel.image]];
         return cell;
     }else{
@@ -223,7 +223,7 @@
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:newsModel.publishTime];
         NSString *time = [[NSString stringWithFormat:@"%@",date] substringWithRange:NSMakeRange(5, 11)];
         cell1.time.text = time;
-        cell1.commend.text = [@"评论 " stringByAppendingString:[NSString stringWithFormat:@"%ld",newsModel.commentCount]];
+        cell1.commend.text = [@"评论 " stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)newsModel.commentCount]];
         return cell1;
     }
 }
@@ -231,7 +231,7 @@
     NewsModel *model = self.dataArray[indexPath.row];
     if (model.image1 == nil) {
     DetailViewController *detailVC = [[DetailViewController alloc]init];
-    detailVC.detailAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",model.identifier];
+    detailVC.detailAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",(long)model.identifier];
     detailVC.itemTitle = model.title;
         detailVC.image = model.image;
         detailVC.title2 = model.title2;
@@ -244,7 +244,7 @@
         picScroll.itemTitle = model.title;
         picScroll.title2 = model.title2;
         picScroll.image = model.image;
-        picScroll.picAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",model.identifier];
+        picScroll.picAPI = [NSString stringWithFormat:@"http://api.m.mtime.cn/News/Detail.api?newsId=%ld",(long)model.identifier];
         picScroll.identifier = model.identifier;
         picScroll.commentCount = model.commentCount;
         [self.navigationController pushViewController:picScroll animated:YES];

@@ -55,7 +55,7 @@
             model.identifier = [dic[@"id"]integerValue];
             [self.dataArray addObject:model];
         }
-        NSLog(@"hahaha===%ld",self.dataArray.count);
+        NSLog(@"hahaha===%ld",(unsigned long)self.dataArray.count);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tab reloadData];
         });
