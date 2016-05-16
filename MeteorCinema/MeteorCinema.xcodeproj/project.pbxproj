@@ -24,6 +24,16 @@
 		3F2B58F61CE1FB880038750D /* myHead.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F2B58F51CE1FB880038750D /* myHead.jpg */; };
 		3F2B58FD1CE1FF890038750D /* myHeadIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F2B58FC1CE1FF890038750D /* myHeadIcon.png */; };
 		3F2B58FF1CE2077D0038750D /* changeHead.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F2B58FE1CE2077D0038750D /* changeHead.png */; };
+		3F37E3D51CE95DD000EA74CD /* 72*72*2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37E3CB1CE95DD000EA74CD /* 72*72*2.png */; settings = {ASSET_TAGS = (); }; };
+		3F37E3D61CE95DD000EA74CD /* 29*29*1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37E3CC1CE95DD000EA74CD /* 29*29*1.png */; settings = {ASSET_TAGS = (); }; };
+		3F37E3D71CE95DD000EA74CD /* 76*76*2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37E3CD1CE95DD000EA74CD /* 76*76*2.png */; settings = {ASSET_TAGS = (); }; };
+		3F37E3D81CE95DD000EA74CD /* 76*76*1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37E3CE1CE95DD000EA74CD /* 76*76*1.png */; settings = {ASSET_TAGS = (); }; };
+		3F37E3D91CE95DD000EA74CD /* 57*57*1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37E3CF1CE95DD000EA74CD /* 57*57*1.png */; settings = {ASSET_TAGS = (); }; };
+		3F37E3DA1CE95DD000EA74CD /* 72*72*1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37E3D01CE95DD000EA74CD /* 72*72*1.png */; settings = {ASSET_TAGS = (); }; };
+		3F37E3DB1CE95DD000EA74CD /* 40*40*1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37E3D11CE95DD000EA74CD /* 40*40*1.png */; settings = {ASSET_TAGS = (); }; };
+		3F37E3DC1CE95DD000EA74CD /* 50*50*1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37E3D21CE95DD000EA74CD /* 50*50*1.png */; settings = {ASSET_TAGS = (); }; };
+		3F37E3DD1CE95DD000EA74CD /* 57*57*2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37E3D31CE95DD000EA74CD /* 57*57*2.png */; settings = {ASSET_TAGS = (); }; };
+		3F37E3DE1CE95DD000EA74CD /* 50*50*2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37E3D41CE95DD000EA74CD /* 50*50*2.png */; settings = {ASSET_TAGS = (); }; };
 		3F41912F1CE4867D00B9EBE3 /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F41912E1CE4867D00B9EBE3 /* MarqueeLabel.m */; };
 		3F477A051CDF2B6D00E9C767 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F477A041CDF2B6D00E9C767 /* Company.m */; };
 		3F4C45221CD8D7F20006EB06 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C45161CD8D7F20006EB06 /* FMDatabase.m */; };
@@ -293,6 +303,16 @@
 		3F2B58F51CE1FB880038750D /* myHead.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = myHead.jpg; sourceTree = "<group>"; };
 		3F2B58FC1CE1FF890038750D /* myHeadIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myHeadIcon.png; sourceTree = "<group>"; };
 		3F2B58FE1CE2077D0038750D /* changeHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = changeHead.png; sourceTree = "<group>"; };
+		3F37E3CB1CE95DD000EA74CD /* 72*72*2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "72*72*2.png"; sourceTree = "<group>"; };
+		3F37E3CC1CE95DD000EA74CD /* 29*29*1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29*29*1.png"; sourceTree = "<group>"; };
+		3F37E3CD1CE95DD000EA74CD /* 76*76*2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "76*76*2.png"; sourceTree = "<group>"; };
+		3F37E3CE1CE95DD000EA74CD /* 76*76*1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "76*76*1.png"; sourceTree = "<group>"; };
+		3F37E3CF1CE95DD000EA74CD /* 57*57*1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "57*57*1.png"; sourceTree = "<group>"; };
+		3F37E3D01CE95DD000EA74CD /* 72*72*1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "72*72*1.png"; sourceTree = "<group>"; };
+		3F37E3D11CE95DD000EA74CD /* 40*40*1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40*40*1.png"; sourceTree = "<group>"; };
+		3F37E3D21CE95DD000EA74CD /* 50*50*1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "50*50*1.png"; sourceTree = "<group>"; };
+		3F37E3D31CE95DD000EA74CD /* 57*57*2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "57*57*2.png"; sourceTree = "<group>"; };
+		3F37E3D41CE95DD000EA74CD /* 50*50*2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "50*50*2.png"; sourceTree = "<group>"; };
 		3F41912D1CE4867D00B9EBE3 /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
 		3F41912E1CE4867D00B9EBE3 /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
 		3F477A031CDF2B6D00E9C767 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
@@ -690,6 +710,16 @@
 		3F1047B71CE6BCBA00B0264C /* icon */ = {
 			isa = PBXGroup;
 			children = (
+				3F37E3CB1CE95DD000EA74CD /* 72*72*2.png */,
+				3F37E3CC1CE95DD000EA74CD /* 29*29*1.png */,
+				3F37E3CD1CE95DD000EA74CD /* 76*76*2.png */,
+				3F37E3CE1CE95DD000EA74CD /* 76*76*1.png */,
+				3F37E3CF1CE95DD000EA74CD /* 57*57*1.png */,
+				3F37E3D01CE95DD000EA74CD /* 72*72*1.png */,
+				3F37E3D11CE95DD000EA74CD /* 40*40*1.png */,
+				3F37E3D21CE95DD000EA74CD /* 50*50*1.png */,
+				3F37E3D31CE95DD000EA74CD /* 57*57*2.png */,
+				3F37E3D41CE95DD000EA74CD /* 50*50*2.png */,
 				3F1047B81CE6BCDE00B0264C /* 29*29*2.png */,
 				3F1047B91CE6BCDE00B0264C /* 29*29*3.png */,
 				3F1047BA1CE6BCDE00B0264C /* 40*40*2.png */,
@@ -1522,6 +1552,7 @@
 			files = (
 				3FC3A6C61CE4ABA00087AE13 /* huiying.jpg in Resources */,
 				3FC3A6C71CE4ABA00087AE13 /* cinemashouchang.png in Resources */,
+				3F37E3D51CE95DD000EA74CD /* 72*72*2.png in Resources */,
 				3FC3A6C81CE4ABA00087AE13 /* huilv_影院 (1).png in Resources */,
 				3F5B34301CE4BC50007D843B /* huilv_影院 (1).png in Resources */,
 				3F5B33FB1CE4BA9E007D843B /* placeholder.png in Resources */,
@@ -1532,6 +1563,7 @@
 				3F83B1821CE3343500C6E348 /* qianxing.jpg in Resources */,
 				3F696E541CE220DA004A358B /* 票房统计.png in Resources */,
 				3F5B341C1CE4BBFF007D843B /* wodeA.png in Resources */,
+				3F37E3DC1CE95DD000EA74CD /* 50*50*1.png in Resources */,
 				6096E2FF1CE57BE70090225C /* Unknown-2.png in Resources */,
 				3F696E5B1CE220DA004A358B /* gongyuan.png in Resources */,
 				3FEA3CE91CE7020700651B63 /* iconfont-meiguihua.png in Resources */,
@@ -1544,6 +1576,7 @@
 				3F239A961CDDE32A00E8C1D1 /* play.png in Resources */,
 				3F5B342C1CE4BBFF007D843B /* dianyingA.png in Resources */,
 				3F696E4F1CE220DA004A358B /* 电影 (1).png in Resources */,
+				3F37E3D81CE95DD000EA74CD /* 76*76*1.png in Resources */,
 				3F7D38C31CDE234F00E4700D /* LMPlayer.bundle in Resources */,
 				3F696E561CE220DA004A358B /* 我的 (2).png in Resources */,
 				609AF4E11CE4CF9300D40BB4 /* 收藏.png in Resources */,
@@ -1570,6 +1603,7 @@
 				3F696E551CE220DA004A358B /* 票务(1).png in Resources */,
 				3F5B341D1CE4BBFF007D843B /* 电影(2).png in Resources */,
 				3F696E531CE220DA004A358B /* 票房统计-1.png in Resources */,
+				3F37E3DD1CE95DD000EA74CD /* 57*57*2.png in Resources */,
 				3F5B34231CE4BBFF007D843B /* 影院.png in Resources */,
 				6096E2FB1CE57A460090225C /* Unknown.png in Resources */,
 				608C72611CE761BB00CED774 /* 播放.png in Resources */,
@@ -1594,11 +1628,14 @@
 				3F1047C01CE6BCDE00B0264C /* 40*40*2.png in Resources */,
 				60D41D8E1CE0D750003513AB /* BoxOfficeTableViewCell.xib in Resources */,
 				3F5B342E1CE4BBFF007D843B /* faA.png in Resources */,
+				3F37E3D91CE95DD000EA74CD /* 57*57*1.png in Resources */,
 				3FFAB5FA1CE2D75500D37BD3 /* searchPersent.png in Resources */,
 				3F5B34321CE4BCCA007D843B /* feihong.jpg in Resources */,
+				3F37E3D61CE95DD000EA74CD /* 29*29*1.png in Resources */,
 				3F696E641CE220DA004A358B /* WIFI (1).png in Resources */,
 				3F5B341B1CE4BBFF007D843B /* 我的(1).png in Resources */,
 				3F696E571CE220DA004A358B /* 我的 (3).png in Resources */,
+				3F37E3DA1CE95DD000EA74CD /* 72*72*1.png in Resources */,
 				3F696E5D1CE220DA004A358B /* huilv_影院.png in Resources */,
 				3F5B34221CE4BBFF007D843B /* 我的.png in Resources */,
 				3F5B342A1CE4BBFF007D843B /* yingyuanA.png in Resources */,
@@ -1607,12 +1644,14 @@
 				6096A6D01CE73B1D00909564 /* qidongtu3.jpg in Resources */,
 				3F2B58F61CE1FB880038750D /* myHead.jpg in Resources */,
 				3F1047C11CE6BCDE00B0264C /* 40*40*3.png in Resources */,
+				3F37E3D71CE95DD000EA74CD /* 76*76*2.png in Resources */,
 				3F5B34201CE4BBFF007D843B /* 发现_).png in Resources */,
 				6096A6D21CE73B1D00909564 /* qidongtu1.jpg in Resources */,
 				3F5B34271CE4BBFF007D843B /* wodeB.png in Resources */,
 				3FA0A5A91CD9A029004B52CB /* q3.jpg in Resources */,
 				3F696E601CE220DA004A358B /* quguan (2).png in Resources */,
 				3F696E661CE220DA004A358B /* WIFI.png in Resources */,
+				3F37E3DB1CE95DD000EA74CD /* 40*40*1.png in Resources */,
 				6096A6D11CE73B1D00909564 /* qidongtu2.jpg in Resources */,
 				3F696E651CE220DA004A358B /* WIFI (2).png in Resources */,
 				3F109B0A1CE6C4840076CC5A /* appStar.jpg in Resources */,
@@ -1627,6 +1666,7 @@
 				3F696E591CE220DA004A358B /* dianhuahua.png in Resources */,
 				60C63B661CE30E30002C5902 /* showView.xib in Resources */,
 				3F5B341F1CE4BBFF007D843B /* 电影(1).png in Resources */,
+				3F37E3DE1CE95DD000EA74CD /* 50*50*2.png in Resources */,
 				609AF4E21CE4CF9300D40BB4 /* 收藏(1).png in Resources */,
 				609C27BE1CD9CC3D0024A610 /* NewsTableViewCell.xib in Resources */,
 				3F2B58FF1CE2077D0038750D /* changeHead.png in Resources */,
@@ -1926,7 +1966,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PREFIX_HEADER = "/Users/apple/Desktop/三人行电影项目/CinemaRepository/MeteorCinema/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = /Users/lan/Desktop/vision/CinemaRepository/MeteorCinema/PrefixHeader.pch;
 				INFOPLIST_FILE = MeteorCinema/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1943,7 +1983,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PREFIX_HEADER = "/Users/apple/Desktop/三人行电影项目/CinemaRepository/MeteorCinema/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = /Users/lan/Desktop/vision/CinemaRepository/MeteorCinema/PrefixHeader.pch;
 				INFOPLIST_FILE = MeteorCinema/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
