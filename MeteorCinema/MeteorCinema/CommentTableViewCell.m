@@ -36,15 +36,17 @@
     [super layoutSubviews];
     
     //用户图片
-    self.userImageView.frame = CGRectMake(10, 10, 80, 80);
+    self.userImageView.frame = CGRectMake(10, 10, 60, 60);
+    self.userImageView.layer.cornerRadius = 30;
+    self.userImageView.layer.masksToBounds = YES;
    // self.userImageView.backgroundColor = [UIColor redColor];
     
     //用户姓名
-    self.nicknameLabel.frame = CGRectMake(100, 10, 300, 30);
+    self.nicknameLabel.frame = CGRectMake(self.userImageView.frame.origin.x+self.userImageView.frame.size.width+10, 10, 300, 30);
  //   self.nicknameLabel.backgroundColor = [UIColor cyanColor];
     
     //用户姓名
-    self.ccontentLabel.frame = CGRectMake(100, 50, 300, 30);
+    self.ccontentLabel.frame = CGRectMake(self.userImageView.frame.origin.x+self.userImageView.frame.size.width+10, 50, 300, 30);
    // self.ccontentLabel.backgroundColor = [UIColor greenColor];
     
 }

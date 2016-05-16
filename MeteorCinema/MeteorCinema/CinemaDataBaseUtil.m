@@ -41,7 +41,7 @@ static CinemaDataBaseUtil *database = nil;
 -(BOOL)createTable
 {
     if ([_db open]) {
-        NSString *sql = @"create table if not exists cinema (id integer primary key autoincrement,cinameName text,address text)";
+        NSString *sql = @"create table if not exists cinema (id integer primary key autoincrement,cinameName text,address text,cinemaId text)";
 //        NSString *sql1 = @"create table if not exists histories (id integer primary key autoincrement,cinameName text,address text)";
       //  BOOL result1 = [_db executeUpdate:sql1];
         BOOL result = [_db executeUpdate:sql];
@@ -52,10 +52,10 @@ static CinemaDataBaseUtil *database = nil;
 }
 
 //插入
--(BOOL)insertCinameName:(NSString *)cinameName address:(NSString *)address
+-(BOOL)insertCinameName:(NSString *)cinameName address:(NSString *)address cinemaId:(NSString *)cinemaId
 {
     if ([_db open]) {
-        NSString *sql = [NSString stringWithFormat:@"insert into cinema(cinameName,address) values('%@','%@')",cinameName,address];
+        NSString *sql = [NSString stringWithFormat:@"insert into cinema(cinameName,address,cinemaId) values('%@','%@','%@')",cinameName,address,cinemaId];
         BOOL result = [_db executeUpdate:sql];
         [_db close];
         return result;
@@ -90,11 +90,13 @@ static CinemaDataBaseUtil *database = nil;
         while ([set next]) {
             NSString *cinameName = [set stringForColumn:@"cinameName"];
             NSString *address = [set stringForColumn:@"address"];
+            NSString *cinemaId = [set stringForColumn:@"cinemaId"];
     
             
             Cinema *movie = [[Cinema alloc] init];
             movie.cinameName = cinameName;
             movie.address = address;
+            movie.cinemaId = cinemaId;
 
             
             [array addObject:movie];

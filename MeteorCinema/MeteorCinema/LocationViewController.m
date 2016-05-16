@@ -63,6 +63,7 @@
         self.allCityTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, ScreenHeight / 15 + 100, ScreenWidth, self.view.bounds.size.height - 49 - 64 - ScreenHeight / 15 - 100) style:UITableViewStylePlain];
         self.allCityTableView.delegate = self;
         self.allCityTableView.dataSource = self;
+        self.allCityTableView.backgroundColor = [UIColor yellowColor];
         
     }
     return _allCityTableView;
@@ -74,6 +75,7 @@
         self.searchTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, ScreenHeight / 15 + 100, ScreenWidth, self.view.bounds.size.height - 49 - 64 - ScreenHeight / 15 - 100) style:UITableViewStylePlain];
         self.searchTableView.delegate = self;
         self.searchTableView.dataSource = self;
+        self.allCityTableView.backgroundColor = [UIColor redColor];
         
         
     }
@@ -490,8 +492,14 @@
         
       
         NSMutableArray * array = [self.allCityDic objectForKey:[self.allCityInitalArray objectAtIndex:indexPath.section]];
-            
+        
+        
+        
+        
+        
         CityMessage * city = [array objectAtIndex:indexPath.row];
+        
+        
             
         [self.delegate passLocationCity:city];
         

@@ -16,7 +16,7 @@
 -(BOOL)createTable;
 
 //插入
--(BOOL)insertCinameName:(NSString *)cinameName address:(NSString *)address;
+-(BOOL)insertCinameName:(NSString *)cinameName address:(NSString *)address cinemaId:(NSString *)cinemaId;
 
 //删除
 -(BOOL)deleteCarWithTitle:(NSString *)title;

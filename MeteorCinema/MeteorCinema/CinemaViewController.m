@@ -28,7 +28,8 @@
 @property(nonatomic,strong)NSMutableArray *oneImageArray;
 @property(nonatomic,strong)UITableView *CinemaTabelView;
 @property(nonatomic,strong)NSMutableArray *characteristicArray;
-@property(nonatomic,assign)NSInteger cinemaId;
+@property(nonatomic,assign)NSInteger locationId;//城市ID
+@property(nonatomic,assign)NSInteger cinemaId; //影院ID
 @property(nonatomic,strong)UIButton *musicBtn;
 @end
 
@@ -111,11 +112,11 @@
     
      NSString * locationName = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultLocation"];
     if (locationID) {
-         self.cinemaId = locationID;
+         self.locationId = locationID;
         [_musicBtn setTitle:locationName forState:UIControlStateNormal];
         [self requestData];
     }else{
-        self.cinemaId = 365;
+        self.locationId = 365;
         
          [self requestData];
     }
@@ -189,11 +190,11 @@
     NSString * cityName = [dic objectForKey:@"cityName"];
     
     NSString * cityID = [dic objectForKey:@"cityID"];
-    NSLog(@"%@",cityID);
+   // NSLog(@"%@",cityID);
 //    NSString *strname = [NSString stringWithFormat:@"%@",cityID];
 //    NSString *str = strname;
-    self.cinemaId = [cityID integerValue];
-    NSLog(@"%ld",self.cinemaId);
+    self.locationId = [cityID integerValue];
+  //  NSLog(@"%ld",self.cinemaId);
     
      [_musicBtn setTitle:cityName forState:UIControlStateNormal];
     
@@ -208,7 +209,7 @@
 
     [self.dataArray removeAllObjects];
 
-    self.cinemaId = city.identifier;
+    self.locationId = city.identifier;
 
     if (city.name == nil) {
         [self shareleftBarButton];
@@ -229,7 +230,7 @@
     
     
     
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/OnlineLocationCinema/OnlineCinemasByCity.api?locationId=%ld",self.cinemaId] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/OnlineLocationCinema/OnlineCinemasByCity.api?locationId=%ld",self.locationId] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         
         //对专递过来的数据进行解析
         NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -238,6 +239,13 @@
         for (NSDictionary *dic in array) {
             Cinema *send = [[Cinema alloc] init];
             [send setValuesForKeysWithDictionary:dic];
+            
+          
+        
+
+             NSLog(@"%@",send.cinemaId);
+             // NSLog(@"%ld",self.yingyuanId);
+            
             
 
             [_dataArray addObject:send];
@@ -264,6 +272,8 @@
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            
             
             [_CinemaTabelView reloadData];
             
@@ -319,8 +329,10 @@
         cell.minPriceLabel.text = restric;
         }
     
-    NSString * str = send.cinemaId;
-    self.cinemaId = [str intValue];
+    
+   
+ 
+
     
     return cell;
     
@@ -337,7 +349,6 @@
     SecondViewController *sen = [[SecondViewController alloc] init];
     sen.delegate = self;
     sen.cinamea = [_dataArray objectAtIndex:indexPath.row];
-    sen.cinemaIdtwo = self.cinemaId;
     [self.navigationController pushViewController:sen animated:YES];
 
     
