@@ -13,6 +13,8 @@
 -(CGFloat)getImageHeight:(NSString *)urlString;
 //计算label高度的方法
 -(CGFloat)getLabelHeight:(NSString *)content font:(UIFont *)font;
+-(CGFloat)getContentLabelHeight:(NSString *)content font:(UIFont *)font;
+-(CGFloat)getSContentLabelHeight:(NSString *)content font:(UIFont *)font;
 
 
 @end

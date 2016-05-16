@@ -314,7 +314,7 @@
  
     [self.connectedNewsArray removeAllObjects];
 //    NSLog(@"%@",[NSString stringWithFormat:@"%@%ld",ExtendConnectedURL,movieID]);
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"%@%ld",ExtendConnectedURL,movieID] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"%@%ld",ExtendConnectedURL,(long)movieID] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
 
         
            NSDictionary * dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -350,7 +350,7 @@
     
     [self.movieCommentArray removeAllObjects];
 //    NSLog(@"%@",[NSString stringWithFormat:@"%@%ld",MovieCommentURL,movieID]);
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"%@%ld",MovieCommentURL,movieID] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"%@%ld",MovieCommentURL,(long)movieID] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         
         
         NSDictionary * dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -507,7 +507,7 @@
         CompanyViewController * company = [[CompanyViewController alloc] init];
         
         company.identifier = self.movieID;
-        NSLog(@"%ld",self.movieID);
+        NSLog(@"%ld",(long)self.movieID);
         
         
         [self.navigationController pushViewController:company animated:YES];

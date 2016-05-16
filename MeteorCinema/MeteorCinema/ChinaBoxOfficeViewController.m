@@ -89,7 +89,7 @@
     [cell.poster sd_setImageWithURL:[NSURL URLWithString:model.posterUrl]];
     cell.rating.text = [NSString stringWithFormat:@"%.1f",model.rating];
     
-    cell.rank.text = [NSString stringWithFormat:@"%ld",model.rankNum];
+    cell.rank.text = [NSString stringWithFormat:@"%ld",(long)model.rankNum];
     cell.name.text = [model.name stringByAppendingString:@" "];
     cell.nameEn.text = model.nameEn;
     NSString *str = [model.weekBoxOffice stringByReplacingOccurrencesOfString:@"\n" withString:@": "];

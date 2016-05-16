@@ -26,7 +26,7 @@
     [super viewDidLoad];
     [self loadData1];
     [self loadImage1];
-    self.tab = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight - 64) style:UITableViewStylePlain];
+    self.tab = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight - 64 - 49) style:UITableViewStylePlain];
     [self.view addSubview:self.tab];
     self.tab.delegate = self;
     self.tab.dataSource = self;
@@ -55,7 +55,7 @@
             model.identifier = [dic[@"id"]integerValue];
             [self.dataArray addObject:model];
         }
-        NSLog(@"hahaha===%ld",self.dataArray.count);
+        NSLog(@"hahaha===%ld",(unsigned long)self.dataArray.count);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tab reloadData];
         });

@@ -59,6 +59,8 @@
 
 
 
+
+
 @end
 
 @implementation SecondViewController
@@ -318,6 +320,7 @@
     //开启交互
     view.userInteractionEnabled =YES;
 }
+
 #pragma -mark收藏夹跳转功能代理
 -(void)pusValue:(Cinema *)doc
 {
@@ -331,6 +334,9 @@
 //    doc.address = self.cinamea.address;
     [self movierequestData];
 }
+
+
+
 
 
 -(void)upUp{
@@ -347,8 +353,11 @@
     DetailedViewController *detai = [[DetailedViewController alloc] init];
     detai.delegate = self;
     detai.cinemaIdNUM = self.cinemaIdtwo;
+
    
     [self.navigationController pushViewController:detai animated:YES];
+    
+
     [self movierequestData];
    
 }
@@ -360,7 +369,9 @@
     NSLog(@"%ld",self.cinemaIdtwo);
     
     
+
     [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Showtime/ShowtimeMovieAndDateListByCinema.api?cinemaId=%ld",self.cinemaIdtwo]parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+
         
         //对专递过来的数据进行解析
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -417,7 +428,7 @@
 {
     [self.studioDataArray removeAllObjects];
  //   NSLog(@"%ld",self.movieIdNumber);
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Showtime/ShowTimesByCinemaMovieDate.api?cinemaId=%ld&movieId=%ld",self.cinemaIdtwo,self.movieIdNumber] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Showtime/ShowTimesByCinemaMovieDate.api?cinemaId=%ld&movieId=%ld",(long)self.cinemaIdtwo,(long)self.movieIdNumber] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         
         //对专递过来的数据进行解析
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -531,7 +542,7 @@
         
         NSString *str = mo.movieId;
         self.movieIdNumber = [str intValue];
-        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
         [self studiorequestData];
 
         
@@ -548,7 +559,7 @@
         NSString *str = mo.movieId;
         
         self.movieIdNumber = [str intValue];
-        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
         [self studiorequestData];
         //[_SendcondTabelView reloadData];
         
@@ -565,7 +576,7 @@
         NSString *str = mo.movieId;
         
         self.movieIdNumber = [str intValue];
-        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
         [self studiorequestData];
         //[_SendcondTabelView reloadData];
         
@@ -580,7 +591,7 @@
         
         NSString *str = mo.movieId;
         self.movieIdNumber = [str intValue];
-        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
         [self studiorequestData];
         //[_SendcondTabelView reloadData];
         
@@ -597,7 +608,7 @@
         
         NSString *str = mo.movieId;
         self.movieIdNumber = [str intValue];
-        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
         [self studiorequestData];
     
         
@@ -612,7 +623,7 @@
         
         NSString *str = mo.movieId;
         self.movieIdNumber = [str intValue];
-        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
         [self studiorequestData];
   
         
@@ -627,7 +638,7 @@
         
         NSString *str = mo.movieId;
         self.movieIdNumber = [str intValue];
-        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
         [self studiorequestData];
      
     }else if (button.tag == 8){
@@ -641,7 +652,7 @@
         
         NSString *str = mo.movieId;
         self.movieIdNumber = [str intValue];
-        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
         [self studiorequestData];
      
     }else if (button.tag == 9){
@@ -655,7 +666,7 @@
         
         NSString *str = mo.movieId;
         self.movieIdNumber = [str intValue];
-        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
         [self studiorequestData];
   
     }else if (button.tag == 10){
@@ -669,9 +680,79 @@
         
         NSString *str = mo.movieId;
         self.movieIdNumber = [str intValue];
-        NSLog(@"电影ID=%ld",self.movieIdNumber);
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
         [self studiorequestData];
  
+    }else if (button.tag == 11){
+        
+        NSLog(@"你点了第十个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
+        [self studiorequestData];
+        
+    }else if (button.tag == 12){
+        
+        NSLog(@"你点了第十个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
+        [self studiorequestData];
+        
+    }else if (button.tag == 13){
+        
+        NSLog(@"你点了第十个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
+        [self studiorequestData];
+        
+    }else if (button.tag == 14){
+        
+        NSLog(@"你点了第十个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
+        [self studiorequestData];
+        
+    }else if (button.tag == 15){
+        
+        NSLog(@"你点了第十个");
+        MovIs *mo = self.SendcondDataArray[button.tag - 1];
+        NSLog(@"%@",mo.title);
+        _titiLabel.text = mo.title;
+        _TimeLabel.text = mo.length ;
+        _classifyLabel.text = mo.type;
+        
+        NSString *str = mo.movieId;
+        self.movieIdNumber = [str intValue];
+        NSLog(@"电影ID=%ld",(long)self.movieIdNumber);
+        [self studiorequestData];
+        
     }
 }
 

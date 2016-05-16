@@ -28,7 +28,7 @@
     [super viewDidLoad];
     [self loadData];
     [self loadImage];
-    self.tab = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight - 64) style:UITableViewStylePlain];
+    self.tab = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight - 64 - 49) style:UITableViewStylePlain];
     [self.view addSubview:self.tab];
     self.tab.delegate = self;
     self.tab.dataSource = self;
@@ -72,8 +72,15 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.frame = CGRectMake(0, -210, UIScreenWidth, 210);
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 180, UIScreenWidth, 30)];
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 172, UIScreenWidth, 38)];
             label.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.3];
+            label.text = headModel.title;
+            label.textAlignment = NSTextAlignmentCenter;
+            label.textColor = [UIColor whiteColor];
+            label.font = [UIFont boldSystemFontOfSize:16];
+            UIImageView *iconImageV = [[UIImageView alloc]initWithFrame:CGRectMake(UIScreenWidth - 38, 3, 32, 32)];
+            iconImageV.image = [UIImage imageNamed:@"播放"];
+            [label addSubview:iconImageV];
             [button addSubview:label];
             [self.tab insertSubview:button atIndex:0];
             if ([headModel.imageUrl  isEqual: @""]) {
@@ -83,10 +90,7 @@
                 [button setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:headModel.imageUrl]]] forState:UIControlStateNormal];
             }
             [button addTarget:self action:@selector(doButton:) forControlEvents:UIControlEventTouchUpInside];
-            label.text = headModel.title;
-            label.textAlignment = NSTextAlignmentCenter;
-            label.textColor = [UIColor whiteColor];
-            label.font = [UIFont boldSystemFontOfSize:16];
+
         });
         
     } error:^(NSError *error) {

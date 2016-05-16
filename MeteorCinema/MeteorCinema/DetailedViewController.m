@@ -101,7 +101,7 @@
 //数据接口
 -(void)requestData
 {
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Cinema/Detail.api?cinemaId=%ld",self.cinemaIdNUM] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Cinema/Detail.api?cinemaId=%ld",(long)self.cinemaIdNUM] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         
         //对专递过来的数据进行解析
         NSDictionary *diction = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -137,7 +137,7 @@
 ////评论区解析
 -(void)CommentrequestData
 {
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Cinema/Comment.api?cinemaId=%ld&pageIndex=1",self.cinemaIdNUM] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Cinema/Comment.api?cinemaId=%ld&pageIndex=1",(long)self.cinemaIdNUM] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         
         //对专递过来的数据进行解析
         NSDictionary *diction = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -517,7 +517,7 @@
 //点击cell执行的方法
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"你点了第%ld分区的第%ld行",indexPath.section+1,indexPath.row+1);
+   // NSLog(@"你点了第%ld分区的第%ld行",indexPath.section+1,indexPath.row+1);
     
     introductionViewController *introduc = [[introductionViewController alloc] init];
     introduc.delegate = self;

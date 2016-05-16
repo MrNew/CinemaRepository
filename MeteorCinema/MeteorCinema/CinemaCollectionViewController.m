@@ -79,6 +79,7 @@
 //点击cell执行的方法
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
     SecondViewController *sen = [[SecondViewController alloc] init];
     sen.cinamea= [self.cicollarray objectAtIndex:indexPath.row];
     [_delegate pusValue:sen.cinamea];
@@ -87,6 +88,13 @@
    // [self presentViewController:sen animated:YES completion:^{
         
    // }];
+
+//    SecondViewController *sen = [[SecondViewController alloc] init];
+//    sen.cinamea= [self.cicollarray objectAtIndex:indexPath.row];
+//    
+//   // [self.navigationController popToViewController:doc animated:YES];
+//    [self.navigationController pushViewController:sen animated:YES];
+
     
     
 }

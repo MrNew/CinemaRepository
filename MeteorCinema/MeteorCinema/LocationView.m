@@ -26,7 +26,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.cityNaemLabel = [[UILabel alloc] init];
-        
+
         
         self.cityNaemLabel.text = @"定位中...";
   

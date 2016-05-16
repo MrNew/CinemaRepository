@@ -20,6 +20,9 @@
                             <constraint firstAttribute="width" constant="119" id="x6O-e4-Hc0"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="播放.png" translatesAutoresizingMaskIntoConstraints="NO" id="yxF-IJ-cA3">
+                        <rect key="frame" x="92" y="55" width="32" height="32"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNP-mz-fd5">
                         <rect key="frame" x="148" y="69" width="219" height="21"/>
                         <constraints>
@@ -53,9 +56,13 @@
             <connections>
                 <outlet property="detail" destination="zO3-UF-E8W" id="SaA-x8-JZa"/>
                 <outlet property="image" destination="gaS-Rt-FMx" id="KrW-Jg-SKj"/>
+                <outlet property="playImage" destination="yxF-IJ-cA3" id="0bL-y9-x13"/>
                 <outlet property="title" destination="cNP-mz-fd5" id="OqQ-uN-CHN"/>
             </connections>
             <point key="canvasLocation" x="70.5" y="220.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="播放.png" width="64" height="64"/>
+    </resources>
 </document>

@@ -70,7 +70,7 @@
 
 #pragma mark - 第一个 tableview 数据
 -(void)loadData{
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/TopList/TopListOfAll.api?pageIndex=%ld",pageIndex] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/TopList/TopListOfAll.api?pageIndex=%ld",(long)pageIndex] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSArray *array = dic[@"topLists"];
         for (NSDictionary *dic0 in array) {
@@ -143,7 +143,7 @@
     }];
 }
 -(void)doBigBtn:(UIButton *)btn{
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/TopList/TopListDetails.api?pageIndex=1&topListId=%ld",btn.tag] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/TopList/TopListDetails.api?pageIndex=1&topListId=%ld",(long)btn.tag] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         dispatch_async(dispatch_get_main_queue(), ^{
             TimeTop100ViewController *top100 = [[TimeTop100ViewController alloc]init];
@@ -161,9 +161,9 @@
 
 #pragma mark - leftbtton和 middleBtn执行方法
 -(void)doBtn:(UIButton *)btn{
-    NSLog(@"%ld",btn.tag);
+    NSLog(@"%ld",(long)btn.tag);
     [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/TopList/TopListDetailsByRecommend.api?pageIndex=1&pageSubAreaID=%ld&locationId=%7B2%7D"
-,btn.tag] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+,(long)btn.tag] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         dispatch_async(dispatch_get_main_queue(), ^{
             TimeTop100ViewController *top100 = [[TimeTop100ViewController alloc]init];

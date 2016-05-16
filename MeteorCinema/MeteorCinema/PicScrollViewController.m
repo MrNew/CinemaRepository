@@ -16,7 +16,7 @@
 @property(nonatomic,strong)UIScrollView *picScroll;
 @property(nonatomic,strong)UILabel *bottomLabel;
 @property(nonatomic,strong)NSMutableArray *dataArray;
-@property(nonatomic,strong)UILabel *desc;
+@property(nonatomic,strong)UITextView *desc;
 @property(nonatomic,strong)NSString *newsTitle;
 @property(nonatomic,strong)NSString *descTitle;
 @property(nonatomic,assign)NSInteger isTap;
@@ -46,8 +46,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0,0,32,32)];
-    UIImage *image = [UIImage imageNamed:@"返回(2)"] ;
-    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [button setImage:[UIImage imageNamed:@"返回(2)"] forState: UIControlStateNormal];
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc]initWithCustomView:button];
     [button addTarget:self action:@selector(doBarBtn) forControlEvents:UIControlEventTouchUpInside];
@@ -98,10 +96,7 @@
             for (int i = 0; i < self.dataArray.count; i++) {
                 PicModel *models = self.dataArray[i];
                 CGFloat imageHeight = [tool getImageHeight:models.url1];
-             //   self.picScroll.frame = CGRectMake(0, 0, UIScreenWidth, imageHeight);
-            //    self.picScroll.center = CGPointMake(UIScreenWidth/2, UIScreenHeight/2 - 64);
                 UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake(UIScreenWidth*i, UIScreenHeight/2 - imageHeight/2, UIScreenWidth, imageHeight)];
-            //    imageV.center = CGPointMake(UIScreenWidth*(1/2 + i), UIScreenHeight/2 -64);
                 [self.picScroll addSubview:imageV];
                 [imageV sd_setImageWithURL:[NSURL URLWithString:models.url1]];
             }
@@ -115,16 +110,12 @@
             self.bottomLabel.textColor = [UIColor whiteColor];
             self.bottomLabel.text = self.newsTitle;
             ////////////
-            self.desc = [[UILabel alloc]initWithFrame:CGRectMake(20, 30, UIScreenWidth - 120, 40)];
+            self.desc = [[UITextView alloc]initWithFrame:CGRectMake(20, 30, UIScreenWidth - 120, 70 )];
             self.desc.font = [UIFont systemFontOfSize:14];
             self.desc.textColor = [[UIColor whiteColor]colorWithAlphaComponent:0.8];
             self.desc.text = self.descTitle;
-            self.desc.numberOfLines = 0;
-            CGFloat labelHeight = [tool getLabelHeight:self.descTitle font:self.desc.font];
-            self.desc.frame = CGRectMake(20, 30, UIScreenWidth -120, labelHeight);
-            //self.desc.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.3];
+            self.desc.backgroundColor = [UIColor clearColor];
             [self.backView addSubview:self.desc];
-
 //            NSDictionary *attribute = @{NSFontAttributeName:self.desc.font};
 //            CGSize size = [self.desc.text boundingRectWithSize:CGSizeMake(UIScreenWidth, 1000000) options:NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil].size;
 //            self.desc.frame = CGRectMake(0, UIScreenHeight*2/3+25, size.width, size.height);
@@ -150,6 +141,8 @@
     vc.itemTitle = self.itemTitle;
     vc.title2 = self.title2;
     vc.image = self.image;
+    vc.identifier = self.identifier;
+    vc.commentCount = self.commentCount;
     [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark - scroll 代理方法

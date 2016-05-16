@@ -130,7 +130,7 @@
     }
     else{
         if (pageIndex < self.pageCount ) {
-            NSLog(@"=======%ld",self.pageCount);
+            NSLog(@"=======%ld",(long)self.pageCount);
             pageIndex++;
             [self detailNetwork];
             [self.tab reloadData];
@@ -139,7 +139,7 @@
     [self.tab footerEndRefreshing];
 }
 -(void)network{
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/TopList/TopListDetailsByRecommend.api?pageIndex=%ld&pageSubAreaID=%ld&locationId=%7B2%7D",pageIndex,self.index] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/TopList/TopListDetailsByRecommend.api?pageIndex=%ld&pageSubAreaID=%ld&locationId=%7B2%7D",(long)pageIndex,(long)self.index] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         self.summary = dic[@"topList"][@"summary"];
         self.name = dic[@"topList"][@"name"];
@@ -161,7 +161,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
 }
 //////
 -(void)detailNetwork{
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/TopList/TopListDetails.api?pageIndex=%ld&topListId=%ld",pageIndex,self.identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/TopList/TopListDetails.api?pageIndex=%ld&topListId=%ld",(long)pageIndex,(long)self.identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         self.summary = dic[@"topList"][@"summary"];
         self.name = dic[@"topList"][@"name"];
@@ -196,7 +196,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
     [cell.poster sd_setImageWithURL:[NSURL URLWithString:model.posterUrl]];
     cell.rating.text = [NSString stringWithFormat:@"%.1f",model.rating];
     
-    cell.rank.text = [NSString stringWithFormat:@"%ld",model.rankNum];
+    cell.rank.text = [NSString stringWithFormat:@"%ld",(long)model.rankNum];
     cell.name.text = [model.name stringByAppendingString:@" "];
     cell.nameEn.text = model.nameEn;
     cell.director.text = [@"导演: " stringByAppendingString:model.director];

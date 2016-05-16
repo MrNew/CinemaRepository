@@ -93,7 +93,7 @@
     [cell.postImageV sd_setImageWithURL:[NSURL URLWithString:model.posterUrl]];
     cell.rating.text = [NSString stringWithFormat:@"%.1f",model.rating];
     
-    cell.rankNum.text = [NSString stringWithFormat:@"%ld",model.rankNum];
+    cell.rankNum.text = [NSString stringWithFormat:@"%ld",(long)model.rankNum];
     cell.rankNum.layer.cornerRadius = 10;
     cell.rankNum.layer.masksToBounds = YES;
     cell.name.text = model.name;

@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Cinema.h"
+
 @protocol CinemaCollectionpassValueDelegate <NSObject>
 
 -(void)pusValue:(Cinema *)doc;
 
 @end
+
 @interface CinemaCollectionViewController : UIViewController
 @property(nonatomic,assign)NSInteger integ;
 @property(nonatomic,assign)id<CinemaCollectionpassValueDelegate>delegate;

@@ -105,8 +105,8 @@
 
 -(void)requestData:(NSInteger)identifier{
     
-    NSLog(@"%@",[NSString stringWithFormat:@"%@%ld",CompanyURL,identifier]);
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"%@%ld",CompanyURL,identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    NSLog(@"%@",[NSString stringWithFormat:@"%@%ld",CompanyURL,(long)(long)identifier]);
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"%@%ld",CompanyURL,(long)identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         
         NSDictionary * dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         

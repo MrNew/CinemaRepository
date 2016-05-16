@@ -86,7 +86,10 @@
 @end
 
 @implementation MovieViewController
+-(void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = YES;
 
+}
 
 #pragma mark- 懒加载
 -(UITableView *)tableView{
@@ -147,6 +150,20 @@
 #pragma mark- 加载视图
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //***********************前景图*********************//
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *string = [user stringForKey:@"标记"];
+    if (![string isEqualToString:@"you"]) {
+        FirsView *fir = [[FirsView alloc] initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight)];
+        UIWindow *window = [[UIApplication sharedApplication]keyWindow];
+        [window addSubview:fir];
+        [UIApplication sharedApplication].statusBarHidden = YES;
+    }
+    else{
+        [UIApplication sharedApplication].statusBarHidden = NO;
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        
+    }
     self.view.backgroundColor = [UIColor whiteColor];
     
     NSLog(@"%@",NSHomeDirectory());
@@ -192,23 +209,6 @@
     
     [self listenerPassCity];
     
-    //***********************前景图*********************//
-    
-    
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *string = [user stringForKey:@"标记"];
-    
-
-    if (![string isEqualToString:@"you"]) {
-        
-        
-        FirsView *fir = [[FirsView alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
-        
-        UIWindow *window = [[UIApplication sharedApplication]keyWindow];
-        
-        [window addSubview:fir];
-        
-    }
     
     
     //************************ 加载数据 *********************//
@@ -225,17 +225,6 @@
     
     // 添加tableView
     [self.view addSubview:self.tableView];
-
-    
-//    [self.view addSubview:self.topView];
-//    self.topView.selectButtonTitleColor = [UIColor colorWithRed:90/255.0 green:144/255.0 blue:206/255.0 alpha:1];
-//    [self.topView setTitleButton:@[@"正在热映",@"即将上映"]];
-//    for (UIButton * button in self.topView.buttonArray) {
-//        [button addTarget:self action:@selector(reflashData:) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    [self.topView setTitleButtonColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
-    
-
     
 }
 
@@ -391,7 +380,7 @@
     NSInteger cityID = [[NSUserDefaults standardUserDefaults] integerForKey:@"defaultLocationID"];
     
     movie.cityID = cityID;
-    NSLog(@"%ld",cityID);
+    NSLog(@"%ld",(long)cityID);
     
     if ([self.status isEqualToString:@"正在热映"]) {
         
@@ -536,7 +525,7 @@
 -(void)requestHotData:(NSInteger)identifier{
     
 //    http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=490
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=%ld",identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=%ld",(long)identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
         // 申请数据完毕
         [self.hotArray removeAllObjects];
         
@@ -572,7 +561,7 @@
 -(void)requestFutureData:(NSInteger)identifier{
     
 //    NSLog(@"%@",[NSString stringWithFormat: @"http://api.m.mtime.cn/Movie/MovieComingNew.api?locationId=%ld",identifier]);
-    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat: @"http://api.m.mtime.cn/Movie/MovieComingNew.api?locationId=%ld",identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+    [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat: @"http://api.m.mtime.cn/Movie/MovieComingNew.api?locationId=%ld",(long)identifier] parDic:nil HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
        
         
         NSDictionary * dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];

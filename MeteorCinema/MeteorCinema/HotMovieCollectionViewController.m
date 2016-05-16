@@ -94,7 +94,7 @@
     
     
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"myShoucang"] style:UIBarButtonItemStylePlain target:self action:@selector(deleteButtonClik:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash  target:self action:@selector(deleteButtonClik:)];
     
 }
 

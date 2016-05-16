@@ -9,7 +9,11 @@
 #import "TrailerTableViewCell.h"
 
 @implementation TrailerTableViewCell
-
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    self.playImage.layer.cornerRadius = 16;
+    self.playImage.layer.masksToBounds = YES;
+}
 - (void)awakeFromNib {
     // Initialization code
 }

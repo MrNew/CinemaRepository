@@ -57,7 +57,7 @@
 
 -(BOOL)insertTableWithName:(NSString *)name withNews:(HotMovieModel *)hot{
     if ([self.db open]) {
-        NSString * sql = [NSString stringWithFormat:@"insert into %@ (identifier,title,score,img,time,player,commonSpecial,sumtime,typeString) values ('%ld','%@','%@','%@','%@','%@','%@','%@','%@')",name,hot.identifier,hot.title,hot.score,hot.img,hot.time,hot.player,hot.commonSpecial,hot.sumtime,hot.typeString];
+        NSString * sql = [NSString stringWithFormat:@"insert into %@ (identifier,title,score,img,time,player,commonSpecial,sumtime,typeString) values ('%ld','%@','%@','%@','%@','%@','%@','%@','%@')",name,(long)hot.identifier,hot.title,hot.score,hot.img,hot.time,hot.player,hot.commonSpecial,hot.sumtime,hot.typeString];
         BOOL result = [self.db executeUpdate:sql];
         if (result) {
             [self.db close];
@@ -84,7 +84,7 @@
 
 -(BOOL)deleteTableWithName:(NSString *)name WithIdentifier:(NSInteger)identifier{
     if ([self.db open]) {
-        NSString * sql = [NSString stringWithFormat:@"delete from %@ where identifier = '%ld'",name,identifier];
+        NSString * sql = [NSString stringWithFormat:@"delete from %@ where identifier = '%ld'",name,(long)identifier];
         BOOL result = [self.db executeUpdate:sql];
         if (result) {
             [self.db close];

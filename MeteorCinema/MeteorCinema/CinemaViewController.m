@@ -116,8 +116,11 @@
         [_musicBtn setTitle:locationName forState:UIControlStateNormal];
         [self requestData];
     }else{
+
         self.locationId = 365;
-        
+        [_musicBtn setTitle:@"广州" forState:UIControlStateNormal];
+
+
          [self requestData];
     }
    
@@ -193,8 +196,13 @@
    // NSLog(@"%@",cityID);
 //    NSString *strname = [NSString stringWithFormat:@"%@",cityID];
 //    NSString *str = strname;
+
     self.locationId = [cityID integerValue];
   //  NSLog(@"%ld",self.cinemaId);
+
+
+  
+
     
      [_musicBtn setTitle:cityName forState:UIControlStateNormal];
     
@@ -230,7 +238,9 @@
     
     
     
+
     [NetWorkRequestManager requestWithType:Get URLString:[NSString stringWithFormat:@"http://api.m.mtime.cn/OnlineLocationCinema/OnlineCinemasByCity.api?locationId=%ld",self.locationId] parDic:@{@"client":@"1"} HTTPHeader:nil finish:^(NSData *data, NSURLResponse *response) {
+
         
         //对专递过来的数据进行解析
         NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
